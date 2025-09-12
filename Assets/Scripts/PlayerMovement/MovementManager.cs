@@ -21,6 +21,7 @@ public class MovementManager : PlayerMovementManager
     void Update()
     {
         currState.UpdateState(this);
+        CameraManager.UpdateCamera();
     }
 
     public override void SwitchState(PlayerMovementState state)
