@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 812737592}
   - component: {fileID: 812737591}
   - component: {fileID: 812737590}
+  - component: {fileID: 812737594}
   m_Layer: 0
   m_Name: Sample Bullet
   m_TagString: Bullet
@@ -500,6 +501,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &812737594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812737589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a22ac19386d7468db95302435854839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RegularBullet
+  source: {fileID: 0}
+  damage: 1
+  speed: 1
+  lifetime: 1000
 --- !u!1 &1020332677
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +527,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1020332678}
   - component: {fileID: 1020332679}
+  - component: {fileID: 1020332681}
+  - component: {fileID: 1020332680}
   m_Layer: 0
   m_Name: Mecha
   m_TagString: MechPlayerEntity
@@ -560,6 +579,46 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1020332680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020332677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8375d5c2cee9f4c648356de3032bfd20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageReceiver
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1020332681}
+        m_TargetAssemblyTypeName: Mecha, Assembly-CSharp
+        m_MethodName: TakeDamage
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1020332681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020332677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b4500d728ff4472a0268bad0925e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mecha
+  movementManager: {fileID: 1159046336}
 --- !u!1 &1159046335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,7 +1083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8375d5c2cee9f4c648356de3032bfd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageReceiver
-  damageAmount: 1
   onTakeDamage:
     m_PersistentCalls:
       m_Calls:
