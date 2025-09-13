@@ -3,14 +3,15 @@ using UnityEngine.Events;
 
 public class DamageReceiver : MonoBehaviour
 {
-    [SerializeField] private int damageAmount = 1;
     [SerializeField] private UnityEvent<float> onTakeDamage;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet"))
+        Bullet bullet = other.GetComponent<Bullet>();
+        if (bullet != null)
         {
-            onTakeDamage.Invoke(damageAmount);
+            onTakeDamage.Invoke(bullet.damage);
+            bullet.lifetime = 0;
         }
     }
 }
