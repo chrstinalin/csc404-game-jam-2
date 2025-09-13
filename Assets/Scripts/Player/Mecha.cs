@@ -6,10 +6,8 @@ public class Mecha : MonoBehaviour
     
     public void TakeDamage(float damage)
     {
-        Debug.Log($"Mecha took {damage} damage");
-        if (movementManager != null)
+        if (movementManager != null && !movementManager.IsMouseActive)
         {
-            Debug.Log("Enabling mouse control");
             movementManager.ToggleMouse(true);
         }
     }
