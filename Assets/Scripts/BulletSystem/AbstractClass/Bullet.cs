@@ -3,6 +3,6 @@ using UnityEngine;
 public abstract class Bullet : MonoBehaviour
 {
 
-    public Enemy source;
+    public Character source;
 
 }

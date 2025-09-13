@@ -1,6 +1,5 @@
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : Character
 {
-    public abstract bool isAttack();
 }
