@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class Bullet : MonoBehaviour
 {
 
-    public Enemy source;
+    public GameObject source;
     public int damage = 1;
     public int speed = 10;
     public int lifetime = 5;
