@@ -16,15 +16,6 @@ public class CameraManager : CameraMovementManager
             PanTo(newZoom.Value);
         }
     }
-    public override void PanTo(float zoomSize)
-    {
-        zoom = zoomSize;
-    }
-
-    public override void SetMaxZoom(float max)
-    {
-        maxZoom = max;
-    }
 
     public override void UpdateCamera()
     {
@@ -39,4 +30,8 @@ public class CameraManager : CameraMovementManager
                                              CameraPivot.transform.position.y,
                                              FollowEntity.transform.position.z);
     }
+
+    public override void PanTo(float zoomSize) => zoom = zoomSize;
+
+    public override void SetMaxZoom(float max) => maxZoom = max;
 }

@@ -4,14 +4,10 @@ public class MovementConfig
 {
     public GameObject Entity;
     public float MoveSpeed;
-    public string HorizontalInput;
-    public string VerticalInput;
 
-    public MovementConfig(GameObject entity, float moveSpeed, string horizontalInput, string verticalInput)
+    public MovementConfig(GameObject entity, float moveSpeed)
     {
         Entity = entity;
         MoveSpeed = moveSpeed;
-        HorizontalInput = horizontalInput;
-        VerticalInput = verticalInput;
     }
 }

@@ -11,8 +11,8 @@ public class MovementManager : PlayerMovementManager
 
     void Start()
     {
-        MovementConfig MouseConfig = new(Mouse, MouseMoveSpeed, Constant.HORIZONTAL_JOY_RIGHT, Constant.VERTICAL_JOY_RIGHT);
-        MovementConfig MechConfig = new(Mech, MouseMoveSpeed, Constant.HORIZONTAL_JOY_LEFT, Constant.VERTICAL_JOY_LEFT);
+        MovementConfig MouseConfig = new(Mouse, MouseMoveSpeed);
+        MovementConfig MechConfig = new(Mech, MouseMoveSpeed);
 
         MouseMovementState = new MovementState();
         MechMovementState = new MovementState();
@@ -41,11 +41,16 @@ public class MovementManager : PlayerMovementManager
         IsMouseActive = toggle;
         Mouse.SetActive(toggle);
 
-        if (!IsMouseActive) CameraManager.SetFollowEntity(Mech, _MechMaxZoom);
-        else
+        if (IsMouseActive)
         {
             CameraManager.SetFollowEntity(Mouse, _MouseMaxZoom);
             Mouse.transform.position = Mech.transform.position + Mech.transform.forward * -2;
+            MechMovementState.UpdateJoyStick(Constant.JOY_RIGHT);
+        }
+        else
+        {
+            CameraManager.SetFollowEntity(Mech, _MechMaxZoom);
+            MechMovementState.UpdateJoyStick(Constant.JOY_LEFT);
         }        
     }
 }
