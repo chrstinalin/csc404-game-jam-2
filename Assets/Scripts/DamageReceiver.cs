@@ -11,7 +11,7 @@ public class DamageReceiver : MonoBehaviour
         if (bullet != null)
         {
             onTakeDamage.Invoke(bullet.damage);
-            Destroy(other.gameObject);
+            bullet.lifetime = 0;
         }
     }
 }
