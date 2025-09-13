@@ -29,7 +29,7 @@ public class MovementManager : PlayerMovementManager
         MechMovementState.UpdateState(this);
         CameraManager.UpdateCamera();
 
-        if (Input.GetKeyDown(MountKey))
+        if (Input.GetButtonDown("MountKey"))
         {
             if (!IsMouseActive)  ToggleMouse(true);
             else if (Vector3.Distance(Mouse.transform.position, Mech.transform.position) < MechEnterDistance) ToggleMouse(false);

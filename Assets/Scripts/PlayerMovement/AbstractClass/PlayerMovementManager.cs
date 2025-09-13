@@ -17,9 +17,5 @@ public abstract class PlayerMovementManager : MonoBehaviour
     public float MechMoveSpeed = 4;
     public float MechEnterDistance = 2.5f;
     public float SmoothTime = 0.05f;
-
-    // Keybinds
-    public KeyCode MountKey = KeyCode.Joystick1Button0;
-
     public abstract void ToggleMouse(bool toggle);
 }
