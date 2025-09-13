@@ -9,7 +9,7 @@ public abstract class CameraMovementManager : MonoBehaviour
     public float velocity = 0f;
     public float smoothTime = 0.25f;
 
-    public abstract void SetFollowEntity(GameObject entity);
+    public abstract void SetFollowEntity(GameObject entity, float? newZoom);
     public abstract void UpdateCamera();
     public abstract void PanTo(float zoomSize);
 

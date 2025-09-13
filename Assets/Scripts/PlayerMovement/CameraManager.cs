@@ -7,20 +7,25 @@ public class CameraManager : CameraMovementManager
     public GameObject CameraPivot;
     public Camera Cam;
 
+    public override void SetFollowEntity(GameObject entity, float? newZoom)
+    {
+        this.FollowEntity = entity;
+        if(newZoom.HasValue)
+        {
+            SetMaxZoom(newZoom.Value);
+            PanTo(newZoom.Value);
+        }
+    }
     public override void PanTo(float zoomSize)
     {
         zoom = zoomSize;
     }
 
-    public override void SetFollowEntity(GameObject entity)
-    {
-        this.FollowEntity = entity;
-
-    }
     public override void SetMaxZoom(float max)
     {
         maxZoom = max;
     }
+
     public override void UpdateCamera()
     {
         // Update zoom
