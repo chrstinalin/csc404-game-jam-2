@@ -10,7 +10,7 @@ public class EnemyPatrolManager : MonoBehaviour, IOffense
     public EnemyVisionAbstractManager VisionManager;
     private NavMeshAgent Agent;
 
-    [SerializeField] private float MinDistanceFromPlayer = 2f;
+    [SerializeField] private float MinDistanceFromPlayer = 5f;
     [SerializeField] private GameObject[] WayPoints;
     private GameObject ChaseEntity;
     private bool AttackActive = false;
@@ -90,6 +90,12 @@ public class EnemyPatrolManager : MonoBehaviour, IOffense
             if (distance > MinDistanceFromPlayer)
             {
                 destination = targetPos - (targetPos - transform.position).normalized * MinDistanceFromPlayer;
+            }
+            else
+            {
+                Vector3 lookDirection = (targetPos - transform.position).normalized;
+                lookDirection.y = 0;
+                if (lookDirection != Vector3.zero) transform.rotation = Quaternion.LookRotation(lookDirection);
             }
             Agent.SetDestination(destination);
         }
