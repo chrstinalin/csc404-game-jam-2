@@ -23,7 +23,7 @@ public class EnemyStationaryManager : MonoBehaviour, IOffense
     void Update()
     {
         VisionManager.UpdateVision();
-        //if (isAttack()) Debug.Log("Attacking!");
+        if (isAttack()) Debug.Log("Attacking!");
     }
 
     public bool isAttack()
