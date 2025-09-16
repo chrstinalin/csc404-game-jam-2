@@ -22,9 +22,11 @@ public class Health : MonoBehaviour
     {
         int damageAmount = damage;
         currHealth -= damageAmount;
-        
-        onHealthChanged.Invoke(currHealth);
     
+        Debug.Log($"Took {damageAmount} damage. Health: {currHealth}/{maxHealth}");
+    
+        onHealthChanged.Invoke(currHealth);
+
         if (currHealth <= 0)
         {
             onDeath.Invoke();

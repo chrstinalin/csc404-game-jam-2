@@ -6,7 +6,6 @@ using UnityEngine;
  */
 public abstract class Bullet : MonoBehaviour
 {
-
     public int damage;
     public int speed;
     public float lifetime = 5f;
@@ -27,4 +26,13 @@ public abstract class Bullet : MonoBehaviour
     }
 
     protected abstract void HandleMovement();
+    
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<DamageReceiver>() != null)
+        {
+            return;
+        }
+        Destroy(gameObject);
+    }
 }

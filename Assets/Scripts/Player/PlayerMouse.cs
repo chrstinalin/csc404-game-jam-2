@@ -11,6 +11,7 @@ public class PlayerMouse : MonoBehaviour
     
     void OnDeath()
     {
+        Debug.Log("Player Died. Respawning...");
         transform.position = new Vector3(0, 1, 0);
         _health.Heal(_health.GetMaxHealth());
     }

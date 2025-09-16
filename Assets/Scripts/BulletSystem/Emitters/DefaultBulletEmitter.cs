@@ -11,11 +11,16 @@ public class DefaultBulletEmitter : MonoBehaviour, IBulletSpawner
     public int firingRate = 1;
     private float _timer;
     public int numBullets = 1;
+
+    void Start()
+    {
+        Owner = GetComponent<IOffense>() ?? GetComponentInParent<IOffense>();
+    }
     
     void Update()
     {
         _timer += Time.deltaTime;
-        if (_timer >= firingRate)
+        if (_timer >= firingRate && Owner != null && Owner.isAttack())
         {
             Fire();
             _timer = 0;
@@ -24,6 +29,6 @@ public class DefaultBulletEmitter : MonoBehaviour, IBulletSpawner
     
     public virtual void Fire()
     {
-        Instantiate(bulletSource, transform.position, Quaternion.identity);
+        Instantiate(bulletSource, transform.position, transform.rotation);
     }
 }
