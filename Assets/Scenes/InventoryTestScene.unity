@@ -240,6 +240,7 @@ Transform:
   m_Children:
   - {fileID: 1159046337}
   - {fileID: 1996789363}
+  - {fileID: 2066617678}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &131771963
@@ -646,7 +647,6 @@ GameObject:
   - component: {fileID: 484597232}
   - component: {fileID: 484597235}
   - component: {fileID: 484597234}
-  - component: {fileID: 484597233}
   m_Layer: 5
   m_Name: DKInventoryText
   m_TagString: Untagged
@@ -673,20 +673,6 @@ RectTransform:
   m_AnchoredPosition: {x: -309.3, y: 252}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &484597233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 484597231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd37924c977b9424b9a65f74e9776d03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MechaInventoryDisplay
-  mechaInventory: {fileID: 1020332681}
-  inventoryText: {fileID: 484597234}
 --- !u!114 &484597234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1631,7 +1617,6 @@ GameObject:
   - component: {fileID: 1020332678}
   - component: {fileID: 1020332679}
   - component: {fileID: 1020332681}
-  - component: {fileID: 1020332680}
   - component: {fileID: 1020332682}
   m_Layer: 0
   m_Name: Mecha
@@ -1683,19 +1668,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1020332680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020332677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dfb95aab962bd249aee39aea22d6c44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MechaPickup
-  inventory: {fileID: 1020332681}
 --- !u!114 &1020332681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1709,6 +1681,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MechaInventoryManager
   items: []
+  maxNumItems: 0
+  Mouse: {fileID: 2013407907}
+  PickupDistance: 2
 --- !u!136 &1020332682
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1951,9 +1926,8 @@ GameObject:
   - component: {fileID: 1241827824}
   - component: {fileID: 1241827827}
   - component: {fileID: 1241827826}
-  - component: {fileID: 1241827825}
   m_Layer: 5
-  m_Name: MouseCurrItemSprite
+  m_Name: PeanutCurrItemSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1978,19 +1952,6 @@ RectTransform:
   m_AnchoredPosition: {x: -59, y: 60}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1241827825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241827823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b302937b9c41b824daa5a28fe69ef48f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MouseInventoryImage
-  mouseInventory: {fileID: 2013407910}
 --- !u!114 &1241827826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3061,7 +3022,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2013407908}
   - component: {fileID: 2013407909}
-  - component: {fileID: 2013407911}
   - component: {fileID: 2013407910}
   - component: {fileID: 2013407912}
   m_Layer: 0
@@ -3126,20 +3086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741ace1bcaaff1141b57fc08c4c8fc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MouseInventoryManager
-  currentItem: {fileID: 0}
---- !u!114 &2013407911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013407907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b16276760625b4f4884edbf17d1a21e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MousePickupManager
-  inventory: {fileID: 2013407910}
+  items: []
+  maxNumItems: 0
 --- !u!136 &2013407912
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3163,6 +3111,54 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2066617677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2066617678}
+  - component: {fileID: 2066617679}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2066617678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066617677}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 115711912}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2066617679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066617677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58057be93c9b4bd42843d98fcb52efab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryUIManager
+  mouseInventory: {fileID: 2013407910}
+  mouseItemImage: {fileID: 1241827826}
+  mechaInventory: {fileID: 1020332681}
+  mechaInventoryText: {fileID: 484597234}
 --- !u!1001 &3418851835326897618
 PrefabInstance:
   m_ObjectHideFlags: 0

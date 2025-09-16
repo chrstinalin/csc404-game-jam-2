@@ -7,4 +7,5 @@ public abstract class InventoryAbstractManager : MonoBehaviour
     public int maxNumItems;
 
     public abstract void AddItem(ItemData data);
+    public abstract void RemoveItem(int index);
 }
