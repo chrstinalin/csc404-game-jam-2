@@ -1,17 +1,22 @@
-using System;
 using UnityEngine;
 
 /*
  * Default bullet emitter; shoots bullets in a straight line.
  */
-public class DefaultBulletEmitter : MonoBehaviour, IBulletSpawner
+public class DefaultBulletEmitter : MonoBehaviour, IBulletEmitter
 {
-    public IOffense Owner;
-    public GameObject bulletSource;
+    [SerializeField] private GameObject bulletSource;
+    public GameObject BulletSource 
+    { 
+        get => bulletSource; 
+        set => bulletSource = value; 
+    }
+    public IOffense Owner { get; set; }
+    
     public int firingRate = 1;
     private float _timer;
     public int numBullets = 1;
-
+    
     void Start()
     {
         Owner = GetComponent<IOffense>() ?? GetComponentInParent<IOffense>();
@@ -29,6 +34,6 @@ public class DefaultBulletEmitter : MonoBehaviour, IBulletSpawner
     
     public virtual void Fire()
     {
-        Instantiate(bulletSource, transform.position, transform.rotation);
+        Instantiate(BulletSource, transform.position, transform.rotation);
     }
 }

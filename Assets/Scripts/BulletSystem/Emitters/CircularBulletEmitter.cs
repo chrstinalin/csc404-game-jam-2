@@ -16,7 +16,7 @@ public class CircularBulletEmitter : DefaultBulletEmitter
 
             Quaternion bulletRotation = Quaternion.LookRotation(direction);
 
-            Instantiate(bulletSource, spawnPosition, bulletRotation);
+            Instantiate(BulletSource, spawnPosition, bulletRotation);
         }
     }
 }
