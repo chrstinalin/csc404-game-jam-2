@@ -113,12 +113,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531e86c305814da0896fbdb7742af7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 3
+  maxHealth: 5
   currHealth: 0
   onHealthChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 879309151578318093}
         m_TargetAssemblyTypeName: PlayerMech, Assembly-CSharp
         m_MethodName: OnHealthChanged
         m_Mode: 3
@@ -133,7 +133,7 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 879309151578318093}
         m_TargetAssemblyTypeName: PlayerMech, Assembly-CSharp
         m_MethodName: OnDeath
         m_Mode: 1
@@ -160,7 +160,7 @@ MonoBehaviour:
   onTakeDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6334068796323356963}
         m_TargetAssemblyTypeName: Health, Assembly-CSharp
         m_MethodName: TakeDamage
         m_Mode: 0

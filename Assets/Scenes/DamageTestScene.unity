@@ -160,6 +160,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2919054199953606192, guid: 8353eed475b337745b78cef3f6a61e09, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 357538423}
     - target: {fileID: 7275317914325388625, guid: 8353eed475b337745b78cef3f6a61e09, type: 3}
       propertyPath: m_Name
       value: Mouse
@@ -204,6 +208,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8581459420836917736, guid: 8353eed475b337745b78cef3f6a61e09, type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 357538422}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -214,6 +222,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7275317914325388625, guid: 8353eed475b337745b78cef3f6a61e09, type: 3}
   m_PrefabInstance: {fileID: 357538418}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &357538422 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2919054199953606192, guid: 8353eed475b337745b78cef3f6a61e09, type: 3}
+  m_PrefabInstance: {fileID: 357538418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357538419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531e86c305814da0896fbdb7742af7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+--- !u!114 &357538423 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6644778173439621033, guid: 8353eed475b337745b78cef3f6a61e09, type: 3}
+  m_PrefabInstance: {fileID: 357538418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357538419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518e1eeee8f644e1ad339e38f6cf9aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMouse
 --- !u!1 &374947797
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +384,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2004462658246836742, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1535762195}
+    - target: {fileID: 6334068796323356963, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+      propertyPath: maxHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334068796323356963, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1535762196}
+    - target: {fileID: 6334068796323356963, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+      propertyPath: onHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1535762196}
     - target: {fileID: 7717143180608074467, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
       propertyPath: m_Name
       value: Mecha
@@ -613,6 +659,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurretEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5995367760747549583, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: pauseDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5995367760747549583, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: rotationAngle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9223242047111492838, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.9811525
@@ -653,8 +707,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 1462852456337628446, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 4168626195609820649, guid: 4be650896d3950241ae4fca08409081e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7624655161505566775, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       insertIndex: -1
@@ -1061,6 +1117,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7717143180608074467, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
   m_PrefabInstance: {fileID: 507657531}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1535762195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6334068796323356963, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+  m_PrefabInstance: {fileID: 507657531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535762192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531e86c305814da0896fbdb7742af7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+--- !u!114 &1535762196 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 879309151578318093, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+  m_PrefabInstance: {fileID: 507657531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535762192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1a0a6357bff4098b71dac312f757ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMech
 --- !u!1 &1556538946
 GameObject:
   m_ObjectHideFlags: 0
