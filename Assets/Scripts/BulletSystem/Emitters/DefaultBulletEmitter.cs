@@ -35,5 +35,6 @@ public class DefaultBulletEmitter : MonoBehaviour, IBulletEmitter
     public virtual void Fire()
     {
         Instantiate(BulletSource, transform.position, transform.rotation);
+        SFXManager.Instance.PlayBulletFire();
     }
 }
