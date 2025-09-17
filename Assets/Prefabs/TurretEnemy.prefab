@@ -350,7 +350,6 @@ GameObject:
   - component: {fileID: 7624655161505566775}
   - component: {fileID: 8819493345059424479}
   - component: {fileID: 5995367760747549583}
-  - component: {fileID: 1462852456337628446}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -417,21 +416,6 @@ MonoBehaviour:
   rotationAngle: 45
   rotationDuration: 2
   pauseDuration: 3
---- !u!114 &1462852456337628446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6082496355683049882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 485186ebaa289406ea6770d4c38e56f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DefaultBulletEmitter
-  bulletSource: {fileID: 4701600481150076701, guid: 631f2a711bf154d9b83f60b76aa0d5e2, type: 3}
-  firingRate: 1
-  numBullets: 1
 --- !u!1 &7160770206694961771
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,15 +683,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1970886457119731902, guid: 4dd495c1c4c98479b9f6dc810b62b684, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1970886457119731902, guid: 4dd495c1c4c98479b9f6dc810b62b684, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.33396
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 1970886457119731902, guid: 4dd495c1c4c98479b9f6dc810b62b684, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.44548
+      value: 1.57
       objectReference: {fileID: 0}
     - target: {fileID: 1970886457119731902, guid: 4dd495c1c4c98479b9f6dc810b62b684, type: 3}
       propertyPath: m_LocalRotation.w
