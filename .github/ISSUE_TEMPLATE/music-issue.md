@@ -1,7 +1,7 @@
 ---
 name: Music Issue
 about: Music Issue template.
-title: ''
+title: "[MUSIC] "
 labels: music
 assignees: ''
 

@@ -1,7 +1,7 @@
 ---
 name: CS Issue
 about: CS Issue template.
-title: ''
+title: "[CS] "
 labels: CS
 assignees: ''
 
