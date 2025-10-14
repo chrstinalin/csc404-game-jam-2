@@ -22,14 +22,21 @@ public class Button : TriggerAbstract
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("" + other.gameObject.name);
         if (TriggerObjects.Contains(other.gameObject))
+        {
+            Debug.Log("Triggered");
             Activate();
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (TriggerObjects.Contains(other.gameObject))
+        {
             Deactivate();
+        }
     }
 
     public override void Activate()
