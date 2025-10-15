@@ -90,6 +90,7 @@ public enum CardinalDirection
     West
 }
 
+public enum PlatformMoveDirection { Vertical, Horizontal }
 
 public static class GridDirection
 {

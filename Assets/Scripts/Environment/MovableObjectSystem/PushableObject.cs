@@ -26,7 +26,7 @@ public class PushableObject : MovableObject
         SideTrigger trigger = null;
         foreach (var t in sideTriggers)
         {
-            if (t.playerInRange)
+            if (t.CanPush())
             {
                 trigger = t;
                 break;
@@ -50,6 +50,9 @@ public class PushableObject : MovableObject
                 continue;
 
             if (c.gameObject == player)
+                continue;
+
+            if (c.isTrigger)
                 continue;
 
             return;
