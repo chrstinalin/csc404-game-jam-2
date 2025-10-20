@@ -37,9 +37,9 @@ public class PlayerMarker : MonoBehaviour
             float h = Input.GetAxis(_Input.Horizontal);
             float v = Input.GetAxis(_Input.Vertical);
 
-            Camera cam = Camera.main;
-            Vector3 camForward = cam.transform.forward;
-            Vector3 camRight = cam.transform.right;
+            Transform camTransform = CameraManager.Instance.transform;
+            Vector3 camForward = camTransform.forward;
+            Vector3 camRight = camTransform.right;
 
             camForward.y = 0f;
             camRight.y = 0f;
