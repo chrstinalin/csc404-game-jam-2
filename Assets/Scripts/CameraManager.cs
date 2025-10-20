@@ -13,15 +13,6 @@ public class CameraManager : CameraMovementManager
     private float targetFOV;
     private float fovVelocity;
 
-    [Header("Rotation Settings")]
-    public float mouseSensitivity = 100f;
-    public float rotationSmoothTime = 0.05f;
-    public float minPitch = -40f;
-    public float maxPitch = 70f;
-
-    [Header("Zoom Settings")]
-    public float zoomSensitivity = 10f;
-
     private float yaw;
     private float pitch;
     private new float zoom = 5f;
@@ -75,13 +66,13 @@ public class CameraManager : CameraMovementManager
                                            FollowEntity.transform.position.z);
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        zoom -= scroll * zoomSensitivity;
+        zoom -= scroll * Config.ZOOM_SENSITIVITY;
 
         bool r3Pressed = Input.GetButton("R3");
         if (r3Pressed)
         {
             float rightStickY = Input.GetAxis("VerticalRightJoystick");
-            zoom -= rightStickY * zoomSensitivity * Time.deltaTime;
+            zoom -= rightStickY * Config.ZOOM_SENSITIVITY * Time.deltaTime;
         }
 
         zoom = Mathf.Clamp(zoom, Config.CAMERA_MIN_ZOOM, maxZoom);
@@ -93,12 +84,12 @@ public class CameraManager : CameraMovementManager
         float inputX = mouseX + (r3Pressed ? 0 : rightStickX);
         float inputY = mouseY;
 
-        yaw += inputX * mouseSensitivity * Time.deltaTime;
-        pitch -= inputY * mouseSensitivity * Time.deltaTime;
-        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
+        yaw += inputX * Config.MOUSE_SENSITIVITY * Time.deltaTime;
+        pitch -= inputY * Config.MOUSE_SENSITIVITY * Time.deltaTime;
+        pitch = Mathf.Clamp(pitch, Config.MIN_PITCH, Config.MAX_PITCH);
 
         Quaternion targetRotation = Quaternion.Euler(pitch, yaw, 0);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSmoothTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Config.SMOOTH_TIME);
 
         transform.position = CameraPivot.position - transform.forward * zoom;
     }

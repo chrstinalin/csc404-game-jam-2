@@ -18,6 +18,9 @@ public static class Config
     public static float MECH_ENTER_DISTANCE = 2.5f;
     public static float SMOOTH_TIME = 0.05f;
 
+    public static float MIN_PITCH = -40f;
+    public static float MAX_PITCH = 70f;
+
     public static float CAMERA_ZOOM_MULTIPLIER = 4f;
     public static float CAMERA_MIN_ZOOM = 10f;
     public static float CAMERA_MAX_ZOOM = 50f;
@@ -26,8 +29,12 @@ public static class Config
     public static float CAMERA_LOCK_ON_FOV = 70f;
     public static float CAMERA_DEFAULT_FOV = 50f;
 
+    public static float ZOOM_SENSITIVITY = 10f;
+
     public static float MOUSE_MAX_ZOOM = 16f;
     public static float MECH_MAX_ZOOM = 20f;
+
+    public static float MOUSE_SENSITIVITY = 100f;
 
     public static float MIN_AI_DISTANCE = 5f;
 
