@@ -36,9 +36,19 @@ public class PlayerMarker : MonoBehaviour
         {
             float h = Input.GetAxis(_Input.Horizontal);
             float v = Input.GetAxis(_Input.Vertical);
-            Vector3 inputXZ = new Vector3(h, 0f, v);
 
-            Vector3 intended = transform.position + inputXZ.normalized * Config.PLAYER_MARKER_MOVE_SPEED * Time.deltaTime;
+            Camera cam = Camera.main;
+            Vector3 camForward = cam.transform.forward;
+            Vector3 camRight = cam.transform.right;
+
+            camForward.y = 0f;
+            camRight.y = 0f;
+            camForward.Normalize();
+            camRight.Normalize();
+
+            Vector3 inputDir = (camForward * v + camRight * h).normalized;
+
+            Vector3 intended = transform.position + inputDir * Config.PLAYER_MARKER_MOVE_SPEED * Time.deltaTime;
 
             if (TryGetHighestGroundY(intended, out float groundY))
             {
@@ -59,6 +69,7 @@ public class PlayerMarker : MonoBehaviour
             TryLockOnGround();
         }
     }
+
 
     public void setActive(bool val)
     {
