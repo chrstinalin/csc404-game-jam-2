@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,15 +11,21 @@ public class MainMenu : MonoBehaviour
     
     [Header("Panels")]
     public GameObject mainMenuPanel;
-    public GameObject optionsPanel;
-    
-    [Header("Input Settings")]
-    public bool disableMouseInput = true;
+    public GameObject controlsPanel;
     
     private int currentSelection = 0;
     private float inputCooldown = 0f;
     private float cooldownTime = 0.2f;
     private GameObject lastSelected;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioSource selectSound;
+
+    public AudioClip moveUpClip;
+    public AudioClip moveDownClip;
+    public AudioClip introClip;
+    public AudioClip mainTheme;
 
     void Start()
     {
@@ -27,12 +34,16 @@ public class MainMenu : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(menuButtons[0].gameObject);
             lastSelected = menuButtons[0].gameObject;
         }
+
+        audioSource.clip = introClip;
+        audioSource.Play();
+        Invoke("PlayMusic", introClip.length);
     }
 
     void Update()
     {
         HandleControllerInput();
-        if (disableMouseInput) PreventMouseDeselection();
+        PreventMouseDeselection();
     }
 
     void PreventMouseDeselection()
@@ -55,6 +66,17 @@ public class MainMenu : MonoBehaviour
             return;
         }
 
+        if (controlsPanel.activeSelf)
+        {
+            if (Input.GetButtonDown("Submit"))
+            {
+                PlaySelectSound();
+                CloseControls();
+                inputCooldown = cooldownTime;
+            }
+            return;
+        }
+
         float vertical = Input.GetAxisRaw("Vertical");
 
         if (vertical < -0.5f)
@@ -66,6 +88,8 @@ public class MainMenu : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(menuButtons[currentSelection].gameObject);
             lastSelected = menuButtons[currentSelection].gameObject;
             inputCooldown = cooldownTime;
+
+            PlaySound(moveDownClip);
         }
         else if (vertical > 0.5f)
         {
@@ -76,17 +100,20 @@ public class MainMenu : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(menuButtons[currentSelection].gameObject);
             lastSelected = menuButtons[currentSelection].gameObject;
             inputCooldown = cooldownTime;
+
+            PlaySound(moveUpClip);
         }
 
         if (Input.GetButtonDown("Submit"))
         {
+            PlaySelectSound();
             switch (currentSelection)
             {
                 case 0:
                     PlayGame();
                     break;
                 case 1:
-                    OpenOptions();
+                    OpenControls();
                     break;
                 case 2:
                     QuitGame();
@@ -97,19 +124,21 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("DefaultScene");
+        Debug.Log("Play Game");
+        // SceneManager.LoadScene("DefaultScene");
     }
 
-    public void OpenOptions()
+    public void OpenControls()
     {
         mainMenuPanel.SetActive(false);
-        optionsPanel.SetActive(true);
+        controlsPanel.SetActive(true);
     }
 
-    public void CloseOptions()
+    public void CloseControls()
     {
-        optionsPanel.SetActive(false);
+        controlsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+        currentSelection = 0;
         EventSystem.current.SetSelectedGameObject(menuButtons[0].gameObject);
         lastSelected = menuButtons[0].gameObject;
     }
@@ -120,5 +149,22 @@ public class MainMenu : MonoBehaviour
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
+    }
+
+    public void PlayMusic()
+    {
+        audioSource.clip = mainTheme;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
+    
+    public void PlaySelectSound()
+    {
+        selectSound.Play();
     }
 }
