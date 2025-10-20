@@ -24,7 +24,7 @@ public class CameraManager : CameraMovementManager
 
     private float yaw;
     private float pitch;
-    private float zoom = 5f;
+    private new float zoom = 5f;
     private Vector2 rotationVelocity;
 
     void Awake()
