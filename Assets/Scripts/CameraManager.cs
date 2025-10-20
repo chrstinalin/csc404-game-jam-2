@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class CameraManager : CameraMovementManager
 {
@@ -10,21 +8,33 @@ public class CameraManager : CameraMovementManager
     public GameObject FollowEntity;
     [NonSerialized] public Transform CameraPivot;
     [NonSerialized] public Camera Cam;
-    private float heightOffset;
 
+    private float heightOffset;
     private float targetFOV;
     private float fovVelocity;
+
+    private float yaw;
+    private float pitch;
+    private new float zoom = 5f;
+    private Vector2 rotationVelocity;
 
     void Awake()
     {
         Instance = this;
     }
+
     public void Start()
     {
-        Cam = gameObject.GetComponent<Camera>();
-        CameraPivot = gameObject.transform.parent.GetComponent<Transform>();
-        heightOffset = CameraPivot.transform.position.y;
+        Cam = GetComponent<Camera>();
+        CameraPivot = transform.parent;
+        heightOffset = CameraPivot.position.y;
         targetFOV = Config.CAMERA_DEFAULT_FOV;
+
+        Vector3 angles = transform.eulerAngles;
+        yaw = angles.y;
+        pitch = angles.x;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -32,66 +42,56 @@ public class CameraManager : CameraMovementManager
         Cam.fieldOfView = Mathf.SmoothDamp(Cam.fieldOfView, targetFOV, ref fovVelocity, Config.CAMERA_SMOOTH_TIME);
     }
 
-    public override void SetFollowEntity(GameObject? entity, float? newZoom)
+    public override void SetFollowEntity(GameObject? entity, float? newMaxZoom = null)
     {
-        this.FollowEntity = entity;
-        if(newZoom.HasValue)
+        float currentZoom = zoom;
+
+        FollowEntity = entity;
+
+        if (newMaxZoom.HasValue)
         {
-            SetMaxZoom(newZoom.Value);
-            PanTo(newZoom.Value);
+            maxZoom = newMaxZoom.Value;
         }
+
+        zoom = Mathf.Clamp(currentZoom, Config.CAMERA_MIN_ZOOM, maxZoom);
     }
 
     public override void UpdateCamera()
     {
-        // Update zoom
+        if (FollowEntity == null)
+            return;
+
+        CameraPivot.position = new Vector3(FollowEntity.transform.position.x,
+                                           FollowEntity.transform.position.y + heightOffset,
+                                           FollowEntity.transform.position.z);
+
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        zoom -= scroll * Config.CAMERA_ZOOM_MULTIPLIER;
+        zoom -= scroll * Config.ZOOM_SENSITIVITY;
+
+        bool r3Pressed = Input.GetButton("R3");
+        if (r3Pressed)
+        {
+            float rightStickY = Input.GetAxis("VerticalRightJoystick");
+            zoom -= rightStickY * Config.ZOOM_SENSITIVITY * Time.deltaTime;
+        }
+
         zoom = Mathf.Clamp(zoom, Config.CAMERA_MIN_ZOOM, maxZoom);
-        Cam.orthographicSize = Mathf.SmoothDamp(Cam.orthographicSize, zoom, ref Config.CAMERA_VELOCITY, Config.CAMERA_SMOOTH_TIME);
 
-        // Update location
-        CameraPivot.transform.position = new Vector3(FollowEntity.transform.position.x,
-                                             FollowEntity.transform.position.y + heightOffset,
-                                             FollowEntity.transform.position.z);
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+        float rightStickX = Input.GetAxis("HorizontalRightJoystick");
 
-        // Rotate 90 degrees around the mouse
-        // TODO: test with controller
-        float rightStickX = Input.GetAxis("HorizontalRightJoystick"); // from -1 to 1
-        if (rightStickX > 0.8f)
-        {
-            StartCoroutine(RotateAroundTarget(90f));
-        }
-        else if ( rightStickX < -0.8f)
-        {
-            StartCoroutine(RotateAroundTarget(-90f));
-        }
+        float inputX = mouseX + (r3Pressed ? 0 : rightStickX);
+        float inputY = mouseY;
 
-        if (Input.GetKeyDown(KeyCode.O))
-            StartCoroutine(RotateAroundTarget(-90f));
-        else if (Input.GetKeyDown(KeyCode.P))
-            StartCoroutine(RotateAroundTarget(90f));
-    }
+        yaw += inputX * Config.MOUSE_SENSITIVITY * Time.deltaTime;
+        pitch -= inputY * Config.MOUSE_SENSITIVITY * Time.deltaTime;
+        pitch = Mathf.Clamp(pitch, Config.MIN_PITCH, Config.MAX_PITCH);
 
-    private IEnumerator RotateAroundTarget(float angle)
-    {   
+        Quaternion targetRotation = Quaternion.Euler(pitch, yaw, 0);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Config.SMOOTH_TIME);
 
-        float rotatedDegrees = 0f;
-        float direction = Mathf.Sign(angle);
-        float totalDegrees= Mathf.Abs(angle);
-
-        while (rotatedDegrees < totalDegrees)
-        {
-            float step = 180f * Time.deltaTime; // rotate 180 degrees per second
-            transform.RotateAround(FollowEntity.transform.position, Vector3.up, step * direction);
-            rotatedDegrees += step;
-            yield return null;
-        }
-
-        // snap to exact 90 degree angle on the grid
-        float finalY = Mathf.Round(transform.eulerAngles.y / 90f) * 90f;
-        Vector3 currentEuler = transform.eulerAngles;
-        transform.rotation = Quaternion.Euler(currentEuler.x, finalY, currentEuler.z);
+        transform.position = CameraPivot.position - transform.forward * zoom;
     }
 
     public override void PanTo(float zoomSize) => zoom = zoomSize;
