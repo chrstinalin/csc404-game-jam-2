@@ -44,7 +44,7 @@ public static class Config
     public static LayerMask PLAYER_MARKER_GROUND_LAYERS = ~0;
 
     public static float ENEMY_OUTLINE_WIDTH = 2f;
-    public static float SELECTED_ENEMY_OUTLINE_WIDTH = 4f;
+    public static float SELECTED_ENEMY_OUTLINE_WIDTH = 6f;
 
 }
 
