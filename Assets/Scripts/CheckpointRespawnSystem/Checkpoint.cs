@@ -9,7 +9,7 @@ public class Checkpoint : MonoBehaviour
         var manager = CheckpointManager.Instance;
         if (manager == null) return;
 
-        if (other.gameObject == manager.mecha || other.gameObject == manager.mouse)
+        if (other.gameObject == PlayerMech.Instance.gameObject || other.gameObject == PlayerMouse.Instance.gameObject)
         {
             manager.SetActiveCheckpoint(this);
         }

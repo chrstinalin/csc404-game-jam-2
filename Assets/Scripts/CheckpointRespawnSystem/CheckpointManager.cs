@@ -5,9 +5,6 @@ public class CheckpointManager : MonoBehaviour
 {
     public static CheckpointManager Instance;
 
-    public GameObject mecha;
-    public GameObject mouse;
-
     public List<Checkpoint> checkpoints = new List<Checkpoint>();
 
     private Checkpoint currentCheckpoint;
@@ -56,13 +53,13 @@ public class CheckpointManager : MonoBehaviour
 
         Vector3 offset = Vector3.right * 1.5f;
 
-        mecha.transform.SetPositionAndRotation(spawnPos + offset, spawnRot);
-        mouse.transform.SetPositionAndRotation(spawnPos - offset, spawnRot);
+        PlayerMech.Instance.transform.SetPositionAndRotation(spawnPos + offset, spawnRot);
+        PlayerMouse.Instance.transform.SetPositionAndRotation(spawnPos - offset, spawnRot);
 
-        if (mecha.TryGetComponent<Rigidbody>(out var rb1))
+        if (PlayerMech.Instance.TryGetComponent<Rigidbody>(out var rb1))
             rb1.linearVelocity = Vector3.zero;
 
-        if (mouse.TryGetComponent<Rigidbody>(out var rb2))
+        if (PlayerMouse.Instance.TryGetComponent<Rigidbody>(out var rb2))
             rb2.linearVelocity = Vector3.zero;
 
         Debug.Log($"Respawned both characters at checkpoint: {currentCheckpoint.name}, position: {spawnPos}");
