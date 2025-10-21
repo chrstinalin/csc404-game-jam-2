@@ -90,7 +90,12 @@ public class PlayerMech : MonoBehaviour
 
     public void OnDeath()
     {
-        transform.position = new Vector3(0, 1, 0);
+        var checkpointManager = CheckpointManager.Instance;
+        if (checkpointManager != null)
+        {
+            checkpointManager.RespawnCharacters();
+        }
+        
         if (Health != null)
         {
             Health.Heal(Health.GetMaxHealth());

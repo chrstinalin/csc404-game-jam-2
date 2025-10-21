@@ -63,8 +63,12 @@ public class PlayerMouse : MonoBehaviour
 
     public void OnDeath()
     {
-        Debug.Log("Player Died. Respawning...");
-        transform.position = new Vector3(0, 1, 0);
+        var checkpointManager = CheckpointManager.Instance;
+        if (checkpointManager != null)
+        {
+            checkpointManager.RespawnCharacters();
+        }
+
         if (Health != null)
         {
             Health.Heal(Health.GetMaxHealth());
