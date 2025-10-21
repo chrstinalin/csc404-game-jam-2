@@ -318,6 +318,9 @@ GameObject:
   - component: {fileID: 8554991555500687912}
   - component: {fileID: 7734121836895323242}
   - component: {fileID: 4042126326667617480}
+  - component: {fileID: 3362328989578403806}
+  - component: {fileID: 7248115323536531754}
+  - component: {fileID: 7717550003356984068}
   m_Layer: 0
   m_Name: PatrolEnemy
   m_TagString: Untagged
@@ -358,6 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPatrolManager
   VisionManager: {fileID: 5110383828894934477}
   WayPoints: []
+  attackDistance: 10
 --- !u!114 &5110383828894934477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +433,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a71a5cc0e94ba54c9da70ad5ff1755d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnSelectable
+--- !u!114 &3362328989578403806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577498443009671908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &7248115323536531754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577498443009671908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531e86c305814da0896fbdb7742af7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 3
+  currHealth: 0
+--- !u!136 &7717550003356984068
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577498443009671908}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5518527
+  m_Height: 2.8902776
+  m_Direction: 1
+  m_Center: {x: 0.051852703, y: 0.9451388, z: 0}
 --- !u!1 &5277480943957435538
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,9 +705,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8115f2a4865d6eb4baade45b8c4f4562, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2964796729818307544}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8115f2a4865d6eb4baade45b8c4f4562, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4674032982529601677}
   m_SourcePrefab: {fileID: 100100000, guid: 8115f2a4865d6eb4baade45b8c4f4562, type: 3}
 --- !u!4 &8194662430733373310 stripped
 Transform:
@@ -683,21 +739,3 @@ CapsuleCollider:
   m_Height: 0.5063724
   m_Direction: 1
   m_Center: {x: 0, y: 0.16305394, z: 0}
---- !u!114 &4674032982529601677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8859313552937866692}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
