@@ -507,8 +507,7 @@ MonoBehaviour:
   message: Press E to Destroy Patrol
   characters:
   - {fileID: 1422965419}
-  textPrefab: {fileID: 0}
-  textOffset: {x: 0, y: 2, z: 0}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!4 &432297193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 303085598428750445, guid: 8cd83cbb811f8b5428d638f325afcd0c, type: 3}
@@ -773,7 +772,6 @@ MonoBehaviour:
   characters:
   - {fileID: 1220154442}
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
-  textOffset: {x: 0, y: 2, z: 0}
 --- !u!1 &1079175570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,7 +1176,6 @@ MonoBehaviour:
   characters:
   - {fileID: 1422965419}
   textPrefab: {fileID: 0}
-  textOffset: {x: 0, y: 2, z: 0}
 --- !u!1001 &1815126394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1375,7 +1372,27 @@ MonoBehaviour:
   characters:
   - {fileID: 1422965419}
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
-  textOffset: {x: 0, y: 2, z: 0}
+--- !u!1 &2019467460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+  m_PrefabInstance: {fileID: 2095603646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2019467470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019467460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf6e608fdbee1544a1fc3ed65c8df64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  message: Press E to Destroy Turret
+  characters:
+  - {fileID: 1422965419}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1001 &2091479346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1451,6 +1468,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: scrapPilePrefab
+      value: 
+      objectReference: {fileID: 936786589}
     - target: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: m_Name
       value: TurretEnemy
@@ -1499,6 +1520,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2019467470}
     - targetCorrespondingSourceObject: {fileID: 7160770206694961771, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1672302766}

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WorldTextFollower : MonoBehaviour
+public class InteractableObjectText : MonoBehaviour
 {
     public Transform target;
     private RectTransform rectTransform;

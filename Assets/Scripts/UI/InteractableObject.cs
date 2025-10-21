@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider))]
-public class InteractableObjectMessage : MonoBehaviour
+public class InteractableObject : MonoBehaviour
 {
     [Header("Settings")]
     public string message = "Press E to interact";
@@ -25,7 +25,7 @@ public class InteractableObjectMessage : MonoBehaviour
                 var textComponent = spawnedText.GetComponent<Text>();
                 textComponent.text = message;
 
-                var follower = spawnedText.GetComponent<WorldTextFollower>();
+                var follower = spawnedText.GetComponent<InteractableObjectText>();
                 follower.target = transform;
 
                 break;
