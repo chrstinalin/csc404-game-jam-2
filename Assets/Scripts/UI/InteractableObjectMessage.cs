@@ -1,22 +1,33 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider))]
 public class InteractableObjectMessage : MonoBehaviour
 {
+    [Header("Settings")]
     public string message = "Press E to interact";
     public GameObject[] characters;
-    public InteractionTextManager textManager;
-
-    private bool isInside = false;
+    public GameObject textPrefab;
+    private GameObject spawnedText;
+    private bool isInside;
 
     private void OnTriggerEnter(Collider other)
     {
         foreach (var character in characters)
         {
-            if (other.gameObject == character)
+            if (other.gameObject == character && spawnedText == null)
             {
                 isInside = true;
-                textManager.AddMessage(message);
+
+                Canvas canvas = FindObjectOfType<Canvas>();
+                spawnedText = Instantiate(textPrefab, canvas.transform);
+
+                var textComponent = spawnedText.GetComponent<Text>();
+                textComponent.text = message;
+
+                var follower = spawnedText.GetComponent<WorldTextFollower>();
+                follower.target = transform;
+
                 break;
             }
         }
@@ -26,10 +37,11 @@ public class InteractableObjectMessage : MonoBehaviour
     {
         foreach (var character in characters)
         {
-            if (other.gameObject == character)
+            if (other.gameObject == character && spawnedText != null)
             {
                 isInside = false;
-                textManager.RemoveMessage(message);
+                Destroy(spawnedText);
+                spawnedText = null;
                 break;
             }
         }
@@ -37,7 +49,10 @@ public class InteractableObjectMessage : MonoBehaviour
 
     private void OnDisable()
     {
-        if (isInside && textManager != null)
-            textManager.RemoveMessage(message);
+        if (spawnedText != null)
+        {
+            Destroy(spawnedText);
+            spawnedText = null;
+        }
     }
 }

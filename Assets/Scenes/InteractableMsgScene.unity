@@ -507,7 +507,8 @@ MonoBehaviour:
   message: Press E to Destroy Patrol
   characters:
   - {fileID: 1422965419}
-  textManager: {fileID: 1183904150}
+  textPrefab: {fileID: 0}
+  textOffset: {x: 0, y: 2, z: 0}
 --- !u!4 &432297193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 303085598428750445, guid: 8cd83cbb811f8b5428d638f325afcd0c, type: 3}
@@ -701,10 +702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 322564234936199830, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1183904147}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
 --- !u!1 &783101056
@@ -774,7 +772,8 @@ MonoBehaviour:
   message: Press E to Pick Up Scrap Pile
   characters:
   - {fileID: 1220154442}
-  textManager: {fileID: 1183904150}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
+  textOffset: {x: 0, y: 2, z: 0}
 --- !u!1 &1079175570
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,98 +907,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9e71a3bc66ed0a42b90ac080373413c, type: 3}
---- !u!1 &1183904146
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1183904147}
-  - component: {fileID: 1183904149}
-  - component: {fileID: 1183904148}
-  - component: {fileID: 1183904150}
-  m_Layer: 5
-  m_Name: InteractableObjectMessage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1183904147
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183904146}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1968290442}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000018597, y: -323.23}
-  m_SizeDelta: {x: 281.4268, y: 34.464}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1183904148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183904146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.19814444, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 40
-    m_Alignment: 1
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: text
---- !u!222 &1183904149
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183904146}
-  m_CullTransparentMesh: 1
---- !u!114 &1183904150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183904146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd38fb17726cd4843819735665b8e268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractionTextManager
 --- !u!1 &1213708303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,7 +1177,8 @@ MonoBehaviour:
   message: Press E to Destroy Turret
   characters:
   - {fileID: 1422965419}
-  textManager: {fileID: 1183904150}
+  textPrefab: {fileID: 0}
+  textOffset: {x: 0, y: 2, z: 0}
 --- !u!1001 &1815126394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1466,12 +1374,8 @@ MonoBehaviour:
   message: Press E to Destroy Wall
   characters:
   - {fileID: 1422965419}
-  textManager: {fileID: 1183904150}
---- !u!224 &1968290442 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 322564234936199830, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-  m_PrefabInstance: {fileID: 763356706}
-  m_PrefabAsset: {fileID: 0}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
+  textOffset: {x: 0, y: 2, z: 0}
 --- !u!1001 &2091479346
 PrefabInstance:
   m_ObjectHideFlags: 0
