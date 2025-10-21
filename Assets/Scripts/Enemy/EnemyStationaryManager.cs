@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
 
@@ -7,16 +6,22 @@ public class EnemyStationaryManager : MonoBehaviour, IOffense
     public EnemyVisionAbstractManager VisionManager;
 
     [SerializeField] private float rotationAngle = 45f;
-    [SerializeField] private float rotationDuration = 2;
-    [SerializeField] private float pauseDuration = 3;
+    [SerializeField] private float rotationDuration = 2f;
+    [SerializeField] private float pauseDuration = 2f;
 
-    private Quaternion initialRotation;
+    private Quaternion leftRotation;
+    private Quaternion rightRotation;
+    private bool rotatingRight = true;
 
     void Start()
     {
         VisionManager = GetComponent<EnemyVisionAbstractManager>();
         VisionManager.InitVision();
-        initialRotation = transform.rotation;
+
+        Quaternion baseRotation = transform.rotation;
+        leftRotation = baseRotation * Quaternion.Euler(0f, -rotationAngle, 0f);
+        rightRotation = baseRotation * Quaternion.Euler(0f, rotationAngle, 0f);
+
         StartCoroutine(RotateBackAndForth());
     }
 
@@ -34,28 +39,23 @@ public class EnemyStationaryManager : MonoBehaviour, IOffense
     {
         while (true)
         {
-            yield return RotateToAngle(rotationAngle);
-            yield return new WaitForSeconds(pauseDuration);
-            yield return RotateToAngle(-rotationAngle);
+            Quaternion targetRotation = rotatingRight ? rightRotation : leftRotation;
+            Quaternion startRotation = transform.rotation;
+
+            float elapsed = 0f;
+
+            while (elapsed < rotationDuration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / rotationDuration);
+                transform.rotation = Quaternion.Slerp(startRotation, targetRotation, t);
+                yield return null;
+            }
+
+            transform.rotation = targetRotation;
+            rotatingRight = !rotatingRight;
+
             yield return new WaitForSeconds(pauseDuration);
         }
-    }
-
-    private IEnumerator RotateToAngle(float targetAngle)
-    {
-        float elapsed = 0f;
-        float startAngle = transform.localEulerAngles.y;
-        if (startAngle > 180f) startAngle -= 360f;
-        float endAngle = targetAngle;
-
-        while (elapsed < rotationDuration)
-        {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / rotationDuration);
-            float angle = Mathf.Lerp(startAngle, endAngle, t);
-            transform.rotation = initialRotation * Quaternion.Euler(0, angle, 0);
-            yield return null;
-        }
-        transform.rotation = initialRotation * Quaternion.Euler(0, endAngle, 0);
     }
 }
