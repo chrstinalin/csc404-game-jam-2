@@ -46,6 +46,8 @@ public static class Config
     public static float ENEMY_OUTLINE_WIDTH = 2f;
     public static float SELECTED_ENEMY_OUTLINE_WIDTH = 6f;
 
+    public static Vector3 INTERACTABLE_TEXT_OFFSET = new Vector3(0, 2f, 0);
+
 }
 
 public enum AIState
