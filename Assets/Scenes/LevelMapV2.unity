@@ -3682,9 +3682,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 145919601}
-  - {fileID: 783101058}
   - {fileID: 2113031978}
   - {fileID: 686719169}
+  - {fileID: 943790915}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &122963030 stripped
@@ -6558,6 +6558,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217664722}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &226105336
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 112141419}
+    m_Modifications:
+    - target: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 185.75279
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 38.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 45.34766
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471775069625906319, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
 --- !u!1 &229535882
 GameObject:
   m_ObjectHideFlags: 0
@@ -21574,56 +21631,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782892705}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &783101056
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 783101058}
-  - component: {fileID: 783101057}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &783101057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783101056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7009d61ae62af4ba72d36b8afa9d05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  currentlyPlaying: {fileID: 0}
-  MainTheme: {fileID: 0}
-  MainThemeAudio: {fileID: 0}
-  MouseFootSteps: {fileID: 0}
-  MechFootSteps: {fileID: 0}
-  ButtonPressSFX: {fileID: 0}
---- !u!4 &783101058
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783101056}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 112141419}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &783849663
 GameObject:
   m_ObjectHideFlags: 0
@@ -25015,6 +25022,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938838873}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &943790915 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
+  m_PrefabInstance: {fileID: 226105336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &950299785
 GameObject:
   m_ObjectHideFlags: 0
