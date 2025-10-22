@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 // Manages the current overworld theme.
 // Manages an AudioSource to play sound effects.
@@ -11,8 +12,17 @@ public class AudioManager : MonoBehaviour
     [HideInInspector] public AudioSource MainTheme;
 
     [SerializeField] private AudioClip MainThemeAudio;
+    [SerializeField] public AudioClip MouseFootSteps;
+    [SerializeField] public AudioClip MechFootSteps;
+    [SerializeField] public AudioClip ButtonPressSFX;
 
     private float FADE_IN_TRANSITION = 2f;
+
+    // Footstep loop state
+    private Coroutine footstepCoroutine;
+    private GameObject footstepSFXObj;
+    private AudioSource footstepSource;
+    private AudioClip currentFootstepClip;
 
     void Awake()
     {
@@ -23,18 +33,21 @@ public class AudioManager : MonoBehaviour
     {
         if(!MainThemeAudio) Debug.LogWarning("Main Theme Audio not assigned in AudioManager.");
 
-        // Main Theme
-        AudioSource MainTheme = gameObject.AddComponent<AudioSource>();
-        MainTheme.clip = MainThemeAudio;
-        MainTheme.loop = true;
-        MainTheme.Play();
+        this.MainTheme = gameObject.AddComponent<AudioSource>();
+        this.MainTheme.clip = MainThemeAudio;
+        this.MainTheme.loop = true;
+        this.MainTheme.Play();
 
-        currentlyPlaying = MainTheme;
+        currentlyPlaying = this.MainTheme;
     }
 
     public void PlaySFX(AudioClip audioFile)
     {
-        if(!audioFile) Debug.LogWarning("No audio file was provided to PlaySFX().");
+        if(!audioFile)
+        {
+            Debug.LogWarning("No audio file was provided to PlaySFX().");
+            return;
+        }
 
         GameObject SFX = new GameObject("SFX");
         AudioSource audioSource = SFX.AddComponent<AudioSource>();
@@ -42,6 +55,61 @@ public class AudioManager : MonoBehaviour
         audioSource.clip = audioFile;
         audioSource.Play();
         Destroy(SFX, audioFile.length);
+    }
+
+    public void HandleFootstepLoop(AudioClip clip, bool isMoving)
+    {
+        if (isMoving) StartFootstepLoop(clip);
+        else StopFootstepLoop();
+    }
+
+    public void StartFootstepLoop(AudioClip clip)
+    {
+        if (!clip)
+        {
+            Debug.LogWarning("No audio clip was provided to StartFootstepLoop().");
+            return;
+        }
+
+        if (footstepCoroutine != null && currentFootstepClip == clip) return;
+
+        StopFootstepLoop();
+
+        footstepSFXObj = new GameObject("FootstepSFX");
+        footstepSource = footstepSFXObj.AddComponent<AudioSource>();
+        footstepSource.playOnAwake = false;
+        footstepSource.loop = false;
+
+        currentFootstepClip = clip;
+        footstepCoroutine = StartCoroutine(FootstepLoopCoroutine());
+    }
+
+    public void StopFootstepLoop()
+    {
+        if (footstepCoroutine != null)
+        {
+            StopCoroutine(footstepCoroutine);
+            footstepCoroutine = null;
+        }
+
+        if (footstepSFXObj != null)
+        {
+            Destroy(footstepSFXObj);
+            footstepSFXObj = null;
+            footstepSource = null;
+            currentFootstepClip = null;
+        }
+    }
+
+    private IEnumerator FootstepLoopCoroutine()
+    {
+        while (true)
+        {
+            if (currentFootstepClip == null)  yield break;
+            footstepSource.PlayOneShot(currentFootstepClip);
+            float wait = currentFootstepClip.length + Config.FOOTSTEP_INTERVAL;
+            yield return new WaitForSeconds(wait);
+        }
     }
 
     public void SwitchTheme(AudioSource newTheme)
