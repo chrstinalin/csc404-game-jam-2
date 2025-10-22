@@ -48,6 +48,11 @@ public static class Config
 
     public static Vector3 INTERACTABLE_TEXT_OFFSET = new Vector3(0, 2f, 0);
 
+    public static float MOVE_EPSILON_SQR = 0.01f;
+
+    public static float FOOTSTEP_INTERVAL = 0.3f;
+
+
 }
 
 public enum AIState
