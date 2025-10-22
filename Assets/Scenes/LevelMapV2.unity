@@ -3435,17 +3435,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9223242047111492838, guid: 4be650896d3950241ae4fca08409081e, type: 3}
   m_PrefabInstance: {fileID: 766515154}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &102108154 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2143914167897710886, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-  m_PrefabInstance: {fileID: 766515154}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c2ecbd843ffc74c93ff55f9c03fcd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyVisionManager
 --- !u!1 &103352098
 GameObject:
   m_ObjectHideFlags: 0
@@ -12693,7 +12682,7 @@ MonoBehaviour:
   message: Press B to Destroy Patrol
   characters:
   - {fileID: 1422965419}
-  textPrefab: {fileID: 0}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1001 &455766355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21466,14 +21455,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 641220295}
     m_Modifications:
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: scrapPilePrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: m_Name
       value: TurretEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7429966529203997417, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: VisionManager
-      value: 
-      objectReference: {fileID: 102108154}
     - target: {fileID: 9223242047111492838, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.793827
@@ -24660,6 +24649,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 641220295}
     m_Modifications:
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: scrapPilePrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: m_Name
       value: TurretEnemy (1)
@@ -25095,7 +25088,7 @@ MonoBehaviour:
   message: Press B to Destroy Patrol
   characters:
   - {fileID: 1422965419}
-  textPrefab: {fileID: 0}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1 &916043517
 GameObject:
   m_ObjectHideFlags: 0
@@ -27173,7 +27166,7 @@ MonoBehaviour:
   message: Press B to Destroy Patrol
   characters:
   - {fileID: 1422965419}
-  textPrefab: {fileID: 0}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1 &1002181922
 GameObject:
   m_ObjectHideFlags: 0
@@ -39017,7 +39010,7 @@ MonoBehaviour:
   message: Press B to Destroy Patrol
   characters:
   - {fileID: 1422965419}
-  textPrefab: {fileID: 0}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1 &1499788124
 GameObject:
   m_ObjectHideFlags: 0
@@ -40447,17 +40440,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1586109560739761133, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435826185661523990, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
-      propertyPath: chargeTime
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3726268797426753602, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
-      propertyPath: Agent
-      value: 
+      propertyPath: attackRange
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7717143180608074467, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
       propertyPath: m_Name
@@ -49796,7 +49781,7 @@ MonoBehaviour:
   message: Press B to Destroy Patrol
   characters:
   - {fileID: 1422965419}
-  textPrefab: {fileID: 0}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1 &1866320269
 GameObject:
   m_ObjectHideFlags: 0
@@ -53041,7 +53026,7 @@ PrefabInstance:
     - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: scrapPilePrefab
       value: 
-      objectReference: {fileID: 8120636863540370014, guid: 28a4a5d29ea83e141bd98939972d6e7f, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: m_Name
       value: TurretEnemy
@@ -54958,8 +54943,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.8113708, y: 1.138757, z: 1.1359204}
-  m_Center: {x: 3.1482441, y: 1.3552189, z: 0.06641403}
+  m_Size: {x: 1.6685196, y: 3.2639804, z: 1.7257667}
+  m_Center: {x: 3.2196696, y: 1.893821, z: 0.0045351186}
 --- !u!114 &2050507139
 MonoBehaviour:
   m_ObjectHideFlags: 0
