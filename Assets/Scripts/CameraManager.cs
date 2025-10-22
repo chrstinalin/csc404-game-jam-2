@@ -77,8 +77,8 @@ public class CameraManager : CameraMovementManager
 
         zoom = Mathf.Clamp(zoom, Config.CAMERA_MIN_ZOOM, maxZoom);
 
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        float mouseX = Input.GetAxis("HorizontalRightJoystick");
+        float mouseY = Input.GetAxis("VerticalRightJoystick");
         float rightStickX = Input.GetAxis("HorizontalRightJoystick");
 
         float inputX = mouseX + (r3Pressed ? 0 : rightStickX);
