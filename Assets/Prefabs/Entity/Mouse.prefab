@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &140823390146463108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6907715042082421799}
+  m_Layer: 0
+  m_Name: CarryPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6907715042082421799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140823390146463108}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.002, y: 0.246, z: -0.251}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7535774136938286577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1229551958316518857
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,9 +75,9 @@ GameObject:
   - component: {fileID: 6644778173439621033}
   - component: {fileID: 4101311444940150672}
   - component: {fileID: 77184399168116333}
-  - component: {fileID: 3677879620575908653}
   - component: {fileID: 2163532357852386957}
   - component: {fileID: 3671893151664737182}
+  - component: {fileID: 5377458010896118461}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: MousePlayerEntity
@@ -68,6 +99,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4823581216432227910}
+  - {fileID: 6907715042082421799}
   - {fileID: 2070455243117121740}
   - {fileID: 8193464605431617184}
   m_Father: {fileID: 0}
@@ -4915,18 +4947,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &3677879620575908653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7275317914325388625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 531e86c305814da0896fbdb7742af7f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
 --- !u!65 &2163532357852386957
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4949,6 +4969,27 @@ BoxCollider:
   m_Size: {x: 1.1197654, y: 0.47864687, z: 1.8731384}
   m_Center: {x: -0.06581837, y: 0.23355663, z: 0.57326794}
 --- !u!65 &3671893151664737182
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7275317914325388625}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.7119911, y: 1.7178451, z: 2.075636}
+  m_Center: {x: -0.18101537, y: 0.33962077, z: 0.91967964}
+--- !u!65 &5377458010896118461
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
