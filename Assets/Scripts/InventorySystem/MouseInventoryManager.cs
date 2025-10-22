@@ -19,7 +19,8 @@ public class MouseInventoryManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var item = other.GetComponent<ScrapCurrency>();
-        if (item != null)
+
+        if (item != null && item.GetComponent<Health>() == null)
         {
             nearbyItem = item;
         }
@@ -55,15 +56,12 @@ public class MouseInventoryManager : MonoBehaviour
         nearbyItem = null;
 
         item.transform.SetParent(carryPoint);
-
         item.transform.localPosition = Vector3.zero;
         item.transform.localRotation = Quaternion.identity;
-
         item.transform.localScale = Vector3.one * 0.5f;
 
         Debug.Log("Mouse picked up: " + item.name);
     }
-
 
     private void DropItem()
     {
@@ -72,9 +70,7 @@ public class MouseInventoryManager : MonoBehaviour
         Vector3 dropPosition = transform.position + transform.forward * 1f;
 
         carriedItem.transform.SetParent(null);
-
         carriedItem.transform.localScale = Vector3.one;
-
         carriedItem.Drop(dropPosition);
 
         Debug.Log("Mouse dropped: " + carriedItem.name);
