@@ -67,6 +67,8 @@ public class MovementManager : PlayerMovementManager
         if (IsMouseActive)
         {
             MouseMovementState.UpdateState(this, true, moveDir);
+            if(AudioManager.Instance != null)
+                AudioManager.Instance.HandleFootstepLoop(AudioManager.Instance.MouseFootSteps, moveDir.sqrMagnitude > Config.MOVE_EPSILON_SQR);
 
             if (Input.GetButton("SummonMecha"))
             {
@@ -81,6 +83,9 @@ public class MovementManager : PlayerMovementManager
         else
         {
             MechMovementState.UpdateState(this, !IsMouseActive, moveDir);
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.HandleFootstepLoop(AudioManager.Instance.MechFootSteps, moveDir.sqrMagnitude > Config.MOVE_EPSILON_SQR);
+
             if (MechAIController.Target == Mouse.gameObject)
             {
                 MechAIController.SetTarget(null);
