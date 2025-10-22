@@ -81,7 +81,7 @@ public class PlayerMouse : MonoBehaviour
         Color[] originalColors = new Color[renderers.Length];
         for (int i = 0; i < renderers.Length; i++)
         {
-            originalColors[i] = renderers[i].material.color;
+            // originalColors[i] = renderers[i].material.color;
         }
 
         float flashInterval = 0.2f;
