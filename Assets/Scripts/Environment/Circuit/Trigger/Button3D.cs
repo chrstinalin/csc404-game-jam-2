@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Collider))]
-public class Button : TriggerAbstract
+public class Button3D : TriggerAbstract
 {
     public List<GameObject> TriggerObjects = new List<GameObject>();
     [SerializeField] private GameObject unpressedModel;
