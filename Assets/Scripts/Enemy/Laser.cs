@@ -16,13 +16,20 @@ public class Laser : MonoBehaviour
             return;
 
         GameObject root = other.attachedRigidbody ? other.attachedRigidbody.gameObject : other.gameObject;
+        bool isPlayer =
+            root == PlayerMech.Instance.gameObject ||
+            root == PlayerMouse.Instance.gameObject;
 
-        if (root == PlayerMech.Instance.gameObject || root == PlayerMouse.Instance.gameObject)
+        if (!isPlayer)
+            return;
+
+        DamageReceiver damageReceiver = other.GetComponent<DamageReceiver>();
+        if (damageReceiver == null)
+            damageReceiver = other.GetComponentInParent<DamageReceiver>();
+
+        if (damageReceiver != null)
         {
-            CheckpointManager.Instance.RespawnCharacters();
-
-            PlayerMouse.Instance.Health.Heal(PlayerMouse.Instance.Health.GetMaxHealth());
-            PlayerMech.Instance.Health.Heal(PlayerMech.Instance.Health.GetMaxHealth());
+            damageReceiver.ReceiveDamage(int.MaxValue, gameObject);
         }
     }
 }
