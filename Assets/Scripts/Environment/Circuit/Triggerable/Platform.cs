@@ -76,13 +76,4 @@ public class Platform : TriggerableAbstract
 
     public override void TurnOn() => IsOn = true;
     public override void TurnOff() => IsOn = false;
-
-    private void OnDrawGizmosSelected()
-    {
-        if (boxCollider != null)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(transform.position, boxCollider.bounds.size);
-        }
-    }
 }
