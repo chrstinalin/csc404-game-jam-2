@@ -15,6 +15,9 @@ public class LockOnSelectable : MonoBehaviour
 
     public void Update()
     {
+        bool playerControllingMech = MovementManager.Instance != null && !MovementManager.Instance.IsMouseActive;
+        if (!playerControllingMech) return;
+        
         if (IsHover && Input.GetButtonDown("Interact") && PlayerMarker.Target != gameObject)
         {
             Debug.Log("Selected! Current target is " + gameObject);

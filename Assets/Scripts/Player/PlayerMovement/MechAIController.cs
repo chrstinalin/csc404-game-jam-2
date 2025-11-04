@@ -50,9 +50,8 @@ public class MechAIController : MonoBehaviour, IOffense
 
     void Update()
     {
-        
         if (Agent == null) return;
-        
+
         if (lastAttacker != null && Time.time - lastAttackTime < retaliationMemoryDuration)
         {
             Health attackerHealth = lastAttacker.GetComponent<Health>();
@@ -69,7 +68,7 @@ public class MechAIController : MonoBehaviour, IOffense
         {
             lastAttacker = null;
         }
-    
+
         if (Target == null)
         {
             AttackActive = false;
@@ -79,6 +78,16 @@ public class MechAIController : MonoBehaviour, IOffense
                 Agent.ResetPath();
                 CurrentState = AIState.Idle;
             }
+            return;
+        }
+
+        // Ignore ground targets
+        if (Target.name == "GroundTarget")
+        {
+            AttackActive = false;
+            Agent.isStopped = true;
+            Agent.ResetPath();
+            CurrentState = AIState.Idle;
             return;
         }
 
