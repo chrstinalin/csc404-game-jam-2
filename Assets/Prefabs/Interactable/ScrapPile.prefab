@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
       propertyPath: m_Name
-      value: ScrapPile 1
+      value: ScrapPile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -62,6 +62,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1527804640693253111}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3653166799315584681}
   m_SourcePrefab: {fileID: 100100000, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
 --- !u!1 &8120636863540370014 stripped
 GameObject:
@@ -102,3 +105,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1424404, y: 0.48815656, z: 1.0037997}
   m_Center: {x: 0, y: 0.08858163, z: 0}
+--- !u!114 &3653166799315584681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120636863540370014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf6e608fdbee1544a1fc3ed65c8df64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  message: Press E to interact
+  characters:
+  - {fileID: 0}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
