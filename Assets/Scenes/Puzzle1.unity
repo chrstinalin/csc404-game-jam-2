@@ -5042,10 +5042,18 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6109812506418711283, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1978728584}
     - targetCorrespondingSourceObject: {fileID: 8459734078881636637, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 152948531}
   m_SourcePrefab: {fileID: 100100000, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+--- !u!1 &819200451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6109812506418711283, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 819200450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &839114437
 GameObject:
   m_ObjectHideFlags: 0
@@ -7073,6 +7081,7 @@ Transform:
   m_Children:
   - {fileID: 83563941}
   - {fileID: 2086660950}
+  - {fileID: 1680389846}
   m_Father: {fileID: 1079175571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1190865839
@@ -7313,7 +7322,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1526574696}
+    m_TransformParent: {fileID: 1190865838}
     m_Modifications:
     - target: {fileID: 2768862649293144060, guid: 9f8967ae9434a1b4f9e05f78809c6eff, type: 3}
       propertyPath: m_Name
@@ -7337,15 +7346,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8428414514464168046, guid: 9f8967ae9434a1b4f9e05f78809c6eff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.19
+      value: 11.71951
       objectReference: {fileID: 0}
     - target: {fileID: 8428414514464168046, guid: 9f8967ae9434a1b4f9e05f78809c6eff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.07
+      value: 0.12999964
       objectReference: {fileID: 0}
     - target: {fileID: 8428414514464168046, guid: 9f8967ae9434a1b4f9e05f78809c6eff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.8699303
+      value: 12.00007
       objectReference: {fileID: 0}
     - target: {fileID: 8428414514464168046, guid: 9f8967ae9434a1b4f9e05f78809c6eff, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7597,7 +7606,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3653166799315584681, guid: 28a4a5d29ea83e141bd98939972d6e7f, type: 3}
       propertyPath: message
-      value: Press E to Pick Up
+      value: Press B to Pick Up Scrap Pile
       objectReference: {fileID: 0}
     - target: {fileID: 3653166799315584681, guid: 28a4a5d29ea83e141bd98939972d6e7f, type: 3}
       propertyPath: 'characters.Array.data[0]'
@@ -8829,8 +8838,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1461398107}
   m_SourcePrefab: {fileID: 100100000, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+--- !u!1 &1461398106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+  m_PrefabInstance: {fileID: 1461398105}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1461398107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461398106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf6e608fdbee1544a1fc3ed65c8df64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  message: Press E to Destroy Turret
+  characters:
+  - {fileID: 1738541674}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1 &1476903903
 GameObject:
   m_ObjectHideFlags: 0
@@ -8949,7 +8982,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3431860728255047731, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
   m_PrefabInstance: {fileID: 2134855957}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2134855958}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c6c4acea0c962440b0318598c070e87, type: 3}
@@ -9429,8 +9462,7 @@ Transform:
   m_LocalPosition: {x: -8.50115, y: 7.2, z: 14.52993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1680389846}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1542423101
@@ -11240,12 +11272,28 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3431860728255047731, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
   m_PrefabInstance: {fileID: 819200450}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 819200451}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c6c4acea0c962440b0318598c070e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lever
+--- !u!114 &1978728584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819200451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf6e608fdbee1544a1fc3ed65c8df64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  message: Press B to Toggle Lever
+  characters:
+  - {fileID: 205172195}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1 &1982544658
 GameObject:
   m_ObjectHideFlags: 0
@@ -12139,6 +12187,14 @@ PrefabInstance:
       value: 0.0890007
       objectReference: {fileID: 0}
     - target: {fileID: 4529050911776806382, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      propertyPath: message
+      value: Press B to Push Metal Crate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529050911776806382, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      propertyPath: characters.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529050911776806382, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       propertyPath: 'characters.Array.data[0]'
       value: 
       objectReference: {fileID: 1133554855}
@@ -12481,8 +12537,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6109812506418711283, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2134855959}
   m_SourcePrefab: {fileID: 100100000, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+--- !u!1 &2134855958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6109812506418711283, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 2134855957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2134855959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134855958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf6e608fdbee1544a1fc3ed65c8df64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  message: Press B to Toggle Lever
+  characters:
+  - {fileID: 205172195}
+  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1 &2145410814
 GameObject:
   m_ObjectHideFlags: 0
@@ -12604,21 +12684,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5577794994185038277, guid: 3e9ad66237e46ed4c84c855e4023c1d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834683037170312431, guid: 3e9ad66237e46ed4c84c855e4023c1d3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.3983383
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834683037170312431, guid: 3e9ad66237e46ed4c84c855e4023c1d3, type: 3}
+      propertyPath: m_Center.x
+      value: -6.9606504
+      objectReference: {fileID: 0}
     - target: {fileID: 7275317914325388625, guid: 3e9ad66237e46ed4c84c855e4023c1d3, type: 3}
       propertyPath: m_Name
       value: Mouse
       objectReference: {fileID: 0}
     - target: {fileID: 7535774136938286577, guid: 3e9ad66237e46ed4c84c855e4023c1d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.51
+      value: 12.38
       objectReference: {fileID: 0}
     - target: {fileID: 7535774136938286577, guid: 3e9ad66237e46ed4c84c855e4023c1d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.54
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 7535774136938286577, guid: 3e9ad66237e46ed4c84c855e4023c1d3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.78
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 7535774136938286577, guid: 3e9ad66237e46ed4c84c855e4023c1d3, type: 3}
       propertyPath: m_LocalRotation.w
