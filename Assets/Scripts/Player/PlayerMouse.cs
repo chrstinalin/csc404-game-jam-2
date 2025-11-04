@@ -20,18 +20,18 @@ public class PlayerMouse : MonoBehaviour
     {
         Instance = this;
     }
-
     void Start()
     {
         InventoryManager = gameObject.AddComponent<MouseInventoryManager>();
         DamageReceiver = gameObject.AddComponent<DamageReceiver>();
         GroundCollider = GameObject.FindGameObjectWithTag("MouseGroundCollider");
-        
-        Health = gameObject.AddComponent<Health>();
-        Health.onDeath.AddListener(OnDeath);
 
+        Health = GetComponent<Health>();
+        if (Health == null)
+            Health = gameObject.AddComponent<Health>();
+
+        Health.onDeath.AddListener(OnDeath);
         DamageReceiver.onTakeDamage.AddListener(TakeDamage);
-        
     }
 
     void Update()
