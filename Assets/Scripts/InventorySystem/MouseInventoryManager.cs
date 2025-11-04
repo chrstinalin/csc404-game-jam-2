@@ -1,10 +1,14 @@
 using UnityEngine;
+using System.Collections;
 
 public class MouseInventoryManager : MonoBehaviour
 {
     private ScrapCurrency nearbyItem;
     [HideInInspector] public ScrapCurrency carriedItem;
     private Transform carryPoint;
+    private Animator animator;
+
+    private float animationDuration = 0.4f;
 
     private void Awake()
     {
@@ -14,6 +18,10 @@ public class MouseInventoryManager : MonoBehaviour
                 "A Transform named CarryPoint where the scrap currency " +
                 "appears when carried must be a child of PlayerMouse"
             );
+
+        animator = GetComponentInChildren<Animator>();
+        if (animator == null)
+            Debug.LogError("No Animator found in children of PlayerMouse");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,7 +57,7 @@ public class MouseInventoryManager : MonoBehaviour
         {
             if (carriedItem == null && nearbyItem != null)
             {
-                PickUpItem(nearbyItem);
+                StartCoroutine(PickUpItem(nearbyItem));
             }
             else if (carriedItem != null)
             {
@@ -58,19 +66,26 @@ public class MouseInventoryManager : MonoBehaviour
         }
     }
 
-    private void PickUpItem(ScrapCurrency item)
+    private IEnumerator PickUpItem(ScrapCurrency item)
     {
+        if (MovementManager.Instance != null) MovementManager.Instance.isLockedMovement = true;
+        if (animator != null)
+        {
+            animator.SetTrigger("Interact");
+        }
+        yield return new WaitForSeconds(animationDuration);
+
         carriedItem = item;
         nearbyItem = null;
 
         item.transform.SetParent(carryPoint);
-
         item.transform.localPosition = Vector3.zero;
         item.transform.localRotation = Quaternion.identity;
-
         item.transform.localScale = Vector3.one * 0.5f;
 
         Debug.Log("Mouse picked up: " + item.name);
+
+        if (MovementManager.Instance != null) MovementManager.Instance.isLockedMovement = false;
     }
 
 
@@ -81,10 +96,13 @@ public class MouseInventoryManager : MonoBehaviour
         Vector3 dropPosition = transform.position + transform.forward * 1f;
 
         carriedItem.transform.SetParent(null);
-
         carriedItem.transform.localScale = Vector3.one;
-
         carriedItem.Drop(dropPosition);
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Interact");
+        }
 
         Debug.Log("Mouse dropped: " + carriedItem.name);
         carriedItem = null;

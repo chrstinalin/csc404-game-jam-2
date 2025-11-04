@@ -6,6 +6,7 @@ public class MovementState : PlayerMovementState
     GameObject Entity;
     private Rigidbody _rigidbody;
     private ParticleSystem _particleSystem;
+    private Animator _animator;
     private Transform _entityTransform;  // Cache transform reference
     private bool _isGrounded;
     private bool _canJump;
@@ -53,7 +54,10 @@ public class MovementState : PlayerMovementState
         _rigidbody = Entity.GetComponent<Rigidbody>();
         _particleSystem = Entity.GetComponent<ParticleSystem>();
 
+        _animator = Entity.GetComponentInChildren<Animator>();
+
         _groundCheckTimer = 0f;
+
     }
 
     /* 
@@ -259,8 +263,14 @@ public class MovementState : PlayerMovementState
                 _entityTransform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
             }
         }
-        
+
         _rigidbody.linearVelocity = new Vector3(horizontalVelocity.x, currentVelocity.y, horizontalVelocity.z);
+        
+        if (_animator != null)
+        {
+            bool isMoving = moveDirection.sqrMagnitude > 0.1f;
+            _animator.SetBool("isRunning", isMoving);
+        }
     }
     
     /*
