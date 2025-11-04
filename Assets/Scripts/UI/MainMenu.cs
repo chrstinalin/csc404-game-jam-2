@@ -124,7 +124,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("LevelMapV2");
+        SceneManager.LoadScene("Puzzle1");
     }
 
     public void OpenControls()
