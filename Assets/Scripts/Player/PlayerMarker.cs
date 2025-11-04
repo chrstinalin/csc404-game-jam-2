@@ -28,6 +28,13 @@ public class PlayerMarker : MonoBehaviour
 
     void Update()
     {
+        bool playerControllingMech = MovementManager.Instance != null && !MovementManager.Instance.IsMouseActive;
+        if (!playerControllingMech)
+        {
+            if (isActive) setActive(false);
+            return;
+        }
+
         if (!isActive)
         {
             transform.position = PlayerMouse.Instance.getActivePlayer().transform.position;
@@ -150,16 +157,16 @@ public class PlayerMarker : MonoBehaviour
         bool actuallyOverSelectable = CheckForActiveSelectables();
         if (actuallyOverSelectable) return;
 
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(transform.position, out hit, 1f, NavMesh.AllAreas))
-        {
-            if (groundTarget == null)
-            {
-                groundTarget = new GameObject("GroundTarget");
-            }
-            groundTarget.transform.position = hit.position;
-            SetTarget(groundTarget);
-        }
+        // NavMeshHit hit;
+        // if (NavMesh.SamplePosition(transform.position, out hit, 1f, NavMesh.AllAreas))
+        // {
+        //     if (groundTarget == null)
+        //     {
+        //         groundTarget = new GameObject("GroundTarget");
+        //     }
+        //     groundTarget.transform.position = hit.position;
+        //     SetTarget(groundTarget);
+        // }
     }
 
     private bool CheckForActiveSelectables()

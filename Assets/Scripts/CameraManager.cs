@@ -53,8 +53,11 @@ public class CameraManager : CameraMovementManager
         FollowEntity = entity;
         if (newMaxZoom.HasValue)
             maxZoom = newMaxZoom.Value;
-
-        zoom = Mathf.Clamp(zoom, Config.CAMERA_MIN_ZOOM, maxZoom);
+            if (zoom > maxZoom)
+            {
+                zoom = maxZoom;
+            }
+        }
     }
 
     public override void UpdateCamera()

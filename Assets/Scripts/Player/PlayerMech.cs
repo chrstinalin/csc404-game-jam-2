@@ -72,10 +72,9 @@ public class PlayerMech : MonoBehaviour
             Debug.Log("Tried to get AIController: " + (AIController != null));
         }
     
-        if (AIController != null && source != null)
-        {
-            AIController.OnAttackedBy(source);
-        }
+        // Only notify AI if player is not controlling mech
+        bool playerControllingMech = MovementManager.Instance != null && !MovementManager.Instance.IsMouseActive;
+        if (!playerControllingMech && AIController != null) AIController.OnAttackedBy(source);
         
         if (isInvulnerable || Health == null) 
         {

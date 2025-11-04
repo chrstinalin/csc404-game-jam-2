@@ -10,6 +10,11 @@ public class MechaInventoryManager : MonoBehaviour
     {
         mouse = PlayerMouse.Instance;
         mechHealth = PlayerMech.Instance.GetComponent<Health>();
+
+        if (mouse != null)
+        {
+            mouseInventory = mouse.GetComponent<MouseInventoryManager>();
+        }
     }
 
     private void Update()
@@ -17,10 +22,13 @@ public class MechaInventoryManager : MonoBehaviour
         if (mouse == null) return;
         if (mouseInventory == null) return;
 
-        // Auto-transfer if Mouse is inactive
-        if (!mouse.gameObject.activeInHierarchy && mouseInventory.HasItem())
+        if (mouseInventory.HasItem())
         {
-            TakeFromMouse(mouseInventory);
+            float distance = Vector3.Distance(mouse.transform.position, PlayerMech.Instance.transform.position);
+            if (distance < Config.MECH_ENTER_DISTANCE)
+            {
+                TakeFromMouse(mouseInventory);
+            }
         }
     }
 

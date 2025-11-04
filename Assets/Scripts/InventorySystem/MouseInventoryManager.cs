@@ -18,6 +18,9 @@ public class MouseInventoryManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (MovementManager.Instance == null || !MovementManager.Instance.IsMouseActive)
+            return;
+            
         var item = other.GetComponent<ScrapCurrency>();
 
         if (item != null && item.GetComponent<Health>() == null)
@@ -37,6 +40,12 @@ public class MouseInventoryManager : MonoBehaviour
 
     private void Update()
     {
+        bool playerControllingMouse = MovementManager.Instance != null && MovementManager.Instance.IsMouseActive;
+        if (!playerControllingMouse)
+        {
+            return;  // Early exit if mouse is not being controlled
+        }
+
         if (Input.GetButtonDown("Interact"))
         {
             if (carriedItem == null && nearbyItem != null)
