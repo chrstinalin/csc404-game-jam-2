@@ -44,16 +44,16 @@ public class CameraManager : CameraMovementManager
 
     public override void SetFollowEntity(GameObject? entity, float? newMaxZoom = null)
     {
-        float currentZoom = zoom;
-
         FollowEntity = entity;
 
         if (newMaxZoom.HasValue)
         {
             maxZoom = newMaxZoom.Value;
+            if (zoom > maxZoom)
+            {
+                zoom = maxZoom;
+            }
         }
-
-        zoom = Mathf.Clamp(currentZoom, Config.CAMERA_MIN_ZOOM, maxZoom);
     }
 
     public override void UpdateCamera()

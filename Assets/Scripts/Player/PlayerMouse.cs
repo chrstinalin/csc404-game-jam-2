@@ -48,8 +48,18 @@ public class PlayerMouse : MonoBehaviour
 
     public GameObject getActivePlayer()
     {
-        if (gameObject.activeInHierarchy) return gameObject;
-        else return PlayerMech.Instance != null ? PlayerMech.Instance.gameObject : null;
+        if (MovementManager.Instance != null)
+        {
+            if (MovementManager.Instance.IsMouseActive)
+            {
+                return gameObject;
+            }
+            else
+            {
+                return PlayerMech.Instance != null ? PlayerMech.Instance.gameObject : null;
+            }
+        }
+        return gameObject;
     }
 
     public void TakeDamage(int damage)

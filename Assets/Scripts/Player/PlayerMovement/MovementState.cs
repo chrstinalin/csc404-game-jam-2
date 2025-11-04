@@ -1,3 +1,4 @@
+// using System.Numerics;
 using UnityEngine;
 
 public class MovementState : PlayerMovementState
@@ -62,10 +63,28 @@ public class MovementState : PlayerMovementState
      */
     public override void UpdateState(PlayerMovementManager manager, bool isActive, Vector3 direction)
     {
+        UpdateTimers();
+        UpdateGroundCheck();
+        ProcessDashDecay();
+
+        if (!isActive)
+        {
+            if (_rigidbody.linearVelocity.sqrMagnitude > 0.1f)
+            {
+                Vector3 currentVel = _rigidbody.linearVelocity;
+                _rigidbody.linearVelocity = new Vector3(
+                    Mathf.Lerp(currentVel.x, 0, Time.deltaTime * SPEED_LERP_RATE),
+                    currentVel.y,
+                    Mathf.Lerp(currentVel.z, 0, Time.deltaTime * SPEED_LERP_RATE)
+                );
+            }
+            return;
+        }
+        // Only run when entity is active
         Vector3 moveDirection;
         float horizontalInput = Input.GetAxis(_Input.Horizontal);
         float verticalInput = Input.GetAxis(_Input.Vertical);
-
+        
         // Lock movement to FollowVector if mouse is active and FollowVector is set
         if (manager.IsMouseActive && FollowVector.HasValue)
         {
@@ -84,16 +103,8 @@ public class MovementState : PlayerMovementState
             _MoveSpeed = _DefaultMoveSpeed;
         }
 
-        UpdateTimers();
-        UpdateGroundCheck();
-        ProcessDashDecay();
-        
-        if (isActive)
-        {
-            ProcessJumpInput();
-            ProcessDashInput(moveDirection);
-        }
-        
+        ProcessJumpInput();
+        ProcessDashInput(moveDirection);
         ApplyMovement(moveDirection, Config.SMOOTH_TIME);
     }
 

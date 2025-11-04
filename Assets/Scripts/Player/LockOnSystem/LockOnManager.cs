@@ -25,6 +25,18 @@ public class LockOnManager : MonoBehaviour
 
     void Update()
     {
+        bool playerControllingMech = MovementManager != null && !MovementManager.IsMouseActive;
+        if (!playerControllingMech)
+        {
+            if (lockOnMode)
+            {
+                lockOnMode = false;
+                OnLockOnModeChanged?.Invoke(false);
+                _lastButtonState = false;
+            }
+            return;
+        }
+        
         bool currentButtonState = Input.GetButton("ToggleLockOnMode");
         if (currentButtonState != _lastButtonState)
         {
