@@ -26,7 +26,10 @@ public class CameraManager : CameraMovementManager
     void Start()
     {
         Cam = GetComponent<Camera>();
-        CameraPivot = transform.parent;
+        CameraPivot = transform.parent; // Make sure the camera has a parent
+        if (CameraPivot == null)
+            CameraPivot = new GameObject("CameraPivot").transform;
+
         heightOffset = CameraPivot.position.y;
         targetFOV = Config.CAMERA_DEFAULT_FOV;
 
@@ -40,18 +43,22 @@ public class CameraManager : CameraMovementManager
     void Update()
     {
         // Smooth FOV transition
-        Cam.fieldOfView = Mathf.SmoothDamp(
-            Cam.fieldOfView,
-            targetFOV,
-            ref fovVelocity,
-            Config.CAMERA_SMOOTH_TIME
-        );
+        if (Cam != null)
+        {
+            Cam.fieldOfView = Mathf.SmoothDamp(
+                Cam.fieldOfView,
+                targetFOV,
+                ref fovVelocity,
+                Config.CAMERA_SMOOTH_TIME
+            );
+        }
     }
 
     public override void SetFollowEntity(GameObject? entity, float? newMaxZoom = null)
     {
         FollowEntity = entity;
         if (newMaxZoom.HasValue)
+        {
             maxZoom = newMaxZoom.Value;
             if (zoom > maxZoom)
             {
