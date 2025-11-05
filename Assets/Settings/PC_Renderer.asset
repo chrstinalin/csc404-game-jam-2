@@ -42,6 +42,23 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
       cameraFieldOfView: 60
+--- !u!114 &-4466124208479104609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf43b08e4a22411aa6b9071c79f4443, type: 3}
+  m_Name: PSXRenderFeature
+  m_EditorClassIdentifier: Assembly-CSharp::PSXRenderFeature
+  m_Active: 1
+  settings:
+    ditheringMaterial: {fileID: 2100000, guid: 469df6456f9864202bf8a2a260f7aa7e, type: 2}
+    targetWidth: 320
+    targetHeight: 240
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +87,8 @@ MonoBehaviour:
   - {fileID: 7833122117494664109}
   - {fileID: -8166031527777446928}
   - {fileID: 8623408010386610024}
-  m_RendererFeatureMap: ad6b866f10d7b46cf0532f4a976dac8e68175a8ce57fac77
+  - {fileID: -4466124208479104609}
+  m_RendererFeatureMap: ad6b866f10d7b46cf0532f4a976dac8e68175a8ce57fac779f91d4e6b12305c2
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
