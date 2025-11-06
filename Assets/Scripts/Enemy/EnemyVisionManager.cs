@@ -20,9 +20,12 @@ public class EnemyVisionManager : EnemyVisionAbstractManager
     private MovementManager movementManager;
 
     private void Start()
-    {
-        Mouse = GameObject.FindWithTag("MousePlayerEntity");
-        Mech = GameObject.FindWithTag("MechPlayerEntity");
+    {   
+        if (Mouse == null)
+            Mouse = GameObject.FindWithTag("MousePlayerEntity");
+        if (Mech == null)
+            Mech = GameObject.FindWithTag("MechPlayerEntity");
+            
         movementManager = MovementManager.Instance;
     }
 

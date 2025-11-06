@@ -7,20 +7,19 @@ public class EnemyStationaryManager : MonoBehaviour, IOffense
 
     [SerializeField] private float rotationAngle = 45f;
     [SerializeField] private float rotationDuration = 2f;
-    [SerializeField] private float pauseDuration = 2f;
+    [SerializeField] private float pauseDuration = 3f;
 
     private Quaternion leftRotation;
     private Quaternion rightRotation;
-    private bool rotatingRight = true;
 
     void Start()
     {
         VisionManager = GetComponent<EnemyVisionAbstractManager>();
         VisionManager.InitVision();
 
-        Quaternion baseRotation = transform.rotation;
-        leftRotation = baseRotation * Quaternion.Euler(0f, -rotationAngle, 0f);
-        rightRotation = baseRotation * Quaternion.Euler(0f, rotationAngle, 0f);
+        // Cache the two target rotations relative to starting rotation
+        leftRotation = transform.rotation * Quaternion.Euler(0f, -rotationAngle, 0f);
+        rightRotation = transform.rotation * Quaternion.Euler(0f, rotationAngle, 0f);
 
         StartCoroutine(RotateBackAndForth());
     }
@@ -39,23 +38,26 @@ public class EnemyStationaryManager : MonoBehaviour, IOffense
     {
         while (true)
         {
-            Quaternion targetRotation = rotatingRight ? rightRotation : leftRotation;
-            Quaternion startRotation = transform.rotation;
-
-            float elapsed = 0f;
-
-            while (elapsed < rotationDuration)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / rotationDuration);
-                transform.rotation = Quaternion.Slerp(startRotation, targetRotation, t);
-                yield return null;
-            }
-
-            transform.rotation = targetRotation;
-            rotatingRight = !rotatingRight;
-
+            yield return RotateTowards(rightRotation);
+            yield return new WaitForSeconds(pauseDuration);
+            yield return RotateTowards(leftRotation);
             yield return new WaitForSeconds(pauseDuration);
         }
+    }
+
+    private IEnumerator RotateTowards(Quaternion targetRot)
+    {
+        Quaternion startRot = transform.rotation;
+        float elapsed = 0f;
+
+        while (elapsed < rotationDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / rotationDuration);
+            transform.rotation = Quaternion.Slerp(startRot, targetRot, t);
+            yield return null;
+        }
+
+        transform.rotation = targetRot;
     }
 }

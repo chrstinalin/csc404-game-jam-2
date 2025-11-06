@@ -286,7 +286,14 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
+<<<<<<< HEAD
     m_AddedComponents: []
+=======
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7717143180608074467, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1133554856}
+>>>>>>> 316bede (chore: squash level map)
   m_SourcePrefab: {fileID: 100100000, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
 --- !u!1 &112141418
 GameObject:
@@ -428,6 +435,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531e86c305814da0896fbdb7742af7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
+<<<<<<< HEAD
+=======
+  maxHealth: 3
+  currHealth: 0
+>>>>>>> 316bede (chore: squash level map)
 --- !u!1 &524956120
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +899,36 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9e71a3bc66ed0a42b90ac080373413c, type: 3}
+<<<<<<< HEAD
+=======
+--- !u!1 &1133554855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7717143180608074467, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+  m_PrefabInstance: {fileID: 84541940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1133554856
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133554855}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 951eb19ca846a8242b65abe3466fc232, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+>>>>>>> 316bede (chore: squash level map)
 --- !u!1 &1213708303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,6 +1073,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531e86c305814da0896fbdb7742af7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
+<<<<<<< HEAD
+=======
+  maxHealth: 3
+  currHealth: 0
+>>>>>>> 316bede (chore: squash level map)
 --- !u!65 &1220154449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1186,6 +1233,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 5110383828894934477, guid: 87a790dd2a11e3f4eba69ed3843e4931, type: 3}
+      propertyPath: Mech
+      value: 
+      objectReference: {fileID: 1133554855}
+    - target: {fileID: 5110383828894934477, guid: 87a790dd2a11e3f4eba69ed3843e4931, type: 3}
+      propertyPath: Mouse
+      value: 
+      objectReference: {fileID: 1220154442}
+>>>>>>> 316bede (chore: squash level map)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1199,6 +1257,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< HEAD
+=======
+    - target: {fileID: 2143914167897710886, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: Mech
+      value: 
+      objectReference: {fileID: 1133554855}
+    - target: {fileID: 2143914167897710886, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: Mouse
+      value: 
+      objectReference: {fileID: 1220154442}
+>>>>>>> 316bede (chore: squash level map)
     - target: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: m_Name
       value: TurretEnemy
