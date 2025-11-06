@@ -25,5 +25,5 @@ public class SideTrigger : MonoBehaviour
         else blocked = false;
     }
 
-    public bool CanPush() => playerInRange && !blocked;
+    public bool CanPush() => playerInRange;
 }

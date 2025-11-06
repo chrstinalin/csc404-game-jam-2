@@ -6,16 +6,34 @@ public class PushableObject : MovableObject
     public SideTrigger[] sideTriggers;
     public GameObject player;
 
+    private bool isBeingPushed = false;
+    private Vector3 lockedXZPosition;
+
     private void Awake()
     {
         foreach (var t in sideTriggers)
             t.player = player;
     }
 
+    private void Start()
+    {
+        // Record the initial locked XZ position
+        lockedXZPosition = new Vector3(transform.position.x, 0f, transform.position.z);
+    }
+
     private void Update()
     {
         if (Input.GetButtonDown("Interact"))
             TryPush();
+
+        // If not being pushed, lock X and Z positions
+        if (!isBeingPushed)
+        {
+            Vector3 pos = transform.position;
+            pos.x = lockedXZPosition.x;
+            pos.z = lockedXZPosition.z;
+            transform.position = pos;
+        }
     }
 
     private void TryPush()
@@ -26,7 +44,7 @@ public class PushableObject : MovableObject
         SideTrigger trigger = null;
         foreach (var t in sideTriggers)
         {
-            if (t.playerInRange)
+            if (t.CanPush())
             {
                 trigger = t;
                 break;
@@ -52,13 +70,28 @@ public class PushableObject : MovableObject
             if (c.gameObject == player)
                 continue;
 
+            if (c.isTrigger)
+                continue;
+
             return;
         }
 
+        // Temporarily allow X/Z movement
+        isBeingPushed = true;
+
+        // Move the object
         transform.position = targetPos;
+
+        // Reset Y to floor height
         Vector3 pos = transform.position;
         pos.y = floorHeight;
         transform.position = pos;
+
+        // Update locked position
+        lockedXZPosition = new Vector3(transform.position.x, 0f, transform.position.z);
+
+        // Lock again
+        isBeingPushed = false;
     }
 
     private Vector3Int GetPushDirection(CardinalDirection side)

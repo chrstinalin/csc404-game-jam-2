@@ -18,7 +18,7 @@ public static class Config
     public static float MECH_ENTER_DISTANCE = 2.5f;
     public static float SMOOTH_TIME = 0.05f;
 
-    public static float MIN_PITCH = -40f;
+    public static float MIN_PITCH = 0f;
     public static float MAX_PITCH = 70f;
 
     public static float CAMERA_ZOOM_MULTIPLIER = 4f;
@@ -95,6 +95,7 @@ public enum CardinalDirection
     West
 }
 
+public enum PlatformMoveDirection { Vertical, Horizontal }
 
 public static class GridDirection
 {
