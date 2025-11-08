@@ -15,18 +15,21 @@ public class CameraManager : CameraMovementManager
 
     private float yaw;
     private float pitch;
-    private new float zoom = 5f;
-    private Vector2 rotationVelocity;
+    private float zoom = 5f;
+    private float maxZoom = Config.CAMERA_MAX_ZOOM;
 
     void Awake()
     {
         Instance = this;
     }
 
-    public void Start()
+    void Start()
     {
         Cam = GetComponent<Camera>();
-        CameraPivot = transform.parent;
+        CameraPivot = transform.parent; // Make sure the camera has a parent
+        if (CameraPivot == null)
+            CameraPivot = new GameObject("CameraPivot").transform;
+
         heightOffset = CameraPivot.position.y;
         targetFOV = Config.CAMERA_DEFAULT_FOV;
 
@@ -39,13 +42,21 @@ public class CameraManager : CameraMovementManager
 
     void Update()
     {
-        Cam.fieldOfView = Mathf.SmoothDamp(Cam.fieldOfView, targetFOV, ref fovVelocity, Config.CAMERA_SMOOTH_TIME);
+        // Smooth FOV transition
+        if (Cam != null)
+        {
+            Cam.fieldOfView = Mathf.SmoothDamp(
+                Cam.fieldOfView,
+                targetFOV,
+                ref fovVelocity,
+                Config.CAMERA_SMOOTH_TIME
+            );
+        }
     }
 
     public override void SetFollowEntity(GameObject? entity, float? newMaxZoom = null)
     {
         FollowEntity = entity;
-
         if (newMaxZoom.HasValue)
         {
             maxZoom = newMaxZoom.Value;
@@ -61,37 +72,61 @@ public class CameraManager : CameraMovementManager
         if (FollowEntity == null)
             return;
 
-        CameraPivot.position = new Vector3(FollowEntity.transform.position.x,
-                                           FollowEntity.transform.position.y + heightOffset,
-                                           FollowEntity.transform.position.z);
+        // Follow the target entity
+        CameraPivot.position = new Vector3(
+            FollowEntity.transform.position.x,
+            FollowEntity.transform.position.y + heightOffset,
+            FollowEntity.transform.position.z
+        );
 
+        HandleZoom();
+        HandleRotation();
+
+        // Apply rotation and position
+        Quaternion targetRotation = Quaternion.Euler(pitch, yaw, 0f);
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            targetRotation,
+            Config.SMOOTH_TIME
+        );
+
+        transform.position = CameraPivot.position - transform.forward * zoom;
+    }
+
+    private void HandleZoom()
+    {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        zoom -= scroll * Config.ZOOM_SENSITIVITY;
+        float rightStickZoom = Input.GetAxis("VerticalRightJoystick");
 
-        bool r3Pressed = Input.GetButton("R3");
-        if (r3Pressed)
+        if (Input.GetButton("R3"))
         {
-            float rightStickY = Input.GetAxis("VerticalRightJoystick");
-            zoom -= rightStickY * Config.ZOOM_SENSITIVITY * Time.deltaTime;
+            zoom -= rightStickZoom * Config.ZOOM_SENSITIVITY * Time.deltaTime;
+        }
+        else
+        {
+            zoom -= scroll * Config.ZOOM_SENSITIVITY;
         }
 
         zoom = Mathf.Clamp(zoom, Config.CAMERA_MIN_ZOOM, maxZoom);
+    }
 
+    private void HandleRotation()
+    {
+        // Mouse input
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
-        float rightStickX = Input.GetAxis("HorizontalRightJoystick");
 
-        float inputX = mouseX + (r3Pressed ? 0 : rightStickX);
-        float inputY = mouseY;
+        // Controller input
+        float rightStickX = Input.GetAxis("HorizontalRightJoystick");
+        float rightStickY = Input.GetAxis("VerticalRightJoystick");
+
+        // Combine both (so either works)
+        float inputX = mouseX + rightStickX;
+        float inputY = mouseY + rightStickY;
 
         yaw += inputX * Config.MOUSE_SENSITIVITY * Time.deltaTime;
         pitch -= inputY * Config.MOUSE_SENSITIVITY * Time.deltaTime;
         pitch = Mathf.Clamp(pitch, Config.MIN_PITCH, Config.MAX_PITCH);
-
-        Quaternion targetRotation = Quaternion.Euler(pitch, yaw, 0);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Config.SMOOTH_TIME);
-
-        transform.position = CameraPivot.position - transform.forward * zoom;
     }
 
     public override void PanTo(float zoomSize) => zoom = zoomSize;
