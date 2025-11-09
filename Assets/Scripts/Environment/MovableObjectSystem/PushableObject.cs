@@ -9,6 +9,7 @@ public class PushableObject : MovableObject
     private bool isBeingPushed = false;
     private Rigidbody rb;
     private Vector3Int currentCell;
+    private MovementManager movementManager;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class PushableObject : MovableObject
 
     private void Start()
     {
+        movementManager = MovementManager.Instance;
         currentCell = grid.WorldToCell(transform.position);
         SnapToGrid();
 
@@ -37,7 +39,7 @@ public class PushableObject : MovableObject
 
     private void TryPush()
     {
-        if (PlayerMech.Instance == null || isBeingPushed)
+        if (movementManager.IsMouseActive || PlayerMech.Instance == null || isBeingPushed)
             return;
 
         SideTrigger trigger = null;
