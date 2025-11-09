@@ -13,19 +13,26 @@ public class PushableObject : MovableObject
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rb.isKinematic = true;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     private void Start()
     {
         currentCell = grid.WorldToCell(transform.position);
         SnapToGrid();
+
+        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 
     private void Update()
     {
         if (Input.GetButtonDown("Interact"))
             TryPush();
+
+        if (!isBeingPushed)
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        }
     }
 
     private void TryPush()
@@ -51,7 +58,6 @@ public class PushableObject : MovableObject
 
         Vector3 targetPos = grid.GetCellCenterWorld(targetCell);
 
-        // Collision check at target cell
         Collider[] hits = Physics.OverlapBox(targetPos, Vector3.one * 0.45f);
         foreach (var c in hits)
         {
@@ -75,22 +81,34 @@ public class PushableObject : MovableObject
 
         isBeingPushed = true;
 
-        Vector3 startPos = transform.position;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+
+        Vector3 startPos = rb.position;
         Vector3 endPos = grid.GetCellCenterWorld(targetCell);
 
         float distance = Vector3.Distance(startPos, endPos);
         float elapsed = 0f;
 
+        Collider playerCol = PlayerMech.Instance.GetComponent<Collider>();
+        Collider boxCol = GetComponent<Collider>();
+        Physics.IgnoreCollision(boxCol, playerCol, true);
+
         while (elapsed < distance / moveSpeed)
         {
             elapsed += Time.deltaTime;
-            transform.position = Vector3.Lerp(startPos, endPos, elapsed * moveSpeed / distance);
+            Vector3 newPos = Vector3.Lerp(startPos, endPos, elapsed * moveSpeed / distance);
+            rb.MovePosition(newPos);
             yield return null;
         }
 
-        transform.position = endPos;
+        rb.MovePosition(endPos);
         currentCell = targetCell;
+
+        Physics.IgnoreCollision(boxCol, playerCol, false);
+
         isBeingPushed = false;
+
+        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 
     private Vector3Int GetPushDirection(CardinalDirection side)
