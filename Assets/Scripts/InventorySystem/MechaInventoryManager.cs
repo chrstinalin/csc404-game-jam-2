@@ -4,6 +4,7 @@ public class MechaInventoryManager : MonoBehaviour
 {
     private Health mechHealth;
     private MouseInventoryManager mouseInventory;
+    private MovementManager movementManager;
     private PlayerMouse mouse;
 
     private void Start()
@@ -15,6 +16,7 @@ public class MechaInventoryManager : MonoBehaviour
         {
             mouseInventory = mouse.GetComponent<MouseInventoryManager>();
         }
+        movementManager = MovementManager.Instance;
     }
 
     private void Update()
@@ -22,22 +24,13 @@ public class MechaInventoryManager : MonoBehaviour
         if (mouse == null) return;
         if (mouseInventory == null) return;
 
-        if (mouseInventory.HasItem())
+        if (Input.GetButtonDown("Interact") && mouseInventory.HasItem() && movementManager.IsMouseActive)
         {
             float distance = Vector3.Distance(mouse.transform.position, PlayerMech.Instance.transform.position);
             if (distance < Config.MECH_ENTER_DISTANCE)
             {
                 TakeFromMouse(mouseInventory);
             }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var otherInventory = other.GetComponentInParent<MouseInventoryManager>();
-        if (otherInventory != null && otherInventory.HasItem())
-        {
-            TakeFromMouse(otherInventory);
         }
     }
 
