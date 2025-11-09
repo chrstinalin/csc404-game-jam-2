@@ -124,8 +124,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        Debug.Log("Play Game");
-        // SceneManager.LoadScene("DefaultScene");
+        SceneManager.LoadScene("Puzzle1");
     }
 
     public void OpenControls()

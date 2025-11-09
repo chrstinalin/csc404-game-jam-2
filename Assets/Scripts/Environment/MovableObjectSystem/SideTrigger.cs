@@ -3,27 +3,26 @@ using UnityEngine;
 public class SideTrigger : MonoBehaviour
 {
     public CardinalDirection side;
-    public GameObject player;
 
-    [HideInInspector] public bool playerInRange = false;
+    [HideInInspector] public bool mechInRange = false;
     [HideInInspector] public bool blocked = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player) playerInRange = true;
+        if (other.gameObject == PlayerMech.Instance.gameObject) mechInRange = true;
         else blocked = true;
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == player) playerInRange = true;
+        if (other.gameObject == PlayerMech.Instance.gameObject) mechInRange = true;
         else blocked = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == player) playerInRange = false;
+        if (other.gameObject == PlayerMech.Instance.gameObject) mechInRange = false;
         else blocked = false;
     }
 
-    public bool CanPush() => playerInRange && !blocked;
+    public bool CanPush() => mechInRange;
 }

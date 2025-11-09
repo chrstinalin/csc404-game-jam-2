@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioClip MouseFootSteps;
     [SerializeField] public AudioClip MechFootSteps;
     [SerializeField] public AudioClip ButtonPressSFX;
+    [SerializeField] public AudioClip BoxMoveSFX;
 
     private float FADE_IN_TRANSITION = 2f;
 

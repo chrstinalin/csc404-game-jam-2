@@ -6,10 +6,13 @@ public class Lever : TriggerAbstract
     [SerializeField] private GameObject onModel;
 
     [SerializeField] private bool startOn = false;
-
-    [SerializeField] private GameObject mouse;
     private bool mouseInside = false;
+    private MovementManager movementManager;
 
+    private void Start()
+    {
+        movementManager = MovementManager.Instance;
+    }
     private void Awake()
     {
         if (!offModel || !onModel)
@@ -29,7 +32,7 @@ public class Lever : TriggerAbstract
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == mouse)
+        if (other.gameObject == PlayerMouse.Instance.gameObject && movementManager.IsMouseActive)
         {
             mouseInside = true;
         }
@@ -37,7 +40,7 @@ public class Lever : TriggerAbstract
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == mouse)
+        if (other.gameObject == PlayerMouse.Instance.gameObject && movementManager.IsMouseActive)
         {
             mouseInside = true;
         }
@@ -45,7 +48,7 @@ public class Lever : TriggerAbstract
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == mouse)
+        if (other.gameObject == PlayerMouse.Instance.gameObject)
         {
             mouseInside = false;
         }
