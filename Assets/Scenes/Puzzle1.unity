@@ -1194,32 +1194,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140752683}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &152948529 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8459734078881636637, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-  m_PrefabInstance: {fileID: 819200450}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &152948531
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152948529}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.07219069, y: 0.09621007, z: 0.1240492}
-  m_Center: {x: -0.01337603, y: 0.01964434, z: 0.003676595}
 --- !u!1 &158328883
 GameObject:
   m_ObjectHideFlags: 0
@@ -4932,38 +4906,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1680389846}
     m_Modifications:
-    - target: {fileID: 424660631991332211, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-      propertyPath: m_Size.x
-      value: 1.8113711
-      objectReference: {fileID: 0}
-    - target: {fileID: 424660631991332211, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-      propertyPath: m_Size.y
-      value: 2.4441788
-      objectReference: {fileID: 0}
-    - target: {fileID: 424660631991332211, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-      propertyPath: m_Size.z
-      value: 2.677009
-      objectReference: {fileID: 0}
-    - target: {fileID: 424660631991332211, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-      propertyPath: m_Center.y
-      value: 1.4473205
-      objectReference: {fileID: 0}
-    - target: {fileID: 424660631991332211, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-      propertyPath: m_Center.z
-      value: 0.03568948
-      objectReference: {fileID: 0}
-    - target: {fileID: 5485500182088732305, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 27.79376
-      objectReference: {fileID: 0}
-    - target: {fileID: 5485500182088732305, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.08114316
-      objectReference: {fileID: 0}
-    - target: {fileID: 5485500182088732305, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.17727931
-      objectReference: {fileID: 0}
     - target: {fileID: 5485500182088732305, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.105396874
@@ -5008,22 +4950,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lever
       objectReference: {fileID: 0}
+    - target: {fileID: 9069121392588571912, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      propertyPath: 'characters.Array.data[0]'
+      value: 
+      objectReference: {fileID: 205172195}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6109812506418711283, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1978728584}
-    - targetCorrespondingSourceObject: {fileID: 8459734078881636637, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 152948531}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
---- !u!1 &819200451 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6109812506418711283, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
-  m_PrefabInstance: {fileID: 819200450}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &839114437
 GameObject:
   m_ObjectHideFlags: 0
@@ -11279,28 +11214,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3431860728255047731, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
   m_PrefabInstance: {fileID: 819200450}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819200451}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c6c4acea0c962440b0318598c070e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lever
---- !u!114 &1978728584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819200451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cf6e608fdbee1544a1fc3ed65c8df64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  message: Press B to Toggle Lever
-  characters:
-  - {fileID: 205172195}
-  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1 &1982544658
 GameObject:
   m_ObjectHideFlags: 0

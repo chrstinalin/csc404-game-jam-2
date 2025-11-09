@@ -58,7 +58,8 @@ public class PushableObject : MovableObject
         Vector3Int pushDir = GetPushDirection(trigger.side);
         Vector3Int targetCell = currentCell + pushDir;
 
-        Vector3 targetPos = grid.GetCellCenterWorld(targetCell);
+        Vector3 cellPos = grid.GetCellCenterWorld(targetCell);
+        Vector3 targetPos = new Vector3(cellPos.x, transform.position.y, cellPos.z);
 
         Collider[] hits = Physics.OverlapBox(targetPos, Vector3.one * 0.45f);
         foreach (var c in hits)
@@ -82,11 +83,12 @@ public class PushableObject : MovableObject
             AudioManager.Instance.PlaySFX(AudioManager.Instance.BoxMoveSFX);
 
         isBeingPushed = true;
-
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
         Vector3 startPos = rb.position;
-        Vector3 endPos = grid.GetCellCenterWorld(targetCell);
+
+        Vector3 cellPos = grid.GetCellCenterWorld(targetCell);
+        Vector3 endPos = new Vector3(cellPos.x, startPos.y, cellPos.z);
 
         float distance = Vector3.Distance(startPos, endPos);
         float elapsed = 0f;
@@ -107,7 +109,6 @@ public class PushableObject : MovableObject
         currentCell = targetCell;
 
         Physics.IgnoreCollision(boxCol, playerCol, false);
-
         isBeingPushed = false;
 
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
