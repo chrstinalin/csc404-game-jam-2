@@ -292,5 +292,6 @@ public class MovementState : PlayerMovementState
         _rigidbody.linearVelocity = Vector3.zero;
         _dashVelocity = Vector3.zero;
         _currMoveSpeed = 0f;
+        if (_animator != null) _animator.SetBool("isRunning", false);
     }
 }

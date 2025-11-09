@@ -11,8 +11,8 @@ public class CameraManager : CameraMovementManager
 
     // PSX Rendering
     [Header("PSX Settings")]
-    private int targetWidth = 320;
-    private int targetHeight = 240;
+    private int targetWidth = 640;
+    private int targetHeight = 480;
     public Material ditheringMaterial;
     private RenderTexture renderTexture;
 
