@@ -825,8 +825,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3661821011104932397, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 84541942}
   m_SourcePrefab: {fileID: 100100000, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+--- !u!1 &84541941 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3661821011104932397, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+  m_PrefabInstance: {fileID: 84541940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &84541942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84541941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018c9d2579066c340a0e37065578ba5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &107524889
 GameObject:
   m_ObjectHideFlags: 0
@@ -4168,7 +4188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
   FollowEntity: {fileID: 0}
-  ditheringMaterial: {fileID: 0}
 --- !u!20 &686719175 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7554089820322606459, guid: fb343e6d0d3028e4bb6b37f985af9bdc, type: 3}
