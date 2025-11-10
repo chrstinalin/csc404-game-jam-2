@@ -16,9 +16,14 @@ public class PlayerMarker : MonoBehaviour
     private int overlappingSelectables = 0;
     private bool isOverSelectable => overlappingSelectables > 0;
 
+    [SerializeField] private LayerMask wallLayers = 0;
+    [SerializeField] private float wallSkin = 0f;
+    private SphereCollider collider;
+
     void Awake()
     {
         Instance = this;
+        collider = GetComponent<SphereCollider>();
     }
 
     private void Start()
@@ -55,7 +60,9 @@ public class PlayerMarker : MonoBehaviour
 
             Vector3 inputDir = (camForward * v + camRight * h).normalized;
 
-            Vector3 intended = transform.position + inputDir * Config.PLAYER_MARKER_MOVE_SPEED * Time.deltaTime;
+            Vector3 startPos = transform.position;
+            Vector3 horizontalTarget = startPos + inputDir * Config.PLAYER_MARKER_MOVE_SPEED * Time.deltaTime;
+            Vector3 intended = ResolveWallCollisions(startPos, horizontalTarget);
 
             if (TryGetHighestGroundY(intended, out float groundY))
             {
@@ -109,22 +116,59 @@ public class PlayerMarker : MonoBehaviour
         Vector3 origin = new Vector3(positionXZ.x, originY, positionXZ.z);
         float rayDistance = Config.PLAYER_MARKER_GROUND_RAY_HEIGHT * 2f;
 
-        RaycastHit[] hits = Physics.RaycastAll(origin, Vector3.down, rayDistance, Config.PLAYER_MARKER_GROUND_LAYERS.value);
+        RaycastHit[] hits = Physics.RaycastAll(origin, Vector3.down, rayDistance, Config.PLAYER_MARKER_GROUND_LAYERS.value, QueryTriggerInteraction.Ignore);
         if (hits == null || hits.Length == 0) return false;
 
         foreach (var hit in hits)
         {
-            if (hit.collider != null && !hit.collider.isTrigger)
+            if (hit.collider == null) continue;
+            if (hit.collider.isTrigger) continue;
+            if (hit.collider.CompareTag("Wall")) continue;
+            if (hit.point.y > highestY)
             {
-                if (hit.collider.CompareTag("Environment"))
-                {
-                    if (hit.point.y > highestY) highestY = hit.point.y;
-                }
+                highestY = hit.point.y;
             }
         }
 
         return highestY != float.MinValue;
     }
+
+    private Vector3 ResolveWallCollisions(Vector3 start, Vector3 intended)
+    {
+        Vector3 moveXZ = intended - start;
+        moveXZ.y = 0f;
+        float distance = moveXZ.magnitude;
+        if (distance <= Mathf.Epsilon)
+        {
+            return intended;
+        }
+
+        Vector3 dir = moveXZ / distance;
+
+        Vector3 origin = start + (collider != null ? (transform.rotation * collider.center) : (Vector3.up * 0.5f));
+        float radius = (collider != null) ? Mathf.Max(0f, collider.radius - wallSkin) : 0f;
+        RaycastHit[] hits = radius > 0f
+            ? Physics.SphereCastAll(origin, radius, dir, distance, wallLayers, QueryTriggerInteraction.Ignore)
+            : Physics.RaycastAll(origin, dir, distance, wallLayers, QueryTriggerInteraction.Ignore);
+
+        if (hits != null && hits.Length > 0)
+        {
+            float closest = float.PositiveInfinity;
+            foreach (var h in hits)
+            {
+                if (h.collider == null || !h.collider.CompareTag("Wall")) continue;
+                if (h.distance < closest) closest = h.distance;
+            }
+            if (closest < float.PositiveInfinity)
+            {
+                float allowed = Mathf.Max(0f, closest - wallSkin);
+                return start + dir * allowed;
+            }
+        }
+
+        return intended;
+    }
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -156,24 +200,12 @@ public class PlayerMarker : MonoBehaviour
     {
         bool actuallyOverSelectable = CheckForActiveSelectables();
         if (actuallyOverSelectable) return;
-
-        // NavMeshHit hit;
-        // if (NavMesh.SamplePosition(transform.position, out hit, 1f, NavMesh.AllAreas))
-        // {
-        //     if (groundTarget == null)
-        //     {
-        //         groundTarget = new GameObject("GroundTarget");
-        //     }
-        //     groundTarget.transform.position = hit.position;
-        //     SetTarget(groundTarget);
-        // }
     }
 
     private bool CheckForActiveSelectables()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, 1f);
         int validSelectables = 0;
-        
         foreach (Collider col in colliders)
         {
             LockOnSelectable selectable = col.GetComponent<LockOnSelectable>();
