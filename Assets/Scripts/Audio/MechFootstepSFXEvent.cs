@@ -1,6 +1,5 @@
 using UnityEngine;
 using FMODUnity;
-using Mono.Cecil;
 
 public class MechFootstepSFXEvent : MonoBehaviour
 {

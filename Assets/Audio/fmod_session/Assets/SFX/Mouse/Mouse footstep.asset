@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-8651717966413198520
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mouse.footsteps_nl_01_{-8651717966413198520}
+  m_AudioClip: {fileID: 8300000, guid: b9c7ec194f6ddd841ad255139d175a95, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-8599603779721082796
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mouse.footsteps_nl_02_{-8599603779721082796}
+  m_AudioClip: {fileID: 8300000, guid: 3fc07412d4a81164db38669bd21524bf, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &281797656023772804
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mouse.footsteps_nl_04_{281797656023772804}
+  m_AudioClip: {fileID: 8300000, guid: 32cbb48e9d69bfc42ad166cf5f00ae4d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &1796871061058754342
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mouse.footsteps_nl_03_{1796871061058754342}
+  m_AudioClip: {fileID: 8300000, guid: b053efafbc47b1b4f93ccefd1fb3ac9b, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mouse footstep
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -8651717966413198520}
+  - {fileID: -8599603779721082796}
+  - {fileID: 1796871061058754342}
+  - {fileID: 281797656023772804}
+  - {fileID: 7857328425033419073}
+  m_AvoidRepeatingLast: 0
+  m_PlaybackMode: 0
+  m_TriggerMode: 1
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &7857328425033419073
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mouse.footsteps_nl_05_{7857328425033419073}
+  m_AudioClip: {fileID: 8300000, guid: d624ebb6be76c0a4c8e5293c40823234, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
