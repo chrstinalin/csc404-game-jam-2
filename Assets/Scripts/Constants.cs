@@ -3,8 +3,8 @@ using UnityEngine;
 
 public static class Config
 {
-    public static float MECH_MOVE_SPEED = 4;
-    public static float MOUSE_MOVE_SPEED = 8;
+    public static float MECH_MOVE_SPEED = 6;
+    public static float MOUSE_MOVE_SPEED = 7;
 
     public static float MECH_JUMP_FORCE = 0f;
     public static float MOUSE_JUMP_FORCE = 5f;
