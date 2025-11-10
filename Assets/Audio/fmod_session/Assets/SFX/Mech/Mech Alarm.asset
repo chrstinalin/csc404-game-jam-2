@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-4346668216170401429
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.alarm_nl-001_{-4346668216170401429}
+  m_AudioClip: {fileID: 8300000, guid: 1e96b375dd87f944eb167c9a4ed6fad9, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-254965599431274669
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.alarm_nl-001_{-254965599431274669}
+  m_AudioClip: {fileID: 8300000, guid: 1e96b375dd87f944eb167c9a4ed6fad9, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-158842204301769967
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.alarm_nl-004_{-158842204301769967}
+  m_AudioClip: {fileID: 8300000, guid: db9e5e5273df2604ea9f9fff972802b7, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &126980012621101357
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.alarm_nl-003_{126980012621101357}
+  m_AudioClip: {fileID: 8300000, guid: ae0ad99b314f9994eab01821c1ea1154, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mech Alarm
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: -1.5, y: 1.5}
+  m_PitchRandomizationRange: {x: -25, y: 25}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -254965599431274669}
+  - {fileID: -4346668216170401429}
+  - {fileID: 8702010364540694363}
+  - {fileID: 126980012621101357}
+  - {fileID: -158842204301769967}
+  m_AvoidRepeatingLast: 3
+  m_PlaybackMode: 2
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 1
+  m_PitchRandomizationEnabled: 1
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &8702010364540694363
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.alarm_nl-002_{8702010364540694363}
+  m_AudioClip: {fileID: 8300000, guid: e356c945a0cb3974b997907a5d36d2b4, type: 3}
+  m_Volume: 0
+  m_Enabled: 1

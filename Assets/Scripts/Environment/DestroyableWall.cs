@@ -1,8 +1,9 @@
 using UnityEngine;
+using FMODUnity;
 
 public class DestroyableWall : MonoBehaviour
 {
-    public AudioClip WallBreakSFX;
+    public EventReference WallBreakSFX;
     private DamageReceiver DamageReceiver;
     private Health Health;
     
@@ -25,10 +26,8 @@ public class DestroyableWall : MonoBehaviour
     void OnWallDestroyed()
     {
         Debug.Log($"{gameObject.name} has been destroyed!");
-        if (WallBreakSFX != null)
-        {
-            AudioManager.Instance.PlaySFX(WallBreakSFX);
-        }
+        
+        AudioManager.Instance.PlaySFX(WallBreakSFX);
         Destroy(gameObject);
     }
 }

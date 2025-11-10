@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class TurretWeapon : MonoBehaviour
 {
-    public AudioClip chargeSFX;
-    public AudioClip bulletSFX;
+    public EventReference chargeSFX;
+    public EventReference bulletSFX;
     [SerializeField] private EnemyVisionManager visionManager;
     [SerializeField] private LineRenderer shotLineRenderer;
     public IOffense Owner { get; set; }
@@ -41,7 +42,7 @@ public class TurretWeapon : MonoBehaviour
     private IEnumerator ChargeAndFire()
     {
         isCharging = true;
-        if (chargeSFX != null) AudioManager.Instance.PlaySFX(chargeSFX);
+        AudioManager.Instance.PlaySFX(chargeSFX);
         yield return new WaitForSeconds(chargeTime);
 
         Fire();
@@ -67,7 +68,7 @@ public class TurretWeapon : MonoBehaviour
             bool hitTarget = hit.transform == target.transform || hit.transform.IsChildOf(target.transform);
             if (hitTarget)
             {
-                if (bulletSFX != null) AudioManager.Instance.PlaySFX(bulletSFX);
+                AudioManager.Instance.PlaySFX(bulletSFX);
                 DamageReceiver damageReceiver = hit.transform.GetComponent<DamageReceiver>();
                 if (damageReceiver == null)
                 {

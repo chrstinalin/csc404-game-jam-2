@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using FMODUnity;
 
 [RequireComponent(typeof(Collider))]
 public class Button3D : TriggerAbstract
