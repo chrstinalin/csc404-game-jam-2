@@ -186,5 +186,6 @@ public class MovementState : PlayerMovementState
     public override void Reset()
     {
         _rigidbody.linearVelocity = Vector3.zero;
+        if (_animator != null) _animator.SetBool("isRunning", false);
     }
 }

@@ -3,7 +3,22 @@ guid: a17443351c971431e821c09f4d2c8640
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_mechArms_01
+    second: {fileID: 2100000, guid: fe31c71fb61d7439aa776029b7c78a56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_mechBody_01
+    second: {fileID: 2100000, guid: 3a783443b7c5b42e18dc851dc60caea1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_mechLegs_01
+    second: {fileID: 2100000, guid: cb6b0ecaf9b8f4b74afdfb2761ab6ac4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -121,15 +136,15 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: DK_JNT_GRP
+    rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 2afd49bcfcdf34178a6118b5478c2e20, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
