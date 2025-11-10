@@ -9,13 +9,6 @@ public class CameraManager : CameraMovementManager
     [NonSerialized] public Transform CameraPivot;
     [NonSerialized] public Camera Cam;
 
-    // PSX Rendering
-    [Header("PSX Settings")]
-    private int targetWidth = 640;
-    private int targetHeight = 480;
-    public Material ditheringMaterial;
-    private RenderTexture renderTexture;
-
     private float heightOffset;
     private float targetFOV;
     private float fovVelocity;
@@ -45,35 +38,6 @@ public class CameraManager : CameraMovementManager
         pitch = angles.x;
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        // Initialize PSX render texture
-        InitializePSXRendering();
-    }
-
-    void InitializePSXRendering()
-    {
-        renderTexture = new RenderTexture(targetWidth, targetHeight, 16);
-        renderTexture.filterMode = FilterMode.Point; // No smoothing for pixelated look
-    }
-    
-    void OnRenderImage(RenderTexture source, RenderTexture destination)
-    {
-        // Step 1: Downscale to low resolution
-        RenderTexture tempRT = RenderTexture.GetTemporary(targetWidth, targetHeight, 16);
-        tempRT.filterMode = FilterMode.Point;
-        Graphics.Blit(source, tempRT);
-    
-        // Step 2: Apply dithering and upscale back
-        if (ditheringMaterial != null)
-        {
-            Graphics.Blit(tempRT, destination, ditheringMaterial);
-        }
-        else
-        {
-            Graphics.Blit(tempRT, destination);
-        }
-    
-        RenderTexture.ReleaseTemporary(tempRT);
     }
 
     void Update()
@@ -170,13 +134,4 @@ public class CameraManager : CameraMovementManager
     public override void SetMaxZoom(float max) => maxZoom = max;
 
     public void SetCameraFOV(float newFOV) => targetFOV = newFOV;
-
-    void OnDestroy()
-    {
-        // Clean up render texture
-        if (renderTexture != null)
-        {
-            renderTexture.Release();
-        }
-    }
 }
