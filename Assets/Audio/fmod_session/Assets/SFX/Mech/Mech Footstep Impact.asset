@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-8834587041222887934
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.footstep.impact_nl-005_{-8834587041222887934}
+  m_AudioClip: {fileID: 8300000, guid: 24a52f7f8b233744f81311be69cd06c0, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-7807795140571292111
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.footstep.impact_nl-001_{-7807795140571292111}
+  m_AudioClip: {fileID: 8300000, guid: 4f642f28e18017547ba573ab48f0c48d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &683191902223387783
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.footstep.impact_nl-004_{683191902223387783}
+  m_AudioClip: {fileID: 8300000, guid: 717ae8127d8ddcc4dae14914cc28c6cb, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &6140947699773918672
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.footstep.impact_nl-003_{6140947699773918672}
+  m_AudioClip: {fileID: 8300000, guid: af497d3cf18eeb340bc24145926a9695, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mech Footstep Impact
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: -20, y: 20}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -7807795140571292111}
+  - {fileID: 8403321918065777399}
+  - {fileID: 6140947699773918672}
+  - {fileID: 683191902223387783}
+  - {fileID: -8834587041222887934}
+  m_AvoidRepeatingLast: 3
+  m_PlaybackMode: 2
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 1
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &8403321918065777399
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.footstep.impact_nl-002_{8403321918065777399}
+  m_AudioClip: {fileID: 8300000, guid: 254c3d596d0ebe748997ded0fdb44c36, type: 3}
+  m_Volume: 0
+  m_Enabled: 1

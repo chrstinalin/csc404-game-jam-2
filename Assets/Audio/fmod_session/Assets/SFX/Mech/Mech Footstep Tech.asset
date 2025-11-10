@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-6091216217821233121
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.footstep.tech_nl-004_{-6091216217821233121}
+  m_AudioClip: {fileID: 8300000, guid: 3330785201304b641882bcfe774c8035, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-5915892760181717572
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.footstep.tech_nl-003_{-5915892760181717572}
+  m_AudioClip: {fileID: 8300000, guid: dc0de07ced61ed24993f303242fb0c38, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-1587291906484768811
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.footstep.tech_nl-002_{-1587291906484768811}
+  m_AudioClip: {fileID: 8300000, guid: a06aa5ddb23f8184c8cd973d1a041746, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &894486265755504340
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.footstep.tech_nl-005_{894486265755504340}
+  m_AudioClip: {fileID: 8300000, guid: 8da1160f3e1cd0f458db4a036bcbc704, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2845149289082712196
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: sfx_mech.footstep.tech_nl-001_{2845149289082712196}
+  m_AudioClip: {fileID: 8300000, guid: 1379d99251864824397812d22bf7f7b7, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mech Footstep Tech
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: -20, y: 20}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: 2845149289082712196}
+  - {fileID: -1587291906484768811}
+  - {fileID: -5915892760181717572}
+  - {fileID: -6091216217821233121}
+  - {fileID: 894486265755504340}
+  m_AvoidRepeatingLast: 2
+  m_PlaybackMode: 2
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 1
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
