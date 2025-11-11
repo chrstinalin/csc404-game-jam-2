@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{5ccca6e4-794f-47ba-8cd8-97a3a095cfd5}">
+		<property name="name">
+			<value>Lock On</value>
+		</property>
+		<relationship name="folder">
+			<destination>{5ae3774a-4248-4c67-a25c-e724e4bdc428}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{be50303f-c1b0-4ae3-8e88-3bcb9dd05fbb}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{be50303f-c1b0-4ae3-8e88-3bcb9dd05fbb}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>LO Off</value>
+			<value>LO On</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
