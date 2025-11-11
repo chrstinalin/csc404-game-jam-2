@@ -5,7 +5,7 @@
 			<value>Interactable Door</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{29095685-f8be-40a7-9405-0770d7a382b7}</destination>
@@ -122,6 +122,7 @@
 	<object class="MixerBusEffectChain" id="{d040cc76-2b93-4f22-8ee4-65cd354bf6c9}">
 		<relationship name="effects">
 			<destination>{585cba89-a138-4634-b59f-4577b8f8ab4b}</destination>
+			<destination>{ebef74ee-0ae1-4ad6-9126-6ae0da5d6e56}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e91c4b4f-db4c-419e-bda3-aa146dd66417}" />
@@ -149,6 +150,7 @@
 	</object>
 	<object class="MixerBusPanner" id="{eba4138c-8150-4076-8489-2a97a3cf8e1b}" />
 	<object class="MixerBusFader" id="{585cba89-a138-4634-b59f-4577b8f8ab4b}" />
+	<object class="SpatialiserEffect" id="{ebef74ee-0ae1-4ad6-9126-6ae0da5d6e56}" />
 	<object class="AutomationPoint" id="{7cf45a43-2314-43cb-ac95-1de7080813fb}">
 		<property name="position">
 			<value>1.125</value>

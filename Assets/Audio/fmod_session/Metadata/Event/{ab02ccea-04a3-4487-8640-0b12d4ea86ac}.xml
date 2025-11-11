@@ -5,7 +5,7 @@
 			<value>Mech Alert</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{8c1a1e69-0a0b-47d3-a942-892a0229e92b}</destination>
@@ -119,6 +119,7 @@
 	<object class="MixerBusEffectChain" id="{2cfabc9d-cbff-4cd8-9891-9771ab1992c7}">
 		<relationship name="effects">
 			<destination>{4e369949-3dc1-46c6-b23b-9235a3525105}</destination>
+			<destination>{9141d60c-4b7d-49d7-b275-446b19afd2dd}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{85fdbe01-23bd-4059-916c-3d590cc55403}" />
@@ -150,5 +151,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{374265f7-52f7-4d1b-a449-b73c8d678643}" />
 	<object class="MixerBusFader" id="{4e369949-3dc1-46c6-b23b-9235a3525105}" />
+	<object class="SpatialiserEffect" id="{9141d60c-4b7d-49d7-b275-446b19afd2dd}" />
 	<object class="MixerBusFader" id="{608e273e-adee-4e7f-95b6-53c555b3c9f3}" />
 </objects>

@@ -5,7 +5,7 @@
 			<value>Interactable Pickup</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{29095685-f8be-40a7-9405-0770d7a382b7}</destination>
@@ -126,6 +126,7 @@
 		<relationship name="effects">
 			<destination>{87bbf6f8-3df0-4919-a7e7-b754f88cc669}</destination>
 			<destination>{aa50cf16-90c8-429b-ade1-ca133e1c48e2}</destination>
+			<destination>{54813c2b-4400-45f0-9a3b-fa4dfd196832}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e4ea9b6d-9de2-40e7-98fd-6f23a7888fd1}" />
@@ -178,6 +179,7 @@
 			<value>-5</value>
 		</property>
 	</object>
+	<object class="SpatialiserEffect" id="{54813c2b-4400-45f0-9a3b-fa4dfd196832}" />
 	<object class="AutomationPoint" id="{2eba4b67-fb92-4c12-b7ba-1ee8f942bc27}">
 		<property name="position">
 			<value>0.57999999999999996</value>

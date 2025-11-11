@@ -5,7 +5,7 @@
 			<value>Interactable Button</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{29095685-f8be-40a7-9405-0770d7a382b7}</destination>
@@ -124,6 +124,7 @@
 		<relationship name="effects">
 			<destination>{aca52fcc-9c0f-45d0-a28b-218fbd2aaa2b}</destination>
 			<destination>{55aac126-6b08-4abd-bb3a-593770bba16a}</destination>
+			<destination>{801ce1f5-06a6-4c3d-840a-2d1823c74937}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{163548b9-a54b-42bc-b2d6-ab9f41b7b848}" />
@@ -167,5 +168,6 @@
 			<value>10</value>
 		</property>
 	</object>
+	<object class="SpatialiserEffect" id="{801ce1f5-06a6-4c3d-840a-2d1823c74937}" />
 	<object class="MixerBusFader" id="{e05f2f4d-0144-4ea6-bf82-f54919ad1f82}" />
 </objects>

@@ -5,7 +5,7 @@
 			<value>Misc Servo</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{618b9653-7159-4adc-919e-c44c563d9d0f}</destination>
@@ -128,6 +128,7 @@
 	<object class="MixerBusEffectChain" id="{47b0607d-491f-4b7a-b4e9-7569258dae04}">
 		<relationship name="effects">
 			<destination>{05ec8b4e-84ec-4871-b6f5-8d165b7d28ea}</destination>
+			<destination>{f2135b79-dd35-4f81-b08f-80c01075f141}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{88c82309-ec75-4e73-9ef9-f44bc820cc33}" />
@@ -197,6 +198,7 @@
 	</object>
 	<object class="MixerBusPanner" id="{01e74f8b-b4b7-4209-953b-c2dbdec62df3}" />
 	<object class="MixerBusFader" id="{05ec8b4e-84ec-4871-b6f5-8d165b7d28ea}" />
+	<object class="SpatialiserEffect" id="{f2135b79-dd35-4f81-b08f-80c01075f141}" />
 	<object class="AutomationPoint" id="{9ab08a22-73df-4294-95d5-8e468c344b6c}">
 		<property name="position">
 			<value>0.41999999999999998</value>
