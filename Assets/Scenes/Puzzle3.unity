@@ -5185,6 +5185,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
   FollowEntity: {fileID: 0}
+  collisionRadius: 0.3
+  collisionBuffer: 0.05
+  minCameraDistance: 0.2
+  collisionSmoothTime: 0.05
+  collisionDebug: 0
 --- !u!1 &690256435
 GameObject:
   m_ObjectHideFlags: 0

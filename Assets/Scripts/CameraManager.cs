@@ -18,6 +18,9 @@ public class CameraManager : CameraMovementManager
     private float zoom = 5f;
     private float maxZoom = Config.CAMERA_MAX_ZOOM;
 
+    private float currentCameraDistance;
+    private float collisionDistanceVelocity;
+
     void Awake()
     {
         Instance = this;
@@ -36,6 +39,8 @@ public class CameraManager : CameraMovementManager
         Vector3 angles = transform.eulerAngles;
         yaw = angles.y;
         pitch = angles.x;
+
+        currentCameraDistance = zoom;
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -82,7 +87,7 @@ public class CameraManager : CameraMovementManager
         HandleZoom();
         HandleRotation();
 
-        // Apply rotation and position
+        // Apply rotation
         Quaternion targetRotation = Quaternion.Euler(pitch, yaw, 0f);
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
@@ -90,7 +95,63 @@ public class CameraManager : CameraMovementManager
             Config.SMOOTH_TIME
         );
 
-        transform.position = CameraPivot.position - transform.forward * zoom;
+        float desiredDistance = zoom;
+
+        float targetDistance = GetCollisionAdjustedDistanceOnlyWalls(
+            CameraPivot.position,
+            transform.forward,
+            desiredDistance
+        );
+
+        currentCameraDistance = Mathf.SmoothDamp(
+            currentCameraDistance,
+            targetDistance,
+            ref collisionDistanceVelocity,
+            Config.CAMERA_COLLISION_SMOOTH_TIME
+        );
+
+        // Place camera
+        transform.position = CameraPivot.position - transform.forward * currentCameraDistance;
+    }
+
+    private float GetCollisionAdjustedDistanceOnlyWalls(Vector3 pivotPos, Vector3 cameraForward, float desiredDistance)
+    {
+        Vector3 dirToCamera = -cameraForward;
+        float maxCastDistance = Mathf.Max(desiredDistance, Config.CAMERA_MIN_DISTANCE);
+
+        Ray ray = new Ray(pivotPos, dirToCamera);
+        RaycastHit[] hits = Physics.SphereCastAll(
+            ray,
+            Config.CAMERA_COLLISION_RADIUS,
+            maxCastDistance,
+            ~0,
+            QueryTriggerInteraction.Ignore
+        );
+
+        if (hits == null || hits.Length == 0)
+            return desiredDistance;
+
+        Transform playerRoot = FollowEntity != null ? FollowEntity.transform : null;
+        float closest = desiredDistance;
+        bool anyWall = false;
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            Collider col = hits[i].collider;
+
+            if (playerRoot != null && (col.transform == playerRoot || col.transform.IsChildOf(playerRoot)))
+                continue;
+
+            if (!col.CompareTag("Wall"))
+                continue;
+
+            anyWall = true;
+            float candidate = Mathf.Max(hits[i].distance - Config.CAMERA_COLLISION_BUFFER, Config.CAMERA_MIN_DISTANCE);
+            if (candidate < closest)
+                closest = candidate;
+        }
+
+        return Mathf.Clamp(closest, Config.CAMERA_MIN_DISTANCE, desiredDistance);
     }
 
     private void HandleZoom()
