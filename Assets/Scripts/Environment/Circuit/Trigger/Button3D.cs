@@ -44,7 +44,7 @@ public class Button3D : TriggerAbstract
         if (IsActive) return;
         IsActive = true;
         UpdateVisuals();
-        if(AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.ButtonPressSFX);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.ButtonPressSFX, transform.position, 5f);
     }
 
     public override void Deactivate()
