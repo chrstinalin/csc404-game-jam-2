@@ -1,4 +1,3 @@
-// using System.Numerics;
 using UnityEngine;
 
 public class MovementState : PlayerMovementState
@@ -9,6 +8,7 @@ public class MovementState : PlayerMovementState
     private Animator _animator;
     private Transform _entityTransform;  // Cache transform reference
     private bool _isGrounded;
+    private bool _wasGrounded;
     private bool _canJump;
     
     private float _CurrentVelocity;
@@ -103,13 +103,27 @@ public class MovementState : PlayerMovementState
      */
     private void UpdateGroundCheck()
     {
+        _wasGrounded = _isGrounded;
+
         if (_groundCheckTimer <= 0f)
         {
             _isGrounded = Physics.Raycast(_entityTransform.position, Vector3.down, GROUND_CHECK_DISTANCE);
             _groundCheckTimer = GROUND_CHECK_INTERVAL;
         }
+        _groundCheckTimer -= Time.deltaTime;
+
+        if (_animator != null)
+        {
+            bool isFalling = !_isGrounded && _rigidbody.linearVelocity.y < -0.5f;
+            _animator.SetBool("isFalling", isFalling);
+        }
+
+        if (_isGrounded && !_wasGrounded && _rigidbody.linearVelocity.y < -1f)
+        {
+            OnLanded();
+        }
     }
-    
+
     /*
      * Jump Input Handling
      */
@@ -117,10 +131,27 @@ public class MovementState : PlayerMovementState
     {
         if (!_canJump || !_isGrounded || _rigidbody.linearVelocity.y > 2f)
             return;
-            
+
         if (Input.GetButtonDown("MouseJump"))
         {
+            Debug.Log("JUMP PRESSED");
+            if (_animator != null)
+            {
+                _animator.SetTrigger("Jump");
+            }
             _rigidbody.AddForce(Vector3.up * _JumpForce, ForceMode.Impulse);
+        }
+    }
+    
+    /*
+     * Called when entity lands on ground.
+     */
+    private void OnLanded()
+    {
+        Debug.Log($"Landing - Velocity Y: {_rigidbody.linearVelocity.y}");  // Add this to debug
+        if (_animator != null)
+        {
+            _animator.SetTrigger("Land");
         }
     }
     
