@@ -46,7 +46,6 @@ public class MovementManager : PlayerMovementManager
 
     void Update()
     {
-        Debug.Log(IsMouseActive);
         CameraManager.UpdateCamera();
 
         float horizontal = Input.GetAxis("Horizontal");

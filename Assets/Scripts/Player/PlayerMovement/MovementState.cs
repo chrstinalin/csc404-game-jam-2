@@ -107,18 +107,27 @@ public class MovementState : PlayerMovementState
 
         if (_groundCheckTimer <= 0f)
         {
-            _isGrounded = Physics.Raycast(_entityTransform.position, Vector3.down, GROUND_CHECK_DISTANCE);
-            _groundCheckTimer = GROUND_CHECK_INTERVAL;
-        }
+            _isGrounded = Physics.Raycast(_entityTransform.position, Vector3.down, GROUND_CHECK_DISTANCE) ||
+                          Physics.Raycast(_entityTransform.position + Vector3.forward * 0.2f, Vector3.down, GROUND_CHECK_DISTANCE) ||
+                          Physics.Raycast(_entityTransform.position + Vector3.back * 0.2f, Vector3.down, GROUND_CHECK_DISTANCE) ||
+                          Physics.Raycast(_entityTransform.position + Vector3.right * 0.2f, Vector3.down, GROUND_CHECK_DISTANCE) ||
+                          Physics.Raycast(_entityTransform.position + Vector3.left * 0.2f, Vector3.down, GROUND_CHECK_DISTANCE);        }
         _groundCheckTimer -= Time.deltaTime;
 
         if (_animator != null)
         {
-            bool isFalling = !_isGrounded && _rigidbody.linearVelocity.y < -0.5f;
-            _animator.SetBool("isFalling", isFalling);
+            if (_isGrounded)
+            {
+                _animator.SetBool("isFalling", false);
+            }
+            else
+            {
+                bool isFalling = !_isGrounded && _rigidbody.linearVelocity.y < -2f;
+                _animator.SetBool("isFalling", isFalling);
+            }
         }
 
-        if (_isGrounded && !_wasGrounded && _rigidbody.linearVelocity.y < -1f)
+        if (_isGrounded && !_wasGrounded)
         {
             OnLanded();
         }
@@ -134,12 +143,12 @@ public class MovementState : PlayerMovementState
 
         if (Input.GetButtonDown("MouseJump"))
         {
-            Debug.Log("JUMP PRESSED");
             if (_animator != null)
             {
                 _animator.SetTrigger("Jump");
+                _animator.SetBool("isFalling", false);
+                _rigidbody.AddForce(Vector3.up * _JumpForce, ForceMode.Impulse);
             }
-            _rigidbody.AddForce(Vector3.up * _JumpForce, ForceMode.Impulse);
         }
     }
     
@@ -148,10 +157,10 @@ public class MovementState : PlayerMovementState
      */
     private void OnLanded()
     {
-        Debug.Log($"Landing - Velocity Y: {_rigidbody.linearVelocity.y}");  // Add this to debug
         if (_animator != null)
         {
             _animator.SetTrigger("Land");
+            _animator.SetBool("isFalling", false);
         }
     }
     
