@@ -3,6 +3,8 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class PauseScreen : MonoBehaviour
 {
@@ -14,8 +16,13 @@ public class PauseScreen : MonoBehaviour
 
     [SerializeField] private Button firstSelectedButton;
 
+    [SerializeField] private Volume volume;
+    private DepthOfField dof;
+
     void Start()
-    {  
+    {
+        volume.profile.TryGet(out dof);
+        dof.active = false;
         EventSystem.current.SetSelectedGameObject(firstSelectedButton.gameObject);
     }
 
@@ -47,12 +54,14 @@ public class PauseScreen : MonoBehaviour
     public void Resume ()
     {
         pauseMenuUI.SetActive(false);
+        dof.active = false;
         Time.timeScale = 1f;
         GamePaused = false;
     }
 
     void Pause()
-    {
+    {   
+        dof.active = enabled;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GamePaused = true;
