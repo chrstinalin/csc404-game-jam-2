@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.082562
+      value: 29.97
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19
+      value: 0.15549664
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.406548
+      value: 4.421369
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65,6 +65,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3653166799315584681}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7790763595137290007}
   m_SourcePrefab: {fileID: 100100000, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
 --- !u!1 &8120636863540370014 stripped
 GameObject:
@@ -117,7 +120,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf6e608fdbee1544a1fc3ed65c8df64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  message: Press E to interact
+  message: Press B to Pick Up Scrap Pile
   characters:
   - {fileID: 0}
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
+--- !u!114 &7790763595137290007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120636863540370014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.79607844, b: 0.050980393, a: 1}
+  outlineWidth: 4.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
