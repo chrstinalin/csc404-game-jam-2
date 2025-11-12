@@ -1,7 +1,7 @@
 using UnityEngine;
 using FMODUnity;
 
-public class MechFootstepSFXEvent : MonoBehaviour
+public class MechFootstepSFX : MonoBehaviour
 {
     public EventReference MechStepTechSFX;
     public EventReference MechStepImpactSFX;
@@ -9,7 +9,7 @@ public class MechFootstepSFXEvent : MonoBehaviour
     public void MechStepTech()
     {
         RuntimeManager.PlayOneShot(MechStepTechSFX, transform.position);
-     
+
     }
     public void MechStepImpact()
     {
