@@ -29,6 +29,11 @@ public static class Config
     public static float CAMERA_LOCK_ON_FOV = 70f;
     public static float CAMERA_DEFAULT_FOV = 50f;
 
+    public static float CAMERA_COLLISION_RADIUS = 0.3f;
+    public static float CAMERA_COLLISION_BUFFER = 0.05f;
+    public static float CAMERA_MIN_DISTANCE = 0.2f;
+    public static float CAMERA_COLLISION_SMOOTH_TIME = 0.05f;
+
     public static float ZOOM_SENSITIVITY = 10f;
 
     public static float MOUSE_MAX_ZOOM = 16f;
@@ -46,7 +51,7 @@ public static class Config
     public static float ENEMY_OUTLINE_WIDTH = 2f;
     public static float SELECTED_ENEMY_OUTLINE_WIDTH = 6f;
 
-    public static Vector3 INTERACTABLE_TEXT_OFFSET = new Vector3(0, 2f, 0);
+    public static Vector3 INTERACTABLE_TEXT_OFFSET = new Vector3(0, 0.2f, 0);
 
     public static float MOVE_EPSILON_SQR = 0.01f;
 
