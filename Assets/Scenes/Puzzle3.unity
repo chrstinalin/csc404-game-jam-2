@@ -14070,8 +14070,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.77124166, y: 0.8263793, z: 0.68460274}
+  m_Center: {x: -0.013548136, y: -0.08681035, z: -0.0072312355}
 --- !u!1 &1988005309
 GameObject:
   m_ObjectHideFlags: 0
@@ -15007,6 +15007,26 @@ PrefabInstance:
     - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       propertyPath: floorHeight
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      propertyPath: boxPushSFX.Path
+      value: event:/SFX/Interactables/Interactable Box Push
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      propertyPath: boxPushSFX.Guid.Data1
+      value: 1820421883
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      propertyPath: boxPushSFX.Guid.Data2
+      value: 1204829179
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      propertyPath: boxPushSFX.Guid.Data3
+      value: 1369536436
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      propertyPath: boxPushSFX.Guid.Data4
+      value: -1718188560
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

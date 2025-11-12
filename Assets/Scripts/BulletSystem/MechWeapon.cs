@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class MechWeapon : MonoBehaviour
 {
-    public AudioClip chargeSFX;
-    public AudioClip bulletSFX;
+    [SerializeField] public EventReference chargeSFX;
+    [SerializeField] public EventReference bulletSFX;
     [SerializeField] private LineRenderer shotLineRenderer;
     private MechAIController aiController;
     public IOffense Owner { get; set; }
@@ -65,7 +66,7 @@ public class MechWeapon : MonoBehaviour
                                                                || target.transform.IsChildOf(hit.transform);
             if (hitTarget)
             {
-                if (bulletSFX != null) AudioManager.Instance.PlaySFX(bulletSFX);
+                AudioManager.Instance.PlaySFX(bulletSFX, transform.position);
                 if (targetDamageReceiver != null)
                 {
                     GameObject damageSource = PlayerMech.Instance != null 
@@ -80,7 +81,7 @@ public class MechWeapon : MonoBehaviour
     private IEnumerator ChargeAndFire()
     {
         isCharging = true;
-        if (chargeSFX != null) AudioManager.Instance.PlaySFX(chargeSFX);
+        AudioManager.Instance.PlaySFX(chargeSFX, transform.position);
         yield return new WaitForSeconds(chargeTime);
     
         Fire();

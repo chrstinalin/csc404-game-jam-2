@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class TurretWeapon : MonoBehaviour
 {
-    public AudioClip chargeSFX;
-    public AudioClip bulletSFX;
+    [SerializeField] public EventReference chargeSFX;
+    [SerializeField] public EventReference bulletSFX;
     [SerializeField] private EnemyVisionManager visionManager;
     [SerializeField] private LineRenderer shotLineRenderer;
     public IOffense Owner { get; set; }
@@ -20,16 +21,18 @@ public class TurretWeapon : MonoBehaviour
     void Start()
     {
         Owner = GetComponent<IOffense>() ?? GetComponentInParent<IOffense>();
-        if (visionManager == null) visionManager = GetComponent<EnemyVisionManager>() 
-                                                   ?? GetComponentInParent<EnemyVisionManager>();
-        if (shotLineRenderer == null) shotLineRenderer = GetComponent<LineRenderer>();
-        if (shotLineRenderer != null) shotLineRenderer.enabled = false;
+        if (visionManager == null)
+            visionManager = GetComponent<EnemyVisionManager>() ?? GetComponentInParent<EnemyVisionManager>();
+        if (shotLineRenderer == null)
+            shotLineRenderer = GetComponent<LineRenderer>();
+        if (shotLineRenderer != null)
+            shotLineRenderer.enabled = false;
     }
 
     void Update()
     {
         _timer += Time.deltaTime;
-    
+
         bool canFire = _timer >= fireCooldown && Owner != null && Owner.isAttack() && !isCharging;
         if (canFire)
         {
@@ -41,7 +44,10 @@ public class TurretWeapon : MonoBehaviour
     private IEnumerator ChargeAndFire()
     {
         isCharging = true;
-        if (chargeSFX != null) AudioManager.Instance.PlaySFX(chargeSFX);
+
+        if (!chargeSFX.IsNull)
+            AudioManager.Instance.PlaySFX(chargeSFX, transform.position);
+
         yield return new WaitForSeconds(chargeTime);
 
         Fire();
@@ -51,33 +57,36 @@ public class TurretWeapon : MonoBehaviour
     public virtual void Fire()
     {
         if (visionManager == null) return;
+
         GameObject target = null;
-        
-        if (visionManager.MouseIsSpotted) target = visionManager.Mouse;
-        else if (visionManager.MechIsSpotted) target = visionManager.Mech;
-    
+        if (visionManager.MouseIsSpotted)
+            target = visionManager.Mouse;
+        else if (visionManager.MechIsSpotted)
+            target = visionManager.Mech;
+
         if (target == null) return;
 
         Vector3 shootFrom = transform.position;
         Vector3 fireDirection = (target.transform.position - shootFrom).normalized;
         RaycastHit hit;
-        
+
         if (Physics.Raycast(shootFrom, fireDirection, out hit, Mathf.Infinity))
         {
             bool hitTarget = hit.transform == target.transform || hit.transform.IsChildOf(target.transform);
             if (hitTarget)
             {
-                if (bulletSFX != null) AudioManager.Instance.PlaySFX(bulletSFX);
-                DamageReceiver damageReceiver = hit.transform.GetComponent<DamageReceiver>();
-                if (damageReceiver == null)
-                {
-                    damageReceiver = hit.transform.GetComponentInParent<DamageReceiver>();
-                }
+                if (!bulletSFX.IsNull)
+                    AudioManager.Instance.PlaySFX(bulletSFX, transform.position);
+
+                DamageReceiver damageReceiver = hit.transform.GetComponent<DamageReceiver>() ??
+                                                hit.transform.GetComponentInParent<DamageReceiver>();
+
                 if (damageReceiver != null)
                 {
                     GameObject damageSource = transform.parent?.gameObject ?? gameObject;
                     damageReceiver.ReceiveDamage((int)damage, damageSource);
                 }
+
                 StartCoroutine(ShowShot(shootFrom, hit.point));
             }
         }

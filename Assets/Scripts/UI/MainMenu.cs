@@ -29,6 +29,10 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        if (BackgroundMusicManager.Instance != null)
+        {
+            BackgroundMusicManager.Instance.StopTheme();
+        }
         if (menuButtons.Length > 0)
         {
             EventSystem.current.SetSelectedGameObject(menuButtons[0].gameObject);

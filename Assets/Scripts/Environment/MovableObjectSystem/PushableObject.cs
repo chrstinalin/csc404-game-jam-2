@@ -1,10 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using FMODUnity;
 
 public class PushableObject : MovableObject
 {
     public SideTrigger[] sideTriggers;
     public float moveSpeed = 2f;
+    [SerializeField] public EventReference boxPushSFX;
+
 
     private bool isBeingPushed = false;
     private Rigidbody rb;
@@ -79,8 +82,7 @@ public class PushableObject : MovableObject
 
     private IEnumerator MoveBox(Vector3Int targetCell)
     {
-        if (AudioManager.Instance != null)
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.BoxMoveSFX);
+        AudioManager.Instance.PlaySFX(boxPushSFX, transform.position, 10f);
 
         isBeingPushed = true;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
