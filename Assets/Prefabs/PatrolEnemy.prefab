@@ -45,8 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 485186ebaa289406ea6770d4c38e56f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretWeapon
-  chargeSFX: {fileID: 8300000, guid: b27a413e0ce04ae489c7c68b019ed480, type: 3}
-  bulletSFX: {fileID: 8300000, guid: 2d9c45fd2307d9a47b84dbfd35a257ea, type: 3}
+  chargeSFX:
+    Guid:
+      Data1: -775005267
+      Data2: 1088614951
+      Data3: 328072107
+      Data4: 208393304
+    Path: event:/SFX/Misc Tech
+  bulletSFX:
+    Guid:
+      Data1: -1545865985
+      Data2: 1199728975
+      Data3: -1696696914
+      Data4: -705010180
+    Path: event:/SFX/NPC/Enemy Guns
   visionManager: {fileID: 5110383828894934477}
   shotLineRenderer: {fileID: 6001375066056962769}
   fireCooldown: 3
@@ -336,8 +348,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3577498443009671908}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.70185155, z: -0, w: 0.71232337}
-  m_LocalPosition: {x: -5.2246795, y: 0, z: -10.279762}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -346,7 +358,7 @@ Transform:
   - {fileID: 8194662430733373310}
   - {fileID: 5080248649169598133}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 89.151, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5882437821290081082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,7 +417,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2323576054366674265
@@ -463,7 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531e86c305814da0896fbdb7742af7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 3
+  maxHealth: 1
   currHealth: 0
 --- !u!136 &2784313773413843630
 CapsuleCollider:
@@ -484,10 +496,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5518527
-  m_Height: 2.8902776
+  m_Radius: 0.5761985
+  m_Height: 2.0819964
   m_Direction: 1
-  m_Center: {x: 0.051852703, y: 0.9451388, z: 0}
+  m_Center: {x: 0.027506888, y: 1.0084381, z: 0}
 --- !u!1 &5277480943957435538
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +748,6 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.13060541
-  m_Height: 0.5063724
+  m_Height: 0.42242724
   m_Direction: 1
-  m_Center: {x: 0, y: 0.16305394, z: 0}
+  m_Center: {x: 0, y: 0.20372446, z: 0}
