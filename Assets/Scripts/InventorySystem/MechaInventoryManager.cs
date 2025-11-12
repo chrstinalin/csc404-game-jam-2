@@ -12,16 +12,13 @@ public class MechaInventoryManager : MonoBehaviour
         mouse = PlayerMouse.Instance;
         mechHealth = PlayerMech.Instance.GetComponent<Health>();
 
-        if (mouse != null)
-        {
-            mouseInventory = mouse.GetComponent<MouseInventoryManager>();
-        }
         movementManager = MovementManager.Instance;
     }
 
     private void Update()
     {
         if (mouse == null) return;
+        mouseInventory = mouse.GetComponent<MouseInventoryManager>();
         if (mouseInventory == null) return;
 
         if (Input.GetButtonDown("Interact") && mouseInventory.HasItem() && movementManager.IsMouseActive)
