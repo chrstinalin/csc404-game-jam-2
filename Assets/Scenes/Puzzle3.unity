@@ -2422,6 +2422,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4630009097792231531, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
   m_PrefabInstance: {fileID: 2084013839}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &349161380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349161379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.79607844, b: 0.050980393, a: 1}
+  outlineWidth: 4.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &362012368
 GameObject:
   m_ObjectHideFlags: 0
@@ -9492,7 +9510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   message: Press B to Toggle Lever
   characters:
-  - {fileID: 0}
+  - {fileID: 1857869856}
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1 &1306536771
 GameObject:
@@ -12653,6 +12671,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8353eed475b337745b78cef3f6a61e09, type: 3}
+--- !u!1 &1857869856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7275317914325388625, guid: 8353eed475b337745b78cef3f6a61e09, type: 3}
+  m_PrefabInstance: {fileID: 1857869855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1871247614
 GameObject:
   m_ObjectHideFlags: 0
@@ -14191,7 +14214,7 @@ PrefabInstance:
     - target: {fileID: 4529050911776806382, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       propertyPath: 'characters.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1133554855}
     - target: {fileID: 4529050911776806382, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       propertyPath: 'characters.Array.data[1]'
       value: 
@@ -14215,7 +14238,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4630009097792231531, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 349161380}
   m_SourcePrefab: {fileID: 100100000, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
 --- !u!1 &2085456864
 GameObject:
