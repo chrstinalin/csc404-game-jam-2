@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9195243934547429813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/UI Level Complete
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/UI/UI Level Complete
+  Guid:
+    Data1: 1381242488
+    Data2: 1249080199
+    Data3: 110388100
+    Data4: 1281465619
+  Banks:
+  - {fileID: -5422265311289516636}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2500
 --- !u!114 &-9061466118784407013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10,9 +37,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Main Menu/Pause Menu
+  m_Name: parameter:/Main Menu/Pause
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Pause Menu
+  Name: Pause
   StudioPath: 
   Min: 0
   Max: 1
@@ -24,6 +51,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-8968354795614947991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/UI Heal
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/UI/UI Heal
+  Guid:
+    Data1: -1170390920
+    Data2: 1083676918
+    Data3: -1250881347
+    Data4: 1139648801
+  Banks:
+  - {fileID: -5422265311289516636}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1718
 --- !u!114 &-8372465275182949131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,10 +146,10 @@ MonoBehaviour:
   Path: Assets/Audio/fmod_session/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638984952740000000
+  lastModified: 638994178160000000
   FileSizes:
   - Name: Desktop
-    Value: 2358
+    Value: 3260
   Exists: 1
 --- !u!114 &-6629663792959878094
 MonoBehaviour:
@@ -190,10 +244,10 @@ MonoBehaviour:
   Path: Assets/Audio/fmod_session/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638984952740000000
+  lastModified: 638994178160000000
   FileSizes:
   - Name: Desktop
-    Value: 10875648
+    Value: 12093824
   Exists: 1
 --- !u!114 &-5205921397061354323
 MonoBehaviour:
@@ -276,6 +330,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 807
+--- !u!114 &-3040316790861197020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/NPC/Enemy Destroyed
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/NPC/Enemy Destroyed
+  Guid:
+    Data1: 276096963
+    Data2: 1151850742
+    Data3: 668255626
+    Data4: 1395880248
+  Banks:
+  - {fileID: -5422265311289516636}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2088
+--- !u!114 &-3009021700328763661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mech/Switch Character Mech
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mech/Switch Character Mech
+  Guid:
+    Data1: -673717943
+    Data2: 1264463721
+    Data3: -1783764349
+    Data4: -1830176547
+  Banks:
+  - {fileID: -5422265311289516636}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 759
 --- !u!114 &-2618644062912533359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +412,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 242
+--- !u!114 &-2568146988187104630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Overworld Music/Level
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Level
+  StudioPath: 
+  Min: 1
+  Max: 5
+  Default: 1
+  ID:
+    data1: 3164294255
+    data2: 3358120660
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2206634632903120259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +665,12 @@ MonoBehaviour:
   - {fileID: -1651076751788801286}
   - {fileID: 835858894546438889}
   - {fileID: 8067178351339631254}
+  - {fileID: -3009021700328763661}
+  - {fileID: -9195243934547429813}
+  - {fileID: -8968354795614947991}
+  - {fileID: -3040316790861197020}
+  - {fileID: 6778854332675958527}
+  - {fileID: 3299823559465970269}
   EditorParameters:
   - {fileID: 6905522220606653627}
   MasterBanks:
@@ -540,7 +678,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -7343644737362765993}
   cacheVersion: 131856
-  cacheTime: 638984952740000000
+  cacheTime: 638994178160000000
   SerializableEventsDict:
   - key: event:/Music+Amb/Overworld Music
     index: 0
@@ -600,6 +738,18 @@ MonoBehaviour:
     index: 27
   - key: event:/SFX/NPC/Enemy Guns
     index: 28
+  - key: event:/SFX/Mech/Switch Character Mech
+    index: 29
+  - key: event:/SFX/UI/UI Level Complete
+    index: 30
+  - key: event:/SFX/UI/UI Heal
+    index: 31
+  - key: event:/SFX/NPC/Enemy Destroyed
+    index: 32
+  - key: event:/SFX/Mouse/Switch Character Mouse
+    index: 33
+  - key: event:/SFX/Interactables/Interactable Circuit Connect
+    index: 34
 --- !u!114 &322775302744877292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,12 +904,13 @@ MonoBehaviour:
   Banks:
   - {fileID: -5422265311289516636}
   IsStream: 1
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 0
   Parameters:
   - {fileID: 6403292909234995045}
   - {fileID: -8372465275182949131}
   - {fileID: 3377684986579643543}
+  - {fileID: -2568146988187104630}
   MinDistance: 1
   MaxDistance: 20
   Length: 101818
@@ -871,6 +1022,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 296
+--- !u!114 &3299823559465970269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Interactables/Interactable Circuit Connect
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Interactables/Interactable Circuit Connect
+  Guid:
+    Data1: -459968790
+    Data2: 1156871833
+    Data3: -810882118
+    Data4: -1287986165
+  Banks:
+  - {fileID: -5422265311289516636}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 61606
 --- !u!114 &3377684986579643543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,9 +1059,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Overworld Music/Pause Menu
+  m_Name: parameter:/Overworld Music/Pause
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Pause Menu
+  Name: Pause
   StudioPath: 
   Min: 0
   Max: 1
@@ -1031,6 +1209,33 @@ MonoBehaviour:
   - LO Off
   - LO On
   Exists: 1
+--- !u!114 &6778854332675958527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mouse/Switch Character Mouse
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mouse/Switch Character Mouse
+  Guid:
+    Data1: 205456105
+    Data2: 1154799374
+    Data3: 1029835400
+    Data4: -2031643270
+  Banks:
+  - {fileID: -5422265311289516636}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 759
 --- !u!114 &6905522220606653627
 MonoBehaviour:
   m_ObjectHideFlags: 0
