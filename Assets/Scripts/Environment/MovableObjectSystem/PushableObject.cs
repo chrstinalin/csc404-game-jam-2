@@ -8,10 +8,14 @@ public class PushableObject : MovableObject
     public float moveSpeed = 2f;
     [SerializeField] public EventReference boxPushSFX;
 
+    public TopTrigger topTrigger;
+
     private bool isBeingPushed = false;
     private Rigidbody rb;
     private Vector3Int currentCell;
     private MovementManager movementManager;
+
+    private float mouseStartY = 0f;
 
     private void Awake()
     {
@@ -35,8 +39,29 @@ public class PushableObject : MovableObject
             TryPush();
 
         if (!isBeingPushed)
-        {
             rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+
+        CheckIfMouseIsOnTop();
+    }
+
+    private void CheckIfMouseIsOnTop()
+    {
+        if (PlayerMouse.Instance == null || topTrigger == null)
+            return;
+
+        if (topTrigger.mouseOnTop && isBeingPushed)
+        {
+            if (PlayerMouse.Instance.transform.parent != transform)
+                PlayerMouse.Instance.transform.SetParent(transform);
+
+            Vector3 mousePos = PlayerMouse.Instance.transform.position;
+            mousePos.y = mouseStartY;
+            PlayerMouse.Instance.transform.position = mousePos;
+        }
+        else
+        {
+            if (PlayerMouse.Instance.transform.parent == transform)
+                PlayerMouse.Instance.transform.SetParent(null);
         }
     }
 
@@ -57,6 +82,9 @@ public class PushableObject : MovableObject
 
         if (trigger == null)
             return;
+
+        if (topTrigger != null && topTrigger.mouseOnTop)
+            mouseStartY = PlayerMouse.Instance.transform.position.y;
 
         Vector3Int pushDir = GetPushDirection(trigger.side);
         Vector3Int targetCell = currentCell + pushDir;

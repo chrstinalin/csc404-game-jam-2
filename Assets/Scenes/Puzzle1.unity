@@ -4708,24 +4708,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4630009097792231531, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
   m_PrefabInstance: {fileID: 2090625795}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &486838443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486838442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 0.79607844, b: 0.050980393, a: 1}
-  outlineWidth: 4.5
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &493301668
 GameObject:
   m_ObjectHideFlags: 0
@@ -24918,18 +24900,6 @@ PrefabInstance:
       value: MetalCrate
       objectReference: {fileID: 0}
     - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -31.25
       objectReference: {fileID: 0}
@@ -24969,109 +24939,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1562503141258130922, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.089
-      objectReference: {fileID: 0}
-    - target: {fileID: 2914299923861917658, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_Size.z
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3074543962890328174, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_Size.z
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3680202993251284669, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0890007
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718516610046517000, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_Mass
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718516610046517000, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718516610046517000, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718516610046517000, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3832520895297871115, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0890007
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529050911776806382, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: message
-      value: Press B to Push Metal Crate
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529050911776806382, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: characters.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4529050911776806382, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       propertyPath: 'characters.Array.data[0]'
       value: 
       objectReference: {fileID: 1133554855}
-    - target: {fileID: 4529050911776806382, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: 'characters.Array.data[1]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5130553804231328151, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_Size.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6413748383990149413, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0890007
-      objectReference: {fileID: 0}
-    - target: {fileID: 8487841077197916177, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_Size.x
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       propertyPath: grid
       value: 
       objectReference: {fileID: 1698328769}
-    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1133554855}
-    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: floorHeight
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: boxPushSFX.Path
-      value: event:/SFX/Interactables/Interactable Box Push
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: boxPushSFX.Guid.Data1
-      value: 1820421883
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: boxPushSFX.Guid.Data2
-      value: 1204829179
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: boxPushSFX.Guid.Data3
-      value: 1369536436
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: boxPushSFX.Guid.Data4
-      value: -1718188560
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4630009097792231531, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 486838443}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
 --- !u!1 &2101920235
 GameObject:

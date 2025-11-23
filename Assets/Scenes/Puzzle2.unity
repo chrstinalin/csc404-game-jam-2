@@ -17436,6 +17436,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.089
       objectReference: {fileID: 0}
+    - target: {fileID: 1887822426310557311, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      propertyPath: m_Size.y
+      value: 0.30148622
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887822426310557311, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      propertyPath: m_Center.y
+      value: 0.9196383
+      objectReference: {fileID: 0}
     - target: {fileID: 2914299923861917658, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       propertyPath: m_Size.z
       value: 0.7
@@ -17517,12 +17525,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      propertyPath: topTrigger
+      value: 
+      objectReference: {fileID: 1695134546}
+    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       propertyPath: floorHeight
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       propertyPath: boxPushSFX.Path
       value: event:/SFX/Interactables/Interactable Box Push
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      propertyPath: topSurfaceCollider
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       propertyPath: boxPushSFX.Guid.Data1
@@ -17571,6 +17587,17 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &1695134546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5537488390636814984, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+  m_PrefabInstance: {fileID: 1695134543}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b9d31d5af837c408c079a79da7bbc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TopTrigger
 --- !u!1 &1697123343
 GameObject:
   m_ObjectHideFlags: 0
