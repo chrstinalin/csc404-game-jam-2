@@ -11,16 +11,19 @@ public class MechAIController : MonoBehaviour, IOffense
     private AIState CurrentState;
 
     private bool AttackActive = false;
-    [SerializeField] private float attackRange = 20f;
     
-    private GameObject lastAttacker;
-    private float lastAttackTime;
-    private float retaliationMemoryDuration = 5f;
+    private Animator Animator;
+    private MechWeapon MechWeapon;
+
+    private Vector3 lastPosition;
+    private float stuckCheckTimer = 0f;
 
     void Awake()
     {
         Instance = this;
         Agent = GetComponent<NavMeshAgent>();
+        Animator = GetComponentInChildren<Animator>();
+        MechWeapon = GetComponentInChildren<MechWeapon>(true);
         if (Agent != null)
         {
             Agent.updateRotation = true;
@@ -30,44 +33,17 @@ public class MechAIController : MonoBehaviour, IOffense
     void Start()
     {
         CurrentState = AIState.Idle;
+        lastPosition = transform.position;
+        
         if (PlayerMarker.Instance != null)
         {
             PlayerMarker.Instance.OnTargetChanged += SetTarget;
         }
     }
 
-    public void OnAttackedBy(GameObject attacker)
-    {
-        if (attacker == null) return;
-        
-        Debug.Log("MechAIController.OnAttackedBy called with attacker: " + attacker.name);
-        
-        lastAttacker = attacker;
-        lastAttackTime = Time.time;
-        
-        SetTarget(attacker);
-    }
-
     void Update()
     {
         if (Agent == null) return;
-
-        if (lastAttacker != null && Time.time - lastAttackTime < retaliationMemoryDuration)
-        {
-            Health attackerHealth = lastAttacker.GetComponent<Health>();
-            if (attackerHealth == null || attackerHealth.GetCurrHealth() <= 0)
-            {
-                lastAttacker = null;
-                if (Target == lastAttacker)
-                {
-                    SetTarget(null);
-                }
-            }
-        }
-        else if (lastAttacker != null && Time.time - lastAttackTime >= retaliationMemoryDuration)
-        {
-            lastAttacker = null;
-        }
 
         if (Target == null)
         {
@@ -81,38 +57,88 @@ public class MechAIController : MonoBehaviour, IOffense
             return;
         }
 
-        // Ignore ground targets
-        if (Target.name == "GroundTarget")
-        {
-            AttackActive = false;
-            Agent.isStopped = true;
-            Agent.ResetPath();
-            CurrentState = AIState.Idle;
-            return;
-        }
-
         Vector3 targetPos = Target.transform.position;
         Vector3 directionToTarget = targetPos - transform.position;
         directionToTarget.y = 0;
         float distance = directionToTarget.magnitude;
 
+        // Ground navigation
+        if (Target.name == "GroundTarget")
+        {
+            // Stuck/blocked check
+            stuckCheckTimer += Time.deltaTime;
+            if (stuckCheckTimer >= Config.STUCK_CHECK_INTERVAL)
+            {
+                Vector2 currentPosXZ = new Vector2(transform.position.x, transform.position.z);
+                Vector2 lastPosXZ = new Vector2(lastPosition.x, lastPosition.z);
+                float movedDistance = Vector2.Distance(currentPosXZ, lastPosXZ);
+                
+                if (movedDistance < Config.STUCK_THRESHOLD && !Agent.isStopped)
+                {
+                    Destroy(Target);
+                    Target = null;
+                    if (PlayerMarker.Instance != null) PlayerMarker.Instance.Target = null;
+                    CurrentState = AIState.Idle;
+                    AttackActive = false;
+                    Agent.isStopped = true;
+                    Agent.ResetPath();
+                    UpdateAnimator();
+                    return;
+                }
+                
+                lastPosition = transform.position;
+                stuckCheckTimer = 0f;
+            }
+            
+            if (distance <= Config.MIN_AI_DISTANCE)
+            {
+                Destroy(Target);
+                Target = null;
+                if (PlayerMarker.Instance != null) PlayerMarker.Instance.Target = null;
+                CurrentState = AIState.Idle;
+                AttackActive = false;
+                Agent.isStopped = true;
+                Agent.ResetPath();
+            }
+            else
+            {
+                CurrentState = AIState.Walk;
+                AttackActive = false;
+                Agent.isStopped = false;
+                Vector3 destination = targetPos;
+                NavMeshHit navHit;
+                if (NavMesh.SamplePosition(targetPos, out navHit, 2.0f, NavMesh.AllAreas))
+                {
+                    destination = navHit.position;
+                }
+                Agent.SetDestination(destination);
+            }
+            UpdateAnimator();
+            return;
+        }
+
         bool isPlayerMouse = Target == PlayerMouse.Instance?.gameObject;
+        bool isPlayerMarker = Target == PlayerMarker.Instance?.gameObject;
         bool isLockOnSelectable = Target.GetComponent<LockOnSelectable>() != null;
-        bool isEnemy = Target.GetComponent<DamageReceiver>() != null && !isPlayerMouse;
+        bool isEnemy = Target.GetComponent<DamageReceiver>() != null && !isPlayerMouse && !isPlayerMarker;
 
         if (isEnemy)
         {
-            if (distance <= attackRange)
+            if (distance <= Config.ATTACK_RANGE)
             {
-                CurrentState = AIState.Attack;
+                CurrentState = AIState.Idle;
                 Agent.isStopped = true;
                 Agent.ResetPath();
-                AttackActive = true;
+                AttackActive = false;
 
                 if (directionToTarget != Vector3.zero)
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
                     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+                }
+                if (Input.GetButtonDown("Interact") && MechWeapon != null)
+                {
+                    MechWeapon.Fire();
                 }
             }
             else
@@ -121,6 +147,62 @@ public class MechAIController : MonoBehaviour, IOffense
                 Agent.isStopped = false;
                 AttackActive = false;
                 Agent.SetDestination(targetPos);
+            }
+        }
+        else if (isPlayerMarker)
+        {
+            GameObject markerTarget = PlayerMarker.Instance?.Target;
+            if (markerTarget != null && markerTarget != gameObject)
+            {
+                bool markerTargetIsEnemy = markerTarget.GetComponent<DamageReceiver>() != null;
+                
+                if (markerTargetIsEnemy)
+                {
+                    Vector3 enemyPos = markerTarget.transform.position;
+                    float distToEnemy = Vector3.Distance(transform.position, enemyPos);
+                    
+                    if (distToEnemy <= Config.ATTACK_RANGE)
+                    {
+                        CurrentState = AIState.Idle;
+                        Agent.isStopped = true;
+                        Agent.ResetPath();
+                        AttackActive = false;
+                        
+                        Vector3 dirToEnemy = enemyPos - transform.position;
+                        dirToEnemy.y = 0;
+                        if (dirToEnemy != Vector3.zero)
+                        {
+                            Quaternion targetRotation = Quaternion.LookRotation(dirToEnemy);
+                            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+                        }
+
+                        if (Input.GetButtonDown("Interact") && MechWeapon != null)
+                        {
+                            MechWeapon.Fire();
+                        }
+                    }
+                    else
+                    {
+                        CurrentState = AIState.Walk;
+                        Agent.isStopped = false;
+                        AttackActive = false;
+                        Agent.SetDestination(enemyPos);
+                    }
+                }
+                else
+                {
+                    CurrentState = AIState.Walk;
+                    AttackActive = false;
+                    Agent.isStopped = false;
+                    Agent.SetDestination(markerTarget.transform.position);
+                }
+            }
+            else
+            {
+                CurrentState = AIState.Idle;
+                AttackActive = false;
+                Agent.isStopped = true;
+                Agent.ResetPath();
             }
         }
         else if (isLockOnSelectable)
@@ -140,6 +222,31 @@ public class MechAIController : MonoBehaviour, IOffense
                 Agent.SetDestination(destination);
             }
         }
+        else if (isPlayerMouse)
+        {
+            AttackActive = false;
+            if (Input.GetButton("SummonMecha"))
+            {
+                if (distance > Config.MIN_AI_DISTANCE)
+                {
+                    CurrentState = AIState.Walk;
+                    Agent.isStopped = false;
+                    Agent.SetDestination(targetPos);
+                }
+                else
+                {
+                    CurrentState = AIState.Idle;
+                    Agent.isStopped = true;
+                    Agent.ResetPath();
+                }
+            }
+            else
+            {
+                CurrentState = AIState.Idle;
+                Agent.isStopped = true;
+                Agent.ResetPath();
+            }
+        }
         else
         {
             CurrentState = AIState.Walk;
@@ -147,6 +254,14 @@ public class MechAIController : MonoBehaviour, IOffense
             Agent.isStopped = false;
             Agent.SetDestination(targetPos);
         }
+        UpdateAnimator();
+    }
+
+    private void UpdateAnimator()
+    {
+        if (Animator == null) return;
+        bool isWalking = CurrentState == AIState.Walk && Agent != null && !Agent.isStopped;
+        Animator.SetBool("isRunning", isWalking);
     }
 
     public void SetTarget(GameObject NewTarget)

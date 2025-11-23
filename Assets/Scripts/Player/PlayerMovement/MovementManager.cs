@@ -66,24 +66,18 @@ public class MovementManager : PlayerMovementManager
         if (IsMouseActive)
         {
             MouseMovementState.UpdateState(this, true, moveDir);
-            if (Input.GetButton("SummonMecha"))
+            if (Input.GetButton("SummonMecha") && Vector3.Distance(Mech.transform.position, Mouse.transform.position) > Config.MIN_AI_DISTANCE)
             {
                 MechAIController.SetTarget(Mouse.gameObject);
             }
-            else
+            else if (MechAIController.Target == Mouse.gameObject)
             {
                 MechAIController.SetTarget(null);
             }
-
         }
         else
         {
             MechMovementState.UpdateState(this, !IsMouseActive, moveDir);
-
-            if (MechAIController.Target == Mouse.gameObject)
-            {
-                MechAIController.SetTarget(null);
-            }
         }
 
         if (Input.GetButtonDown("MountKey"))

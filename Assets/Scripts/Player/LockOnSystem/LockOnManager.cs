@@ -25,8 +25,7 @@ public class LockOnManager : MonoBehaviour
 
     void Update()
     {
-        bool playerControllingMech = MovementManager != null && !MovementManager.IsMouseActive;
-        if (!playerControllingMech)
+        if (MovementManager == null)
         {
             if (lockOnMode)
             {
@@ -55,6 +54,7 @@ public class LockOnManager : MonoBehaviour
             CameraManager.SetCameraFOV(Config.CAMERA_LOCK_ON_FOV);
             navMeshEdgeVisualizer.ShowFilledArea();
             MovementManager.Reset();
+            MovementManager.MechAIController.Agent.enabled = true;
         }
         else
         {
