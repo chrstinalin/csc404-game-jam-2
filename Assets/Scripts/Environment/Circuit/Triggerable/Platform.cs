@@ -7,6 +7,7 @@ public class Platform : TriggerableAbstract
     [Header("Movement Settings")]
     public float distance = 3f;
     public float speed = 2f;
+    public bool carryObjects = true;
 
     private Vector3 startPos;
     private Vector3 targetPos;
@@ -63,6 +64,8 @@ public class Platform : TriggerableAbstract
 
     private void OnCollisionStay(Collision collision)
     {
+        if (!carryObjects) return;
+        
         if (!movingUp) return;
 
         Rigidbody rbOther = collision.rigidbody;
