@@ -73,16 +73,7 @@ public class PlayerMouse : MonoBehaviour
 
     public void OnDeath()
     {
-        var checkpointManager = CheckpointManager.Instance;
-        if (checkpointManager != null)
-        {
-            checkpointManager.RespawnCharacters();
-        }
-
-        if (Health != null)
-        {
-            Health.Heal(Health.GetMaxHealth());
-        }
+        RespawnManager.Instance.StartRespawnCountdown(false);
     }
 
     private IEnumerator FlashSprite()
