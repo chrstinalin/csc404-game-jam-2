@@ -61,7 +61,7 @@ public class PlayerMech : MonoBehaviour
         Health.TakeDamage(damage);
         isInvulnerable = true;
         iFrameTimer = iFrameDuration;
-        StartCoroutine(FlashSprite());
+        if (Health.GetCurrHealth() > 0) StartCoroutine(FlashSprite());
     }
 
     public void TakeDamageFromSource(int damage, GameObject source)
@@ -84,21 +84,12 @@ public class PlayerMech : MonoBehaviour
         Health.TakeDamage(damage);
         isInvulnerable = true;
         iFrameTimer = iFrameDuration;
-        StartCoroutine(FlashSprite());
+        if (Health.GetCurrHealth() > 0) StartCoroutine(FlashSprite());
     }
 
     public void OnDeath()
     {
-        var checkpointManager = CheckpointManager.Instance;
-        if (checkpointManager != null)
-        {
-            checkpointManager.RespawnCharacters();
-        }
-        
-        if (Health != null)
-        {
-            Health.Heal(Health.GetMaxHealth());
-        }
+        RespawnManager.Instance.StartRespawnCountdown(true);
     }
 
     private IEnumerator FlashSprite()

@@ -50,7 +50,7 @@ public class MechAIController : MonoBehaviour, IOffense
 
     void Update()
     {
-        if (Agent == null) return;
+        if (!gameObject.activeSelf || Agent == null) return;
 
         if (lastAttacker != null && Time.time - lastAttackTime < retaliationMemoryDuration)
         {
@@ -151,6 +151,8 @@ public class MechAIController : MonoBehaviour, IOffense
 
     public void SetTarget(GameObject NewTarget)
     {    
+        if (!gameObject.activeSelf) return;
+        
         if (Target != null)
         {
             Health oldHealth = Target.GetComponent<Health>();

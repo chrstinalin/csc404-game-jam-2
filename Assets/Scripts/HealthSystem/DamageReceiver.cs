@@ -14,6 +14,8 @@ public class DamageReceiver : MonoBehaviour
 
     public void ReceiveDamage(int damage, GameObject source)
     {
+        if (!gameObject.activeSelf) return;
+        
         if (onTakeDamage != null)
         {
             onTakeDamage.Invoke(damage);
