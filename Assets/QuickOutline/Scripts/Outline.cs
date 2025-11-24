@@ -62,6 +62,12 @@ public class Outline : MonoBehaviour {
   [SerializeField, Range(0f, 10f)]
   private float outlineWidth = 2f;
 
+  [SerializeField]
+  private bool isMouseInteractable = true;
+
+   [SerializeField]
+  private bool isMechInteractable = true;
+
   [Header("Optional")]
 
   [SerializeField, Tooltip("Precompute enabled: Per-vertex calculations are performed in the editor and serialized with the object. "
@@ -79,6 +85,12 @@ public class Outline : MonoBehaviour {
   private Material outlineFillMaterial;
 
   private bool needsUpdate;
+
+  private MovementManager movementManager;
+
+  private bool mouseActive;
+
+  private InteractableObject interactable;
 
   void Awake() {
 
@@ -99,18 +111,61 @@ public class Outline : MonoBehaviour {
     needsUpdate = true;
   }
 
-  void OnEnable() {
-    foreach (var renderer in renderers) {
+    void Start()
+    {
+      movementManager = MovementManager.Instance;
+      mouseActive = movementManager.IsMouseActive;
 
-      // Append outline shaders
-      var materials = renderer.sharedMaterials.ToList();
+          interactable = GetComponent<InteractableObject>();
+    
+    if (interactable != null && interactable.characters != null)
+    {
+      foreach (var character in interactable.characters)
+      { 
+        isMechInteractable = false;
+        isMouseInteractable = false;
 
-      materials.Add(outlineMaskMaterial);
-      materials.Add(outlineFillMaterial);
+        if (character == null) continue;
 
-      renderer.materials = materials.ToArray();
+        if (character.CompareTag("MechPlayerEntity"))
+            isMechInteractable = true;
+
+        if (character.CompareTag("MousePlayerEntity"))
+            isMouseInteractable = true;
+      }
     }
-  }
+    }
+
+    void applyOutline()
+    { 
+      foreach (var renderer in renderers) {
+        // Append outline shaders
+        var materials = renderer.sharedMaterials.ToList();
+
+        materials.Add(outlineMaskMaterial);
+        materials.Add(outlineFillMaterial);
+
+        renderer.materials = materials.ToArray();
+      }
+    }
+
+    void clearOutline()
+    {
+       foreach (var renderer in renderers) {
+
+        // Remove outline shaders
+        var materials = renderer.sharedMaterials.ToList();
+
+        materials.Remove(outlineMaskMaterial);
+        materials.Remove(outlineFillMaterial);
+
+        renderer.materials = materials.ToArray();
+      } 
+    }
+
+    void OnEnable() {
+      applyOutline();
+    }
 
   void OnValidate() {
 
@@ -129,25 +184,33 @@ public class Outline : MonoBehaviour {
     }
   }
 
-  void Update() {
-    if (needsUpdate) {
-      needsUpdate = false;
+  void Update()
+{
+  if (needsUpdate || mouseActive != movementManager.IsMouseActive)
+  {
+    needsUpdate = false;
+    mouseActive = movementManager.IsMouseActive;
 
-      UpdateMaterialProperties();
+    bool shouldClear =
+      (isMechInteractable && mouseActive) ||
+      (isMouseInteractable && !mouseActive);
+
+    if (shouldClear)
+    {
+      clearOutline();
     }
+    else
+    {
+      applyOutline();
+    }
+
+    UpdateMaterialProperties();   // always run
   }
+}
+
 
   void OnDisable() {
-    foreach (var renderer in renderers) {
-
-      // Remove outline shaders
-      var materials = renderer.sharedMaterials.ToList();
-
-      materials.Remove(outlineMaskMaterial);
-      materials.Remove(outlineFillMaterial);
-
-      renderer.materials = materials.ToArray();
-    }
+    clearOutline();
   }
 
   void OnDestroy() {
