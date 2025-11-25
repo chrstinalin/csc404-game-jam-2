@@ -27,7 +27,6 @@ public class MovementState : PlayerMovementState
     private const float SNEAK_MULTIPLIER = 0.3f;
 
     private const float FALL_MULTIPLIER = 2.5f;
-    private const float LOW_JUMP_MULTIPLIER = 2f;
 
     private Vector3? FollowVector = null;
 
