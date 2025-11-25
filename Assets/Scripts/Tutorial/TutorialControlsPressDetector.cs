@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class TutorialEvents : MonoBehaviour
+public class TutorialControlsPressDetector: MonoBehaviour
 {
     [Header("Tutorial Manager")]
     public TutorialManager tutorialManager;
 
     private bool switchedToPeanutDone = false;
+    private bool activatedLockOnMode = false;
 
     public void CheckSwitchToPeanut()
     {
@@ -20,8 +21,21 @@ public class TutorialEvents : MonoBehaviour
         }
     }
 
+    public void CheckActivateLockOnMode()
+    {
+        if (activatedLockOnMode)
+            return;
+
+        if (Input.GetButtonDown("ToggleLockOnMode"))
+        {
+
+            tutorialManager.TriggerMilestone(TutorialManager.Milestone.ActivateLockOnMode);
+        }
+    }
+
     private void Update()
     {
         CheckSwitchToPeanut();
+        CheckActivateLockOnMode();
     }
 }

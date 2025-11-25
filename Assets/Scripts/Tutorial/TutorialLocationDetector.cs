@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class ExitRoomTrigger : MonoBehaviour
+public class TutorialLocationDetector : MonoBehaviour
 {
     [Header("Tutorial Manager")]
     public TutorialManager tutorialManager;

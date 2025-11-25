@@ -5,30 +5,37 @@ public class TutorialManager : MonoBehaviour
 {
     public TutorialText tutorialText;
 
+    [Header("Required Milestones For This Tutorial (in order)")]
+    public List<Milestone> requiredMilestones = new List<Milestone>();
+
     public enum Milestone
     {
         SwitchedToPeanut,
         LeverPulled,
         RoomExited,
-
+        WalkedAroundLasers,
+        ActivateLockOnMode,
+        DestroyEnemy
     }
 
-    private HashSet<Milestone> completed = new HashSet<Milestone>();
+    private int nextRequiredIndex = 0;
 
     public void TriggerMilestone(Milestone milestone)
     {
-        if (completed.Contains(milestone))
+        if (nextRequiredIndex >= requiredMilestones.Count)
             return;
 
-        completed.Add(milestone);
+        if (requiredMilestones[nextRequiredIndex] != milestone)
+            return;
 
-        Debug.Log("Milestone completed: " + milestone);
+        nextRequiredIndex++;
 
         tutorialText.Next();
     }
 
     public bool IsCompleted(Milestone milestone)
     {
-        return completed.Contains(milestone);
+        int index = requiredMilestones.IndexOf(milestone);
+        return index >= 0 && index < nextRequiredIndex;
     }
 }

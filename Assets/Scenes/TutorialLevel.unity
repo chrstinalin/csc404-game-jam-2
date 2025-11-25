@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialManager
   tutorialText: {fileID: 2134982949}
+  requiredMilestones: 000000000100000002000000
 --- !u!4 &202798236
 Transform:
   m_ObjectHideFlags: 0
@@ -5610,7 +5611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNextPuzzle
   delayBeforeLoad: 1
-  nextSceneName: Puzzle1
+  nextSceneName: TutorialLevel2
 --- !u!65 &1988005311
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6305,9 +6306,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 816061550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -228.23386, y: -154.55418}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 358.9, y: 180.2}
   m_SizeDelta: {x: 590.7142, y: 201.4992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2134982947
@@ -6332,7 +6333,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d3e195419224f3b4fb92e88a223f2e12, type: 3}
-    m_FontSize: 18
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -6343,7 +6344,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: SAMPLE TEXT
 --- !u!222 &2134982948
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6366,12 +6367,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   textUI: {fileID: 2134982947}
   lines:
-  - '> Initializing...
+  - '> Initializing TRAINING_MODULE_1...
 
     > [SCAN] Door is locked.
 
-    > [DIRECTIVE] Press Y to
-    control Peanut.'
+    > [DIRECTIVE]
+    Press Y to control Peanut.'
   - '> Squeak()
 
     > [INFO] Levers start the flow of electricity.
@@ -6394,7 +6395,7 @@ MonoBehaviour:
     [INFO] Only Dreadnought Killer can move metal crates.
 
     > [DIRECTIVE] Get
-    BOTH Dreadnought Killer and Peanut to the exit to progress.'
+    BOTH Dreadnought Killer and Peanut to the EXIT to progress.'
   typeSpeed: 0.02
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

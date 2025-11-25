@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TriggerableMilestoneDetector : MonoBehaviour
+public class TriggerableActivationDetector : MonoBehaviour
 {
     [Header("Tutorial Manager")]
     public TutorialManager tutorialManager;
