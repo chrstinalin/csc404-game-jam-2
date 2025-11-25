@@ -66,6 +66,8 @@ public class PlayerMech : MonoBehaviour
 
     public void TakeDamageFromSource(int damage, GameObject source)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.MechHurtSFX, transform.position, 2f);
+
         if (AIController == null)
         {
             AIController = GetComponent<MechAIController>();

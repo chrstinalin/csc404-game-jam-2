@@ -105,7 +105,7 @@ public class MovementManager : PlayerMovementManager
         {
             if(AudioManager.Instance != null) {
                 AudioManager.Instance.PlaySFX(
-                    AudioManager.Instance.switchToMouseSFX, PlayerMouse.Instance.transform.position, 1f);
+                    AudioManager.Instance.SwitchToMouseSFX, PlayerMouse.Instance.transform.position, 1f);
         
             }
         }
@@ -113,7 +113,7 @@ public class MovementManager : PlayerMovementManager
         {
             if(AudioManager.Instance != null) {
                 AudioManager.Instance.PlaySFX(
-                    AudioManager.Instance.switchToMechSFX, PlayerMech.Instance.transform.position, 1f);
+                    AudioManager.Instance.SwitchToMechSFX, PlayerMech.Instance.transform.position, 1f);
             }
         }
 

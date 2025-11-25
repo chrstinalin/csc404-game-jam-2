@@ -1104,6 +1104,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
+  lockOnSFX:
+    Guid:
+      Data1: 1328528811
+      Data2: 1310755623
+      Data3: -1303860096
+      Data4: -793793619
+    Path: event:/SFX/Mech/Mech Lockon
 --- !u!1 &116588534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2930,7 +2937,7 @@ MonoBehaviour:
       Data3: 1808741021
       Data4: 566753745
     Path: event:/SFX/Interactables/Interactable Electricity
-  volume: 0.2
+  volume: 0.5
 --- !u!1 &366247882
 GameObject:
   m_ObjectHideFlags: 0
@@ -4749,7 +4756,7 @@ MonoBehaviour:
       Data3: 1808741021
       Data4: 566753745
     Path: event:/SFX/Interactables/Interactable Electricity
-  volume: 0.2
+  volume: 0.5
 --- !u!1 &588716246
 GameObject:
   m_ObjectHideFlags: 0
@@ -8940,7 +8947,7 @@ MonoBehaviour:
       Data3: 1808741021
       Data4: 566753745
     Path: event:/SFX/Interactables/Interactable Electricity
-  volume: 0.2
+  volume: 0.5
 --- !u!1 &921383802
 GameObject:
   m_ObjectHideFlags: 0
@@ -12380,46 +12387,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 112141419}
     m_Modifications:
-    - target: {fileID: 3893624488736746261, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
-      propertyPath: switchToMechSFX.Path
-      value: event:/SFX/Mech/Switch Character Mech
-      objectReference: {fileID: 0}
-    - target: {fileID: 3893624488736746261, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
-      propertyPath: switchToMouseSFX.Path
-      value: event:/SFX/Mouse/Switch Character Mouse
-      objectReference: {fileID: 0}
-    - target: {fileID: 3893624488736746261, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
-      propertyPath: switchToMechSFX.Guid.Data1
-      value: -673717943
-      objectReference: {fileID: 0}
-    - target: {fileID: 3893624488736746261, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
-      propertyPath: switchToMechSFX.Guid.Data2
-      value: 1264463721
-      objectReference: {fileID: 0}
-    - target: {fileID: 3893624488736746261, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
-      propertyPath: switchToMechSFX.Guid.Data3
-      value: -1783764349
-      objectReference: {fileID: 0}
-    - target: {fileID: 3893624488736746261, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
-      propertyPath: switchToMechSFX.Guid.Data4
-      value: -1830176547
-      objectReference: {fileID: 0}
-    - target: {fileID: 3893624488736746261, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
-      propertyPath: switchToMouseSFX.Guid.Data1
-      value: 205456105
-      objectReference: {fileID: 0}
-    - target: {fileID: 3893624488736746261, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
-      propertyPath: switchToMouseSFX.Guid.Data2
-      value: 1154799374
-      objectReference: {fileID: 0}
-    - target: {fileID: 3893624488736746261, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
-      propertyPath: switchToMouseSFX.Guid.Data3
-      value: 1029835400
-      objectReference: {fileID: 0}
-    - target: {fileID: 3893624488736746261, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
-      propertyPath: switchToMouseSFX.Guid.Data4
-      value: -2031643270
-      objectReference: {fileID: 0}
     - target: {fileID: 4108258250888608155, guid: df2c4ca8eb365d24d9add768392f5003, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.70059
@@ -12756,7 +12723,7 @@ MonoBehaviour:
       Data3: 1808741021
       Data4: 566753745
     Path: event:/SFX/Interactables/Interactable Electricity
-  volume: 0.2
+  volume: 0.5
 --- !u!1 &1277346276
 GameObject:
   m_ObjectHideFlags: 0
@@ -15208,9 +15175,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1254192303}
     - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: DeathSFX.Path
+      value: event:/SFX/NPC/Enemy Destroyed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: scrapPilePrefab
       value: 
       objectReference: {fileID: 525362753}
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: DeathSFX.Guid.Data1
+      value: 276096963
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: DeathSFX.Guid.Data2
+      value: 1151850742
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: DeathSFX.Guid.Data3
+      value: 668255626
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: DeathSFX.Guid.Data4
+      value: 1395880248
+      objectReference: {fileID: 0}
     - target: {fileID: 4863460522451835848, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: bulletSFX.Path
       value: event:/SFX/NPC/Enemy Guns
@@ -17115,7 +17102,7 @@ MonoBehaviour:
       Data3: 1808741021
       Data4: 566753745
     Path: event:/SFX/Interactables/Interactable Electricity
-  volume: 0.2
+  volume: 0.5
 --- !u!1 &1645516549
 GameObject:
   m_ObjectHideFlags: 0
@@ -23101,7 +23088,7 @@ MonoBehaviour:
       Data3: 1808741021
       Data4: 566753745
     Path: event:/SFX/Interactables/Interactable Electricity
-  volume: 0.2
+  volume: 0.5
 --- !u!1001 &2134855957
 PrefabInstance:
   m_ObjectHideFlags: 0
