@@ -81,7 +81,6 @@ public class Platform : TriggerableAbstract
         if (!IsOn)
         {
             IsOn = true;
-            InvokeTurnedOn();
         }
     }
 
@@ -90,7 +89,6 @@ public class Platform : TriggerableAbstract
         if (IsOn)
         {
             IsOn = false;
-            InvokeTurnedOff();
         }
     }
 }

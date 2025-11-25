@@ -1,11 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
+using FMODUnity;
 
 [RequireComponent(typeof(Collider))]
 public class Button3D : TriggerAbstract
 {
     public List<GameObject> TriggerObjects = new List<GameObject>();
-    public bool isInvisible;
+    public List<TriggerAbstract> SoundTriggerDependencies = new List<TriggerAbstract>();
+
+    [SerializeField] private EventReference buttonPressSFX;
+
     [SerializeField] private GameObject unpressedModel;
     [SerializeField] private GameObject pressedModel;
 
@@ -54,11 +58,22 @@ public class Button3D : TriggerAbstract
         if (IsActive) return;
         IsActive = true;
         UpdateVisuals();
-        if (!isInvisible)
+
+        // Only play SFX if all dependencies are active
+        bool allDependenciesActive = true;
+        foreach (var dep in SoundTriggerDependencies)
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.ButtonPressSFX, transform.position, 5f);
+            if (dep == null || !dep.IsActive)
+            {
+                allDependenciesActive = false;
+                break;
+            }
         }
-        
+
+        if (allDependenciesActive && AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(buttonPressSFX, transform.position, 5f);
+        }
     }
 
     public override void Deactivate()
