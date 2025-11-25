@@ -12,14 +12,14 @@ public class OutlineController : MonoBehaviour
 
     private void Awake()
     {
-        outline = GetComponent<Outline>();
         movementManager = MovementManager.Instance;
 
         var interactableObject = GetComponent<InteractableObject>();
         if (interactableObject != null)
         {
             foreach (var character in interactableObject.characters)
-            {
+            {   
+                Debug.Log(interactableObject.characters);
                 if (character.CompareTag("MechPlayerEntity"))
                     isMechInteractable = true;
 
@@ -31,7 +31,8 @@ public class OutlineController : MonoBehaviour
 
     private void Start()
     {
-        movementManager = GameObject.FindGameObjectWithTag("MovementManager")?.GetComponent<MovementManager>();
+        movementManager = MovementManager.Instance;
+        outline = GetComponentInChildren<Outline>();
         lastMouseState = movementManager.IsMouseActive;
         UpdateOutline();
     }
@@ -56,10 +57,12 @@ public class OutlineController : MonoBehaviour
         if (shouldClear)
         {
             outline.enabled = false;
+            Debug.Log("cleared");
         }
         else
         {
             outline.enabled = true;
+            Debug.Log("enabled");
         }
     }
 }

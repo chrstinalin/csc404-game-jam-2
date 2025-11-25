@@ -71,6 +71,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8706079234102414326}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5718209674405508685}
   m_SourcePrefab: {fileID: 100100000, guid: 0390ac4b6bd48459ba7126590557d0de, type: 3}
 --- !u!1 &8120636863540370014 stripped
 GameObject:
@@ -146,6 +149,21 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
 --- !u!114 &-8706079234102414326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120636863540370014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11879caca7af91b4fbb4e5ead59aca92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OutlineController
+  isMechInteractable: 0
+  isMouseInteractable: 0
+  movementManager: {fileID: 0}
+--- !u!114 &-5718209674405508685
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
