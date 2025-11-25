@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
 
     [Header("FMOD Events")]
     [SerializeField] public EventReference LeverPullSFX;
+    [SerializeField] public EventReference switchToMouseSFX;
+    [SerializeField] public EventReference switchToMechSFX;
 
     void Awake()
     {
