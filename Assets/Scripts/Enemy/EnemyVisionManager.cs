@@ -6,7 +6,7 @@ public class EnemyVisionManager : EnemyVisionAbstractManager
     private int coneSegments = 30;
 
     private float MouseDetectRange = 8;
-    private float MechDetectRange = 20;
+    private float MechDetectRange = 12;
 
     private float MouseDetectAngle = 20;
     private float MechDetectAngle = 40;
