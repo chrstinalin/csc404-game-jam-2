@@ -199,11 +199,6 @@ public class MovementState : PlayerMovementState
         {
             _rigidbody.linearVelocity += Vector3.up * Physics.gravity.y * (FALL_MULTIPLIER - 1f) * Time.deltaTime;
         }
-        else if (_rigidbody.linearVelocity.y > 0 && !Input.GetButton("Jump"))
-        {
-            // short hop if player releases jump
-            _rigidbody.linearVelocity += Vector3.up * Physics.gravity.y * (LOW_JUMP_MULTIPLIER - 1f) * Time.deltaTime;
-        }
         
         if (moveDirection.sqrMagnitude > 0)
         {
