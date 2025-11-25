@@ -24,7 +24,7 @@ public class Lever : TriggerAbstract
 
     private void Update()
     {
-        if (mouseInside && Input.GetButtonDown("Interact"))
+        if (movementManager.IsMouseActive && mouseInside && Input.GetButtonDown("Interact"))
         {
             ToggleLever();
         }
@@ -70,6 +70,7 @@ public class Lever : TriggerAbstract
 
     public void ToggleLever()
     {
+        if(AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.LeverPullSFX, transform.position, 4f);
         if (IsActive) Deactivate();
         else Activate();
     }

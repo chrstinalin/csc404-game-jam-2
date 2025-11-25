@@ -6,14 +6,15 @@ public class LaserLine : MonoBehaviour
 {
     public float maxLength = 20f;
     public List<GameObject> obstacles;
+    public float laserWidth = 0.5f;
 
     private LineRenderer lineRenderer;
 
     void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.startWidth = 0.5f;
-        lineRenderer.endWidth = 0.5f;
+        lineRenderer.startWidth = laserWidth;
+        lineRenderer.endWidth = laserWidth;
         lineRenderer.positionCount = 2;
         lineRenderer.useWorldSpace = false;
     }

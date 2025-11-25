@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5485500182088732305}
   - component: {fileID: 3431860728255047731}
   - component: {fileID: 424660631991332211}
-  - component: {fileID: 9069121392588571912}
+  - component: {fileID: 7151456304197393636}
+  - component: {fileID: 9030375025248712421}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 201.85, y: -18.13, z: -116.17}
-  m_LocalScale: {x: 27.79376, y: 0.08114316, z: 0.17727931}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1147450611611565124}
@@ -72,7 +73,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8113711, y: 2.4441788, z: 2.677009}
   m_Center: {x: 3.1482441, y: 1.4473205, z: 0.03568948}
---- !u!114 &9069121392588571912
+--- !u!114 &7151456304197393636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,6 +89,24 @@ MonoBehaviour:
   characters:
   - {fileID: 0}
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
+--- !u!114 &9030375025248712421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6109812506418711283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.797416, b: 0.051886797, a: 1}
+  outlineWidth: 4.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &605216542045772719
 PrefabInstance:
   m_ObjectHideFlags: 0
