@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadNextSceneOnBothCollideChildren : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class LoadNextSceneOnBothCollideChildren : MonoBehaviour
     private bool mechEntered = false;
     private bool mouseEntered = false;
     private bool sceneLoading = false;
+
+    public GameObject textPrefab;
+    private GameObject spawnedText;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,6 +27,24 @@ public class LoadNextSceneOnBothCollideChildren : MonoBehaviour
             other.gameObject.transform.IsChildOf(PlayerMouse.Instance.transform))
         {
             mouseEntered = true;
+        }
+        Canvas canvas = FindObjectOfType<Canvas>();
+
+        if ((mechEntered && !mouseEntered) || (!mechEntered && mouseEntered))
+        {
+            if (spawnedText != null)
+            {
+                Destroy(spawnedText);
+            }
+
+            spawnedText = Instantiate(textPrefab, canvas.transform);
+
+
+            var textComponent = spawnedText.GetComponent<Text>();
+            textComponent.text = "Both Peanut and Dreadnought Killer must enter the door.";
+
+            var follower = spawnedText.GetComponent<InteractableObjectText>();
+            follower.target = transform;
         }
 
         if (mechEntered && mouseEntered && !sceneLoading)
