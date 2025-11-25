@@ -23,8 +23,11 @@ public class MovementState : PlayerMovementState
     private const float GROUND_CHECK_DISTANCE = 0.7f;
     
     private const float AIRBORNE_MULTIPLIER = 0.7f;
-        private const float SPEED_LERP_RATE = 5f;
+    private const float SPEED_LERP_RATE = 5f;
     private const float SNEAK_MULTIPLIER = 0.3f;
+
+    private const float FALL_MULTIPLIER = 2.5f;
+    private const float LOW_JUMP_MULTIPLIER = 2f;
 
     private Vector3? FollowVector = null;
 
@@ -190,6 +193,17 @@ public class MovementState : PlayerMovementState
         
         Vector3 currentVelocity = _rigidbody.linearVelocity;
         Vector3 horizontalVelocity = Vector3.zero;
+
+        // increase gravity for better jump feel
+        if (_rigidbody.linearVelocity.y < 0)
+        {
+            _rigidbody.linearVelocity += Vector3.up * Physics.gravity.y * (FALL_MULTIPLIER - 1f) * Time.deltaTime;
+        }
+        else if (_rigidbody.linearVelocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            // short hop if player releases jump
+            _rigidbody.linearVelocity += Vector3.up * Physics.gravity.y * (LOW_JUMP_MULTIPLIER - 1f) * Time.deltaTime;
+        }
         
         if (moveDirection.sqrMagnitude > 0)
         {
