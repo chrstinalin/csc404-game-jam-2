@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class LoadNextSceneOnBothCollideChildren : MonoBehaviour
 
     public GameObject textPrefab;
     private GameObject spawnedText;
+     private Coroutine warningRoutine;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,24 +30,8 @@ public class LoadNextSceneOnBothCollideChildren : MonoBehaviour
         {
             mouseEntered = true;
         }
-        Canvas canvas = FindObjectOfType<Canvas>();
 
-        if ((mechEntered && !mouseEntered) || (!mechEntered && mouseEntered))
-        {
-            if (spawnedText != null)
-            {
-                Destroy(spawnedText);
-            }
-
-            spawnedText = Instantiate(textPrefab, canvas.transform);
-
-
-            var textComponent = spawnedText.GetComponent<Text>();
-            textComponent.text = "Both Peanut and Dreadnought Killer must enter the door.";
-
-            var follower = spawnedText.GetComponent<InteractableObjectText>();
-            follower.target = transform;
-        }
+        HandleStateChange();
 
         if (mechEntered && mouseEntered && !sceneLoading)
         {
@@ -53,6 +39,82 @@ public class LoadNextSceneOnBothCollideChildren : MonoBehaviour
             Invoke(nameof(LoadNextScene), delayBeforeLoad);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (PlayerMech.Instance != null &&
+            other.transform.IsChildOf(PlayerMech.Instance.transform))
+        {
+            mechEntered = false;
+        }
+
+        if (PlayerMouse.Instance != null &&
+            other.transform.IsChildOf(PlayerMouse.Instance.transform))
+        {
+            mouseEntered = false;
+        }
+
+        HandleStateChange();
+    }
+
+    private void HandleStateChange()
+    {
+        if (mechEntered && mouseEntered && !sceneLoading)
+        {
+            CancelWarning();
+            sceneLoading = true;
+            Invoke(nameof(LoadNextScene), delayBeforeLoad);
+            return;
+        }
+
+        if (mechEntered ^ mouseEntered)
+        {
+            if (warningRoutine == null)
+                warningRoutine = StartCoroutine(ShowWarningAfterDelay());
+        }
+        else
+        {
+            // If none or both → cancel warning and hide text
+            CancelWarning();
+        }
+    }
+
+    private IEnumerator ShowWarningAfterDelay()
+    {
+
+        yield return new WaitForSeconds(3f);
+
+        if (mechEntered ^ mouseEntered)
+        {
+        if (spawnedText == null)
+            {
+                Canvas canvas = FindObjectOfType<Canvas>();
+                spawnedText = Instantiate(textPrefab, canvas.transform);
+                spawnedText.GetComponent<Text>().text =
+                    "Both Peanut and Dreadnought Killer must enter to progress.";
+                var follower = spawnedText.GetComponent<InteractableObjectText>();
+                follower.target = transform;
+            }
+        }
+
+        warningRoutine = null;
+    }
+
+    private void CancelWarning()
+    {
+        if (warningRoutine != null)
+        {
+            StopCoroutine(warningRoutine);
+            warningRoutine = null;
+        }
+
+        if (spawnedText != null)
+        {
+            Destroy(spawnedText);
+            spawnedText = null;
+        }
+    }
+
 
     private void LoadNextScene()
     {
