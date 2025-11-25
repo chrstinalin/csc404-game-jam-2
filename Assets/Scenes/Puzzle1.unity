@@ -3098,6 +3098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 390894693}
   - component: {fileID: 390894694}
+  - component: {fileID: 390894695}
   m_Layer: 0
   m_Name: WiresP1
   m_TagString: Untagged
@@ -3136,6 +3137,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Door
   closedDoor: {fileID: 2049234175}
   openDoor: {fileID: 1542423101}
+--- !u!114 &390894695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390894692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c4f5dd425e9754ab481b43cb5c663e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaySFXOnTrigger
+  triggerable: {fileID: 390894694}
+  sfxEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
 --- !u!1 &391802615
 GameObject:
   m_ObjectHideFlags: 0
@@ -3261,6 +3282,7 @@ GameObject:
   - component: {fileID: 401386551}
   - component: {fileID: 401386555}
   - component: {fileID: 401386554}
+  - component: {fileID: 401386556}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -3442,6 +3464,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &401386556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401386549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c4f5dd425e9754ab481b43cb5c663e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaySFXOnTrigger
+  triggerable: {fileID: 401386554}
+  sfxEvent:
+    Guid:
+      Data1: 1512094732
+      Data2: 1164754596
+      Data3: 768669114
+      Data4: -1928957330
+    Path: event:/SFX/Interactables/Interactable Door
 --- !u!1 &415411434
 GameObject:
   m_ObjectHideFlags: 0
@@ -21060,6 +21102,7 @@ GameObject:
   - component: {fileID: 1982544660}
   - component: {fileID: 1982544661}
   - component: {fileID: 1982544659}
+  - component: {fileID: 1982544662}
   m_Layer: 0
   m_Name: InvisibleButton
   m_TagString: Untagged
@@ -21082,6 +21125,7 @@ MonoBehaviour:
   TriggerObjects:
   - {fileID: 1133554855}
   - {fileID: 486838442}
+  isInvisible: 1
   unpressedModel: {fileID: 1751666696}
   pressedModel: {fileID: 1751666696}
 --- !u!4 &1982544660
@@ -21121,6 +21165,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1982544662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982544658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99905cab15daf554d944a2cef622e33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaySFXTrigger
+  trigger: {fileID: 1982544659}
+  sfxEvent:
+    Guid:
+      Data1: -459968790
+      Data2: 1156871833
+      Data3: -810882118
+      Data4: -1287986165
+    Path: event:/SFX/Interactables/Interactable Circuit Connect
 --- !u!1 &1982757496
 GameObject:
   m_ObjectHideFlags: 0

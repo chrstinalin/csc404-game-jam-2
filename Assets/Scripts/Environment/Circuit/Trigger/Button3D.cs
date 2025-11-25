@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Button3D : TriggerAbstract
 {
     public List<GameObject> TriggerObjects = new List<GameObject>();
+    public bool isInvisible;
     [SerializeField] private GameObject unpressedModel;
     [SerializeField] private GameObject pressedModel;
 
@@ -53,7 +54,11 @@ public class Button3D : TriggerAbstract
         if (IsActive) return;
         IsActive = true;
         UpdateVisuals();
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.ButtonPressSFX, transform.position, 5f);
+        if (!isInvisible)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.ButtonPressSFX, transform.position, 5f);
+        }
+        
     }
 
     public override void Deactivate()
