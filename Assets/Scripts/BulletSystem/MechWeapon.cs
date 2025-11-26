@@ -66,7 +66,7 @@ public class MechWeapon : MonoBehaviour
                                                                || target.transform.IsChildOf(hit.transform);
             if (hitTarget)
             {
-                AudioManager.Instance.PlaySFX(bulletSFX, transform.position);
+                AudioManager.Instance.PlaySFX(bulletSFX, transform.position, 1f);
                 if (targetDamageReceiver != null)
                 {
                     GameObject damageSource = PlayerMech.Instance != null 
@@ -81,7 +81,7 @@ public class MechWeapon : MonoBehaviour
     private IEnumerator ChargeAndFire()
     {
         isCharging = true;
-        AudioManager.Instance.PlaySFX(chargeSFX, transform.position);
+        AudioManager.Instance.PlaySFX(chargeSFX, transform.position, 1f);
         yield return new WaitForSeconds(chargeTime);
     
         Fire();

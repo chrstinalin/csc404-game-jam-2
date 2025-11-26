@@ -101,6 +101,22 @@ public class MovementManager : PlayerMovementManager
     {
         IsMouseActive = toggle;
 
+        if (IsMouseActive)
+        {
+            if(AudioManager.Instance != null) {
+                AudioManager.Instance.PlaySFX(
+                    AudioManager.Instance.SwitchToMouseSFX, PlayerMouse.Instance.transform.position, 1f);
+        
+            }
+        }
+        else
+        {
+            if(AudioManager.Instance != null) {
+                AudioManager.Instance.PlaySFX(
+                    AudioManager.Instance.SwitchToMechSFX, PlayerMech.Instance.transform.position, 1f);
+            }
+        }
+
         Rigidbody mouseRb = Mouse.GetComponent<Rigidbody>();
         Rigidbody mechRb = Mech.GetComponent<Rigidbody>();
 
