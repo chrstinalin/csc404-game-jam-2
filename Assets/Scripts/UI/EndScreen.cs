@@ -1,24 +1,56 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using FMODUnity;
+using FMOD.Studio;
 
 public class EndScreen : MonoBehaviour
 {
     public GameObject button;
-    public AudioSource audioSource;
+    
+    [Header("Audio")]
+    [SerializeField] private EventReference EndScreenBGM;
+    [SerializeField] private EventReference BackSFX;
+    
+    private EventInstance musicInstance;
 
     void Start()
     {
-        if (BackgroundMusicManager.Instance != null)
-        {
-            BackgroundMusicManager.Instance.StopTheme();
-        }
+        FadeManager.Instance.FadeIn();
+        
+        if (BackgroundMusicManager.Instance != null) BackgroundMusicManager.Instance.StopTheme();
+        if (AudioManager.Instance != null) musicInstance = AudioManager.Instance.PlaySFX(EndScreenBGM);
+        
         EventSystem.current.SetSelectedGameObject(button);
     }
 
+    void Update()
+    {
+        if (Input.GetButtonDown("Submit"))
+        {
+            LoadMainMenu();
+        }
+    }
+    
     public void LoadMainMenu()
     {
-        audioSource.Play();
-        SceneManager.LoadScene("MainMenu");
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(BackSFX);
+        
+        StopMusic();
+        FadeManager.Instance.FadeToScene("MainMenu");
+    }
+    
+    void StopMusic()
+    {
+        if (musicInstance.isValid())
+        {
+            musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            musicInstance.release();
+        }
+    }
+    
+    void OnDestroy()
+    {
+        StopMusic();
     }
 }
