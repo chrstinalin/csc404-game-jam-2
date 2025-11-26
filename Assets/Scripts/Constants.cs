@@ -132,7 +132,11 @@ public enum ActionType
     SwitchCharacter,
     Sneak,
     Interact,
-    Jump
+    Jump,
+    Movement,
+    Camera,
+    Pause,
+    RestartLevel
 }
 
 public static class ButtonMappings

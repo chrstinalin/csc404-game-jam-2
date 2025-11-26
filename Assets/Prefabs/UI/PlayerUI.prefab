@@ -2154,9 +2154,25 @@ PrefabInstance:
       value: ControlsPanel
       objectReference: {fileID: 0}
     - target: {fileID: 7687322464337539790, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687322464337539790, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6149410579693117167}
+    - target: {fileID: 7687322464337539790, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseControls
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687322464337539790, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8608997986553832121, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
