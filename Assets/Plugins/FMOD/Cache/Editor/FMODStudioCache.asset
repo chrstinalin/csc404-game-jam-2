@@ -117,18 +117,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/Audio/fmod_session/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638985649079310087
-  FileSizes:
-  - Name: Desktop
-    Value: 2358
-  Exists: 1
---- !u!114 &-6629663792959878094
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mech/Switch Character Mech
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mech/Switch Character Mech
+  Guid:
+    Data1: -673717943
+    Data2: 1264463721
+    Data3: -1783764349
+    Data4: -1830176547
+  Banks:
+  - {fileID: -149378394625700419}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 759
+--- !u!114 &-5275655373814293051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,28 +240,8 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 861
---- !u!114 &-5422265311289516636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/Audio/fmod_session/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638985649079264619
-  FileSizes:
-  - Name: Desktop
-    Value: 10875648
-  Exists: 1
---- !u!114 &-5205921397061354323
+  Length: 472
+--- !u!114 &-3090416508842328995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -600,7 +587,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 1056454105052273138}
   cacheVersion: 131856
-  cacheTime: 638985649079310087
+  cacheTime: 638997474841690943
   SerializableEventsDict:
   - key: event:/Music+Amb/Overworld Music
     index: 0
