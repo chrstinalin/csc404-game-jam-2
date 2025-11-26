@@ -9,6 +9,16 @@ using FMODUnity;
 
 public class UIManager : MonoBehaviour
 {
+    // Add this class - same as MainMenu
+    [System.Serializable]
+    public class PauseMenuState
+    {
+        public string stateName;
+        public GameObject panel;
+        public Selectable[] selectables;
+        public Selectable defaultSelectable;
+    }
+
     // Mouse Health UI
     [NonSerialized] private Health MouseHealth;
     [NonSerialized] private Image[] HealthPoints;
@@ -23,18 +33,15 @@ public class UIManager : MonoBehaviour
     
     // Pause Menu
     [SerializeField] private GameObject pauseMenuUI;
-    [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject controlsPanel;
+    [Header("Pause Menu States")]
+    [SerializeField] private PauseMenuState[] pauseMenuStates;
+    private PauseMenuState currentPauseState;
+    
     [SerializeField] private Volume volume;
     private DepthOfField dof;
     public static bool GamePaused = false;
     
     // Pause Menu Navigation
-    [SerializeField] private Selectable[] pauseSelectables;
-    [SerializeField] private Selectable defaultPauseSelectable;
-    [SerializeField] private Selectable[] controlsSelectables;
-    [SerializeField] private Selectable defaultControlsSelectable;
-    
     private int currentSelection = 0;
     private float inputCooldown = 0f;
     private float cooldownTime = 0.2f;
@@ -112,8 +119,6 @@ public class UIManager : MonoBehaviour
         if (volume != null && volume.profile.TryGet(out dof)) dof.active = false;
         
         if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
-        if (pausePanel != null) pausePanel.SetActive(true);
-        if (controlsPanel != null) controlsPanel.SetActive(false);
         
         GamePaused = false;
     }
@@ -189,7 +194,17 @@ public class UIManager : MonoBehaviour
         if (GamePaused)
         {
             HandlePauseMenuNavigation();
+            PreventMouseDeselection(); // Same as MainMenu
         }
+    }
+
+    // Add this method - same as MainMenu
+    void PreventMouseDeselection()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null) 
+            EventSystem.current.SetSelectedGameObject(lastSelected);
+        else
+            lastSelected = EventSystem.current.currentSelectedGameObject;
     }
 
     private void updateMechHealthUI()
@@ -269,6 +284,7 @@ public class UIManager : MonoBehaviour
         }
     }
     
+    // Refactored to match MainMenu style
     private void HandlePauseMenuNavigation()
     {
         if (inputCooldown > 0)
@@ -277,19 +293,12 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && currentPauseState.stateName != "PauseMain")
         {
             if (AudioManager.Instance != null)
                 AudioManager.Instance.PlaySFX(BackSFX);
-                
-            if (controlsPanel != null && controlsPanel.activeSelf)
-            {
-                CloseControls();
-            }
-            else
-            {
-                Resume();
-            }
+            
+            GoBackToPauseMain();
             inputCooldown = cooldownTime;
             return;
         }
@@ -316,15 +325,13 @@ public class UIManager : MonoBehaviour
 
     void NavigateDown()
     {
-        Selectable[] currentSelectables = controlsPanel.activeSelf ? controlsSelectables : pauseSelectables;
-        
-        if (currentSelectables.Length == 0) return;
+        if (currentPauseState.selectables.Length == 0) return;
 
         currentSelection++;
-        if (currentSelection >= currentSelectables.Length)
+        if (currentSelection >= currentPauseState.selectables.Length)
             currentSelection = 0;
 
-        SelectItem(currentSelection, currentSelectables);
+        SelectItem(currentSelection);
         
         if (AudioManager.Instance != null)
             AudioManager.Instance.PlaySFX(DownSFX);
@@ -334,15 +341,13 @@ public class UIManager : MonoBehaviour
 
     void NavigateUp()
     {
-        Selectable[] currentSelectables = controlsPanel.activeSelf ? controlsSelectables : pauseSelectables;
-        
-        if (currentSelectables.Length == 0) return;
+        if (currentPauseState.selectables.Length == 0) return;
 
         currentSelection--;
         if (currentSelection < 0)
-            currentSelection = currentSelectables.Length - 1;
+            currentSelection = currentPauseState.selectables.Length - 1;
 
-        SelectItem(currentSelection, currentSelectables);
+        SelectItem(currentSelection);
         
         if (AudioManager.Instance != null)
             AudioManager.Instance.PlaySFX(UpSFX);
@@ -350,23 +355,58 @@ public class UIManager : MonoBehaviour
         inputCooldown = cooldownTime;
     }
 
-    void SelectItem(int index, Selectable[] selectables)
+    void SelectItem(int index)
     {
-        if (selectables.Length == 0) return;
+        if (currentPauseState.selectables.Length == 0) return;
 
-        EventSystem.current.SetSelectedGameObject(selectables[index].gameObject);
-        lastSelected = selectables[index].gameObject;
+        EventSystem.current.SetSelectedGameObject(currentPauseState.selectables[index].gameObject);
+        lastSelected = currentPauseState.selectables[index].gameObject;
+    }
+
+    // New method - same as MainMenu's SwitchToState
+    public void SwitchToPauseState(string stateName)
+    {
+        if (currentPauseState != null && currentPauseState.panel != null)
+            currentPauseState.panel.SetActive(false);
+
+        foreach (var state in pauseMenuStates)
+        {
+            if (state.stateName == stateName)
+            {
+                currentPauseState = state;
+                currentPauseState.panel.SetActive(true);
+                currentSelection = 0;
+
+                if (currentPauseState.defaultSelectable != null)
+                {
+                    EventSystem.current.SetSelectedGameObject(currentPauseState.defaultSelectable.gameObject);
+                    lastSelected = currentPauseState.defaultSelectable.gameObject;
+                }
+                else if (currentPauseState.selectables.Length > 0)
+                {
+                    SelectItem(0);
+                }
+
+                // Update control bindings when switching states
+                if (controlSchemeManager != null)
+                {
+                    controlSchemeManager.ForceUpdate();
+                }
+
+                return;
+            }
+        }
+    }
+
+    void GoBackToPauseMain()
+    {
+        SwitchToPauseState("PauseMain");
     }
     
     public void Resume()
     {
         if (pauseMenuUI != null)
             pauseMenuUI.SetActive(false);
-    
-        if (pausePanel != null)
-            pausePanel.SetActive(true);
-        if (controlsPanel != null)
-            controlsPanel.SetActive(false);
         
         if (dof != null)
             dof.active = false;
@@ -394,25 +434,8 @@ public class UIManager : MonoBehaviour
         
         GamePaused = true;
     
-        currentSelection = 0;
-        if (defaultPauseSelectable != null)
-        {
-            if (EventSystem.current != null)
-            {
-                EventSystem.current.SetSelectedGameObject(defaultPauseSelectable.gameObject);
-                lastSelected = defaultPauseSelectable.gameObject;
-            }
-        }
-        else if (pauseSelectables.Length > 0)
-        {
-            SelectItem(0, pauseSelectables);
-        }
-
-        // Update control bindings when opening pause menu
-        if (controlSchemeManager != null)
-        {
-            controlSchemeManager.ForceUpdate();
-        }
+        // Use the state system
+        SwitchToPauseState("PauseMain");
     }
 
     public void LoadMainMenu()
@@ -438,49 +461,9 @@ public class UIManager : MonoBehaviour
         FadeManager.Instance.FadeToScene(currentSceneName);
     }
     
+    // Updated to use state system
     public void OpenControls()
     {   
-        if (pausePanel != null)
-            pausePanel.SetActive(false);
-            
-        if (controlsPanel != null)
-            controlsPanel.SetActive(true);
-        
-        currentSelection = 0;
-        if (defaultControlsSelectable != null)
-        {
-            EventSystem.current.SetSelectedGameObject(defaultControlsSelectable.gameObject);
-            lastSelected = defaultControlsSelectable.gameObject;
-        }
-        else if (controlsSelectables.Length > 0)
-        {
-            SelectItem(0, controlsSelectables);
-        }
-
-        // Update control bindings when opening controls
-        if (controlSchemeManager != null)
-        {
-            controlSchemeManager.ForceUpdate();
-        }
-    }
-
-    public void CloseControls()
-    {   
-        if (controlsPanel != null)
-            controlsPanel.SetActive(false);
-            
-        if (pausePanel != null)
-            pausePanel.SetActive(true);
-        
-        currentSelection = 0;
-        if (defaultPauseSelectable != null)
-        {
-            EventSystem.current.SetSelectedGameObject(defaultPauseSelectable.gameObject);
-            lastSelected = defaultPauseSelectable.gameObject;
-        }
-        else if (pauseSelectables.Length > 0)
-        {
-            SelectItem(0, pauseSelectables);
-        }
+        SwitchToPauseState("Controls");
     }
 }

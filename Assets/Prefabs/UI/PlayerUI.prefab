@@ -1861,19 +1861,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUIManager
   pauseMenuUI: {fileID: 8496941006961856923}
-  pausePanel: {fileID: 7865764363412719220}
-  controlsPanel: {fileID: 1083015319133798890}
+  pauseMenuStates:
+  - stateName: PauseMain
+    panel: {fileID: 7865764363412719220}
+    selectables:
+    - {fileID: 9114983380326280020}
+    - {fileID: 6821159656851728027}
+    - {fileID: 490587996698779336}
+    - {fileID: 8117073590213953123}
+    - {fileID: 6739876438955138767}
+    defaultSelectable: {fileID: 9114983380326280020}
+  - stateName: Controls
+    panel: {fileID: 1083015319133798890}
+    selectables:
+    - {fileID: 5189474661244075935}
+    defaultSelectable: {fileID: 5189474661244075935}
   volume: {fileID: 0}
-  pauseSelectables:
-  - {fileID: 9114983380326280020}
-  - {fileID: 6821159656851728027}
-  - {fileID: 490587996698779336}
-  - {fileID: 8117073590213953123}
-  - {fileID: 6739876438955138767}
-  defaultPauseSelectable: {fileID: 9114983380326280020}
-  controlsSelectables:
-  - {fileID: 5189474661244075935}
-  defaultControlsSelectable: {fileID: 5189474661244075935}
   SelectSFX:
     Guid:
       Data1: 1838793717
@@ -2359,9 +2362,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: ControlsPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 3291506844021361851, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7687322464337539790, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7687322464337539790, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2369,11 +2376,15 @@ PrefabInstance:
       objectReference: {fileID: 6149410579693117167}
     - target: {fileID: 7687322464337539790, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseControls
+      value: SwitchToPauseState
       objectReference: {fileID: 0}
     - target: {fileID: 7687322464337539790, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687322464337539790, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: PauseMain
       objectReference: {fileID: 0}
     - target: {fileID: 8608997986553832121, guid: ca2865c9d6f7748088b0fc264285fed5, type: 3}
       propertyPath: m_AnchoredPosition.y
