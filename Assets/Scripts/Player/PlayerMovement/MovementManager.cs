@@ -103,6 +103,8 @@ public class MovementManager : PlayerMovementManager
 
         Rigidbody mouseRb = Mouse.GetComponent<Rigidbody>();
         Rigidbody mechRb = Mech.GetComponent<Rigidbody>();
+        FindObjectOfType<UIManager>().SetActiveCharacterUI(IsMouseActive);
+
 
         if (IsMouseActive)
         {

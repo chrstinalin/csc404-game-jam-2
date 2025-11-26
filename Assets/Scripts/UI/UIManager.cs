@@ -16,11 +16,16 @@ public class UIManager : MonoBehaviour
     [NonSerialized] private float DAMAGE_LERP = 5f;
     [NonSerialized] private float CHIP_LERP = 50f;
 
+    private GameObject mouseControlsUI;
+    private GameObject mechControlsUI;
+
     private void Start()
     {
         GameObject HealthPointContainer = GameObject.FindGameObjectWithTag("MouseHealthPointContainer");
         GameObject _HealthFront = GameObject.FindGameObjectWithTag("MechHealthFront");
         GameObject _HealthBack = GameObject.FindGameObjectWithTag("MechHealthBack");
+        mouseControlsUI = GameObject.FindGameObjectWithTag("MouseControls");
+        mechControlsUI = GameObject.FindGameObjectWithTag("MechControls");
 
         if(!HealthPointContainer || !_HealthFront || !_HealthBack)
         {
@@ -108,4 +113,14 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
+    public void SetActiveCharacterUI(bool isMouseActive)
+    {
+        if (mouseControlsUI != null)
+            mouseControlsUI.SetActive(isMouseActive);
+
+        if (mechControlsUI != null)
+            mechControlsUI.SetActive(!isMouseActive);
+    }
+
 }
