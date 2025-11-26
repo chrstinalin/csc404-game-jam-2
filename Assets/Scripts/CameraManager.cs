@@ -20,6 +20,8 @@ public class CameraManager : CameraMovementManager
 
     private float currentCameraDistance;
     private float collisionDistanceVelocity;
+    private float targetCameraDistance;
+    private float targetDistanceVelocity;
 
     void Awake()
     {
@@ -97,15 +99,22 @@ public class CameraManager : CameraMovementManager
 
         float desiredDistance = zoom;
 
-        float targetDistance = GetCollisionAdjustedDistanceOnlyWalls(
+        float instantCollisionDistance = GetCollisionAdjustedDistanceOnlyWalls(
             CameraPivot.position,
             transform.forward,
             desiredDistance
         );
+        
+        targetCameraDistance = Mathf.SmoothDamp(
+            targetCameraDistance,
+            instantCollisionDistance,
+            ref targetDistanceVelocity,
+            Config.CAMERA_COLLISION_EASE_TIME
+        );
 
         currentCameraDistance = Mathf.SmoothDamp(
             currentCameraDistance,
-            targetDistance,
+            targetCameraDistance,
             ref collisionDistanceVelocity,
             Config.CAMERA_COLLISION_SMOOTH_TIME
         );

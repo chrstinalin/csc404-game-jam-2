@@ -42,12 +42,10 @@ public class CameraProximityHider : MonoBehaviour
         
         HashSet<Renderer> shouldBeHidden = new HashSet<Renderer>();
         
-        // Check distance to all walls
         foreach (GameObject wall in allWalls)
         {
             if (wall == null) continue;
             
-            // Skip the player
             if (PlayerMech.Instance != null && 
                 (wall.transform == PlayerMech.Instance.transform || 
                  wall.transform.IsChildOf(PlayerMech.Instance.transform)))
@@ -56,10 +54,8 @@ public class CameraProximityHider : MonoBehaviour
             Renderer renderer = wall.GetComponent<Renderer>();
             if (renderer == null) continue;
             
-            // Use bounds to get closest point on the mesh to the camera
             float distance = Vector3.Distance(cam.transform.position, renderer.bounds.ClosestPoint(cam.transform.position));
             
-            // Use hysteresis: once fading, check against showDistance instead of hideDistance
             bool isAlreadyFading = wallFaders.ContainsKey(renderer);
             float thresholdDistance = isAlreadyFading ? showDistance : hideDistance;
             
@@ -67,7 +63,6 @@ public class CameraProximityHider : MonoBehaviour
             {
                 shouldBeHidden.Add(renderer);
                 
-                // Create fader if it doesn't exist
                 if (!isAlreadyFading)
                 {
                     wallFaders[renderer] = new WallFader(renderer);
@@ -75,7 +70,6 @@ public class CameraProximityHider : MonoBehaviour
             }
         }
         
-        // Update all faders
         List<Renderer> fadersToRemove = new List<Renderer>();
         
         float fadeSpeed = 1f / fadeDuration;
@@ -97,7 +91,6 @@ public class CameraProximityHider : MonoBehaviour
             
             fader.UpdateFade(targetAlpha, deltaAlpha);
             
-            // Remove fader if it's fully visible and not being hidden
             if (!shouldHide && fader.IsFullyVisible())
             {
                 fader.Cleanup();
@@ -105,7 +98,6 @@ public class CameraProximityHider : MonoBehaviour
             }
         }
         
-        // Clean up removed faders
         foreach (Renderer renderer in fadersToRemove)
         {
             wallFaders.Remove(renderer);
@@ -114,7 +106,6 @@ public class CameraProximityHider : MonoBehaviour
     
     void OnDestroy()
     {
-        // Restore all materials on cleanup
         foreach (var fader in wallFaders.Values)
         {
             fader.Cleanup();
@@ -153,32 +144,26 @@ public class CameraProximityHider : MonoBehaviour
         
         private void SetupTransparentMaterial(Material mat)
         {
-            // For URP/Lit shader, set Surface Type to Transparent
             if (mat.HasProperty("_Surface"))
             {
                 mat.SetFloat("_Surface", 1);
             }
             
-            // Set blend mode to Alpha
             if (mat.HasProperty("_Blend"))
             {
                 mat.SetFloat("_Blend", 0);
             }
             
-            // Enable alpha clipping if available
             if (mat.HasProperty("_AlphaClip"))
             {
                 mat.SetFloat("_AlphaClip", 0);
             }
             
-            // Set render queue for transparency
             mat.renderQueue = 3000;
             
-            // Enable the correct keywords for URP transparency
             mat.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
             mat.EnableKeyword("_ALPHAPREMULTIPLY_ON");
             
-            // Set blend modes
             mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
             mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
             mat.SetInt("_ZWrite", 0);
@@ -188,7 +173,6 @@ public class CameraProximityHider : MonoBehaviour
         {
             if (renderer == null) return;
             
-            // Only setup materials if we need to fade
             if (targetAlpha < 1f && !isSetup)
             {
                 SetupFadedMaterials();
@@ -196,22 +180,18 @@ public class CameraProximityHider : MonoBehaviour
             
             if (!isSetup) return;
             
-            // Smoothly transition alpha
             currentAlpha = Mathf.MoveTowards(currentAlpha, targetAlpha, deltaAlpha);
             
-            // Apply alpha to all materials
             foreach (Material mat in fadedMaterials)
             {
                 if (mat != null)
                 {
-                    // URP uses _BaseColor instead of _Color
                     if (mat.HasProperty("_BaseColor"))
                     {
                         Color color = mat.GetColor("_BaseColor");
                         color.a = currentAlpha;
                         mat.SetColor("_BaseColor", color);
                     }
-                    // Fallback to _Color for other shaders
                     else if (mat.HasProperty("_Color"))
                     {
                         Color color = mat.color;
