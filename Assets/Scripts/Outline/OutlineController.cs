@@ -15,17 +15,24 @@ public class OutlineController : MonoBehaviour
         movementManager = MovementManager.Instance;
 
         var interactableObject = GetComponent<InteractableObject>();
-        if (interactableObject != null)
-        {
-            foreach (var character in interactableObject.characters)
-            {   
-                Debug.Log(interactableObject.characters);
-                if (character.CompareTag("MechPlayerEntity"))
-                    isMechInteractable = true;
+        if (interactableObject == null) return;
 
-                if (character.CompareTag("MousePlayerEntity"))
-                    isMouseInteractable = true;
-            }
+        var chars = interactableObject.characters;
+        if (chars == null || chars.Length == 0)
+        {
+            Debug.LogWarning($"InteractableObject on {gameObject.name} has no characters assigned.");
+            return;
+        }
+
+        foreach (var character in chars)
+        {
+            if (character == null) continue;
+
+            if (character.CompareTag("MechPlayerEntity"))
+                isMechInteractable = true;
+
+            if (character.CompareTag("MousePlayerEntity"))
+                isMouseInteractable = true;
         }
     }
 
