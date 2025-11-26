@@ -1,16 +1,21 @@
 using System;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
+using System.Collections.Generic;
 
 public class LockOnManager : MonoBehaviour
 {
     [NonSerialized] public CameraManager CameraManager;
     [NonSerialized] public MovementManager MovementManager;
+    [SerializeField] private EventReference lockOnSFX;
 
     public static bool lockOnMode = false;
     public event Action<bool> OnLockOnModeChanged;
     private bool _lastButtonState = false;
 
     private NavMeshEdgeVisualizer navMeshEdgeVisualizer;
+    private EventInstance lockOnSFXInstance;
 
     void Start()
     {
@@ -25,8 +30,7 @@ public class LockOnManager : MonoBehaviour
 
     void Update()
     {
-        bool playerControllingMech = MovementManager != null && !MovementManager.IsMouseActive;
-        if (!playerControllingMech)
+        if (MovementManager == null)
         {
             if (lockOnMode)
             {
@@ -48,25 +52,53 @@ public class LockOnManager : MonoBehaviour
             OnLockOnModeChanged?.Invoke(currentButtonState);
             _lastButtonState = currentButtonState;
         }
-        
     }
 
     private void HandleLockOnModeChanged(bool isLocked)
     {
         MovementManager.isLockedMovement = isLocked;
+
         if (isLocked)
         {
+            if(BackgroundMusicManager.Instance) BackgroundMusicManager.Instance.LockOnMode(true);
+            lockOnSFXInstance = AudioManager.Instance.PlaySFXWithParams(
+                lockOnSFX,
+                new Dictionary<string, float> { { "Activated", 1f } },
+                transform.position,
+                1f
+            );
+
             CameraManager.SetCameraFOV(Config.CAMERA_LOCK_ON_FOV);
             navMeshEdgeVisualizer.ShowFilledArea();
             MovementManager.Reset();
+            MovementManager.MechAIController.Agent.enabled = true;
         }
         else
         {
+            if(BackgroundMusicManager.Instance) BackgroundMusicManager.Instance.LockOnMode(false);
+            if (lockOnSFXInstance.isValid())
+            {
+                AudioManager.Instance.SetParameter(lockOnSFXInstance, "Activated", 0f);
+
+                StartCoroutine(StopLockOnSFXAfterWrapUp(lockOnSFXInstance));
+            }
+
             CameraManager.SetCameraFOV(Config.CAMERA_DEFAULT_FOV);
             navMeshEdgeVisualizer.ClearFilledArea();
         }
+
         ToggleEnemyOutlines(isLocked);
         PlayerMarker.Instance.setActive(isLocked);
+    }
+
+    private System.Collections.IEnumerator StopLockOnSFXAfterWrapUp(EventInstance instance)
+    {
+        yield return new WaitForSeconds(2f);
+
+        if (instance.isValid())
+        {
+            AudioManager.Instance.StopSFX(instance);
+        }
     }
 
     private void ToggleEnemyOutlines(bool enable)

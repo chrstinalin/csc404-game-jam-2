@@ -297,8 +297,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4453092934783114504, guid: 36501221826b93e459992b7bea5f0770, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 59271988}
   m_SourcePrefab: {fileID: 100100000, guid: 36501221826b93e459992b7bea5f0770, type: 3}
+--- !u!1 &59271987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4453092934783114504, guid: 36501221826b93e459992b7bea5f0770, type: 3}
+  m_PrefabInstance: {fileID: 59271986}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &59271988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59271987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1001 &84541940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,6 +433,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
+  lockOnSFX:
+    Guid:
+      Data1: 1328528811
+      Data2: 1310755623
+      Data3: -1303860096
+      Data4: -793793619
+    Path: event:/SFX/Mech/Mech Lockon
 --- !u!1 &159149057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,6 +2926,26 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 638f47b462a95dd48b8edd7447ba8bc7, type: 2}
+    - target: {fileID: 8834097524323848069, guid: 8cd83cbb811f8b5428d638f325afcd0c, type: 3}
+      propertyPath: WallBreakSFX.Path
+      value: event:/SFX/Interactables/Interactable Wall Break
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834097524323848069, guid: 8cd83cbb811f8b5428d638f325afcd0c, type: 3}
+      propertyPath: WallBreakSFX.Guid.Data1
+      value: 471113722
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834097524323848069, guid: 8cd83cbb811f8b5428d638f325afcd0c, type: 3}
+      propertyPath: WallBreakSFX.Guid.Data2
+      value: 1231778649
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834097524323848069, guid: 8cd83cbb811f8b5428d638f325afcd0c, type: 3}
+      propertyPath: WallBreakSFX.Guid.Data3
+      value: 412092322
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834097524323848069, guid: 8cd83cbb811f8b5428d638f325afcd0c, type: 3}
+      propertyPath: WallBreakSFX.Guid.Data4
+      value: -11584921
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3670,7 +3725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58b156c757450740a8c67f1c3ca9ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNextPuzzle
-  delayBeforeLoad: 1
+  delayBeforeLoad: 3
   nextSceneName: MainMenu
 --- !u!65 &1988005311
 BoxCollider:
@@ -3778,6 +3833,26 @@ PrefabInstance:
       propertyPath: Mouse
       value: 
       objectReference: {fileID: 206106562}
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: DeathSFX.Path
+      value: event:/SFX/NPC/Enemy Destroyed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: DeathSFX.Guid.Data1
+      value: 276096963
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: DeathSFX.Guid.Data2
+      value: 1151850742
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: DeathSFX.Guid.Data3
+      value: 668255626
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: DeathSFX.Guid.Data4
+      value: 1395880248
+      objectReference: {fileID: 0}
     - target: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: m_Name
       value: TurretEnemy

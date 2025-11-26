@@ -66,6 +66,8 @@ public class PlayerMech : MonoBehaviour
 
     public void TakeDamageFromSource(int damage, GameObject source)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.MechHurtSFX, transform.position, 2f);
+
         if (AIController == null)
         {
             AIController = GetComponent<MechAIController>();
@@ -74,7 +76,6 @@ public class PlayerMech : MonoBehaviour
     
         // Only notify AI if player is not controlling mech
         bool playerControllingMech = MovementManager.Instance != null && !MovementManager.Instance.IsMouseActive;
-        if (!playerControllingMech && AIController != null) AIController.OnAttackedBy(source);
         
         if (isInvulnerable || Health == null) 
         {

@@ -24,6 +24,15 @@ public class Lever : TriggerAbstract
 
     private void Update()
     {
+        if (mouseInside)
+        {
+            if (PlayerMouse.Instance == null || 
+                !PlayerMouse.Instance.gameObject.activeInHierarchy)
+            {
+                mouseInside = false;
+            }
+        }
+
         if (movementManager.IsMouseActive && mouseInside && Input.GetButtonDown("Interact"))
         {
             ToggleLever();

@@ -58,14 +58,13 @@ public class Platform : TriggerableAbstract
 
         if (Vector3.Distance(rb.position, target) < 0.001f && IsOn)
         {
-            IsOn = false;
+            TurnOff();
         }
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if (!carryObjects) return;
-        
         if (!movingUp) return;
 
         Rigidbody rbOther = collision.rigidbody;
@@ -77,6 +76,19 @@ public class Platform : TriggerableAbstract
         }
     }
 
-    public override void TurnOn() => IsOn = true;
-    public override void TurnOff() => IsOn = false;
+    public override void TurnOn()
+    {
+        if (!IsOn)
+        {
+            IsOn = true;
+        }
+    }
+
+    public override void TurnOff()
+    {
+        if (IsOn)
+        {
+            IsOn = false;
+        }
+    }
 }

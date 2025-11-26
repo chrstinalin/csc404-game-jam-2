@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class PlayerMarker : MonoBehaviour
 {
@@ -14,7 +13,6 @@ public class PlayerMarker : MonoBehaviour
     private GameObject groundTarget;
 
     private int overlappingSelectables = 0;
-    private bool isOverSelectable => overlappingSelectables > 0;
 
     [SerializeField] private LayerMask wallLayers = 0;
     [SerializeField] private float wallSkin = 0f;
@@ -33,8 +31,7 @@ public class PlayerMarker : MonoBehaviour
 
     void Update()
     {
-        bool playerControllingMech = MovementManager.Instance != null && !MovementManager.Instance.IsMouseActive;
-        if (!playerControllingMech)
+        if (MovementManager.Instance == null)
         {
             if (isActive) setActive(false);
             return;
@@ -42,7 +39,10 @@ public class PlayerMarker : MonoBehaviour
 
         if (!isActive)
         {
-            transform.position = PlayerMouse.Instance.getActivePlayer().transform.position;
+            GameObject activePlayer = MovementManager.Instance.IsMouseActive 
+                ? PlayerMouse.Instance.gameObject 
+                : PlayerMech.Instance.gameObject;
+            transform.position = activePlayer.transform.position;
         }
         else
         {
@@ -192,6 +192,11 @@ public class PlayerMarker : MonoBehaviour
 
     public void SetTarget(GameObject target)
     {
+        if (groundTarget != null && groundTarget != target)
+        {
+            Destroy(groundTarget);
+            groundTarget = null;
+        }
         Target = target;
         OnTargetChanged?.Invoke(Target);
     }
@@ -200,6 +205,12 @@ public class PlayerMarker : MonoBehaviour
     {
         bool actuallyOverSelectable = CheckForActiveSelectables();
         if (actuallyOverSelectable) return;
+        if (groundTarget == null)
+        {
+            groundTarget = new GameObject("GroundTarget");
+            groundTarget.transform.position = transform.position;
+        }
+        SetTarget(groundTarget);
     }
 
     private bool CheckForActiveSelectables()
@@ -220,6 +231,11 @@ public class PlayerMarker : MonoBehaviour
 
     public void ClearTarget()
     {
+        if (groundTarget != null)
+        {
+            Destroy(groundTarget);
+            groundTarget = null;
+        }
         Target = null;
         OnTargetChanged?.Invoke(null);
     }
