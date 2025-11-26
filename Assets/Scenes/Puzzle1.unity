@@ -11751,7 +11751,7 @@ Light:
     m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.359
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -15175,85 +15175,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1254192303}
     - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: DeathSFX.Path
-      value: event:/SFX/NPC/Enemy Destroyed
-      objectReference: {fileID: 0}
-    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: scrapPilePrefab
       value: 
       objectReference: {fileID: 525362753}
-    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: DeathSFX.Guid.Data1
-      value: 276096963
-      objectReference: {fileID: 0}
-    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: DeathSFX.Guid.Data2
-      value: 1151850742
-      objectReference: {fileID: 0}
-    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: DeathSFX.Guid.Data3
-      value: 668255626
-      objectReference: {fileID: 0}
-    - target: {fileID: 2522443489029981126, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: DeathSFX.Guid.Data4
-      value: 1395880248
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863460522451835848, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: bulletSFX.Path
-      value: event:/SFX/NPC/Enemy Guns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863460522451835848, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: chargeSFX.Path
-      value: event:/SFX/Mech/Mech Lockon
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863460522451835848, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: bulletSFX.Guid.Data1
-      value: -1545865985
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863460522451835848, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: bulletSFX.Guid.Data2
-      value: 1199728975
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863460522451835848, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: bulletSFX.Guid.Data3
-      value: -1696696914
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863460522451835848, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: bulletSFX.Guid.Data4
-      value: -705010180
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863460522451835848, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: chargeSFX.Guid.Data1
-      value: 1328528811
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863460522451835848, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: chargeSFX.Guid.Data2
-      value: 1310755623
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863460522451835848, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: chargeSFX.Guid.Data3
-      value: -1303860096
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863460522451835848, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: chargeSFX.Guid.Data4
-      value: -793793619
-      objectReference: {fileID: 0}
     - target: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: m_Name
       value: TurretEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 9223242047111492838, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.92422795
-      objectReference: {fileID: 0}
-    - target: {fileID: 9223242047111492838, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.92422795
-      objectReference: {fileID: 0}
-    - target: {fileID: 9223242047111492838, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.92422795
-      objectReference: {fileID: 0}
+    - target: {fileID: 7957353251879768658, guid: 4be650896d3950241ae4fca08409081e, type: 3}
+      propertyPath: 'characters.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1738541674}
     - target: {fileID: 9223242047111492838, guid: 4be650896d3950241ae4fca08409081e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.45
@@ -15297,32 +15229,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1461398107}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4be650896d3950241ae4fca08409081e, type: 3}
---- !u!1 &1461398106 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5909894609352407742, guid: 4be650896d3950241ae4fca08409081e, type: 3}
-  m_PrefabInstance: {fileID: 1461398105}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1461398107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461398106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cf6e608fdbee1544a1fc3ed65c8df64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  message: Press E to Destroy Turret
-  characters:
-  - {fileID: 1738541674}
-  textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!1 &1476903903
 GameObject:
   m_ObjectHideFlags: 0
