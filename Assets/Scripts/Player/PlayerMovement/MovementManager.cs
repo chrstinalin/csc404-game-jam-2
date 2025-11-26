@@ -88,7 +88,12 @@ public class MovementManager : PlayerMovementManager
 
         if (Input.GetButtonDown("MountKey"))
         {
-            ToggleMouse(!IsMouseActive);
+            bool targetIsMouse = !IsMouseActive;
+            if ((targetIsMouse && PlayerMouse.Instance.Health.GetCurrHealth() > 0) ||
+                (!targetIsMouse && PlayerMech.Instance.Health.GetCurrHealth() > 0))
+            {
+                ToggleMouse(!IsMouseActive);
+            }
         }
     }
     
@@ -109,7 +114,7 @@ public class MovementManager : PlayerMovementManager
             }
             if (mouseRb != null) mouseRb.constraints = RigidbodyConstraints.FreezeRotation;
 
-            if (MechAIController != null && MechAIController.Agent != null)
+            if (MechAIController != null && MechAIController.Agent != null && Mech.activeSelf && MechAIController.Agent.enabled)
             {
                 MechAIController.Agent.isStopped = true;
                 MechAIController.Agent.ResetPath();
@@ -130,7 +135,7 @@ public class MovementManager : PlayerMovementManager
             }
             if (mechRb != null) mechRb.constraints = RigidbodyConstraints.FreezeRotation;
             
-            if (MechAIController != null && MechAIController.Agent != null)
+            if (MechAIController != null && MechAIController.Agent != null && Mech.activeSelf && MechAIController.Agent.enabled)
             {
                 MechAIController.Agent.isStopped = false;
                 MechAIController.Agent.velocity = Vector3.zero;

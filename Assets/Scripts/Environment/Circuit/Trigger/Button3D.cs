@@ -8,6 +8,8 @@ public class Button3D : TriggerAbstract
     [SerializeField] private GameObject unpressedModel;
     [SerializeField] private GameObject pressedModel;
 
+    private HashSet<GameObject> activeColliders = new HashSet<GameObject>();
+
     private void Awake()
     {
         if (!unpressedModel || !pressedModel)
@@ -22,20 +24,27 @@ public class Button3D : TriggerAbstract
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("" + other.gameObject.name);
         if (TriggerObjects.Contains(other.gameObject))
         {
-            Debug.Log("Triggered");
-            Activate();
-        }
+            activeColliders.Add(other.gameObject);
 
+            if (!IsActive && activeColliders.Count > 0)
+            {
+                Activate();
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (TriggerObjects.Contains(other.gameObject))
         {
-            Deactivate();
+            activeColliders.Remove(other.gameObject);
+
+            if (IsActive && activeColliders.Count == 0)
+            {
+                Deactivate();
+            }
         }
     }
 

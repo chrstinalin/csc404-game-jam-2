@@ -36,8 +36,12 @@ public class LockOnManager : MonoBehaviour
             }
             return;
         }
-        
-        bool currentButtonState = Input.GetButton("ToggleLockOnMode");
+
+        bool buttonPressed = Input.GetButton("ToggleLockOnMode");
+        float rtAxis = Input.GetAxisRaw("ToggleLockOnMode_RT");
+        bool axisPressed = Mathf.Abs(rtAxis) >= Config.LOCK_ON_AXIS_THRESHOLD;
+        bool currentButtonState = buttonPressed || axisPressed;
+
         if (currentButtonState != _lastButtonState)
         {
             lockOnMode = currentButtonState;

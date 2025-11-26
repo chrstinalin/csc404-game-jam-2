@@ -57,6 +57,7 @@ public static class Config
 
     public static float FOOTSTEP_INTERVAL = 0.3f;
 
+    public static float LOCK_ON_AXIS_THRESHOLD = 0.5f;
 
 }
 
