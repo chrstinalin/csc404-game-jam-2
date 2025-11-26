@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LoadNextPuzzle : MonoBehaviour
 {
     [Header("Scene Settings")]
-    public float delayBeforeLoad = 1f; // Optional small delay
+    public float delayBeforeLoad = 0.5f; // Optional small delay
     public string nextSceneName;       // Leave empty to load next scene in build order
 
     private bool mechEntered = false;
