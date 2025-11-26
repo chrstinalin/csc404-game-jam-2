@@ -172,7 +172,7 @@ public class EnemyVisionManager : EnemyVisionAbstractManager
 
     bool OnSameVerticalPlane(GameObject target)
     {
-        return Mathf.Abs(target.transform.position.z - transform.position.z) < 10f;
+        return Mathf.Abs(target.transform.position.z - transform.position.z) < 5f;
     }
 
 }

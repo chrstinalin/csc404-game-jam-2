@@ -17,6 +17,13 @@ public class LockOnManager : MonoBehaviour
     private NavMeshEdgeVisualizer navMeshEdgeVisualizer;
     private EventInstance lockOnSFXInstance;
 
+    public static LockOnManager Instance;
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         CameraManager = CameraManager.Instance;
@@ -86,7 +93,7 @@ public class LockOnManager : MonoBehaviour
             CameraManager.SetCameraFOV(Config.CAMERA_DEFAULT_FOV);
             navMeshEdgeVisualizer.ClearFilledArea();
         }
-
+        
         ToggleEnemyOutlines(isLocked);
         PlayerMarker.Instance.setActive(isLocked);
     }

@@ -6,9 +6,10 @@ public class OutlineController : MonoBehaviour
     public bool isMechInteractable;
     public bool isMouseInteractable;
 
-    public MovementManager movementManager;
+    private MovementManager movementManager;
 
     private bool lastMouseState;
+    private bool lastLockOnState;
 
     private void Awake()
     {
@@ -16,10 +17,9 @@ public class OutlineController : MonoBehaviour
 
         var interactableObject = GetComponent<InteractableObject>();
         if (interactableObject != null)
-        {
+        {   
             foreach (var character in interactableObject.characters)
             {   
-                Debug.Log(interactableObject.characters);
                 if (character.CompareTag("MechPlayerEntity"))
                     isMechInteractable = true;
 
@@ -33,15 +33,24 @@ public class OutlineController : MonoBehaviour
     {
         movementManager = MovementManager.Instance;
         outline = GetComponentInChildren<Outline>();
+
         lastMouseState = movementManager.IsMouseActive;
+        lastLockOnState = LockOnManager.lockOnMode;
+
         UpdateOutline();
     }
 
     private void Update()
     {
-        if (movementManager.IsMouseActive != lastMouseState)
+        bool currentMouseState = movementManager.IsMouseActive;
+        bool currentLockState = LockOnManager.lockOnMode;
+
+        // Only update when something changes
+        if (currentMouseState != lastMouseState || currentLockState != lastLockOnState)
         {
-            lastMouseState = movementManager.IsMouseActive;
+            lastMouseState = currentMouseState;
+            lastLockOnState = currentLockState;
+
             UpdateOutline();
         }
     }
@@ -49,20 +58,18 @@ public class OutlineController : MonoBehaviour
     public void UpdateOutline()
     {
         bool mouseActive = movementManager.IsMouseActive;
+        bool lockedOn = LockOnManager.lockOnMode;
+
+        if (lockedOn)
+        {
+            outline.enabled = false;
+            return;
+        }
 
         bool shouldClear =
             (isMechInteractable && mouseActive) ||
             (isMouseInteractable && !mouseActive);
 
-        if (shouldClear)
-        {
-            outline.enabled = false;
-            Debug.Log("cleared");
-        }
-        else
-        {
-            outline.enabled = true;
-            Debug.Log("enabled");
-        }
+        outline.enabled = !shouldClear;
     }
 }
