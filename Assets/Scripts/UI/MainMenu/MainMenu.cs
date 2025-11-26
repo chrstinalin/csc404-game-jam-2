@@ -87,7 +87,15 @@ public class MainMenu : MonoBehaviour
             if (EventSystem.current.currentSelectedGameObject != null)
             {
                 Button selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
-                if (selectedButton != null) selectedButton.onClick.Invoke();
+                Toggle selectedToggle = EventSystem.current.currentSelectedGameObject.GetComponent<Toggle>();
+                if (selectedButton != null)
+                {
+                    selectedButton.onClick.Invoke();
+                }
+                else if (selectedToggle != null)
+                {
+                    selectedToggle.isOn = !selectedToggle.isOn;
+                }
             }
         }
     }

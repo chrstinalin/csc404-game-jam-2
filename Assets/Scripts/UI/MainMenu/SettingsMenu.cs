@@ -6,12 +6,17 @@ public class SettingsMenu : MonoBehaviour
 {
     [SerializeField] private GameObject musicSettings;
     [SerializeField] private GameObject sfxSettings;
+    [SerializeField] private GameObject sensitivitySettings;
+    [SerializeField] private GameObject invertAxisSettings;
     [SerializeField] private int sliderSteps = 5;  // No. of steps; represents fraction of 1
 
     private Text musicVal;
     private Text sfxVal;
+    private Text sensitivityVal;
     private Slider musicSlider;
     private Slider sfxSlider;
+    private Slider sensitivitySlider;
+    private Toggle invertAxisToggle;
 
     [Header("Nav")]
     [SerializeField] private Button controlsButton;
@@ -35,6 +40,13 @@ public class SettingsMenu : MonoBehaviour
         if (sfxVal != null)
             sfxVal.text = Mathf.RoundToInt(AudioManager.Instance.GetSFXVolume() * 100).ToString() + "%";
 
+        int maxMultiplier = Config.SENSITIVITY_MULTIPLIER_MAX;
+        int multiplier = PlayerPrefs.GetInt("MouseSensitivityMultiplier", Config.SENSITIVITY_MULTIPLIER_DEFAULT);
+
+        sensitivityVal = sensitivitySettings.transform.Find("SensitivityVal").GetComponent<Text>();
+        if (sensitivityVal != null)
+            sensitivityVal.text = (multiplier * 10).ToString() + "%";
+
         // Slider
         musicSlider = musicSettings.GetComponentInChildren<Slider>();
         if (musicSlider != null)
@@ -48,6 +60,23 @@ public class SettingsMenu : MonoBehaviour
         {
             sfxSlider.value = AudioManager.Instance.GetSFXVolume() * sliderSteps;
             sfxSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
+        }
+
+        sensitivitySlider = sensitivitySettings.GetComponentInChildren<Slider>();
+        if (sensitivitySlider != null)
+        {
+            sensitivitySlider.minValue = 0;
+            sensitivitySlider.maxValue = maxMultiplier;
+            sensitivitySlider.wholeNumbers = true;
+            sensitivitySlider.value = multiplier;
+            sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
+        }
+
+        invertAxisToggle = invertAxisSettings.GetComponentInChildren<Toggle>();
+        if (invertAxisToggle != null)
+        {
+            invertAxisToggle.isOn = PlayerPrefs.GetInt("InvertYAxis", 0) == 1;
+            invertAxisToggle.onValueChanged.AddListener(OnInvertAxisChanged);
         }
     }
 
@@ -91,6 +120,26 @@ public class SettingsMenu : MonoBehaviour
     {
         sfxVal.text = Mathf.RoundToInt(value * (100 / sliderSteps)).ToString() + "%";
         AudioManager.Instance.SetSFXVolume(value / sliderSteps);
+    }
+
+    void OnSensitivityChanged(float value)
+    {
+        int multiplier = Mathf.RoundToInt(value);
+        sensitivityVal.text = (multiplier * 10).ToString() + "%";
+        PlayerPrefs.SetInt("MouseSensitivityMultiplier", multiplier);
+        if (CameraManager.Instance != null)
+        {
+            CameraManager.Instance.mouseSensitivity = multiplier * 10;
+        }
+    }
+
+    void OnInvertAxisChanged(bool value)
+    {
+        PlayerPrefs.SetInt("InvertYAxis", value ? 1 : 0);
+        if (CameraManager.Instance != null)
+        {
+            CameraManager.Instance.invertYAxis = value;
+        }
     }
 
 }

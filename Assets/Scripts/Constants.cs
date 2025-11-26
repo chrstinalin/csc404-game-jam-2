@@ -62,6 +62,9 @@ public static class Config
 
     public static float LOCK_ON_AXIS_THRESHOLD = 0.5f;
 
+    public static int SENSITIVITY_MULTIPLIER_DEFAULT = 10;
+    public static int SENSITIVITY_MULTIPLIER_MAX = 20;
+
 }
 
 public enum AIState
