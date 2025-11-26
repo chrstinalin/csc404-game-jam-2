@@ -20,6 +20,8 @@ public class CameraManager : CameraMovementManager
 
     private float currentCameraDistance;
     private float collisionDistanceVelocity;
+    private float targetCameraDistance;
+    private float targetDistanceVelocity;
 
     void Awake()
     {
@@ -97,15 +99,22 @@ public class CameraManager : CameraMovementManager
 
         float desiredDistance = zoom;
 
-        float targetDistance = GetCollisionAdjustedDistanceOnlyWalls(
+        float instantCollisionDistance = GetCollisionAdjustedDistanceOnlyWalls(
             CameraPivot.position,
             transform.forward,
             desiredDistance
         );
+        
+        targetCameraDistance = Mathf.SmoothDamp(
+            targetCameraDistance,
+            instantCollisionDistance,
+            ref targetDistanceVelocity,
+            Config.CAMERA_COLLISION_EASE_TIME
+        );
 
         currentCameraDistance = Mathf.SmoothDamp(
             currentCameraDistance,
-            targetDistance,
+            targetCameraDistance,
             ref collisionDistanceVelocity,
             Config.CAMERA_COLLISION_SMOOTH_TIME
         );
@@ -117,9 +126,30 @@ public class CameraManager : CameraMovementManager
     private float GetCollisionAdjustedDistanceOnlyWalls(Vector3 pivotPos, Vector3 cameraForward, float desiredDistance)
     {
         Vector3 dirToCamera = -cameraForward;
-        float maxCastDistance = Mathf.Max(desiredDistance, Config.CAMERA_MIN_DISTANCE);
 
-        Ray ray = new Ray(pivotPos, dirToCamera);
+        float charOffset = 0f;
+        Transform playerRoot = FollowEntity != null ? FollowEntity.transform : null;
+        float minDistanceFromChar = Config.CAMERA_MIN_DISTANCE;
+        if (playerRoot != null)
+        {
+            Renderer renderer = FollowEntity.GetComponentInChildren<Renderer>();
+            if (renderer != null)
+            {
+                Bounds bounds = renderer.bounds;
+                Vector3 toCamera = dirToCamera.normalized;
+                Vector3 extents = bounds.extents;
+
+                charOffset = Mathf.Abs(Vector3.Dot(extents, toCamera));
+                charOffset = Mathf.Max(charOffset, 0.5f);
+                
+                float characterSize = bounds.extents.magnitude;
+                minDistanceFromChar = Mathf.Max(characterSize * 1.5f, 4f);
+            }
+        }
+
+        Vector3 adjustedStartPos = pivotPos + dirToCamera * charOffset;
+        float maxCastDistance = Mathf.Max(desiredDistance - charOffset, Config.CAMERA_MIN_DISTANCE);
+        Ray ray = new Ray(adjustedStartPos, dirToCamera);
         RaycastHit[] hits = Physics.SphereCastAll(
             ray,
             Config.CAMERA_COLLISION_RADIUS,
@@ -129,11 +159,11 @@ public class CameraManager : CameraMovementManager
         );
 
         if (hits == null || hits.Length == 0)
-            return desiredDistance;
-
-        Transform playerRoot = FollowEntity != null ? FollowEntity.transform : null;
+        {
+            return Mathf.Max(desiredDistance, minDistanceFromChar);
+        }
+            
         float closest = desiredDistance;
-        bool anyWall = false;
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -145,13 +175,14 @@ public class CameraManager : CameraMovementManager
             if (!col.CompareTag("Wall"))
                 continue;
 
-            anyWall = true;
-            float candidate = Mathf.Max(hits[i].distance - Config.CAMERA_COLLISION_BUFFER, Config.CAMERA_MIN_DISTANCE);
+            float actualDistance = hits[i].distance + charOffset;
+            float candidate = Mathf.Max(actualDistance - Config.CAMERA_COLLISION_BUFFER, minDistanceFromChar);
+            
             if (candidate < closest)
                 closest = candidate;
         }
 
-        return Mathf.Clamp(closest, Config.CAMERA_MIN_DISTANCE, desiredDistance);
+        return Mathf.Clamp(closest, minDistanceFromChar, desiredDistance);
     }
 
     private void HandleZoom()
