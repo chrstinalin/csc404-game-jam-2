@@ -90,7 +90,9 @@ public class ControlSchemeManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("ControlSchemeManager Start() called!");
         currentControllerType = DetectControllerType();
+        Debug.Log($"Detected controller type: {currentControllerType}");
         UpdateAllControls();
         UpdateDeviceType();
     }
@@ -189,5 +191,10 @@ public class ControlSchemeManager : MonoBehaviour
         currentControllerType = DetectControllerType();
         UpdateAllControls();
         UpdateDeviceType();
+    }
+    
+    public ControllerType GetCurrentControllerType()
+    {
+        return currentControllerType;
     }
 }

@@ -72,8 +72,7 @@ MonoBehaviour:
     Data2: 1144473754
     Data3: -618444928
     Data4: -1845282644
-  Banks:
-  - {fileID: -149378394625700419}
+  Banks: []
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -155,6 +154,53 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 671
+--- !u!114 &-5422265311289516636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/Audio/fmod_session/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638985649079264619
+  FileSizes:
+  - Name: Desktop
+    Value: 10875648
+  Exists: 1
+--- !u!114 &-5205921397061354323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mech/Mech Gunshot
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mech/Mech Gunshot
+  Guid:
+    Data1: -1844422045
+    Data2: 1277924700
+    Data3: -818744668
+    Data4: -2067916505
+  Banks:
+  - {fileID: -149378394625700419}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1280
 --- !u!114 &-5059134343422494009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,8 +271,7 @@ MonoBehaviour:
     Data2: 1099297173
     Data3: 1618997154
     Data4: 1373891799
-  Banks:
-  - {fileID: -149378394625700419}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -234,53 +279,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 861
---- !u!114 &-5422265311289516636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/Audio/fmod_session/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638985649079264619
-  FileSizes:
-  - Name: Desktop
-    Value: 10875648
-  Exists: 1
---- !u!114 &-5205921397061354323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mech/Mech Gunshot
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mech/Mech Gunshot
-  Guid:
-    Data1: -1844422045
-    Data2: 1277924700
-    Data3: -818744668
-    Data4: -2067916505
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1280
 --- !u!114 &-2738446286221131526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,8 +406,7 @@ MonoBehaviour:
     Data2: 1192341375
     Data3: -1502129997
     Data4: 147275528
-  Banks:
-  - {fileID: -149378394625700419}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -510,7 +507,7 @@ MonoBehaviour:
   Path: Assets/Audio/fmod_session/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638997474841680902
+  lastModified: 638997452640557805
   FileSizes:
   - Name: Desktop
     Value: 12095584
@@ -564,10 +561,10 @@ MonoBehaviour:
   - {fileID: -7390543830632348742}
   - {fileID: -4307006422070969634}
   - {fileID: 4247130986305666380}
-  - {fileID: -6852753536338981397}
+  - {fileID: 0}
   - {fileID: 6788876318095800020}
   - {fileID: 3523449874674843456}
-  - {fileID: -3090416508842328995}
+  - {fileID: 0}
   - {fileID: -7234810653680110723}
   - {fileID: 7879451422437656812}
   - {fileID: 5220946520463406793}
@@ -592,7 +589,7 @@ MonoBehaviour:
   - {fileID: 4770958762705878601}
   - {fileID: 3177350261185075440}
   - {fileID: 7601338463190995858}
-  - {fileID: -5275655373814293051}
+  - {fileID: 0}
   EditorParameters:
   - {fileID: 4060782537936609410}
   MasterBanks:
@@ -600,7 +597,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 1056454105052273138}
   cacheVersion: 131856
-  cacheTime: 638985649079310087
+  cacheTime: 638997452640567724
   SerializableEventsDict:
   - key: event:/Music+Amb/Overworld Music
     index: 0
@@ -687,7 +684,7 @@ MonoBehaviour:
   Path: Assets/Audio/fmod_session/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638997474841690943
+  lastModified: 638997452640567724
   FileSizes:
   - Name: Desktop
     Value: 3260
@@ -817,8 +814,7 @@ MonoBehaviour:
     Data2: 1211815407
     Data3: -1838687344
     Data4: -854034200
-  Banks:
-  - {fileID: -149378394625700419}
+  Banks: []
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -900,8 +896,7 @@ MonoBehaviour:
     Data2: 1164754596
     Data3: 768669114
     Data4: -1928957330
-  Banks:
-  - {fileID: -149378394625700419}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -959,7 +954,7 @@ MonoBehaviour:
   Type: 0
   IsGlobal: 1
   Labels: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &4247130986305666380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -978,8 +973,7 @@ MonoBehaviour:
     Data2: 1304432033
     Data3: 1808741021
     Data4: 566753745
-  Banks:
-  - {fileID: -149378394625700419}
+  Banks: []
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
