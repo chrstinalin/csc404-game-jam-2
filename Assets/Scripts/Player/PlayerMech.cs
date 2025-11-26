@@ -76,7 +76,6 @@ public class PlayerMech : MonoBehaviour
     
         // Only notify AI if player is not controlling mech
         bool playerControllingMech = MovementManager.Instance != null && !MovementManager.Instance.IsMouseActive;
-        if (!playerControllingMech && AIController != null) AIController.OnAttackedBy(source);
         
         if (isInvulnerable || Health == null) 
         {
