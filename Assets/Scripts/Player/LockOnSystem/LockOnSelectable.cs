@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
+ 
 
 public class LockOnSelectable : MonoBehaviour
 {
@@ -15,8 +14,7 @@ public class LockOnSelectable : MonoBehaviour
 
     public void Update()
     {
-        bool playerControllingMech = MovementManager.Instance != null && !MovementManager.Instance.IsMouseActive;
-        if (!playerControllingMech) return;
+        if (MovementManager.Instance == null) return;
         
         if (IsHover && Input.GetButtonDown("Interact") && PlayerMarker.Target != gameObject)
         {
