@@ -37,6 +37,7 @@ public class MechaInventoryManager : MonoBehaviour
         ScrapCurrency scrap = sourceInventory.GetCarriedItem();
         if (scrap != null)
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.HealMechSFX, transform.position, 1f);
             if (mechHealth != null)
             {
                 mechHealth.Heal(scrap.HPRestoreAmount);

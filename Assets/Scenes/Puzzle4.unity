@@ -2338,6 +2338,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
+  lockOnSFX:
+    Guid:
+      Data1: 1328528811
+      Data2: 1310755623
+      Data3: -1303860096
+      Data4: -793793619
+    Path: event:/SFX/Mech/Mech Lockon
 --- !u!1 &118504111
 GameObject:
   m_ObjectHideFlags: 0
@@ -4080,6 +4087,7 @@ GameObject:
   - component: {fileID: 200727937}
   - component: {fileID: 200727939}
   - component: {fileID: 200727938}
+  - component: {fileID: 200727940}
   m_Layer: 0
   m_Name: SM_doorSingleWide_01
   m_TagString: Untagged
@@ -4158,6 +4166,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200727936}
   m_Mesh: {fileID: 5158503822821802664, guid: 7005d28223e409d48918b178cb78d715, type: 3}
+--- !u!114 &200727940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200727936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: 1512094732
+      Data2: 1164754596
+      Data3: 768669114
+      Data4: -1928957330
+    Path: event:/SFX/Interactables/Interactable Door
+  volume: 1
 --- !u!1 &205571488
 GameObject:
   m_ObjectHideFlags: 0
@@ -4247,6 +4275,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205571488}
   m_Mesh: {fileID: 8385875076324165702, guid: 7005d28223e409d48918b178cb78d715, type: 3}
+--- !u!1001 &206571048
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.38332
+      objectReference: {fileID: 0}
+    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.73108
+      objectReference: {fileID: 0}
+    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3180802781564998349, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
+      propertyPath: m_Name
+      value: Marker
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
 --- !u!1 &231428189
 GameObject:
   m_ObjectHideFlags: 0
@@ -7672,6 +7757,7 @@ GameObject:
   - component: {fileID: 478969116}
   - component: {fileID: 478969118}
   - component: {fileID: 478969117}
+  - component: {fileID: 478969119}
   m_Layer: 0
   m_Name: Cylinder (21)
   m_TagString: Untagged
@@ -7750,6 +7836,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478969115}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &478969119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478969115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 0.2
 --- !u!1 &482576498
 GameObject:
   m_ObjectHideFlags: 0
@@ -8825,6 +8931,13 @@ MonoBehaviour:
       Data3: -1838687344
       Data4: -854034200
     Path: event:/Music+Amb/Overworld Music
+  AmbienceAudio:
+    Guid:
+      Data1: 641450589
+      Data2: 1125123233
+      Data3: 630931374
+      Data4: -406021210
+    Path: event:/Music+Amb/Ambience
 --- !u!4 &562927705
 Transform:
   m_ObjectHideFlags: 0
@@ -11438,6 +11551,7 @@ GameObject:
   - component: {fileID: 770476083}
   - component: {fileID: 770476085}
   - component: {fileID: 770476084}
+  - component: {fileID: 770476086}
   m_Layer: 0
   m_Name: Cylinder (22)
   m_TagString: Untagged
@@ -11516,6 +11630,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770476082}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &770476086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770476082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 0.2
 --- !u!1 &780799174
 GameObject:
   m_ObjectHideFlags: 0
@@ -12602,6 +12736,7 @@ GameObject:
   - component: {fileID: 873019500}
   - component: {fileID: 873019502}
   - component: {fileID: 873019501}
+  - component: {fileID: 873019503}
   m_Layer: 0
   m_Name: Cylinder (18)
   m_TagString: Untagged
@@ -12680,6 +12815,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873019499}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &873019503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873019499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 0.2
 --- !u!1 &885925229
 GameObject:
   m_ObjectHideFlags: 0
@@ -14969,6 +15124,7 @@ GameObject:
   - component: {fileID: 1055284490}
   - component: {fileID: 1055284492}
   - component: {fileID: 1055284491}
+  - component: {fileID: 1055284493}
   m_Layer: 0
   m_Name: Cylinder (17)
   m_TagString: Untagged
@@ -15047,6 +15203,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055284489}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1055284493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055284489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 0.2
 --- !u!1 &1075844139
 GameObject:
   m_ObjectHideFlags: 0
@@ -16756,6 +16932,7 @@ GameObject:
   - component: {fileID: 1187945951}
   - component: {fileID: 1187945953}
   - component: {fileID: 1187945952}
+  - component: {fileID: 1187945954}
   m_Layer: 0
   m_Name: Cylinder (13)
   m_TagString: Untagged
@@ -16834,6 +17011,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187945950}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1187945954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187945950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 0.2
 --- !u!1 &1188252899
 GameObject:
   m_ObjectHideFlags: 0
@@ -18855,6 +19052,7 @@ GameObject:
   - component: {fileID: 1340681413}
   - component: {fileID: 1340681415}
   - component: {fileID: 1340681414}
+  - component: {fileID: 1340681416}
   m_Layer: 0
   m_Name: Cylinder (14)
   m_TagString: Untagged
@@ -18933,6 +19131,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340681412}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1340681416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340681412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 0.2
 --- !u!1 &1343523373
 GameObject:
   m_ObjectHideFlags: 0
@@ -20349,8 +20567,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 1079175571}
     m_Modifications:
     - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Path
+      value: event:/SFX/Interactables/Interactable Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: TriggerObjects.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data1
+      value: 770979095
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data2
+      value: 1192341375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data3
+      value: -1502129997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data4
+      value: 147275528
       objectReference: {fileID: 0}
     - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: 'TriggerObjects.Array.data[0]'
@@ -20622,6 +20860,7 @@ GameObject:
   - component: {fileID: 1470713680}
   - component: {fileID: 1470713682}
   - component: {fileID: 1470713681}
+  - component: {fileID: 1470713683}
   m_Layer: 0
   m_Name: Cylinder (16)
   m_TagString: Untagged
@@ -20700,6 +20939,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470713679}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1470713683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470713679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 0.2
 --- !u!1 &1471390869
 GameObject:
   m_ObjectHideFlags: 0
@@ -23345,6 +23604,7 @@ GameObject:
   - component: {fileID: 1684736201}
   - component: {fileID: 1684736203}
   - component: {fileID: 1684736202}
+  - component: {fileID: 1684736204}
   m_Layer: 0
   m_Name: Cylinder (23)
   m_TagString: Untagged
@@ -23423,6 +23683,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684736200}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1684736204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684736200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 0.2
 --- !u!1 &1688695399
 GameObject:
   m_ObjectHideFlags: 0
@@ -25254,6 +25534,7 @@ GameObject:
   - component: {fileID: 1832368210}
   - component: {fileID: 1832368212}
   - component: {fileID: 1832368211}
+  - component: {fileID: 1832368213}
   m_Layer: 0
   m_Name: Cylinder (12)
   m_TagString: Untagged
@@ -25332,6 +25613,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832368209}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1832368213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832368209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 0.2
 --- !u!1 &1844502480
 GameObject:
   m_ObjectHideFlags: 0
@@ -27334,7 +27635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58b156c757450740a8c67f1c3ca9ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNextPuzzle
-  delayBeforeLoad: 1
+  delayBeforeLoad: 3
   nextSceneName: Puzzle3
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!65 &1988005311
@@ -28064,6 +28365,7 @@ GameObject:
   - component: {fileID: 2034781905}
   - component: {fileID: 2034781907}
   - component: {fileID: 2034781906}
+  - component: {fileID: 2034781908}
   m_Layer: 0
   m_Name: Cylinder (10)
   m_TagString: Untagged
@@ -28142,6 +28444,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034781904}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2034781908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034781904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 0.2
 --- !u!1 &2038992719
 GameObject:
   m_ObjectHideFlags: 0
@@ -28687,6 +29009,7 @@ GameObject:
   - component: {fileID: 2078921883}
   - component: {fileID: 2078921885}
   - component: {fileID: 2078921884}
+  - component: {fileID: 2078921886}
   m_Layer: 0
   m_Name: Cylinder (9)
   m_TagString: Untagged
@@ -28765,6 +29088,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078921882}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2078921886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078921882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f622c1d74721ab428c4a344234bc91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActivePlaySFX
+  sfx:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 0.2
 --- !u!1 &2081226927
 GameObject:
   m_ObjectHideFlags: 0
@@ -29533,7 +29876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3431860728255047731, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       propertyPath: startOn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5485500182088732305, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       propertyPath: m_LocalScale.x
@@ -29869,3 +30212,4 @@ SceneRoots:
   - {fileID: 920892702}
   - {fileID: 562927705}
   - {fileID: 824952140}
+  - {fileID: 206571048}

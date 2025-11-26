@@ -53,6 +53,7 @@ public class PauseScreen : MonoBehaviour
         
     public void Resume ()
     {
+        BackgroundMusicManager.Instance.PauseMenu(false);
         pauseMenuUI.SetActive(false);
         dof.active = false;
         Time.timeScale = 1f;
@@ -61,6 +62,7 @@ public class PauseScreen : MonoBehaviour
 
     void Pause()
     {   
+        BackgroundMusicManager.Instance.PauseMenu(true);
         dof.active = enabled;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
