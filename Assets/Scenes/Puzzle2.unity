@@ -1319,6 +1319,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
+  lockOnSFX:
+    Guid:
+      Data1: 1328528811
+      Data2: 1310755623
+      Data3: -1303860096
+      Data4: -793793619
+    Path: event:/SFX/Mech/Mech Lockon
 --- !u!1 &112352299
 GameObject:
   m_ObjectHideFlags: 0
@@ -16645,7 +16652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58b156c757450740a8c67f1c3ca9ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNextPuzzle
-  delayBeforeLoad: 1
+  delayBeforeLoad: 3
   nextSceneName: EndScreen
 --- !u!65 &1395932778
 BoxCollider:

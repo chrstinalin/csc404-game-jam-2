@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadNextSceneOnBothCollideChildren : MonoBehaviour
+public class LoadNextPuzzle : MonoBehaviour
 {
     [Header("Scene Settings")]
     public float delayBeforeLoad = 1f; // Optional small delay
@@ -27,6 +27,7 @@ public class LoadNextSceneOnBothCollideChildren : MonoBehaviour
 
         if (mechEntered && mouseEntered && !sceneLoading)
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.loadNextPuzzleSFX, transform.position, 1f);
             sceneLoading = true;
             Invoke(nameof(LoadNextScene), delayBeforeLoad);
         }

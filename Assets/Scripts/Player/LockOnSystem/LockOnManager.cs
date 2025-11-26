@@ -61,7 +61,7 @@ public class LockOnManager : MonoBehaviour
 
         if (isLocked)
         {
-            BackgroundMusicManager.Instance.LockOnMode(true);
+            if(BackgroundMusicManager.Instance) BackgroundMusicManager.Instance.LockOnMode(true);
             lockOnSFXInstance = AudioManager.Instance.PlaySFXWithParams(
                 lockOnSFX,
                 new Dictionary<string, float> { { "Activated", 1f } },
@@ -75,7 +75,7 @@ public class LockOnManager : MonoBehaviour
         }
         else
         {
-            BackgroundMusicManager.Instance.LockOnMode(false);
+            if(BackgroundMusicManager.Instance) BackgroundMusicManager.Instance.LockOnMode(false);
             if (lockOnSFXInstance.isValid())
             {
                 AudioManager.Instance.SetParameter(lockOnSFXInstance, "Activated", 0f);

@@ -13,6 +13,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public EventReference SwitchToMechSFX;
     [SerializeField] public EventReference MouseHurtSFX;
     [SerializeField] public EventReference MechHurtSFX;
+    [SerializeField] public EventReference loadNextPuzzleSFX;
+    [SerializeField] public EventReference HealMechSFX;
+    [SerializeField] public EventReference ScrapPileInteractSFX;
 
     void Awake()
     {

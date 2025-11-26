@@ -69,6 +69,7 @@ public class MouseInventoryManager : MonoBehaviour
 
     private void PickUpItem(ScrapCurrency item)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.ScrapPileInteractSFX, transform.position, 2f);
         carriedItem = item;
         nearbyItem = null;
 
@@ -83,6 +84,7 @@ public class MouseInventoryManager : MonoBehaviour
     private void DropItem()
     {
         if (carriedItem == null) return;
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.ScrapPileInteractSFX, transform.position, 2f);
 
         Vector3 dropPosition = transform.position + transform.forward * 1f;
 
