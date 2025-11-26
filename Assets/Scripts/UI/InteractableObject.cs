@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class InteractableObject : MonoBehaviour
 {
     [Header("Settings")]
-    public string message = "Press E to interact";
+    public string message = "Press B to interact";
     public GameObject[] characters;
     public GameObject textPrefab;
     private GameObject spawnedText;

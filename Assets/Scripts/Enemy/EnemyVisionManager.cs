@@ -63,7 +63,7 @@ public class EnemyVisionManager : EnemyVisionAbstractManager
         mouseAlpha = Mathf.Lerp(mouseAlpha, targetMouseAlpha, Time.deltaTime * fadeSpeed);
         mechAlpha = Mathf.Lerp(mechAlpha, targetMechAlpha, Time.deltaTime * fadeSpeed);
         
-        if (mouseAlpha > 0.01f)
+        if (mouseAlpha > 0.01f && OnSameVerticalPlane(Mouse))
         {
             UpdateConeAlpha(MouseConeRenderer, mouseAlpha);
             DrawVisionCone(MouseConeRenderer, MouseDetectAngle, MouseDetectRange);
@@ -73,7 +73,7 @@ public class EnemyVisionManager : EnemyVisionAbstractManager
             MouseConeRenderer.enabled = false;
         }
         
-        if (mechAlpha > 0.01f)
+        if (mechAlpha > 0.01f && OnSameVerticalPlane(Mech))
         {
             UpdateConeAlpha(MechConeRenderer, mechAlpha);
             DrawVisionCone(MechConeRenderer, MechDetectAngle, MechDetectRange);
@@ -169,4 +169,10 @@ public class EnemyVisionManager : EnemyVisionAbstractManager
             renderer.SetPosition(i + 1, origin + direction * range);
         }
     }
+
+    bool OnSameVerticalPlane(GameObject target)
+    {
+        return Mathf.Abs(target.transform.position.z - transform.position.z) < 10f;
+    }
+
 }
