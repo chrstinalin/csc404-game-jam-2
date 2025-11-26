@@ -17,16 +17,13 @@ public class BackgroundMusicManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     void OnEnable()
@@ -48,6 +45,9 @@ public class BackgroundMusicManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (Instance == null)
+            Instance = this;
+        
         PlayTheme();
         PlayAmbience();           
         SetCombatParameter(false);

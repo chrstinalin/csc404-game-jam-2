@@ -5,14 +5,18 @@ using UnityEngine.UI;
 public class InteractableObject : MonoBehaviour
 {
     [Header("Settings")]
-    public string message = "Press E to interact";
-    public GameObject[] characters;
+    public string actionMessage = "interact";
+    public GameObject[] characters = new GameObject[0];
     public GameObject textPrefab;
     private GameObject spawnedText;
     private bool isInside;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (characters == null || characters.Length == 0)
+        {
+            return;
+        }
         foreach (var character in characters)
         {
             if (other.gameObject == character && spawnedText == null)
@@ -23,7 +27,7 @@ public class InteractableObject : MonoBehaviour
                 spawnedText = Instantiate(textPrefab, canvas.transform);
 
                 var textComponent = spawnedText.GetComponent<Text>();
-                textComponent.text = message;
+                textComponent.text = GetMessage(ActionType.Interact);
 
                 var follower = spawnedText.GetComponent<InteractableObjectText>();
                 follower.target = transform;
@@ -35,6 +39,10 @@ public class InteractableObject : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (characters == null || characters.Length == 0)
+        {
+            return;
+        }
         foreach (var character in characters)
         {
             if (other.gameObject == character && spawnedText != null)
@@ -55,4 +63,11 @@ public class InteractableObject : MonoBehaviour
             spawnedText = null;
         }
     }
+
+    private string GetMessage(ActionType action)
+    {
+        string button = ButtonMappings.GetButtonLabel(action);
+        return $"Press {button} to {actionMessage}";
+    }
+
 }
