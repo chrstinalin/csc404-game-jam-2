@@ -12,6 +12,7 @@ public class EndScreen : MonoBehaviour
         if (BackgroundMusicManager.Instance != null)
         {
             BackgroundMusicManager.Instance.StopTheme();
+            Destroy(BackgroundMusicManager.Instance.gameObject);
         }
         EventSystem.current.SetSelectedGameObject(button);
     }
