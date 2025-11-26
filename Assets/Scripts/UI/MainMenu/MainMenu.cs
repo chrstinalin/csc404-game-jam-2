@@ -23,7 +23,6 @@ public class MainMenu : MonoBehaviour
     private float inputCooldown = 0f;
     private float cooldownTime = 0.2f;
     private GameObject lastSelected;
-    private bool stepTaken = false;
 
     [Header("Audio")]
     [SerializeField] private EventReference MenuBGM;
@@ -80,18 +79,11 @@ public class MainMenu : MonoBehaviour
 
         float vertical = Input.GetAxisRaw("Vertical");
 
-        if (Mathf.Ceil(vertical) < -0.5f && !stepTaken){
+        if (vertical < -0.5f)
             NavigateDown();
-            stepTaken = true;
-        }
 
-        else if (Mathf.Floor(vertical) > 0.5f && !stepTaken){
+        else if (vertical > 0.5f)
             NavigateUp();
-            stepTaken = true;
-        }
-        else {
-            stepTaken = false;
-        }
 
         if (Input.GetButtonDown("Submit"))
         {
@@ -99,15 +91,7 @@ public class MainMenu : MonoBehaviour
             if (EventSystem.current.currentSelectedGameObject != null)
             {
                 Button selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
-                Toggle selectedToggle = EventSystem.current.currentSelectedGameObject.GetComponent<Toggle>();
-                if (selectedButton != null)
-                {
-                    selectedButton.onClick.Invoke();
-                }
-                else if (selectedToggle != null)
-                {
-                    selectedToggle.isOn = !selectedToggle.isOn;
-                }
+                if (selectedButton != null) selectedButton.onClick.Invoke();
             }
         }
     }
