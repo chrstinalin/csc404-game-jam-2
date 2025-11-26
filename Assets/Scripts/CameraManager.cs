@@ -23,6 +23,9 @@ public class CameraManager : CameraMovementManager
     private float targetCameraDistance;
     private float targetDistanceVelocity;
 
+    public int mouseSensitivity;
+    public bool invertYAxis;
+
     void Awake()
     {
         Instance = this;
@@ -45,6 +48,9 @@ public class CameraManager : CameraMovementManager
         currentCameraDistance = zoom;
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        mouseSensitivity = PlayerPrefs.GetInt("MouseSensitivityMultiplier", Config.SENSITIVITY_MULTIPLIER_DEFAULT) * 10;
+        invertYAxis = PlayerPrefs.GetInt("InvertYAxis", 0) == 1;
     }
 
     void Update()
@@ -216,8 +222,8 @@ public class CameraManager : CameraMovementManager
         float inputX = mouseX + rightStickX;
         float inputY = mouseY + rightStickY;
 
-        yaw += inputX * Config.MOUSE_SENSITIVITY * Time.deltaTime;
-        pitch -= inputY * Config.MOUSE_SENSITIVITY * Time.deltaTime;
+        yaw += inputX * mouseSensitivity * Time.deltaTime;
+        pitch += inputY * mouseSensitivity * Time.deltaTime * (invertYAxis ? -1 : 1);
         pitch = Mathf.Clamp(pitch, Config.MIN_PITCH, Config.MAX_PITCH);
     }
 
