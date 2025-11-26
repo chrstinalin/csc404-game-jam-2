@@ -18,7 +18,10 @@ public class EndScreen : MonoBehaviour
     {
         FadeManager.Instance.FadeIn();
         
-        if (BackgroundMusicManager.Instance != null) BackgroundMusicManager.Instance.StopTheme();
+        if (BackgroundMusicManager.Instance != null) {
+            BackgroundMusicManager.Instance.StopTheme();
+            Destroy(BackgroundMusicManager.Instance.gameObject);
+        }
         if (AudioManager.Instance != null) musicInstance = AudioManager.Instance.PlaySFX(EndScreenBGM);
         
         EventSystem.current.SetSelectedGameObject(button);
