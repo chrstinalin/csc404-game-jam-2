@@ -38,6 +38,9 @@ public class MainMenu : MonoBehaviour
         FadeManager.Instance.FadeIn();
         SwitchToState("MainMenu");
         musicInstance = AudioManager.Instance.PlaySFX(MenuBGM);
+
+        if (BackgroundMusicManager.Instance != null)
+            BackgroundMusicManager.Instance.StopTheme();
     }
 
     void Update()

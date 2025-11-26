@@ -79,21 +79,18 @@ public class SettingsMenu : MonoBehaviour
         
         slider.value = newValue;
         inputCooldown = cooldownTime;
-        AudioManager.Instance.PlaySFX(SelectSFX);
     }
 
     void OnMusicVolumeChanged(float value)
     {
         musicVal.text = Mathf.RoundToInt(value * (100 / sliderSteps)).ToString() + "%";
         AudioManager.Instance.SetMusicVolume(value / sliderSteps);
-        AudioManager.Instance.PlaySFX(SelectSFX);
     }
 
     void OnSFXVolumeChanged(float value)
     {
         sfxVal.text = Mathf.RoundToInt(value * (100 / sliderSteps)).ToString() + "%";
         AudioManager.Instance.SetSFXVolume(value / sliderSteps);
-        AudioManager.Instance.PlaySFX(SelectSFX);
     }
 
 }
