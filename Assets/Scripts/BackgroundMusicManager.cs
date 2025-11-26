@@ -68,8 +68,6 @@ public class BackgroundMusicManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"[BackgroundMusicManager] Active enemies: {activeEnemiesCount}");
-
         bool enemiesActive = activeEnemiesCount > 0;
 
         if (enemiesActive != isInCombat)

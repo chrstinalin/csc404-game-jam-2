@@ -9,6 +9,10 @@ public class EndScreen : MonoBehaviour
 
     void Start()
     {
+        if (BackgroundMusicManager.Instance != null)
+        {
+            BackgroundMusicManager.Instance.StopTheme();
+        }
         EventSystem.current.SetSelectedGameObject(button);
     }
 
