@@ -9,6 +9,10 @@ public class AudioManager : MonoBehaviour
 
     [Header("FMOD Events")]
     [SerializeField] public EventReference LeverPullSFX;
+
+    private Bus musicBus;
+    private Bus sfxBus;
+    
     [SerializeField] public EventReference SwitchToMouseSFX;
     [SerializeField] public EventReference SwitchToMechSFX;
     [SerializeField] public EventReference MouseHurtSFX;
@@ -25,6 +29,9 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        musicBus = RuntimeManager.GetBus("bus:/Music");
+        sfxBus = RuntimeManager.GetBus("bus:/SFX");
     }
 
     public EventInstance PlaySFX(EventReference audioFile, Vector3? position = null, float volume = 1f)
@@ -81,5 +88,27 @@ public class AudioManager : MonoBehaviour
 
         instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         instance.release();
+    }
+    
+    public void SetMusicVolume(float volume)
+    {
+        musicBus.setVolume(volume);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxBus.setVolume(volume);
+    }
+
+    public float GetMusicVolume()
+    {
+        musicBus.getVolume(out float volume);
+        return volume;
+    }
+
+    public float GetSFXVolume()
+    {
+        sfxBus.getVolume(out float volume);
+        return volume;
     }
 }
