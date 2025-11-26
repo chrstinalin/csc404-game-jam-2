@@ -32,13 +32,6 @@ public class LoadNextPuzzle : MonoBehaviour
         }
 
         HandleStateChange();
-
-        if (mechEntered && mouseEntered && !sceneLoading)
-        {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.loadNextPuzzleSFX, transform.position, 1f);
-            sceneLoading = true;
-            Invoke(nameof(LoadNextScene), delayBeforeLoad);
-        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -62,6 +55,7 @@ public class LoadNextPuzzle : MonoBehaviour
     {
         if (mechEntered && mouseEntered && !sceneLoading)
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.loadNextPuzzleSFX, transform.position, 1f);
             CancelWarning();
             sceneLoading = true;
             Invoke(nameof(LoadNextScene), delayBeforeLoad);

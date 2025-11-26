@@ -35,6 +35,7 @@ public static class Config
     public static float CAMERA_COLLISION_BUFFER = 0.05f;
     public static float CAMERA_MIN_DISTANCE = 0.2f;
     public static float CAMERA_COLLISION_SMOOTH_TIME = 0.05f;
+    public static float CAMERA_COLLISION_EASE_TIME = 0.15f;
 
     public static float ZOOM_SENSITIVITY = 10f;
 
@@ -63,6 +64,9 @@ public static class Config
     public static float FOOTSTEP_INTERVAL = 0.3f;
 
     public static float LOCK_ON_AXIS_THRESHOLD = 0.5f;
+
+    public static int SENSITIVITY_MULTIPLIER_DEFAULT = 10;
+    public static int SENSITIVITY_MULTIPLIER_MAX = 20;
 
 }
 
