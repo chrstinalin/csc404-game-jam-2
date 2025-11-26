@@ -46,13 +46,24 @@ public class UIManager : MonoBehaviour
     [SerializeField] private EventReference DownSFX;
     [SerializeField] private EventReference BackSFX;
 
+    // Control Scheme Manager
+    private ControlSchemeManager controlSchemeManager;
+
     private GameObject mouseControlsUI;
     private GameObject mechControlsUI;
 
+    // Mouse/Mech Control Text References
+    [Header("In-Game Control Text")]
+    [SerializeField] private Text mouseControlsText;
+    [SerializeField] private Text mechControlsText;
+
     private void Start()
     {
+        Debug.Log("UIManager Start() called");
         InitializeHealthUI();
         InitializePauseMenu();
+        InitializeControlSchemeManager();
+        UpdateInGameControlText();
     }
     
     private void InitializeHealthUI()
@@ -105,6 +116,69 @@ public class UIManager : MonoBehaviour
         if (controlsPanel != null) controlsPanel.SetActive(false);
         
         GamePaused = false;
+    }
+
+    private void InitializeControlSchemeManager()
+    {
+        // Find the ControlSchemeManager in the scene
+        controlSchemeManager = FindObjectOfType<ControlSchemeManager>();
+        
+        if (controlSchemeManager == null)
+        {
+            Debug.LogWarning("ControlSchemeManager not found in scene. Control bindings will not be updated.");
+        }
+    }
+
+    private void UpdateInGameControlText()
+    {
+        if (controlSchemeManager == null) return;
+
+        ControllerType currentController = controlSchemeManager.GetCurrentControllerType();
+
+        // Update Mouse control text
+        if (mouseControlsText != null)
+        {
+            string mouseControls = BuildMouseControlsText(currentController);
+            mouseControlsText.text = mouseControls;
+        }
+
+        // Update Mech control text
+        if (mechControlsText != null)
+        {
+            string mechControls = BuildMechControlsText(currentController);
+            mechControlsText.text = mechControls;
+        }
+    }
+
+    private string BuildMouseControlsText(ControllerType controller)
+    {
+        string interact = GetButtonOnly(ActionType.Interact, controller);
+        string jump = GetButtonOnly(ActionType.Jump, controller);
+        string dash = GetButtonOnly(ActionType.Sneak, controller);
+        string switchChar = GetButtonOnly(ActionType.SwitchCharacter, controller);
+
+        return $"({interact}) INTERACT\n({jump}) JUMP\n({dash}) DASH\n({switchChar}) SWITCH CHARACTERS";
+    }
+
+    private string BuildMechControlsText(ControllerType controller)
+    {
+        string interact = GetButtonOnly(ActionType.Interact, controller);
+        string lockon = GetButtonOnly(ActionType.Lockon, controller);
+        string switchChar = GetButtonOnly(ActionType.SwitchCharacter, controller);
+
+        return $"({interact}) INTERACT\n({lockon}) ENTER LOCK-ON MODE\n({switchChar}) SWITCH CHARACTERS";
+    }
+
+    private string GetButtonOnly(ActionType action, ControllerType controller)
+    {
+        string fullLabel = ControlSchemeManager.GetButtonLabel(action, controller);
+        // Extract just the button part before the colon
+        int colonIndex = fullLabel.IndexOf(':');
+        if (colonIndex > 0)
+        {
+            return fullLabel.Substring(0, colonIndex).Trim();
+        }
+        return fullLabel;
     }
     
     private void Update()
@@ -174,6 +248,9 @@ public class UIManager : MonoBehaviour
 
         if (mechControlsUI != null)
             mechControlsUI.SetActive(!isMouseActive);
+        
+        // Update control text when switching characters
+        UpdateInGameControlText();
     }
 
     
@@ -330,6 +407,12 @@ public class UIManager : MonoBehaviour
         {
             SelectItem(0, pauseSelectables);
         }
+
+        // Update control bindings when opening pause menu
+        if (controlSchemeManager != null)
+        {
+            controlSchemeManager.ForceUpdate();
+        }
     }
 
     public void LoadMainMenu()
@@ -372,6 +455,12 @@ public class UIManager : MonoBehaviour
         else if (controlsSelectables.Length > 0)
         {
             SelectItem(0, controlsSelectables);
+        }
+
+        // Update control bindings when opening controls
+        if (controlSchemeManager != null)
+        {
+            controlSchemeManager.ForceUpdate();
         }
     }
 
