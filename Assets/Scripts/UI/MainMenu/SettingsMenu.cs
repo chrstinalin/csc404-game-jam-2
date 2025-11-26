@@ -68,15 +68,24 @@ public class SettingsMenu : MonoBehaviour
             sensitivitySlider.minValue = 0;
             sensitivitySlider.maxValue = maxMultiplier;
             sensitivitySlider.wholeNumbers = true;
-            sensitivitySlider.value = multiplier;
             sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
+            sensitivitySlider.value = multiplier;
+            if (CameraManager.Instance != null)
+            {
+                CameraManager.Instance.mouseSensitivity = multiplier * 10;
+            }
         }
 
         invertAxisToggle = invertAxisSettings.GetComponentInChildren<Toggle>();
         if (invertAxisToggle != null)
         {
-            invertAxisToggle.isOn = PlayerPrefs.GetInt("InvertYAxis", 0) == 1;
             invertAxisToggle.onValueChanged.AddListener(OnInvertAxisChanged);
+            bool invertValue = PlayerPrefs.GetInt("InvertYAxis", 0) == 1;
+            invertAxisToggle.isOn = invertValue;
+            if (CameraManager.Instance != null)
+            {
+                CameraManager.Instance.invertYAxis = invertValue;
+            }
         }
     }
 
@@ -127,6 +136,7 @@ public class SettingsMenu : MonoBehaviour
         int multiplier = Mathf.RoundToInt(value);
         sensitivityVal.text = (multiplier * 10).ToString() + "%";
         PlayerPrefs.SetInt("MouseSensitivityMultiplier", multiplier);
+        PlayerPrefs.Save();
         if (CameraManager.Instance != null)
         {
             CameraManager.Instance.mouseSensitivity = multiplier * 10;
@@ -136,6 +146,7 @@ public class SettingsMenu : MonoBehaviour
     void OnInvertAxisChanged(bool value)
     {
         PlayerPrefs.SetInt("InvertYAxis", value ? 1 : 0);
+        PlayerPrefs.Save();
         if (CameraManager.Instance != null)
         {
             CameraManager.Instance.invertYAxis = value;
