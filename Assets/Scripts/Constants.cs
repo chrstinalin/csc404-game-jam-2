@@ -33,6 +33,7 @@ public static class Config
     public static float CAMERA_COLLISION_BUFFER = 0.05f;
     public static float CAMERA_MIN_DISTANCE = 0.2f;
     public static float CAMERA_COLLISION_SMOOTH_TIME = 0.05f;
+    public static float CAMERA_COLLISION_EASE_TIME = 0.15f;
 
     public static float ZOOM_SENSITIVITY = 10f;
 

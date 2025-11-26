@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 8850890474026856963}
   - component: {fileID: 5797417891345658378}
   - component: {fileID: 8305210790801682231}
+  - component: {fileID: 7481892770571874548}
   m_Layer: 5
   m_Name: PauseScreen
   m_TagString: Untagged
@@ -411,6 +412,18 @@ MonoBehaviour:
   controlsPanel: {fileID: 1429004574580262740}
   firstSelectedButton: {fileID: 350015057441884166}
   volume: {fileID: 0}
+--- !u!114 &7481892770571874548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572257098966322599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2ead21d349f4028b1e97862b04e7b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseScreenManager
 --- !u!1 &1895449914360664012
 GameObject:
   m_ObjectHideFlags: 0

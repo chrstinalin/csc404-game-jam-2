@@ -14,6 +14,7 @@ public class PushableObject : MovableObject
     private Rigidbody rb;
     private Vector3Int currentCell;
     private MovementManager movementManager;
+    private bool touchingPlatform = false;
 
     private float mouseStartY = 0f;
 
@@ -30,7 +31,9 @@ public class PushableObject : MovableObject
         currentCell = grid.WorldToCell(transform.position);
         SnapToGrid();
 
-        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezeRotation |
+                         RigidbodyConstraints.FreezePositionX |
+                         RigidbodyConstraints.FreezePositionZ;
     }
 
     private void Update()
@@ -38,10 +41,26 @@ public class PushableObject : MovableObject
         if (Input.GetButtonDown("Interact"))
             TryPush();
 
-        if (!isBeingPushed)
-            rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-
         CheckIfMouseIsOnTop();
+
+        if (!touchingPlatform && rb.linearVelocity.y > 0f)
+        {
+            Vector3 v = rb.linearVelocity;
+            v.y = 0f;
+            rb.linearVelocity = v;
+        }
+    }
+
+    private void OnCollisionStay(Collision col)
+    {
+        if (col.collider.GetComponent<Platform>() != null)
+            touchingPlatform = true;
+    }
+
+    private void OnCollisionExit(Collision col)
+    {
+        if (col.collider.GetComponent<Platform>() != null)
+            touchingPlatform = false;
     }
 
     private void CheckIfMouseIsOnTop()
@@ -141,7 +160,10 @@ public class PushableObject : MovableObject
             ((BoxCollider)boxCol).size -= Vector3.one * 0.1f;
 
         isBeingPushed = false;
-        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+
+        rb.constraints = RigidbodyConstraints.FreezeRotation |
+                         RigidbodyConstraints.FreezePositionX |
+                         RigidbodyConstraints.FreezePositionZ;
     }
 
     private Vector3Int GetPushDirection(CardinalDirection side)
@@ -150,8 +172,8 @@ public class PushableObject : MovableObject
         {
             case CardinalDirection.North: return GridDirection.North;
             case CardinalDirection.South: return GridDirection.South;
-            case CardinalDirection.East:  return GridDirection.East;
-            case CardinalDirection.West:  return GridDirection.West;
+            case CardinalDirection.East: return GridDirection.East;
+            case CardinalDirection.West: return GridDirection.West;
             default: return Vector3Int.zero;
         }
     }
