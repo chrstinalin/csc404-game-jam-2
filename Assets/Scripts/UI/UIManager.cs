@@ -419,15 +419,16 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         GamePaused = false;
-        FadeManager.Instance.FadeToScene("MainMenu");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+        
+        if (FadeManager.Instance != null)
+        {
+            FadeManager.Instance.FadeToScene("MainMenu");
+        }
+        else
+        {
+            Debug.LogError("FadeManager.Instance is null.");
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     public void Restart()
@@ -435,7 +436,16 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         GamePaused = false;
         string currentSceneName = SceneManager.GetActiveScene().name;
-        FadeManager.Instance.FadeToScene(currentSceneName);
+        
+        if (FadeManager.Instance != null)
+        {
+            FadeManager.Instance.FadeToScene(currentSceneName);
+        }
+        else
+        {
+            Debug.LogError("FadeManager.Instance is null.");
+            SceneManager.LoadScene(currentSceneName);
+        }
     }
     
     public void OpenControls()
