@@ -23,12 +23,12 @@ public class PushableObject : MovableObject
     private float mechSideSign;
 
     private float hoverY;
-    private const float hoverHeight = 0.02f;
+    private const float hoverHeight = 0.05f;
 
     private void Awake()
     {
         mechAnimator = PlayerMech.Instance.GetComponentInChildren<Animator>();
-        
+
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
