@@ -23,6 +23,9 @@ public class CameraManager : CameraMovementManager
     private float targetCameraDistance;
     private float targetDistanceVelocity;
 
+    public bool IsLockedOn { get; private set; }
+
+
     public int mouseSensitivity;
     public bool invertYAxis;
 
@@ -67,6 +70,10 @@ public class CameraManager : CameraMovementManager
         }
     }
 
+    public void SetLockOn(bool locked)
+    {
+        IsLockedOn = locked;
+    }
     public override void SetFollowEntity(GameObject? entity, float? newMaxZoom = null)
     {
         FollowEntity = entity;
@@ -83,6 +90,10 @@ public class CameraManager : CameraMovementManager
     public override void UpdateCamera()
     {
         if (FollowEntity == null)
+            return;
+
+        // Freeze camera during lock on mode
+        if (IsLockedOn)
             return;
 
         // Follow the target entity
