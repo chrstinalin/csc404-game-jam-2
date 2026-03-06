@@ -50,8 +50,6 @@ public class MovementManager : PlayerMovementManager
 
         if (CameraManager.IsLockedOn)
         {
-            isLockedMovement = true;
-
             // Stop mech movement
             if (MechAIController != null && MechAIController.Agent != null)
             {
@@ -78,10 +76,6 @@ public class MovementManager : PlayerMovementManager
             }
 
             return;
-        }
-        else
-        {
-            isLockedMovement = false;
         }
 
         float horizontal = Input.GetAxis("Horizontal");
