@@ -44,8 +44,14 @@ public class MechAIController : MonoBehaviour, IOffense
     {
         if (target == null) return;
 
+        float distance = directionToTarget.magnitude;
+
         // Only fire if it’s an enemy
-        if (target.GetComponent<DamageReceiver>() != null && target != PlayerMouse.Instance.gameObject)
+        if (
+            target.GetComponent<DamageReceiver>() != null
+            && target != PlayerMouse.Instance.gameObject 
+            && (distance <= Config.ATTACK_RANGE)
+        )
         {
             MechWeapon weapon = GetComponentInChildren<MechWeapon>();
             if (weapon != null)
@@ -73,35 +79,11 @@ public class MechAIController : MonoBehaviour, IOffense
         Vector3 targetPos = Target.transform.position;
         directionToTarget = targetPos - transform.position;
         directionToTarget.y = 0;
-        float distance = directionToTarget.magnitude;
 
         bool isPlayerMouse = Target == PlayerMouse.Instance?.gameObject;
-        bool isEnemy = Target.GetComponent<DamageReceiver>() != null && !isPlayerMouse;
+        float distance = directionToTarget.magnitude;
 
-        if (isEnemy)
-        {
-            if (distance <= Config.ATTACK_RANGE)
-            {
-                CurrentState = AIState.Idle;
-                Agent.isStopped = true;
-                Agent.ResetPath();
-                AttackActive = false;
-
-                if (directionToTarget != Vector3.zero)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
-                }
-            }
-            else
-            {
-                CurrentState = AIState.Walk;
-                Agent.isStopped = false;
-                AttackActive = false;
-                Agent.SetDestination(targetPos);
-            }
-        }
-        else if (isPlayerMouse)
+        if (isPlayerMouse)
         {
             AttackActive = false;
             if (Input.GetButton("SummonMecha"))

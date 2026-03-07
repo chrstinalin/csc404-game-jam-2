@@ -47,7 +47,7 @@ public static class Config
     public static float MIN_AI_DISTANCE = 2f;
     public static float STUCK_CHECK_INTERVAL = 0.5f;
     public static float STUCK_THRESHOLD = 0.2f;
-    public static float ATTACK_RANGE = 30f;
+    public static float ATTACK_RANGE = 15f;
 
     public static float PLAYER_MARKER_MOVE_SPEED = MOUSE_MOVE_SPEED;
     public static float PLAYER_MARKER_GROUND_RAY_HEIGHT = 50f;

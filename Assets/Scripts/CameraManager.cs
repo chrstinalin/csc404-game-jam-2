@@ -28,6 +28,7 @@ public class CameraManager : CameraMovementManager
 
     public int mouseSensitivity;
     public bool invertYAxis;
+    private float lockOnFOVMultiplier = 0.90f;
 
     void Awake()
     {
@@ -73,6 +74,11 @@ public class CameraManager : CameraMovementManager
     public void SetLockOn(bool locked)
     {
         IsLockedOn = locked;
+
+        if (locked)
+            targetFOV = Config.CAMERA_DEFAULT_FOV * lockOnFOVMultiplier;
+        else
+            targetFOV = Config.CAMERA_DEFAULT_FOV;
     }
     public override void SetFollowEntity(GameObject? entity, float? newMaxZoom = null)
     {
