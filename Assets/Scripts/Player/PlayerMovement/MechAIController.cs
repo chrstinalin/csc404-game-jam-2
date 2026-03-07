@@ -44,13 +44,11 @@ public class MechAIController : MonoBehaviour, IOffense
     {
         if (target == null) return;
 
-        float distance = directionToTarget.magnitude;
-
         // Only fire if it’s an enemy
         if (
             target.GetComponent<DamageReceiver>() != null
             && target != PlayerMouse.Instance.gameObject 
-            && (distance <= Config.ATTACK_RANGE)
+            && LockOnManager.Instance.IsCurrentTargetInRange()
         )
         {
             MechWeapon weapon = GetComponentInChildren<MechWeapon>();

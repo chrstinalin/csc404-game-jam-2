@@ -457,6 +457,7 @@ MonoBehaviour:
   displayName: Softlock Button
   description: Press to lower platform
   sprite: {fileID: 21300000, guid: ffac98b75c2e59a42b43f7e89602511d, type: 3}
+  Type: 1
 --- !u!1 &31312822
 GameObject:
   m_ObjectHideFlags: 0
@@ -4718,6 +4719,7 @@ MonoBehaviour:
   displayName: Crate
   description: Composed of a metal alloy
   sprite: {fileID: 21300000, guid: 587e8e56df21a694cb1a95736d76a40b, type: 3}
+  Type: 1
 --- !u!1 &493301668
 GameObject:
   m_ObjectHideFlags: 0
@@ -5647,6 +5649,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3362328989578403806, guid: 87a790dd2a11e3f4eba69ed3843e4931, type: 3}
+      propertyPath: outlineColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3362328989578403806, guid: 87a790dd2a11e3f4eba69ed3843e4931, type: 3}
+      propertyPath: outlineColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3362328989578403806, guid: 87a790dd2a11e3f4eba69ed3843e4931, type: 3}
+      propertyPath: outlineColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3577498443009671908, guid: 87a790dd2a11e3f4eba69ed3843e4931, type: 3}
       propertyPath: m_Name
       value: PatrolEnemy
@@ -6771,6 +6785,7 @@ MonoBehaviour:
   displayName: Patrol
   description: Hostile mob.
   sprite: {fileID: 21300000, guid: d82d0aa4118fdca4a9503d8f9dcd212c, type: 3}
+  Type: 0
 --- !u!54 &671618911
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8052,6 +8067,7 @@ MonoBehaviour:
   displayName: Softlock Button
   description: Press to lower platform
   sprite: {fileID: 21300000, guid: ffac98b75c2e59a42b43f7e89602511d, type: 3}
+  Type: 1
 --- !u!1 &752971074
 GameObject:
   m_ObjectHideFlags: 0
@@ -8307,6 +8323,7 @@ MonoBehaviour:
   displayName: Turret
   description: Hostile
   sprite: {fileID: 21300000, guid: cd13ba4e6a70bd34ca0a7fc78545e0fd, type: 3}
+  Type: 0
 --- !u!1 &781378691
 GameObject:
   m_ObjectHideFlags: 0
@@ -12357,6 +12374,7 @@ MonoBehaviour:
   displayName: Lever
   description: '// STATUS: OFF. Powers the platform.'
   sprite: {fileID: 0}
+  Type: 1
 --- !u!1 &1211873939
 GameObject:
   m_ObjectHideFlags: 0
@@ -18842,6 +18860,7 @@ MonoBehaviour:
   displayName: LEVER
   description: '// STATUS: ON. Powers the platform.'
   sprite: {fileID: 0}
+  Type: 1
 --- !u!1 &1668119060
 GameObject:
   m_ObjectHideFlags: 0
@@ -19795,6 +19814,7 @@ MonoBehaviour:
   displayName: Destroyable Wall
   description: Can be broken
   sprite: {fileID: 21300000, guid: d50a47cc09bec1f40b5fe032513438d5, type: 3}
+  Type: 0
 --- !u!1 &1751666696
 GameObject:
   m_ObjectHideFlags: 0

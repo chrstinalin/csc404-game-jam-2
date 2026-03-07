@@ -27,7 +27,6 @@ public class LockOnManager : MonoBehaviour
     private bool lockOnReset;
 
     public bool IsLockedOn => isLockedOn;
-
     public LockOnObject CurrentTarget => GetCurrentTarget();
 
     void Awake()
@@ -166,7 +165,6 @@ public class LockOnManager : MonoBehaviour
             return;
         }
 
-        // Cycling for both controller and keyboard/mouse
         float horizontal = Input.GetAxis("HorizontalRightJoystick");
 
         if (Input.GetButtonDown("NextTarget"))
@@ -203,5 +201,18 @@ public class LockOnManager : MonoBehaviour
             return null;
 
         return visibleTargets[currentTargetIndex];
+    }
+    public bool IsTargetInRange(LockOnObject target)
+    {
+        if (target == null) return false;
+
+        float requiredDistance = target.GetLockOnRequiredDistance();
+        float distance = (target.transform.position - PlayerMech.Instance.transform.position).magnitude;
+        return distance <= requiredDistance;
+    }
+
+    public bool IsCurrentTargetInRange()
+    {
+        return IsTargetInRange(CurrentTarget);
     }
 }

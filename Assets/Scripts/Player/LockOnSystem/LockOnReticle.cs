@@ -9,6 +9,8 @@ public class LockOnReticle : MonoBehaviour
     private LockOnObject target = null;
     private RectTransform rectTransform;
     private Image reticleImage;
+    public Sprite inRangeSprite;
+    public Sprite outOfRangeSprite;
     private Canvas canvas;
 
     void Awake()
@@ -17,14 +19,15 @@ public class LockOnReticle : MonoBehaviour
         reticleImage = GetComponent<Image>();
         canvas = GetComponentInParent<Canvas>();
 
-        reticleImage.enabled = false;
+        if (reticleImage != null)
+            reticleImage.enabled = false;
     }
+
     void Start()
     {
         CameraManager = CameraManager.Instance;
         lockOnManager = LockOnManager.Instance;
     }
-
 
     void Update()
     {
@@ -35,7 +38,8 @@ public class LockOnReticle : MonoBehaviour
 
         if (!lockOnManager.IsLockedOn || target == null)
         {
-            reticleImage.enabled = false;
+            if (reticleImage != null)
+                reticleImage.enabled = false;
             return;
         }
 
@@ -43,11 +47,16 @@ public class LockOnReticle : MonoBehaviour
 
         if (screenPos.z <= 0f)
         {
-            reticleImage.enabled = false;
+            if (reticleImage != null)
+                reticleImage.enabled = false;
             return;
         }
 
-        reticleImage.enabled = true;
+        if (reticleImage != null)
+        {
+            reticleImage.enabled = true;
+            reticleImage.sprite = lockOnManager.IsCurrentTargetInRange() ? inRangeSprite : outOfRangeSprite;
+        }
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
