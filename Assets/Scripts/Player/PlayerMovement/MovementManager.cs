@@ -42,6 +42,14 @@ public class MovementManager : PlayerMovementManager
         MechMovementState.EnterState(this, MechConfig);
 
         ToggleMouse(false);
+
+        StartCoroutine(UpdateUIOnceNextFrame());
+    }
+
+    private System.Collections.IEnumerator UpdateUIOnceNextFrame()
+    {
+        yield return null;
+        FindObjectOfType<UIManager>().SetActiveCharacterUI(IsMouseActive);
     }
 
     void Update()
