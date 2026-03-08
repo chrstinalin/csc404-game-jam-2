@@ -27,8 +27,6 @@ public class PushableObject : MovableObject
 
     private void Awake()
     {
-        mechAnimator = PlayerMech.Instance.GetComponentInChildren<Animator>();
-
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
@@ -36,6 +34,11 @@ public class PushableObject : MovableObject
 
     private void Start()
     {
+        if (PlayerMech.Instance != null)
+        {
+            mechAnimator = PlayerMech.Instance.GetComponentInChildren<Animator>();
+        }
+
         movementManager = MovementManager.Instance;
     }
 
