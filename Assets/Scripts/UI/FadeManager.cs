@@ -41,8 +41,8 @@ public class FadeManager : MonoBehaviour
 
     public void FadeToScene(string sceneName)
     {
-        if (!isFading)
-            StartCoroutine(FadeOutAndLoadScene(sceneName));
+        StopAllCoroutines();
+        StartCoroutine(FadeOutAndLoadScene(sceneName));
     }
 
     public void FadeIn()
