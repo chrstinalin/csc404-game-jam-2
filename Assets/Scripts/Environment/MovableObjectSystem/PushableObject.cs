@@ -28,7 +28,9 @@ public class PushableObject : MovableObject
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezeRotation 
+                   | RigidbodyConstraints.FreezePositionX 
+                   | RigidbodyConstraints.FreezePositionZ;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
     }
 
