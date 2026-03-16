@@ -6987,6 +6987,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
   FollowEntity: {fileID: 0}
+  mouseSensitivity: 0
+  invertYAxis: 0
 --- !u!1 &690256435
 GameObject:
   m_ObjectHideFlags: 0
@@ -22737,7 +22739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNextPuzzle
   delayBeforeLoad: 3
-  nextSceneName: Puzzle2
+  nextSceneName: LockOnReworkScene
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!65 &1988005311
 BoxCollider:
@@ -24509,7 +24511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf6e608fdbee1544a1fc3ed65c8df64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  message: Press B to Toggle Lever
+  actionMessage: interact
   characters:
   - {fileID: 1254192303}
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}

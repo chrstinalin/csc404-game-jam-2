@@ -1365,13 +1365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
-  lockOnSFX:
-    Guid:
-      Data1: 1328528811
-      Data2: 1310755623
-      Data3: -1303860096
-      Data4: -793793619
-    Path: event:/SFX/Mech/Mech Lockon
 --- !u!1 &112352299
 GameObject:
   m_ObjectHideFlags: 0
@@ -2521,6 +2514,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194235184}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &211362623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 3906604820570694537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &211362625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211362623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: A button that lifts the platform when pressed
+  sprite: {fileID: 21300000, guid: 9a71660433e2d014bac7ab6d5aa512f4, type: 3}
+  Type: 1
 --- !u!1 &215241021
 GameObject:
   m_ObjectHideFlags: 0
@@ -8832,6 +8846,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
   FollowEntity: {fileID: 0}
+  mouseSensitivity: 0
+  invertYAxis: 0
 --- !u!1 &693250839
 GameObject:
   m_ObjectHideFlags: 0
@@ -9414,6 +9430,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
+--- !u!114 &763356707 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2865808199520923868, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
+  m_PrefabInstance: {fileID: 763356706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97384e5a5a4d97840b82c78ceffcf5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnUI
 --- !u!1001 &763589698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9473,13 +9500,61 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8521219204026233712, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 763589701}
+    - targetCorrespondingSourceObject: {fileID: 540766248357655699, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 763589703}
   m_SourcePrefab: {fileID: 100100000, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
 --- !u!4 &763589699 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5485500182088732305, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
   m_PrefabInstance: {fileID: 763589698}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &763589700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8521219204026233712, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 763589698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &763589701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763589700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Lever
+  description: 'STATE: //ON - Powers a security door of a shop window'
+  sprite: {fileID: 21300000, guid: d50a47cc09bec1f40b5fe032513438d5, type: 3}
+  Type: 1
+--- !u!1 &763589702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 540766248357655699, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 763589698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &763589703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763589702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Lever
+  description: 'STATE: //OFF - Powers a security door of a shop window'
+  sprite: {fileID: 21300000, guid: d50a47cc09bec1f40b5fe032513438d5, type: 3}
+  Type: 1
 --- !u!1 &784362400
 GameObject:
   m_ObjectHideFlags: 0
@@ -10639,6 +10714,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831977519}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &847723715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6118007659810916610, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 3906604820570694537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &847723717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847723715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: A button that lifts the platform when pressed
+  sprite: {fileID: 21300000, guid: 9a71660433e2d014bac7ab6d5aa512f4, type: 3}
+  Type: 1
 --- !u!1 &849150924
 GameObject:
   m_ObjectHideFlags: 0
@@ -11125,6 +11221,27 @@ Transform:
   - {fileID: 1190966649}
   m_Father: {fileID: 1079175571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &897816057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 935328766}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &897816059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897816057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Button that powers the door
+  sprite: {fileID: 21300000, guid: 9a71660433e2d014bac7ab6d5aa512f4, type: 3}
+  Type: 1
 --- !u!1 &910862064
 GameObject:
   m_ObjectHideFlags: 0
@@ -11528,7 +11645,13 @@ PrefabInstance:
     - {fileID: 3799067617210602309, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1521520683}
+    - targetCorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 897816059}
   m_SourcePrefab: {fileID: 100100000, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
 --- !u!1 &940522767
 GameObject:
@@ -11818,6 +11941,58 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 707998604}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &974022696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 974022698}
+  - component: {fileID: 974022697}
+  m_Layer: 0
+  m_Name: LockOn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &974022697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974022696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb485c8ab2e3294d9d2803eff30c1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
+  lockOnSFX:
+    Guid:
+      Data1: 1328528811
+      Data2: 1310755623
+      Data3: -1303860096
+      Data4: -793793619
+    Path: event:/SFX/Mech/Mech Lockon
+  LockOnUI: {fileID: 763356707}
+--- !u!4 &974022698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974022696}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.08153, y: 0, z: 1.92117}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &983203575
 GameObject:
@@ -13734,63 +13909,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1395932779}
   m_LocalEulerAnglesHint: {x: 0, y: 39.083, z: 0}
---- !u!1001 &1151502086
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -31.74169
-      objectReference: {fileID: 0}
-    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.00561
-      objectReference: {fileID: 0}
-    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 907246195432734705, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3180802781564998349, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
-      propertyPath: m_Name
-      value: Marker
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ca550fd9378ecac48bfe0a38dd419260, type: 3}
 --- !u!1001 &1157938653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17443,7 +17561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNextPuzzle
   delayBeforeLoad: 3
-  nextSceneName: EndScreen
+  nextSceneName: Puzzle5
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
 --- !u!65 &1395932778
 BoxCollider:
@@ -20167,6 +20285,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519927877}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1521520681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 935328766}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1521520683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521520681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Button that powers the door
+  sprite: {fileID: 21300000, guid: 9a71660433e2d014bac7ab6d5aa512f4, type: 3}
+  Type: 1
 --- !u!1 &1526574694
 GameObject:
   m_ObjectHideFlags: 0
@@ -20754,6 +20893,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1552202483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552202472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Display Patrol
+  description: A patrol displayed in a shop window. <OUT OF RANGE>
+  sprite: {fileID: 21300000, guid: d82d0aa4118fdca4a9503d8f9dcd212c, type: 3}
+  Type: 1
 --- !u!1 &1558056975
 GameObject:
   m_ObjectHideFlags: 0
@@ -22684,6 +22839,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4630009097792231531, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1695134545}
+    - targetCorrespondingSourceObject: {fileID: 4630009097792231531, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1695134547}
   m_SourcePrefab: {fileID: 100100000, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
 --- !u!1 &1695134544 stripped
 GameObject:
@@ -22719,6 +22877,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b9d31d5af837c408c079a79da7bbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TopTrigger
+--- !u!114 &1695134547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695134544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Crate
+  description: Made of a metal alloy
+  sprite: {fileID: 21300000, guid: 587e8e56df21a694cb1a95736d76a40b, type: 3}
+  Type: 1
 --- !u!1 &1697123343
 GameObject:
   m_ObjectHideFlags: 0
@@ -25636,6 +25810,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3577498443009671908, guid: 87a790dd2a11e3f4eba69ed3843e4931, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1552202482}
+    - targetCorrespondingSourceObject: {fileID: 3577498443009671908, guid: 87a790dd2a11e3f4eba69ed3843e4931, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1552202483}
   m_SourcePrefab: {fileID: 100100000, guid: 87a790dd2a11e3f4eba69ed3843e4931, type: 3}
 --- !u!1 &1910614482
 GameObject:
@@ -28925,7 +29102,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 211362625}
+    - targetCorrespondingSourceObject: {fileID: 6118007659810916610, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 847723717}
   m_SourcePrefab: {fileID: 100100000, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -28947,6 +29130,6 @@ SceneRoots:
   - {fileID: 538780771}
   - {fileID: 1818592334}
   - {fileID: 1395932779}
-  - {fileID: 1151502086}
   - {fileID: 1399017274}
   - {fileID: 608665729}
+  - {fileID: 974022698}

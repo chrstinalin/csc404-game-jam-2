@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using FMODUnity;
 using FMOD.Studio;
 
@@ -36,9 +37,15 @@ public class LockOnManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        cameraManager = CameraManager.Instance;
+        StartCoroutine(InitializeAfterFirstFrame());
     }
 
+    private IEnumerator InitializeAfterFirstFrame()
+    {
+        yield return null;
+
+        cameraManager = CameraManager.Instance;
+    }
     void Update()
     {
         isLockedOn = Input.GetButton("ToggleLockOnMode") && !MovementManager.Instance.IsMouseActive;
