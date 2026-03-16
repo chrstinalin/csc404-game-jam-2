@@ -50,7 +50,7 @@ public class AudioManager : MonoBehaviour
         instance.start();
         return instance;
     }
-
+    
     public EventInstance PlaySFXWithParams(
         EventReference audioFile,
         Dictionary<string, float> parameters,
