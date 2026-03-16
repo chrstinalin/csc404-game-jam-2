@@ -50,25 +50,7 @@ public class AudioManager : MonoBehaviour
         instance.start();
         return instance;
     }
-    public void PlaySFXOneShot(EventReference audioFile, Vector3? position = null, float volume = 1f)
-    {
-        if (audioFile.IsNull) return;
-
-        if (position.HasValue)
-        {
-            // Plays at a specific 3D location
-            RuntimeManager.PlayOneShot(audioFile, position.Value);
-        }
-        else
-        {
-            // Plays as a 2D sound (or at the listener's position)
-            RuntimeManager.PlayOneShot(audioFile);
-        }
-        
-        // Note: PlayOneShot does not return an EventInstance because 
-        // it is released immediately after it finishes playing.
-    }
-
+    
     public EventInstance PlaySFXWithParams(
         EventReference audioFile,
         Dictionary<string, float> parameters,
