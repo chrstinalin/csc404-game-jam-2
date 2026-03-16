@@ -56,6 +56,36 @@ public class MovementManager : PlayerMovementManager
     {
         CameraManager.UpdateCamera();
 
+        if (CameraManager.IsLockedOn)
+        {
+            // Stop mech movement
+            if (MechAIController != null && MechAIController.Agent != null)
+            {
+                MechAIController.Agent.isStopped = true;
+                MechAIController.Agent.ResetPath();
+                MechAIController.Agent.velocity = Vector3.zero;
+            }
+
+            // Make DK go idle
+            MechMovementState?.Reset();
+
+            // Rotate mech toward current lock-on object
+            LockOnObject lockOnTargetObj = LockOnManager.Instance.GetCurrentTarget();
+            GameObject lockOnTarget = lockOnTargetObj != null ? lockOnTargetObj.gameObject : null;
+            if (Mech != null && lockOnTarget != null)
+            {
+                Vector3 dir = lockOnTarget.transform.position - Mech.transform.position;
+                dir.y = 0;
+                if (dir.sqrMagnitude > 0.001f)
+                {
+                    Quaternion targetRot = Quaternion.LookRotation(dir.normalized);
+                    Mech.transform.rotation = Quaternion.Slerp(Mech.transform.rotation, targetRot, Time.deltaTime * 10f);
+                }
+            }
+
+            return;
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
