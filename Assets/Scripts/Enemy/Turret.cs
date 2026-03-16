@@ -29,16 +29,6 @@ public class Turret : MonoBehaviour
     void OnDeath()
     {
         AudioManager.Instance.PlaySFX(DeathSFX, transform.position, 1f);
-        LockOnSelectable selectable = GetComponent<LockOnSelectable>();
-        if (selectable != null)
-        {
-            selectable.enabled = false;
-        }
-
-        if (PlayerMarker.Instance != null && PlayerMarker.Instance.Target == gameObject)
-        {
-            PlayerMarker.Instance.ClearTarget();
-        }
 
         if (scrapPilePrefab != null)
         {
