@@ -98,7 +98,7 @@ public class MovementManager : PlayerMovementManager
         if (IsMouseActive)
         {
             if(AudioManager.Instance != null) {
-                AudioManager.Instance.PlaySFX(
+                AudioManager.Instance.PlaySFXOneShot(
                     AudioManager.Instance.SwitchToMouseSFX, PlayerMouse.Instance.transform.position, 1f);
         
             }
@@ -106,7 +106,7 @@ public class MovementManager : PlayerMovementManager
         else
         {
             if(AudioManager.Instance != null) {
-                AudioManager.Instance.PlaySFX(
+                AudioManager.Instance.PlaySFXOneShot(
                     AudioManager.Instance.SwitchToMechSFX, PlayerMech.Instance.transform.position, 1f);
             }
         }
