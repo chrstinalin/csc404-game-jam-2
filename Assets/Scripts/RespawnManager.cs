@@ -8,11 +8,34 @@ public class RespawnManager : MonoBehaviour
 {
     private static RespawnManager instance;
 
-    public static RespawnManager Instance => instance ??= new GameObject("RespawnManager").AddComponent<RespawnManager>();
+    public static RespawnManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<RespawnManager>();
 
+                if (instance == null)
+                {
+                    GameObject go = new GameObject("RespawnManager");
+                    instance = go.AddComponent<RespawnManager>();
+                }
+            }
+
+            return instance;
+        }
+    }
     private void Awake()
     {
-        if (instance == null) instance = this; else Destroy(gameObject);
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void StartRespawnCountdown(bool isMech)
