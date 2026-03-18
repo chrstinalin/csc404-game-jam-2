@@ -57,7 +57,6 @@ public class PushableObject : MovableObject
 
         if (isBeingPushed)
         {
-            // ✅ Instead of teleporting, just stabilize vertical velocity
             Vector3 vel = rb.linearVelocity;
             vel.y = 0f;
             rb.linearVelocity = vel;
@@ -100,10 +99,9 @@ public class PushableObject : MovableObject
 
         mechFacingDir = pushAxis * mechSideSign;
 
-        // Hover reference (we won’t force it anymore)
         hoverY = rb.position.y + hoverHeight;
 
-        rb.useGravity = true; // ✅ let physics handle vertical interactions
+        rb.useGravity = true;
 
         isBeingPushed = true;
         movementManager.isLockedMovement = true;
@@ -147,7 +145,6 @@ public class PushableObject : MovableObject
 
         Vector3 velocity = pushAxis * moveMagnitude;
 
-        // ✅ Apply velocity without touching Y
         mechRb.linearVelocity = new Vector3(velocity.x, mechRb.linearVelocity.y, velocity.z);
         rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
         
