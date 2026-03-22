@@ -23,7 +23,7 @@ public class PushableObject : MovableObject
     private float mechSideSign;
 
     private float hoverY;
-    private const float hoverHeight = 0.05f;
+    private const float hoverHeight = 0.1f;
 
     private void Awake()
     {
