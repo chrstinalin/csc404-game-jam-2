@@ -61,11 +61,13 @@ public class PlayerMech : MonoBehaviour
         Health.TakeDamage(damage);
         isInvulnerable = true;
         iFrameTimer = iFrameDuration;
-        StartCoroutine(FlashSprite());
+        if (Health.GetCurrHealth() > 0) StartCoroutine(FlashSprite());
     }
 
     public void TakeDamageFromSource(int damage, GameObject source)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.MechHurtSFX, transform.position, 2f);
+
         if (AIController == null)
         {
             AIController = GetComponent<MechAIController>();
@@ -74,7 +76,6 @@ public class PlayerMech : MonoBehaviour
     
         // Only notify AI if player is not controlling mech
         bool playerControllingMech = MovementManager.Instance != null && !MovementManager.Instance.IsMouseActive;
-        if (!playerControllingMech && AIController != null) AIController.OnAttackedBy(source);
         
         if (isInvulnerable || Health == null) 
         {
@@ -84,21 +85,12 @@ public class PlayerMech : MonoBehaviour
         Health.TakeDamage(damage);
         isInvulnerable = true;
         iFrameTimer = iFrameDuration;
-        StartCoroutine(FlashSprite());
+        if (Health.GetCurrHealth() > 0) StartCoroutine(FlashSprite());
     }
 
     public void OnDeath()
     {
-        var checkpointManager = CheckpointManager.Instance;
-        if (checkpointManager != null)
-        {
-            checkpointManager.RespawnCharacters();
-        }
-        
-        if (Health != null)
-        {
-            Health.Heal(Health.GetMaxHealth());
-        }
+        RespawnManager.Instance.StartRespawnCountdown(true);
     }
 
     private IEnumerator FlashSprite()

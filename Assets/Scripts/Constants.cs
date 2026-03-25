@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class Config
@@ -33,6 +35,7 @@ public static class Config
     public static float CAMERA_COLLISION_BUFFER = 0.05f;
     public static float CAMERA_MIN_DISTANCE = 0.2f;
     public static float CAMERA_COLLISION_SMOOTH_TIME = 0.05f;
+    public static float CAMERA_COLLISION_EASE_TIME = 0.15f;
 
     public static float ZOOM_SENSITIVITY = 10f;
 
@@ -41,7 +44,10 @@ public static class Config
 
     public static float MOUSE_SENSITIVITY = 100f;
 
-    public static float MIN_AI_DISTANCE = 5f;
+    public static float MIN_AI_DISTANCE = 2f;
+    public static float STUCK_CHECK_INTERVAL = 0.5f;
+    public static float STUCK_THRESHOLD = 0.2f;
+    public static float ATTACK_RANGE = 15f;
 
     public static float PLAYER_MARKER_MOVE_SPEED = MOUSE_MOVE_SPEED;
     public static float PLAYER_MARKER_GROUND_RAY_HEIGHT = 50f;
@@ -57,6 +63,10 @@ public static class Config
 
     public static float FOOTSTEP_INTERVAL = 0.3f;
 
+    public static float LOCK_ON_AXIS_THRESHOLD = 0.5f;
+
+    public static int SENSITIVITY_MULTIPLIER_DEFAULT = 10;
+    public static int SENSITIVITY_MULTIPLIER_MAX = 20;
 
 }
 
@@ -100,6 +110,12 @@ public enum CardinalDirection
     West
 }
 
+public enum DeviceType
+{
+    Keyboard,
+    Xbox
+}
+
 public enum PlatformMoveDirection { Vertical, Horizontal }
 
 public static class GridDirection
@@ -108,4 +124,57 @@ public static class GridDirection
     public static readonly Vector3Int South = new Vector3Int(0, -1, 0);
     public static readonly Vector3Int East  = new Vector3Int(1, 0, 0);
     public static readonly Vector3Int West  = new Vector3Int(-1, 0, 0);
+}
+
+public enum ActionType
+{
+    Lockon,
+    SwitchCharacter,
+    Sneak,
+    Interact,
+    Jump,
+    Movement,
+    Camera,
+    Pause,
+    RestartLevel
+}
+
+public static class ButtonMappings
+{
+    public static readonly Dictionary<ActionType, Dictionary<DeviceType, string>> Mappings = new()
+    {
+        { ActionType.Lockon, new() {
+            { DeviceType.Keyboard, "Tab" },
+            { DeviceType.Xbox, "RT/RB" },
+        }},
+        { ActionType.SwitchCharacter, new() {
+            { DeviceType.Keyboard, "Q" },
+            { DeviceType.Xbox, "Y" },
+        }},
+        { ActionType.Sneak, new() {
+            { DeviceType.Keyboard, "Shift" },
+            { DeviceType.Xbox, "X" },
+        }},
+        { ActionType.Interact, new() {
+            { DeviceType.Keyboard, "E" },
+            { DeviceType.Xbox, "B" },
+        }},
+        { ActionType.Jump, new() {
+            { DeviceType.Keyboard, "Space" },
+            { DeviceType.Xbox, "A" },
+        }}
+    };
+
+    public static string GetButtonLabel(ActionType action)
+    {
+        var names = Input.GetJoystickNames();
+        var hasController = names != null && names.Any(n => !string.IsNullOrWhiteSpace(n));
+        var device = hasController ? DeviceType.Xbox : DeviceType.Keyboard;
+        if (Mappings.TryGetValue(action, out var deviceMappings) &&
+            deviceMappings.TryGetValue(device, out var label))
+        {
+            return label;
+        }
+        return "NULL";
+    }
 }

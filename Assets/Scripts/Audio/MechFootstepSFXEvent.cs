@@ -8,12 +8,11 @@ public class MechFootstepSFX : MonoBehaviour
 
     public void MechStepTech()
     {
-        RuntimeManager.PlayOneShot(MechStepTechSFX, transform.position);
-
+        RuntimeManager.PlayOneShotAttached(MechStepTechSFX, gameObject);
     }
+    
     public void MechStepImpact()
     {
-        RuntimeManager.PlayOneShot(MechStepImpactSFX, transform.position);
-
+        RuntimeManager.PlayOneShotAttached(MechStepImpactSFX, gameObject);
     }
 }

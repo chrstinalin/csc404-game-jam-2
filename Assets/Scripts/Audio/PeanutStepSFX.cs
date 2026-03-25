@@ -8,12 +8,11 @@ public class PeanutStepSFX : MonoBehaviour
 
     public void PnStep()
     {
-        RuntimeManager.PlayOneShot(PnStepSFX, transform.position);
-
+        RuntimeManager.PlayOneShotAttached(PnStepSFX, gameObject);
     }
+    
     public void PnJump()
     {
-        RuntimeManager.PlayOneShot(PnJumpSFX, transform.position);
-
+        RuntimeManager.PlayOneShotAttached(PnJumpSFX, gameObject);
     }
 }

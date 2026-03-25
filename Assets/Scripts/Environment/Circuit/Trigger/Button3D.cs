@@ -1,12 +1,19 @@
 using UnityEngine;
 using System.Collections.Generic;
+using FMODUnity;
 
 [RequireComponent(typeof(Collider))]
 public class Button3D : TriggerAbstract
 {
     public List<GameObject> TriggerObjects = new List<GameObject>();
+    public List<TriggerAbstract> SoundTriggerDependencies = new List<TriggerAbstract>();
+
+    [SerializeField] private EventReference buttonPressSFX;
+
     [SerializeField] private GameObject unpressedModel;
     [SerializeField] private GameObject pressedModel;
+
+    private HashSet<GameObject> activeColliders = new HashSet<GameObject>();
 
     private void Awake()
     {
@@ -22,20 +29,27 @@ public class Button3D : TriggerAbstract
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("" + other.gameObject.name);
         if (TriggerObjects.Contains(other.gameObject))
         {
-            Debug.Log("Triggered");
-            Activate();
-        }
+            activeColliders.Add(other.gameObject);
 
+            if (!IsActive && activeColliders.Count > 0)
+            {
+                Activate();
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (TriggerObjects.Contains(other.gameObject))
         {
-            Deactivate();
+            activeColliders.Remove(other.gameObject);
+
+            if (IsActive && activeColliders.Count == 0)
+            {
+                Deactivate();
+            }
         }
     }
 
@@ -44,7 +58,22 @@ public class Button3D : TriggerAbstract
         if (IsActive) return;
         IsActive = true;
         UpdateVisuals();
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.ButtonPressSFX, transform.position, 5f);
+
+        // Only play SFX if all dependencies are active
+        bool allDependenciesActive = true;
+        foreach (var dep in SoundTriggerDependencies)
+        {
+            if (dep == null || !dep.IsActive)
+            {
+                allDependenciesActive = false;
+                break;
+            }
+        }
+
+        if (allDependenciesActive && AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(buttonPressSFX, transform.position, 5f);
+        }
     }
 
     public override void Deactivate()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using FMODUnity;
 
 [RequireComponent(typeof(Collider))]
 public class SoftlockButton : MonoBehaviour
@@ -6,6 +7,7 @@ public class SoftlockButton : MonoBehaviour
     [SerializeField] private Lever targetLever;
     [SerializeField] private GameObject unpressedModel;
     [SerializeField] private GameObject pressedModel;
+    [SerializeField] private EventReference buttonPressSFX;
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class SoftlockButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == PlayerMouse.Instance.gameObject)
+        if (other.gameObject == PlayerMouse.Instance.gameObject || other.gameObject == PlayerMech.Instance.gameObject)
         {
             PressButton();
         }
@@ -37,7 +39,7 @@ public class SoftlockButton : MonoBehaviour
 
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.ButtonPressSFX, transform.position, 5f);
+            AudioManager.Instance.PlaySFX(buttonPressSFX, transform.position, 5f);
         }
     }
 

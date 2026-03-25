@@ -1,80 +1,218 @@
-using System;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
+using FMODUnity;
+using FMOD.Studio;
 
 public class LockOnManager : MonoBehaviour
 {
-    [NonSerialized] public CameraManager CameraManager;
-    [NonSerialized] public MovementManager MovementManager;
+    public static LockOnManager Instance;
+    private CameraManager cameraManager;
 
-    public static bool lockOnMode = false;
-    public event Action<bool> OnLockOnModeChanged;
-    private bool _lastButtonState = false;
+    public event Action<GameObject> OnLockOnInteract;
 
-    private NavMeshEdgeVisualizer navMeshEdgeVisualizer;
+    [SerializeField] private EventReference lockOnSFX;
+    private EventInstance lockOnSFXInstance;
+    [SerializeField] private LockOnUI LockOnUI;
 
-    void Start()
+    private bool isLockedOn;
+    private bool sfxPlaying;
+    private bool targetsInitialized = false;
+
+    private LockOnObject[] visibleTargets = new LockOnObject[0];
+    private int currentTargetIndex = 0;
+
+    private float cycleThreshold = 0.5f;
+    private float lastHorizontalInput = 0f;
+    private bool lockOnReset;
+
+    public bool IsLockedOn => isLockedOn;
+    public LockOnObject CurrentTarget => GetCurrentTarget();
+
+    void Awake()
     {
-        CameraManager = CameraManager.Instance;
-        MovementManager = MovementManager.Instance;
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
 
-        var visualizer = new GameObject("NavMeshEdgeVisualizer");
-        navMeshEdgeVisualizer = visualizer.AddComponent<NavMeshEdgeVisualizer>();
-
-        OnLockOnModeChanged += HandleLockOnModeChanged;
+        cameraManager = CameraManager.Instance;
     }
 
     void Update()
     {
-        bool playerControllingMech = MovementManager != null && !MovementManager.IsMouseActive;
-        if (!playerControllingMech)
-        {
-            if (lockOnMode)
-            {
-                lockOnMode = false;
-                OnLockOnModeChanged?.Invoke(false);
-                _lastButtonState = false;
-            }
-            return;
-        }
-        
-        bool currentButtonState = Input.GetButton("ToggleLockOnMode");
-        if (currentButtonState != _lastButtonState)
-        {
-            lockOnMode = currentButtonState;
-            OnLockOnModeChanged?.Invoke(currentButtonState);
-            _lastButtonState = currentButtonState;
-        }
-        
-    }
+        isLockedOn = Input.GetButton("ToggleLockOnMode") && !MovementManager.Instance.IsMouseActive;
 
-    private void HandleLockOnModeChanged(bool isLocked)
-    {
-        MovementManager.isLockedMovement = isLocked;
-        if (isLocked)
+        if (cameraManager != null)
+            cameraManager.SetLockOn(isLockedOn);
+
+        if (isLockedOn && !MovementManager.Instance.IsMouseActive)
         {
-            CameraManager.SetCameraFOV(Config.CAMERA_LOCK_ON_FOV);
-            navMeshEdgeVisualizer.ShowFilledArea();
-            MovementManager.Reset();
+            EnterLockOn();
+            HandleTargetCycling();
         }
         else
         {
-            CameraManager.SetCameraFOV(Config.CAMERA_DEFAULT_FOV);
-            navMeshEdgeVisualizer.ClearFilledArea();
+            ExitLockOn();
         }
-        ToggleEnemyOutlines(isLocked);
-        PlayerMarker.Instance.setActive(isLocked);
-    }
 
-    private void ToggleEnemyOutlines(bool enable)
-    {
-        var enemies = GameObject.FindGameObjectsWithTag("EnemyBody");
-        for (int i = 0; i < enemies.Length; i++)
+        if (IsLockedOn && (Input.GetAxis("LockOn") > 0 || Input.GetButtonDown("Interact")) && lockOnReset)
         {
-            var outline = enemies[i].GetComponent<Outline>();
-            if (outline != null)
+            if (CurrentTarget != null)
             {
-                outline.enabled = enable;
+                OnLockOnInteract?.Invoke(CurrentTarget.gameObject);
+                lockOnReset = false;
             }
         }
+
+        if (Input.GetAxis("LockOn") == 0)
+        {
+            lockOnReset = true;
+        }
+    }
+
+    private void EnterLockOn()
+    {
+        if (sfxPlaying) return;
+
+        lockOnSFXInstance = RuntimeManager.CreateInstance(lockOnSFX);
+        lockOnSFXInstance.setParameterByName("Activated", 1f);
+        lockOnSFXInstance.start();
+
+        if (BackgroundMusicManager.Instance)
+            BackgroundMusicManager.Instance.LockOnMode(true);
+
+        sfxPlaying = true;
+
+        if (!targetsInitialized)
+        {
+            InitializeTargets();
+            targetsInitialized = true;
+        }
+    }
+
+    private void ExitLockOn()
+    {
+        if (!sfxPlaying) return;
+
+        if (lockOnSFXInstance.isValid())
+            lockOnSFXInstance.setParameterByName("Activated", 0f);
+
+        if (BackgroundMusicManager.Instance)
+            BackgroundMusicManager.Instance.LockOnMode(false);
+
+        sfxPlaying = false;
+        visibleTargets = new LockOnObject[0];
+        currentTargetIndex = 0;
+        lastHorizontalInput = 0f;
+        targetsInitialized = false;
+
+        if (LockOnUI != null)
+            LockOnUI.UpdateUI(null);
+
+        if (MechAIController.Instance != null)
+            MechAIController.Instance.SetTarget(null);
+    }
+
+    private void InitializeTargets()
+    {
+        LockOnObject[] lockables = FindObjectsOfType<LockOnObject>();
+        List<LockOnObject> tempList = new List<LockOnObject>();
+
+        foreach (var obj in lockables)
+        {
+            Vector3 vp = cameraManager.Cam.WorldToViewportPoint(obj.transform.position);
+            if (vp.z > 0f && vp.x > 0f && vp.x < 1f && vp.y > 0f && vp.y < 1f)
+                tempList.Add(obj);
+        }
+
+        tempList.Sort((a, b) =>
+        {
+            float ax = cameraManager.Cam.WorldToViewportPoint(a.transform.position).x;
+            float bx = cameraManager.Cam.WorldToViewportPoint(b.transform.position).x;
+            return ax.CompareTo(bx);
+        });
+
+        visibleTargets = tempList.ToArray();
+        currentTargetIndex = 0;
+    }
+
+    private void HandleTargetCycling()
+    {
+        for (int i = visibleTargets.Length - 1; i >= 0; i--)
+        {
+            if (visibleTargets[i] == null)
+            {
+                List<LockOnObject> temp = new List<LockOnObject>(visibleTargets);
+                temp.RemoveAt(i);
+                visibleTargets = temp.ToArray();
+
+                if (currentTargetIndex >= visibleTargets.Length)
+                    currentTargetIndex = visibleTargets.Length - 1;
+            }
+        }
+
+        if (visibleTargets.Length == 0)
+        {
+            currentTargetIndex = 0;
+
+            if (MechAIController.Instance != null)
+                MechAIController.Instance.SetTarget(null);
+
+            if (LockOnUI != null)
+                LockOnUI.UpdateUI(null);
+
+            return;
+        }
+
+        float horizontal = Input.GetAxis("HorizontalRightJoystick");
+
+        if (Input.GetButtonDown("NextTarget"))
+            horizontal = 1f;
+        else if (Input.GetButtonDown("PreviousTarget"))
+            horizontal = -1f;
+
+        if (horizontal > cycleThreshold && lastHorizontalInput <= cycleThreshold)
+        {
+            if (currentTargetIndex < visibleTargets.Length - 1)
+                currentTargetIndex++;
+        }
+        else if (horizontal < -cycleThreshold && lastHorizontalInput >= -cycleThreshold)
+        {
+            if (currentTargetIndex > 0)
+                currentTargetIndex--;
+        }
+
+        lastHorizontalInput = horizontal;
+
+        if (MechAIController.Instance != null && CurrentTarget != null)
+            MechAIController.Instance.SetTarget(CurrentTarget.gameObject);
+
+        if (LockOnUI != null)
+            LockOnUI.UpdateUI(CurrentTarget);
+    }
+
+    public LockOnObject GetCurrentTarget()
+    {
+        if (visibleTargets == null || visibleTargets.Length == 0)
+            return null;
+
+        if (currentTargetIndex < 0 || currentTargetIndex >= visibleTargets.Length)
+            return null;
+
+        return visibleTargets[currentTargetIndex];
+    }
+    public bool IsTargetInRange(LockOnObject target)
+    {
+        if (target == null) return false;
+
+        float requiredDistance = target.GetLockOnRequiredDistance();
+        float distance = (target.transform.position - PlayerMech.Instance.transform.position).magnitude;
+        return distance <= requiredDistance;
+    }
+
+    public bool IsCurrentTargetInRange()
+    {
+        return IsTargetInRange(CurrentTarget);
     }
 }

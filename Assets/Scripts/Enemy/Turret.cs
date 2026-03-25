@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using FMODUnity;
 
 public class Turret : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Turret : MonoBehaviour
     [NonSerialized] public Health Health;
     [NonSerialized] public ScrapCurrency scrapCurrency;
     [SerializeField] private GameObject scrapPilePrefab;
+    [SerializeField] private EventReference DeathSFX;
 
     void Start()
     {
@@ -26,16 +28,7 @@ public class Turret : MonoBehaviour
 
     void OnDeath()
     {
-        LockOnSelectable selectable = GetComponent<LockOnSelectable>();
-        if (selectable != null)
-        {
-            selectable.enabled = false;
-        }
-
-        if (PlayerMarker.Instance != null && PlayerMarker.Instance.Target == gameObject)
-        {
-            PlayerMarker.Instance.ClearTarget();
-        }
+        AudioManager.Instance.PlaySFX(DeathSFX, transform.position, 1f);
 
         if (scrapPilePrefab != null)
         {
