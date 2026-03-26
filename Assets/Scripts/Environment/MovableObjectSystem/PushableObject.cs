@@ -1,13 +1,14 @@
 using UnityEngine;
 using FMODUnity;
 
-public class PushableObject : MovableObject
+public class PushableObject : MonoBehaviour 
+    
 {
     public SideTrigger[] sideTriggers;
     public float moveSpeed = 2f;
     [SerializeField] public EventReference boxPushSFX;
     public TopTrigger topTrigger;
-    public float pushRadius = 0.1f;
+    private float pushRadius = 2f;
 
     private Rigidbody rb;
     private Rigidbody mechRb;
@@ -23,7 +24,7 @@ public class PushableObject : MovableObject
     private float mechSideSign;
 
     private float hoverY;
-    private const float hoverHeight = 0.05f;
+    private const float hoverHeight = 0.1f;
 
     private void Awake()
     {
@@ -57,6 +58,7 @@ public class PushableObject : MovableObject
 
         if (isBeingPushed)
         {
+            rb.MovePosition(new Vector3(rb.position.x, hoverY, rb.position.z));
             Vector3 vel = rb.linearVelocity;
             vel.y = 0f;
             rb.linearVelocity = vel;
