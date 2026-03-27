@@ -41,6 +41,8 @@ public class LockOnManager : MonoBehaviour
 
     void Update()
     {
+        if (MovementManager.Instance.isLockedMovement) return; 
+
         isLockedOn = Input.GetButton("ToggleLockOnMode") && !MovementManager.Instance.IsMouseActive;
 
         if (cameraManager != null)
