@@ -153,6 +153,7 @@ public class CameraManager : CameraMovementManager
         float charOffset = 0f;
         Transform playerRoot = FollowEntity != null ? FollowEntity.transform : null;
         float minDistanceFromChar = Config.CAMERA_MIN_DISTANCE;
+
         if (playerRoot != null)
         {
             Renderer renderer = FollowEntity.GetComponentInChildren<Renderer>();
@@ -164,7 +165,7 @@ public class CameraManager : CameraMovementManager
 
                 charOffset = Mathf.Abs(Vector3.Dot(extents, toCamera));
                 charOffset = Mathf.Max(charOffset, 0.5f);
-                
+
                 float characterSize = bounds.extents.magnitude;
                 minDistanceFromChar = Mathf.Max(characterSize * 1.5f, 4f);
             }
@@ -173,6 +174,7 @@ public class CameraManager : CameraMovementManager
         Vector3 adjustedStartPos = pivotPos + dirToCamera * charOffset;
         float maxCastDistance = Mathf.Max(desiredDistance - charOffset, Config.CAMERA_MIN_DISTANCE);
         Ray ray = new Ray(adjustedStartPos, dirToCamera);
+
         RaycastHit[] hits = Physics.SphereCastAll(
             ray,
             Config.CAMERA_COLLISION_RADIUS,
@@ -181,16 +183,11 @@ public class CameraManager : CameraMovementManager
             QueryTriggerInteraction.Ignore
         );
 
-        if (hits == null || hits.Length == 0)
-        {
-            return Mathf.Max(desiredDistance, minDistanceFromChar);
-        }
-            
         float closest = desiredDistance;
 
-        for (int i = 0; i < hits.Length; i++)
+        foreach (var hit in hits)
         {
-            Collider col = hits[i].collider;
+            Collider col = hit.collider;
 
             if (playerRoot != null && (col.transform == playerRoot || col.transform.IsChildOf(playerRoot)))
                 continue;
@@ -198,9 +195,9 @@ public class CameraManager : CameraMovementManager
             if (!col.CompareTag("Wall"))
                 continue;
 
-            float actualDistance = hits[i].distance + charOffset;
+            float actualDistance = hit.distance + charOffset;
             float candidate = Mathf.Max(actualDistance - Config.CAMERA_COLLISION_BUFFER, minDistanceFromChar);
-            
+
             if (candidate < closest)
                 closest = candidate;
         }
