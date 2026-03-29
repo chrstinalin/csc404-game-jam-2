@@ -41,9 +41,13 @@ public class LockOnManager : MonoBehaviour
 
     void Update()
     {
-        if (MovementManager.Instance.isLockedMovement) return; 
-
-        isLockedOn = Input.GetButton("ToggleLockOnMode") && !MovementManager.Instance.IsMouseActive;
+        if (MovementManager.Instance.isLockedMovement) {
+            isLockedOn = false;
+            return; 
+        }
+        else {
+            isLockedOn = Input.GetButton("ToggleLockOnMode") && !MovementManager.Instance.IsMouseActive;
+        }
 
         if (cameraManager != null)
             cameraManager.SetLockOn(isLockedOn);
@@ -216,5 +220,11 @@ public class LockOnManager : MonoBehaviour
     public bool IsCurrentTargetInRange()
     {
         return IsTargetInRange(CurrentTarget);
+    }
+
+    public void ForceExitLockOn()
+    {
+        isLockedOn = false;
+        ExitLockOn();
     }
 }
