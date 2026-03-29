@@ -9,6 +9,9 @@ public class CameraManager : CameraMovementManager
     [NonSerialized] public Transform CameraPivot;
     [NonSerialized] public Camera Cam;
 
+    [Header("Collision")]
+    [SerializeField] private LayerMask wallLayer;
+
     private float heightOffset;
     private float targetFOV;
     private float fovVelocity;
@@ -25,7 +28,6 @@ public class CameraManager : CameraMovementManager
 
     public bool IsLockedOn { get; private set; }
 
-
     public int mouseSensitivity;
     public bool invertYAxis;
     private float lockOnFOVMultiplier = 0.90f;
@@ -38,7 +40,8 @@ public class CameraManager : CameraMovementManager
     void Start()
     {
         Cam = GetComponent<Camera>();
-        CameraPivot = transform.parent; // Make sure the camera has a parent
+
+        CameraPivot = transform.parent;
         if (CameraPivot == null)
             CameraPivot = new GameObject("CameraPivot").transform;
 
@@ -50,6 +53,7 @@ public class CameraManager : CameraMovementManager
         pitch = angles.x;
 
         currentCameraDistance = zoom;
+        targetCameraDistance = zoom;
 
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -59,7 +63,6 @@ public class CameraManager : CameraMovementManager
 
     void Update()
     {
-        // Smooth FOV transition
         if (Cam != null)
         {
             Cam.fieldOfView = Mathf.SmoothDamp(
@@ -75,21 +78,21 @@ public class CameraManager : CameraMovementManager
     {
         IsLockedOn = locked;
 
-        if (locked)
-            targetFOV = Config.CAMERA_DEFAULT_FOV * lockOnFOVMultiplier;
-        else
-            targetFOV = Config.CAMERA_DEFAULT_FOV;
+        targetFOV = locked
+            ? Config.CAMERA_DEFAULT_FOV * lockOnFOVMultiplier
+            : Config.CAMERA_DEFAULT_FOV;
     }
+
     public override void SetFollowEntity(GameObject? entity, float? newMaxZoom = null)
     {
         FollowEntity = entity;
+
         if (newMaxZoom.HasValue)
         {
             maxZoom = newMaxZoom.Value;
+
             if (zoom > maxZoom)
-            {
                 zoom = maxZoom;
-            }
         }
     }
 
@@ -98,11 +101,10 @@ public class CameraManager : CameraMovementManager
         if (FollowEntity == null)
             return;
 
-        // Freeze camera during lock on mode
         if (IsLockedOn)
             return;
 
-        // Follow the target entity
+        // Follow target
         CameraPivot.position = new Vector3(
             FollowEntity.transform.position.x,
             FollowEntity.transform.position.y + heightOffset,
@@ -112,7 +114,7 @@ public class CameraManager : CameraMovementManager
         HandleZoom();
         HandleRotation();
 
-        // Apply rotation
+        // Rotation
         Quaternion targetRotation = Quaternion.Euler(pitch, yaw, 0f);
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
@@ -122,87 +124,59 @@ public class CameraManager : CameraMovementManager
 
         float desiredDistance = zoom;
 
-        float instantCollisionDistance = GetCollisionAdjustedDistanceOnlyWalls(
+        float collisionDistance = GetCollisionDistance(
             CameraPivot.position,
             transform.forward,
             desiredDistance
         );
-        
-        targetCameraDistance = Mathf.SmoothDamp(
-            targetCameraDistance,
-            instantCollisionDistance,
-            ref targetDistanceVelocity,
-            Config.CAMERA_COLLISION_EASE_TIME
-        );
 
-        currentCameraDistance = Mathf.SmoothDamp(
-            currentCameraDistance,
-            targetCameraDistance,
-            ref collisionDistanceVelocity,
-            Config.CAMERA_COLLISION_SMOOTH_TIME
-        );
+        if (collisionDistance < currentCameraDistance)
+        {
+            currentCameraDistance = collisionDistance;
+            targetCameraDistance = collisionDistance;
+        }
+        else
+        {
+            targetCameraDistance = Mathf.SmoothDamp(
+                targetCameraDistance,
+                collisionDistance,
+                ref targetDistanceVelocity,
+                Config.CAMERA_COLLISION_EASE_TIME
+            );
 
-        // Place camera
+            currentCameraDistance = Mathf.SmoothDamp(
+                currentCameraDistance,
+                targetCameraDistance,
+                ref collisionDistanceVelocity,
+                Config.CAMERA_COLLISION_SMOOTH_TIME
+            );
+        }
+
+        // Final position
         transform.position = CameraPivot.position - transform.forward * currentCameraDistance;
     }
 
-    private float GetCollisionAdjustedDistanceOnlyWalls(Vector3 pivotPos, Vector3 cameraForward, float desiredDistance)
+    private float GetCollisionDistance(Vector3 pivotPos, Vector3 cameraForward, float desiredDistance)
     {
-        Vector3 dirToCamera = -cameraForward;
+        Vector3 dir = -cameraForward;
+        float minDistance = Config.CAMERA_MIN_DISTANCE;
 
-        float charOffset = 0f;
-        Transform playerRoot = FollowEntity != null ? FollowEntity.transform : null;
-        float minDistanceFromChar = Config.CAMERA_MIN_DISTANCE;
+        RaycastHit hit;
 
-        if (playerRoot != null)
-        {
-            Renderer renderer = FollowEntity.GetComponentInChildren<Renderer>();
-            if (renderer != null)
-            {
-                Bounds bounds = renderer.bounds;
-                Vector3 toCamera = dirToCamera.normalized;
-                Vector3 extents = bounds.extents;
-
-                charOffset = Mathf.Abs(Vector3.Dot(extents, toCamera));
-                charOffset = Mathf.Max(charOffset, 0.5f);
-
-                float characterSize = bounds.extents.magnitude;
-                minDistanceFromChar = Mathf.Max(characterSize * 1.5f, 4f);
-            }
-        }
-
-        Vector3 adjustedStartPos = pivotPos + dirToCamera * charOffset;
-        float maxCastDistance = Mathf.Max(desiredDistance - charOffset, Config.CAMERA_MIN_DISTANCE);
-        Ray ray = new Ray(adjustedStartPos, dirToCamera);
-
-        RaycastHit[] hits = Physics.SphereCastAll(
-            ray,
+        if (Physics.SphereCast(
+            pivotPos,
             Config.CAMERA_COLLISION_RADIUS,
-            maxCastDistance,
-            ~0,
-            QueryTriggerInteraction.Ignore
-        );
-
-        float closest = desiredDistance;
-
-        foreach (var hit in hits)
+            dir,
+            out hit,
+            desiredDistance,
+            wallLayer,
+            QueryTriggerInteraction.Ignore))
         {
-            Collider col = hit.collider;
-
-            if (playerRoot != null && (col.transform == playerRoot || col.transform.IsChildOf(playerRoot)))
-                continue;
-
-            if (!col.CompareTag("Wall"))
-                continue;
-
-            float actualDistance = hit.distance + charOffset;
-            float candidate = Mathf.Max(actualDistance - Config.CAMERA_COLLISION_BUFFER, minDistanceFromChar);
-
-            if (candidate < closest)
-                closest = candidate;
+            float safeDistance = hit.distance - Config.CAMERA_COLLISION_BUFFER;
+            return Mathf.Clamp(safeDistance, minDistance, desiredDistance);
         }
 
-        return Mathf.Clamp(closest, minDistanceFromChar, desiredDistance);
+        return desiredDistance;
     }
 
     private void HandleZoom()
@@ -224,26 +198,22 @@ public class CameraManager : CameraMovementManager
 
     private void HandleRotation()
     {
-        // Mouse input
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 
-        // Controller input
         float rightStickX = Input.GetAxis("HorizontalRightJoystick");
         float rightStickY = Input.GetAxis("VerticalRightJoystick");
 
-        // Combine both (so either works)
         float inputX = mouseX + rightStickX;
         float inputY = mouseY + rightStickY;
 
         yaw += inputX * mouseSensitivity * Time.deltaTime;
         pitch += inputY * mouseSensitivity * Time.deltaTime * (invertYAxis ? -1 : 1);
+
         pitch = Mathf.Clamp(pitch, Config.MIN_PITCH, Config.MAX_PITCH);
     }
 
     public override void PanTo(float zoomSize) => zoom = zoomSize;
-
     public override void SetMaxZoom(float max) => maxZoom = max;
-
     public void SetCameraFOV(float newFOV) => targetFOV = newFOV;
 }
