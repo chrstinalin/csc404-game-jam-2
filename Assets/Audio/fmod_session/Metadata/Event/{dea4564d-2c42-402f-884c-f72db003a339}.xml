@@ -219,7 +219,16 @@
 	<object class="MixerBusFader" id="{6034231f-ac46-4e2b-a3b3-ed3e4e8c2718}" />
 	<object class="ThreeEQEffect" id="{c31a2c33-f6c6-499d-ac8e-556fb4a7ece2}">
 		<property name="lowGain">
+			<value>-10</value>
+		</property>
+		<property name="highGain">
 			<value>-9</value>
+		</property>
+		<property name="highCrossover">
+			<value>2000</value>
+		</property>
+		<property name="crossoverSlope">
+			<value>0</value>
 		</property>
 	</object>
 	<object class="SpatialiserEffect" id="{1d6e8292-63f6-4b77-8640-408d77b55638}" />

@@ -83,6 +83,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{5b368ece-b932-479c-b4bb-fa4b2a4fad76}">
+		<property name="volume">
+			<value>3</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{6e84b93b-bacb-42c1-af9c-f131f4658b45}</destination>
 		</relationship>
@@ -199,6 +202,15 @@
 	<object class="ThreeEQEffect" id="{9197e9f9-acb1-4c3d-9c9a-135df0f073de}">
 		<property name="lowGain">
 			<value>-80</value>
+		</property>
+		<property name="highGain">
+			<value>-6</value>
+		</property>
+		<property name="highCrossover">
+			<value>2100</value>
+		</property>
+		<property name="crossoverSlope">
+			<value>0</value>
 		</property>
 	</object>
 	<object class="DelayEffect" id="{0d7c3c49-c720-48f6-ba58-c725266d58f9}">
