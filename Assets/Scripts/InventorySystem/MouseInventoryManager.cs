@@ -1,23 +1,17 @@
 using UnityEngine;
-using System.Collections;
 
 public class MouseInventoryManager : MonoBehaviour
 {
-    private ScrapCurrency nearbyItem;
-    [HideInInspector] public ScrapCurrency carriedItem;
+    private ICarryable nearbyItem; 
+    [HideInInspector] public ICarryable carriedItem; 
     private Transform carryPoint;
     private Animator animator;
-
-    private float animationDuration = 0.4f;
 
     private void Awake()
     {
         carryPoint = transform.Find("CarryPoint");
         if (carryPoint == null)
-            Debug.LogError(
-                "A Transform named CarryPoint where the scrap currency " +
-                "appears when carried must be a child of PlayerMouse"
-            );
+            Debug.LogError("A Transform named CarryPoint must be a child of PlayerMouse");
 
         animator = GetComponentInChildren<Animator>();
         if (animator == null)
@@ -28,19 +22,18 @@ public class MouseInventoryManager : MonoBehaviour
     {
         if (MovementManager.Instance == null || !MovementManager.Instance.IsMouseActive)
             return;
-            
-        var item = other.GetComponent<ScrapCurrency>();
 
-        if (item != null && item.GetComponent<Health>() == null)
+        var carryable = other.GetComponent<ICarryable>();
+        if (carryable != null)
         {
-            nearbyItem = item;
+            nearbyItem = carryable;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        var item = other.GetComponent<ScrapCurrency>();
-        if (item != null && item == nearbyItem)
+        var carryable = other.GetComponent<ICarryable>();
+        if (carryable != null && carryable == nearbyItem)
         {
             nearbyItem = null;
         }
@@ -49,10 +42,7 @@ public class MouseInventoryManager : MonoBehaviour
     private void Update()
     {
         bool playerControllingMouse = MovementManager.Instance != null && MovementManager.Instance.IsMouseActive;
-        if (!playerControllingMouse)
-        {
-            return;
-        }
+        if (!playerControllingMouse) return;
 
         if (Input.GetButtonDown("Interact"))
         {
@@ -67,29 +57,35 @@ public class MouseInventoryManager : MonoBehaviour
         }
     }
 
-    private void PickUpItem(ScrapCurrency item)
+    private void PickUpItem(ICarryable item)
     {
         AudioManager.Instance.PlaySFX(AudioManager.Instance.ScrapPileInteractSFX, transform.position, 2f);
         carriedItem = item;
         nearbyItem = null;
 
-        item.transform.SetParent(carryPoint);
-        item.transform.localPosition = Vector3.zero;
-        item.transform.localRotation = Quaternion.identity;
-        item.transform.localScale = Vector3.one * 0.5f;
+        Transform t = item.Transform;
+        t.SetParent(carryPoint);
+        t.localPosition = Vector3.zero;
+        t.localRotation = Quaternion.identity;
 
-        Debug.Log("Mouse picked up: " + item.name);
+        if (item is ScrapCurrency scrap) scrap.ShrinkForCarry();
+        else if (item is Cheese cheese) cheese.ShrinkForCarry();
+
+        Debug.Log("Mouse picked up: " + t.name);
     }
 
     private void DropItem()
     {
         if (carriedItem == null) return;
+
         AudioManager.Instance.PlaySFX(AudioManager.Instance.ScrapPileInteractSFX, transform.position, 2f);
 
         Vector3 dropPosition = transform.position + transform.forward * 1f;
 
-        carriedItem.transform.SetParent(null);
-        carriedItem.transform.localScale = Vector3.one;
+        Transform t = carriedItem.Transform;
+        t.SetParent(null);
+        t.localScale = Vector3.one;
+
         carriedItem.Drop(dropPosition);
 
         if (animator != null)
@@ -97,11 +93,11 @@ public class MouseInventoryManager : MonoBehaviour
             animator.SetTrigger("Interact");
         }
 
-        Debug.Log("Mouse dropped: " + carriedItem.name);
+        Debug.Log("Mouse dropped: " + t.name);
         carriedItem = null;
     }
 
     public bool HasItem() => carriedItem != null;
-    public ScrapCurrency GetCarriedItem() => carriedItem;
+    public ICarryable GetCarriedItem() => carriedItem;
     public void RemoveCarriedItem() => carriedItem = null;
 }

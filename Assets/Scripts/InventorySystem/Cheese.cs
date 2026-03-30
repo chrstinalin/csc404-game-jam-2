@@ -1,14 +1,12 @@
 using UnityEngine;
 
-public class ScrapCurrency : MonoBehaviour, ICarryable
+public class Cheese : MonoBehaviour, ICarryable
 {
-    public int HPRestoreAmount;
-
     private Vector3 initialPosition;
     private Quaternion initialRotation;
     private Vector3 initialScale;
 
-    [SerializeField] private float carryScale = 0.3f;
+    [SerializeField] private float carryScale = 0.5f;
 
     public Transform Transform => transform;
 
