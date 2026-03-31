@@ -360,6 +360,7 @@ public class UIManager : MonoBehaviour
     
     public void Resume()
     {
+        MovementManager.Instance.unlockInput();
         if (pauseMenuUI != null)
             pauseMenuUI.SetActive(false);
     
@@ -381,6 +382,8 @@ public class UIManager : MonoBehaviour
 
     void Pause()
     {   
+        MovementManager.Instance.lockInput();
+
         if (dof != null)
             dof.active = true;
         

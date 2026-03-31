@@ -15,6 +15,7 @@ public class MovementManager : PlayerMovementManager
     private GameObject Mouse;
     private GameObject Mech;
 
+    private bool isInputLocked;
     public bool isLockedMovement;
 
     void Awake()
@@ -54,6 +55,8 @@ public class MovementManager : PlayerMovementManager
 
     void Update()
     {
+        if (isInputLocked) return;
+
         CameraManager.UpdateCamera();
 
         if (CameraManager.IsLockedOn)
@@ -128,7 +131,15 @@ public class MovementManager : PlayerMovementManager
             }
         }
     }
-    
+
+    public void lockInput()
+    {
+        isLockedMovement = true;
+    }    
+    public void unlockInput()
+    {
+        isLockedMovement = false;
+    }
     public override void ToggleMouse(bool toggle)
     {
         IsMouseActive = toggle;
