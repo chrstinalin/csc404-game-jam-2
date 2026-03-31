@@ -68,11 +68,17 @@ public class Platform : TriggerableAbstract
         if (!movingUp) return;
 
         Rigidbody rbOther = collision.rigidbody;
-        if (rbOther != null)
+        if (rbOther == null) return;
+
+        foreach (ContactPoint contact in collision.contacts)
         {
-            Vector3 lv = rbOther.linearVelocity;
-            lv.y = Mathf.Max(lv.y, speed);
-            rbOther.linearVelocity = lv;
+            if (Vector3.Dot(contact.normal, Vector3.up) > 0.5f)
+            {
+                Vector3 lv = rbOther.linearVelocity;
+                lv.y = Mathf.Max(lv.y, speed);
+                rbOther.linearVelocity = lv;
+                return;
+            }
         }
     }
 

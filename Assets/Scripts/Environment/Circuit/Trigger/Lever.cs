@@ -1,18 +1,24 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Lever : TriggerAbstract
 {
     [SerializeField] private GameObject offModel;
     [SerializeField] private GameObject onModel;
+    private int count;
 
     [SerializeField] private bool startOn = false;
     private bool mouseInside = false;
     private MovementManager movementManager;
 
+    private Animator mouseAnimator; // cache animator
+
     private void Start()
     {
         movementManager = MovementManager.Instance;
     }
+
     private void Awake()
     {
         if (!offModel || !onModel)
@@ -24,24 +30,42 @@ public class Lever : TriggerAbstract
 
     private void Update()
     {
+        var mouse = PlayerMouse.Instance;
+
+        // Detect losing mouse
         if (mouseInside)
         {
-            if (PlayerMouse.Instance == null || 
-                !PlayerMouse.Instance.gameObject.activeInHierarchy)
+            if (mouse == null || !mouse.gameObject.activeInHierarchy)
             {
-                mouseInside = false;
+                CancelMouseInteraction();
+                return;
             }
         }
 
-        if (movementManager.IsMouseActive && mouseInside && Input.GetButtonDown("Interact"))
+        if (movementManager.IsMouseActive && mouseInside && mouse != null)
         {
-            ToggleLever();
+            if (Input.GetButtonDown("Interact"))
+            {
+                mouseAnimator = mouse.GetComponentInChildren<Animator>();
+
+                if (mouseAnimator != null)
+                {
+                    Debug.Log("playing" + count);
+                    count = count + 1;
+                    mouseAnimator.SetTrigger("Interact");
+
+                }
+
+                ToggleLever();
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == PlayerMouse.Instance.gameObject && movementManager.IsMouseActive)
+        if (PlayerMouse.Instance != null &&
+            other.gameObject == PlayerMouse.Instance.gameObject &&
+            movementManager.IsMouseActive)
         {
             mouseInside = true;
         }
@@ -49,7 +73,9 @@ public class Lever : TriggerAbstract
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == PlayerMouse.Instance.gameObject && movementManager.IsMouseActive)
+        if (PlayerMouse.Instance != null &&
+            other.gameObject == PlayerMouse.Instance.gameObject &&
+            movementManager.IsMouseActive)
         {
             mouseInside = true;
         }
@@ -57,9 +83,20 @@ public class Lever : TriggerAbstract
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == PlayerMouse.Instance.gameObject)
+        if (PlayerMouse.Instance != null &&
+            other.gameObject == PlayerMouse.Instance.gameObject)
         {
-            mouseInside = false;
+            CancelMouseInteraction();
+        }
+    }
+
+    private void CancelMouseInteraction()
+    {
+        mouseInside = false;
+
+        if (mouseAnimator != null)
+        {
+            mouseAnimator.ResetTrigger("Interact");
         }
     }
 
@@ -79,7 +116,9 @@ public class Lever : TriggerAbstract
 
     public void ToggleLever()
     {
-        if(AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.LeverPullSFX, transform.position, 4f);
+        if(AudioManager.Instance != null) 
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.LeverPullSFX, transform.position, 4f);
+
         if (IsActive) Deactivate();
         else Activate();
     }
