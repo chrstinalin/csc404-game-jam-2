@@ -54,7 +54,9 @@ public class MechAIController : MonoBehaviour, IOffense
             MechWeapon weapon = GetComponentInChildren<MechWeapon>();
             if (weapon != null)
             {
+                Animator.SetTrigger("Shoot");
                 weapon.Fire();
+
             }
         }
     }
