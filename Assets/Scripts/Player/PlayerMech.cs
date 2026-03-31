@@ -90,6 +90,7 @@ public class PlayerMech : MonoBehaviour
 
     public void OnDeath()
     {
+        LockOnManager.Instance.ForceExitLockOn();
         RespawnManager.Instance.StartRespawnCountdown(true);
     }
 
