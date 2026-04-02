@@ -143,7 +143,14 @@ public class PushableObject : MonoBehaviour
 
         float moveMagnitude = Mathf.Abs(axisInput) < 0.01f ? 0f : pushSpeed * Mathf.Sign(axisInput);
 
+        Vector3 moveDirNormalized = moveDir.sqrMagnitude > 0.001f ? moveDir.normalized : Vector3.zero;
+
+        float forwardDot = Vector3.Dot(moveDirNormalized, mechFacingDir);
+
         mechAnimator.SetBool("isRunning", Mathf.Abs(moveMagnitude) > 0.01f);
+        mechAnimator.SetBool("isWalkingBackwards", forwardDot < -0.1f);
+
+        Debug.Log(axisInput < -0.01f);
 
         Vector3 velocity = pushAxis * moveMagnitude;
 
