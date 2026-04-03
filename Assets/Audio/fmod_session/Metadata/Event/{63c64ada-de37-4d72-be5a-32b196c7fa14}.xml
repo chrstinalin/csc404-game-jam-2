@@ -82,6 +82,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{df70017e-bb51-494a-aa72-a89a31193111}">
+		<property name="volume">
+			<value>-4</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{3f5562e1-3b66-4d64-842d-baf21d876a8c}</destination>
 		</relationship>
@@ -251,7 +254,13 @@
 			<value>2.5</value>
 		</property>
 		<property name="highGain">
-			<value>3.5</value>
+			<value>-2</value>
+		</property>
+		<property name="highCrossover">
+			<value>2000</value>
+		</property>
+		<property name="crossoverSlope">
+			<value>0</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{f004d425-ded6-4df9-b149-5e6ccab8d58f}" />

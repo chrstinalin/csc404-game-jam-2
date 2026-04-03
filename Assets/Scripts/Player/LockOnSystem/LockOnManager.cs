@@ -29,6 +29,8 @@ public class LockOnManager : MonoBehaviour
     public bool IsLockedOn => isLockedOn;
     public LockOnObject CurrentTarget => GetCurrentTarget();
 
+    private Animator dkAnimator;
+
     void Awake()
     {
         if (Instance == null)
@@ -37,11 +39,18 @@ public class LockOnManager : MonoBehaviour
             Destroy(gameObject);
 
         cameraManager = CameraManager.Instance;
+        dkAnimator = PlayerMech.Instance.GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
-        isLockedOn = Input.GetButton("ToggleLockOnMode") && !MovementManager.Instance.IsMouseActive;
+        if (MovementManager.Instance.isLockedMovement) {
+            isLockedOn = false;
+            return; 
+        }
+        else {
+            isLockedOn = Input.GetButton("ToggleLockOnMode") && !MovementManager.Instance.IsMouseActive;
+        }
 
         if (cameraManager != null)
             cameraManager.SetLockOn(isLockedOn);
@@ -73,6 +82,7 @@ public class LockOnManager : MonoBehaviour
 
     private void EnterLockOn()
     {
+        if (dkAnimator) dkAnimator.SetTrigger("isCharging");
         if (sfxPlaying) return;
 
         lockOnSFXInstance = RuntimeManager.CreateInstance(lockOnSFX);
@@ -93,6 +103,7 @@ public class LockOnManager : MonoBehaviour
 
     private void ExitLockOn()
     {
+        if (dkAnimator) dkAnimator.SetBool("isCharging", false);
         if (!sfxPlaying) return;
 
         if (lockOnSFXInstance.isValid())
@@ -214,5 +225,11 @@ public class LockOnManager : MonoBehaviour
     public bool IsCurrentTargetInRange()
     {
         return IsTargetInRange(CurrentTarget);
+    }
+
+    public void ForceExitLockOn()
+    {
+        isLockedOn = false;
+        ExitLockOn();
     }
 }

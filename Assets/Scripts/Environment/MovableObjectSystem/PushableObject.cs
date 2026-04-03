@@ -1,13 +1,13 @@
 using UnityEngine;
 using FMODUnity;
 
-public class PushableObject : MovableObject
+public class PushableObject : MonoBehaviour 
 {
     public SideTrigger[] sideTriggers;
     public float moveSpeed = 2f;
     [SerializeField] public EventReference boxPushSFX;
     public TopTrigger topTrigger;
-    public float pushRadius = 0.1f;
+    private float pushRadius = 2.3f;
 
     private Rigidbody rb;
     private Rigidbody mechRb;
@@ -23,14 +23,14 @@ public class PushableObject : MovableObject
     private float mechSideSign;
 
     private float hoverY;
-    private const float hoverHeight = 0.1f;
+    private const float hoverHeight = 0.15f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation 
-                   | RigidbodyConstraints.FreezePositionX 
-                   | RigidbodyConstraints.FreezePositionZ;
+                       | RigidbodyConstraints.FreezePositionX 
+                       | RigidbodyConstraints.FreezePositionZ;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
     }
 
@@ -57,14 +57,42 @@ public class PushableObject : MovableObject
 
         if (isBeingPushed)
         {
-            Vector3 pos = rb.position;
-            pos.y = hoverY;
-            rb.position = pos;
+            float hoverForce = 20f;
+            float hoverDamping = 5f;
 
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+            float heightError = hoverY - rb.position.y;
+            float upwardForce = heightError * hoverForce - rb.linearVelocity.y * hoverDamping;
+
+            rb.AddForce(Vector3.up * upwardForce, ForceMode.Acceleration);
+        }
+        else
+        {
+            bool onPlatform = IsOnPlatform();
+
+            if (!onPlatform)
+            {
+                Vector3 vel = rb.linearVelocity;
+
+                if (vel.y > 0f)
+                    vel.y *= 0.5f;
+                else
+                    vel.y = Mathf.Max(vel.y, -2f);
+
+                rb.linearVelocity = vel;
+            }
         }
 
         CheckIfMouseIsOnTop();
+    }
+
+    private void SnapBoxToMech()
+    {
+        float desiredDistance = 1f;
+
+        Vector3 targetPos = mechRb.position + (pushAxis * mechSideSign * desiredDistance);
+        targetPos.y = rb.position.y;
+
+        rb.position = targetPos;
     }
 
     private void TryStartPush()
@@ -101,9 +129,11 @@ public class PushableObject : MovableObject
 
         mechFacingDir = pushAxis * mechSideSign;
 
-        // Set hover height. The hover is so the box can go over tiny platforms
+        SnapBoxToMech();
+
         hoverY = rb.position.y + hoverHeight;
-        rb.useGravity = false;
+
+        rb.useGravity = true;
 
         isBeingPushed = true;
         movementManager.isLockedMovement = true;
@@ -137,23 +167,26 @@ public class PushableObject : MovableObject
 
         Vector3 moveDir = camForward * v + camRight * h;
 
-        // Constraint DK to only walk in a cardinal direction
         float axisInput = Vector3.Dot(moveDir, pushAxis);
 
-        // Pushing speed is 50% DK walking speed
         float pushSpeed = Config.MECH_MOVE_SPEED * 0.5f;
 
         float moveMagnitude = Mathf.Abs(axisInput) < 0.01f ? 0f : pushSpeed * Mathf.Sign(axisInput);
 
-        // Play walking animation if DK is moving
+        Vector3 moveDirNormalized = moveDir.sqrMagnitude > 0.001f ? moveDir.normalized : Vector3.zero;
+
+        float forwardDot = Vector3.Dot(moveDirNormalized, mechFacingDir);
+
         mechAnimator.SetBool("isRunning", Mathf.Abs(moveMagnitude) > 0.01f);
+        mechAnimator.SetBool("isWalkingBackwards", forwardDot < -0.1f);
+
+        Debug.Log(axisInput < -0.01f);
 
         Vector3 velocity = pushAxis * moveMagnitude;
 
         mechRb.linearVelocity = new Vector3(velocity.x, mechRb.linearVelocity.y, velocity.z);
         rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
         
-        // Rotate to look at the box
         float rotateSpeed = 720f;
         Quaternion targetRot = Quaternion.LookRotation(pushAxis * mechSideSign, Vector3.up);
         mechRb.rotation = Quaternion.RotateTowards(mechRb.rotation, targetRot, rotateSpeed * Time.deltaTime);
@@ -164,7 +197,6 @@ public class PushableObject : MovableObject
         isBeingPushed = false;
         activeTrigger = null;
 
-        // Stop walking animation
         mechAnimator.SetBool("isRunning", false);
 
         movementManager.isLockedMovement = false;
@@ -212,5 +244,17 @@ public class PushableObject : MovableObject
             if (PlayerMouse.Instance.transform.parent == transform)
                 PlayerMouse.Instance.transform.SetParent(null);
         }
+    }
+
+    private bool IsOnPlatform()
+    {
+        float rayDistance = 0.3f;
+
+        if (Physics.Raycast(rb.position, Vector3.down, out RaycastHit hit, rayDistance))
+        {
+            return hit.collider.GetComponentInChildren<Platform>() != null;
+        }
+
+        return false;
     }
 }
