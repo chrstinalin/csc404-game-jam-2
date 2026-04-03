@@ -103,6 +103,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5b121cdc-620d-40df-a2b1-47c0852c7027}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -151,19 +154,22 @@
 	<object class="MixerBusPanner" id="{247be3da-6268-46bb-95f5-50d4a97df1ec}" />
 	<object class="ThreeEQEffect" id="{9d2fbafc-161d-4c4b-bfcf-cd69fc6bd26d}">
 		<property name="lowGain">
-			<value>-14.5</value>
+			<value>-22</value>
 		</property>
 		<property name="midGain">
 			<value>-0.5</value>
 		</property>
 		<property name="highGain">
-			<value>-8</value>
+			<value>-14.5</value>
 		</property>
 		<property name="lowCrossover">
 			<value>360</value>
 		</property>
 		<property name="highCrossover">
 			<value>2600</value>
+		</property>
+		<property name="crossoverSlope">
+			<value>0</value>
 		</property>
 	</object>
 	<object class="ParamEqEffect" id="{ccdb2919-4e3a-487b-8e46-d1ed21e821ba}">
@@ -178,9 +184,6 @@
 		</property>
 	</object>
 	<object class="GainEffect" id="{bf12744b-87bc-457f-9590-2dd4ed055e00}">
-		<property name="gain">
-			<value>6.5</value>
-		</property>
 		<relationship name="modulators">
 			<destination>{fc6f9fcb-ffb6-44b4-a81b-01f45366fab5}</destination>
 		</relationship>
