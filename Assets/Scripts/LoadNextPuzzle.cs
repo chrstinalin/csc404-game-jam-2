@@ -164,6 +164,9 @@ public class LoadNextPuzzle : MonoBehaviour
 
     private void HandleStateChange()
     {
+        if (!requiresMouse && !requiresMech && !requiresCheese)
+            return;
+
         bool allMet =
             (!requiresMech || mechEntered) &&
             (!requiresMouse || mouseEntered) &&
