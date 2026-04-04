@@ -76,6 +76,7 @@ public class LockOnReticle : MonoBehaviour
         }
         else
         {
+            Debug.Log("out of range");
             if (outOfRangeReticle != null)
             {
                 outOfRangeReticle.gameObject.SetActive(true);

@@ -107,8 +107,6 @@ RectTransform:
   - {fileID: 8916784607769638099}
   - {fileID: 660349755980666936}
   - {fileID: 905188341776327697}
-  - {fileID: 1843422275114159185}
-  - {fileID: 3742318612011874747}
   m_Father: {fileID: 322564234936199830}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -230,14 +228,14 @@ RectTransform:
   m_GameObject: {fileID: 770482286577832702}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.17999999, y: 0.17999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3223122214677556415}
+  m_Father: {fileID: 322564234936199830}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -117.9, y: -38.3}
+  m_AnchoredPosition: {x: -514.24115, y: 210.94463}
   m_SizeDelta: {x: 470, y: 370}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4823588330250079055
@@ -353,7 +351,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4283433188
-  m_fontColor: {r: 0.8941177, g: 0, b: 0.3137255, a: 1}
+  m_fontColor: {r: 0.89411765, g: 0, b: 0.3137255, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -540,7 +538,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4283433188
-  m_fontColor: {r: 0.8941177, g: 0, b: 0.3137255, a: 1}
+  m_fontColor: {r: 0.89411765, g: 0, b: 0.3137255, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -817,7 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.764151, b: 0.05662524, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -890,7 +888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LockOnReticle
   inRangeReticle: {fileID: 8227535123248260527}
   outOfRangeReticle: {fileID: 6996591244027363224}
-  baseScale: 1
+  baseScale: 2
   inRangeScaleMultiplier: 1
   outOfRangeScaleMultiplier: 0.7
 --- !u!1 &3822916349248001579
@@ -1025,7 +1023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 7dc5b09833fac8c49a3edf7f69541e06, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1291,14 +1289,14 @@ RectTransform:
   m_GameObject: {fileID: 4984787335135171244}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.20000002, z: 0.8000001}
+  m_LocalScale: {x: 0.17999999, y: 0.18000002, z: 0.8000001}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 3223122214677556415}
+  m_Father: {fileID: 322564234936199830}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -26.9, y: -38.8}
+  m_AnchoredPosition: {x: -432.34113, y: 210.49467}
   m_SizeDelta: {x: 1380, y: 390}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3408121953928776715
@@ -1397,7 +1395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.7647059, b: 0.05490196, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1583,6 +1581,8 @@ RectTransform:
   - {fileID: 6787965185300914395}
   - {fileID: 8102086791499551882}
   - {fileID: 3223122214677556415}
+  - {fileID: 1843422275114159185}
+  - {fileID: 3742318612011874747}
   - {fileID: 5558048387845118149}
   - {fileID: 4068080115857493019}
   - {fileID: 629356869474773918}
@@ -2357,6 +2357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58057be93c9b4bd42843d98fcb52efab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUIManager
+  MechName: {fileID: 4292085833925372654}
+  MouseName: {fileID: 4234127829259131406}
   pauseMenuUI: {fileID: 8496941006961856923}
   pausePanel: {fileID: 7865764363412719220}
   controlsPanel: {fileID: 1083015319133798890}
@@ -2401,6 +2403,16 @@ MonoBehaviour:
     Path: event:/SFX/UI/UI Back
   mouseControlsText: {fileID: 1529193844523697624}
   mechControlsText: {fileID: 3587720966270951944}
+  lockOnHealthPoints:
+  - {fileID: 21300000, guid: b5868e3bcd2c9934e9028a44a9a14ae2, type: 3}
+  - {fileID: 21300000, guid: b5868e3bcd2c9934e9028a44a9a14ae2, type: 3}
+  - {fileID: 21300000, guid: b5868e3bcd2c9934e9028a44a9a14ae2, type: 3}
+  lockOnHealthFront: {fileID: 21300000, guid: bae4901a4af8ca843a58818825334425, type: 3}
+  lockOnHealthBack: {fileID: 21300000, guid: bae4901a4af8ca843a58818825334425, type: 3}
+  MechHealthBorderObj: {fileID: 8083243847681524939}
+  MouseHealthBorderObj: {fileID: 4984787335135171244}
+  lockOnMechBorder: {fileID: 21300000, guid: 4016380e28dd5524697dc18abe968720, type: 3}
+  lockOnMouseBorder: {fileID: 21300000, guid: c1843ed5769a24d4dac4b1c3c831b626, type: 3}
 --- !u!114 &2779196438636777930
 MonoBehaviour:
   m_ObjectHideFlags: 0
