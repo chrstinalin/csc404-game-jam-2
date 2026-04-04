@@ -4088,6 +4088,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18813fac3131a3e449ca93faa25bf82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
+--- !u!4 &173742004 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 1654867212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &176985811
 GameObject:
   m_ObjectHideFlags: 0
@@ -25624,6 +25629,8 @@ Transform:
   m_Children:
   - {fileID: 2000612066}
   - {fileID: 1156111005}
+  - {fileID: 1689287523}
+  - {fileID: 173742004}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1034185556
@@ -41343,11 +41350,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1033638116}
     m_Modifications:
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Path
+      value: event:/SFX/Interactables/Interactable Button
+      objectReference: {fileID: 0}
     - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: TriggerObjects.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data1
+      value: 770979095
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data2
+      value: 1192341375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data3
+      value: -1502129997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data4
+      value: 147275528
       objectReference: {fileID: 0}
     - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: 'TriggerObjects.Array.data[0]'
@@ -41387,15 +41414,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.19746
+      value: 22.78424
       objectReference: {fileID: 0}
     - target: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19999993
+      value: -6.3172
       objectReference: {fileID: 0}
     - target: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.677
+      value: -1.6161499
       objectReference: {fileID: 0}
     - target: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_LocalRotation.w
@@ -41703,6 +41730,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686355573}
   m_Mesh: {fileID: -7583440443156049691, guid: 2d4f9fc473493614bb2c570f210f9b84, type: 3}
+--- !u!4 &1689287523 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 1750075152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1691678503
 GameObject:
   m_ObjectHideFlags: 0
@@ -43059,11 +43091,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1033638116}
     m_Modifications:
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Path
+      value: event:/SFX/Interactables/Interactable Button
+      objectReference: {fileID: 0}
     - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: TriggerObjects.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data1
+      value: 770979095
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data2
+      value: 1192341375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data3
+      value: -1502129997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data4
+      value: 147275528
       objectReference: {fileID: 0}
     - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: 'TriggerObjects.Array.data[0]'
@@ -43103,15 +43155,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.57
+      value: 35.15678
       objectReference: {fileID: 0}
     - target: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22800004
+      value: -6.2892
       objectReference: {fileID: 0}
     - target: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.89
+      value: -8.18315
       objectReference: {fileID: 0}
     - target: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_LocalRotation.w
@@ -43140,6 +43192,30 @@ PrefabInstance:
     - target: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097378407439255780, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: m_Size.x
+      value: 4.306958
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097378407439255780, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8163294
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097378407439255780, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: m_Size.z
+      value: 4.174432
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097378407439255780, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: m_Center.x
+      value: -0.3631401
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097378407439255780, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: m_Center.y
+      value: 1.2792268
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097378407439255780, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: m_Center.z
+      value: 0.006551744
       objectReference: {fileID: 0}
     - target: {fileID: 8346186224859881997, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_Size.y
@@ -54344,8 +54420,6 @@ SceneRoots:
   - {fileID: 463875757}
   - {fileID: 957884845}
   - {fileID: 80978708}
-  - {fileID: 1750075152}
-  - {fileID: 1654867212}
   - {fileID: 2035900861}
   - {fileID: 323001331}
   - {fileID: 804297864}
