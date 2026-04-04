@@ -1148,7 +1148,7 @@ GameObject:
   - component: {fileID: 67644270}
   - component: {fileID: 67644272}
   - component: {fileID: 67644273}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1375,7 +1375,7 @@ GameObject:
   - component: {fileID: 76883643}
   - component: {fileID: 76883645}
   - component: {fileID: 76883644}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_bannerTraining_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4327,7 +4327,7 @@ GameObject:
   - component: {fileID: 210575498}
   - component: {fileID: 210575499}
   - component: {fileID: 210575500}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_doorTraining_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4688,7 +4688,7 @@ GameObject:
   - component: {fileID: 221989820}
   - component: {fileID: 221989819}
   - component: {fileID: 221989821}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_pillarTunnel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5135,6 +5135,116 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228488249}
   m_Mesh: {fileID: -536778754469606083, guid: 88535409a86959443b048e96e125ee64, type: 3}
+--- !u!1 &229958534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 229958538}
+  - component: {fileID: 229958537}
+  - component: {fileID: 229958536}
+  - component: {fileID: 229958535}
+  m_Layer: 7
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &229958535
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229958534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &229958536
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229958534}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials: []
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &229958537
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229958534}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &229958538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229958534}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.13052596, w: 0.99144495}
+  m_LocalPosition: {x: -2.0497, y: 7.58, z: 4.12732}
+  m_LocalScale: {x: 21.063854, y: 0.25699535, z: 8.993953}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15}
 --- !u!1 &232274840
 GameObject:
   m_ObjectHideFlags: 0
@@ -5236,7 +5346,7 @@ GameObject:
   - component: {fileID: 233413173}
   - component: {fileID: 233413172}
   - component: {fileID: 233413174}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_pillarTunnel_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6598,7 +6708,7 @@ GameObject:
   - component: {fileID: 307683669}
   - component: {fileID: 307683671}
   - component: {fileID: 307683672}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6821,7 +6931,7 @@ GameObject:
   - component: {fileID: 317754045}
   - component: {fileID: 317754044}
   - component: {fileID: 317754046}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_pillarTunnel_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9516,7 +9626,7 @@ GameObject:
   - component: {fileID: 455859232}
   - component: {fileID: 455859231}
   - component: {fileID: 455859233}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_doorTraining_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10669,7 +10779,7 @@ GameObject:
   - component: {fileID: 492816811}
   - component: {fileID: 492816813}
   - component: {fileID: 492816814}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10804,7 +10914,7 @@ GameObject:
   - component: {fileID: 495235425}
   - component: {fileID: 495235427}
   - component: {fileID: 495235428}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12466,7 +12576,7 @@ GameObject:
   - component: {fileID: 618410341}
   - component: {fileID: 618410340}
   - component: {fileID: 618410342}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_pillarTunnel_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12727,7 +12837,7 @@ GameObject:
   - component: {fileID: 646730345}
   - component: {fileID: 646730347}
   - component: {fileID: 646730346}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_bannerTraining_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12930,7 +13040,7 @@ GameObject:
   - component: {fileID: 656634951}
   - component: {fileID: 656634953}
   - component: {fileID: 656634954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14082,6 +14192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
   FollowEntity: {fileID: 0}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
   mouseSensitivity: 0
   invertYAxis: 0
 --- !u!1 &690256435
@@ -15701,7 +15814,7 @@ GameObject:
   - component: {fileID: 792953795}
   - component: {fileID: 792953797}
   - component: {fileID: 792953798}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15976,7 +16089,7 @@ GameObject:
   - component: {fileID: 805661901}
   - component: {fileID: 805661900}
   - component: {fileID: 805661902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_doorTraining_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16467,7 +16580,7 @@ GameObject:
   - component: {fileID: 833475868}
   - component: {fileID: 833475867}
   - component: {fileID: 833475869}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_pillarTunnel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17575,7 +17688,7 @@ GameObject:
   - component: {fileID: 899415961}
   - component: {fileID: 899415963}
   - component: {fileID: 899415962}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_bannerTraining_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18999,7 +19112,7 @@ GameObject:
   - component: {fileID: 944952655}
   - component: {fileID: 944952654}
   - component: {fileID: 944952656}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_pillarTunnel_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19112,7 +19225,7 @@ GameObject:
   - component: {fileID: 948897437}
   - component: {fileID: 948897439}
   - component: {fileID: 948897440}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20912,7 +21025,7 @@ GameObject:
   - component: {fileID: 1024269500}
   - component: {fileID: 1024269502}
   - component: {fileID: 1024269503}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22079,7 +22192,7 @@ GameObject:
   - component: {fileID: 1056478050}
   - component: {fileID: 1056478052}
   - component: {fileID: 1056478053}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23928,7 +24041,7 @@ GameObject:
   - component: {fileID: 1143382914}
   - component: {fileID: 1143382916}
   - component: {fileID: 1143382917}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26699,7 +26812,7 @@ GameObject:
   - component: {fileID: 1273623685}
   - component: {fileID: 1273623684}
   - component: {fileID: 1273623686}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_pillarTunnel_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27166,7 +27279,7 @@ GameObject:
   - component: {fileID: 1324090103}
   - component: {fileID: 1324090105}
   - component: {fileID: 1324090104}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_bannerTraining_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27255,7 +27368,7 @@ GameObject:
   - component: {fileID: 1324276194}
   - component: {fileID: 1324276196}
   - component: {fileID: 1324276195}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_bannerTraining_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27837,7 +27950,7 @@ GameObject:
   - component: {fileID: 1367019972}
   - component: {fileID: 1367019971}
   - component: {fileID: 1367019970}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_doorTraining_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30929,7 +31042,8 @@ GameObject:
   - component: {fileID: 1558389274}
   - component: {fileID: 1558389276}
   - component: {fileID: 1558389275}
-  m_Layer: 0
+  - component: {fileID: 1558389277}
+  m_Layer: 7
   m_Name: SM_roofTunnel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31007,6 +31121,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558389273}
   m_Mesh: {fileID: -468562143302856800, guid: 88535409a86959443b048e96e125ee64, type: 3}
+--- !u!65 &1558389277
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558389273}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.11584548, y: 0.119999975, z: 0.004206246}
+  m_Center: {x: 0, y: -0.059999987, z: 0.0021031194}
 --- !u!1 &1558693770
 GameObject:
   m_ObjectHideFlags: 0
@@ -31277,7 +31412,7 @@ GameObject:
   - component: {fileID: 1560327412}
   - component: {fileID: 1560327411}
   - component: {fileID: 1560327413}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_doorTraining_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31389,7 +31524,7 @@ GameObject:
   - component: {fileID: 1561557241}
   - component: {fileID: 1561557240}
   - component: {fileID: 1561557242}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_pillarTunnel_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31920,7 +32055,7 @@ GameObject:
   - component: {fileID: 1574626639}
   - component: {fileID: 1574626638}
   - component: {fileID: 1574626637}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_doorTraining_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33475,6 +33610,7 @@ GameObject:
   - component: {fileID: 1633829787}
   - component: {fileID: 1633829789}
   - component: {fileID: 1633829788}
+  - component: {fileID: 1633829790}
   m_Layer: 0
   m_Name: SM_roofTunnel_01
   m_TagString: Untagged
@@ -33553,6 +33689,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633829786}
   m_Mesh: {fileID: -468562143302856800, guid: 88535409a86959443b048e96e125ee64, type: 3}
+--- !u!65 &1633829790
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633829786}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.11584548, y: 0.119999975, z: 0.004206246}
+  m_Center: {x: 0, y: -0.059999987, z: 0.0021031194}
 --- !u!1 &1644271410
 GameObject:
   m_ObjectHideFlags: 0
@@ -33766,7 +33923,7 @@ GameObject:
   - component: {fileID: 1650271361}
   - component: {fileID: 1650271360}
   - component: {fileID: 1650271362}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_doorTraining_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34495,7 +34652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a16196217517d4ca65bd29c34ae08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridSystem
-  grid: {fileID: 1698328769}
 --- !u!156049354 &1698328769
 Grid:
   m_ObjectHideFlags: 0
@@ -36171,7 +36327,7 @@ GameObject:
   - component: {fileID: 1764481350}
   - component: {fileID: 1764481349}
   - component: {fileID: 1764481351}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_pillarTunnel_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36727,7 +36883,7 @@ GameObject:
   - component: {fileID: 1793759508}
   - component: {fileID: 1793759510}
   - component: {fileID: 1793759509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_bannerTraining_02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38817,7 +38973,7 @@ GameObject:
   - component: {fileID: 1911954536}
   - component: {fileID: 1911954538}
   - component: {fileID: 1911954539}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39731,7 +39887,8 @@ GameObject:
   - component: {fileID: 1952396076}
   - component: {fileID: 1952396078}
   - component: {fileID: 1952396077}
-  m_Layer: 0
+  - component: {fileID: 1952396079}
+  m_Layer: 7
   m_Name: SM_roofTunnel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39809,6 +39966,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952396075}
   m_Mesh: {fileID: -468562143302856800, guid: 88535409a86959443b048e96e125ee64, type: 3}
+--- !u!65 &1952396079
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952396075}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.11584548, y: 0.119999975, z: 0.004206246}
+  m_Center: {x: 0, y: -0.059999987, z: 0.0021031194}
 --- !u!1 &1958233144
 GameObject:
   m_ObjectHideFlags: 0
@@ -40052,7 +40230,7 @@ GameObject:
   - component: {fileID: 1970799490}
   - component: {fileID: 1970799492}
   - component: {fileID: 1970799491}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_bannerTraining_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40810,7 +40988,8 @@ GameObject:
   - component: {fileID: 1997880289}
   - component: {fileID: 1997880291}
   - component: {fileID: 1997880290}
-  m_Layer: 0
+  - component: {fileID: 1997880292}
+  m_Layer: 7
   m_Name: SM_roofTunnel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40888,6 +41067,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997880288}
   m_Mesh: {fileID: -468562143302856800, guid: 88535409a86959443b048e96e125ee64, type: 3}
+--- !u!65 &1997880292
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997880288}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.11584548, y: 0.119999975, z: 0.004206246}
+  m_Center: {x: 0, y: -0.059999987, z: 0.0021031194}
 --- !u!1 &2000612061
 GameObject:
   m_ObjectHideFlags: 0
@@ -41043,6 +41243,7 @@ GameObject:
   - component: {fileID: 2013742426}
   - component: {fileID: 2013742428}
   - component: {fileID: 2013742427}
+  - component: {fileID: 2013742429}
   m_Layer: 0
   m_Name: SM_roofTunnel_01 (1)
   m_TagString: Untagged
@@ -41121,6 +41322,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013742425}
   m_Mesh: {fileID: -468562143302856800, guid: 88535409a86959443b048e96e125ee64, type: 3}
+--- !u!65 &2013742429
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013742425}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.11584548, y: 0.12, z: 0.004206247}
+  m_Center: {x: 8.8444253e-16, y: -0.06, z: 0.0021031236}
 --- !u!1 &2015272379
 GameObject:
   m_ObjectHideFlags: 0
@@ -42150,7 +42372,7 @@ GameObject:
   - component: {fileID: 2067445467}
   - component: {fileID: 2067445466}
   - component: {fileID: 2067445468}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_doorTraining_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42352,7 +42574,7 @@ GameObject:
   - component: {fileID: 2082528917}
   - component: {fileID: 2082528919}
   - component: {fileID: 2082528920}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_gratingFloor_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42994,7 +43216,7 @@ GameObject:
   - component: {fileID: 2100313966}
   - component: {fileID: 2100313968}
   - component: {fileID: 2100313967}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_bannerTraining_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44275,7 +44497,10 @@ GameObject:
   - component: {fileID: 2142715016}
   - component: {fileID: 2142715018}
   - component: {fileID: 2142715017}
-  m_Layer: 0
+  - component: {fileID: 2142715021}
+  - component: {fileID: 2142715020}
+  - component: {fileID: 2142715019}
+  m_Layer: 7
   m_Name: SM_inclineTunnel_04 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44352,6 +44577,70 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142715015}
+  m_Mesh: {fileID: 3831657507553115053, guid: a273323cce42e25498e2b7163a0e5667, type: 3}
+--- !u!65 &2142715019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142715015}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0, y: 0.11999997, z: 0.082434244}
+  m_Center: {x: -0.015869133, y: -0.06, z: 0.041217122}
+--- !u!65 &2142715020
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142715015}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0, y: 0.11999997, z: 0.082434244}
+  m_Center: {x: 0.052535877, y: -0.06, z: 0.041217126}
+--- !u!64 &2142715021
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142715015}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 3831657507553115053, guid: a273323cce42e25498e2b7163a0e5667, type: 3}
 --- !u!1 &2145503892
 GameObject:
@@ -45259,3 +45548,4 @@ SceneRoots:
   - {fileID: 323001331}
   - {fileID: 804297864}
   - {fileID: 1471099909}
+  - {fileID: 229958538}
