@@ -7,14 +7,17 @@ public class EvilComputer : MonoBehaviour
     [Header("References")]
     [SerializeField] private Lever lever;
     [SerializeField] private Button3D button;
-    [SerializeField] private SpriteRenderer screenRenderer;
 
-    [Header("Screens")]
-    [SerializeField] private Sprite noSelected;
-    [SerializeField] private Sprite yesSelected;
-    [SerializeField] private Sprite pressAnywhereToStart;
-    [SerializeField] private Sprite loading;
-    [SerializeField] private Sprite complete;
+    [SerializeField] private GameObject screenObject;
+
+    private Renderer screenRenderer;
+
+    [Header("Materials")]
+    [SerializeField] private Material noSelected;
+    [SerializeField] private Material yesSelected;
+    [SerializeField] private Material pressAnywhereToStart;
+    [SerializeField] private Material loading;
+    [SerializeField] private Material complete;
 
     private enum ScreenState
     {
@@ -29,6 +32,23 @@ public class EvilComputer : MonoBehaviour
 
     private bool lastLeverState;
     private bool lastButtonState;
+
+    private void Awake()
+    {
+        if (screenObject != null)
+        {
+            screenRenderer = screenObject.GetComponent<Renderer>();
+
+            if (screenRenderer == null)
+            {
+                Debug.LogError("Screen object has no Renderer component!");
+            }
+        }
+        else
+        {
+            Debug.LogError("Screen object is not assigned!");
+        }
+    }
 
     private void Start()
     {
@@ -73,12 +93,13 @@ public class EvilComputer : MonoBehaviour
                     case ScreenState.YesSelected:
                         StartCoroutine(GoToLoadingSequence());
                         break;
+
                     case ScreenState.PressAnywhereToStart:
                         if (lever.IsActive)
                         {
                             SetScreen(ScreenState.NoSelected);
                         }
-                        else if (!lever.IsActive)
+                        else
                         {
                             SetScreen(ScreenState.YesSelected);
                         }
@@ -96,6 +117,7 @@ public class EvilComputer : MonoBehaviour
 
         SetScreen(ScreenState.Complete);
         yield return new WaitForSeconds(3f);
+
         SceneManager.LoadScene("EndScreen");
     }
 
@@ -103,26 +125,28 @@ public class EvilComputer : MonoBehaviour
     {
         currentState = state;
 
+        if (screenRenderer == null) return;
+
         switch (state)
         {
             case ScreenState.NoSelected:
-                screenRenderer.sprite = noSelected;
+                screenRenderer.material = noSelected;
                 break;
 
             case ScreenState.YesSelected:
-                screenRenderer.sprite = yesSelected;
+                screenRenderer.material = yesSelected;
                 break;
 
             case ScreenState.PressAnywhereToStart:
-                screenRenderer.sprite = pressAnywhereToStart;
+                screenRenderer.material = pressAnywhereToStart;
                 break;
 
             case ScreenState.Loading:
-                screenRenderer.sprite = loading;
+                screenRenderer.material = loading;
                 break;
 
             case ScreenState.Complete:
-                screenRenderer.sprite = complete;
+                screenRenderer.material = complete;
                 break;
         }
     }
