@@ -1,115 +1,196 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using FMODUnity;
 
 public class LoadNextPuzzle : MonoBehaviour
 {
     [Header("Scene Settings")]
-    public float delayBeforeLoad = 0.5f; // Optional small delay
-    public string nextSceneName;       // Leave empty to load next scene in build order
+    public float delayBeforeLoad = 0.5f;
+    public string nextSceneName;
+
+    [Header("FMOD Events")]
+    [SerializeField] public EventReference itemEnterSFX;
 
     private bool mechEntered = false;
     private bool mouseEntered = false;
-    private bool sceneLoading = false;
+    private bool cheeseEntered = false;
 
-    public GameObject textPrefab;
-    private GameObject spawnedText;
-     private Coroutine warningRoutine;
+    private bool sceneLoading = false;
+    private bool iconsLocked = false;
+
+    [SerializeField] private GameObject floatingCube;
+
+    private Transform camTransform;
+
+    [SerializeField] private GameObject mouseIcon;
+    [SerializeField] private GameObject mechIcon;
+    [SerializeField] private GameObject cheeseIcon;
+
+    [SerializeField] private float fadeDuration = 0.3f;
+
+    private Coroutine mouseFadeRoutine;
+    private Coroutine mechFadeRoutine;
+    private Coroutine cheeseFadeRoutine;
+
+    private bool requiresMouse;
+    private bool requiresMech;
+    private bool requiresCheese;
+
+    private bool allEnteredSFXPlayed = false;
+
+    private void Start()
+    {
+        camTransform = CameraManager.Instance.transform;
+
+        requiresMouse = mouseIcon != null;
+        requiresMech = mechIcon != null;
+        requiresCheese = cheeseIcon != null;
+    }
+
+    private void Update() => HandleBillboard();
+
+    private void HandleBillboard()
+    {
+        if (floatingCube == null || camTransform == null) return;
+
+        Vector3 direction = camTransform.position - floatingCube.transform.position;
+        direction.y = 0f;
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation =
+                Quaternion.LookRotation(-direction) * Quaternion.Euler(0f, 90f, 0f);
+            floatingCube.transform.rotation = targetRotation;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (PlayerMech.Instance != null &&
-            other.gameObject.transform.IsChildOf(PlayerMech.Instance.transform))
+        bool triggered = false;
+
+        // Mech
+        if (PlayerMech.Instance != null && other.transform.IsChildOf(PlayerMech.Instance.transform))
         {
-            mechEntered = true;
+            if (!mechEntered)
+            {
+                mechEntered = true;
+                FadeIcon(mechIcon, ref mechFadeRoutine, 0.06f);
+                triggered = true;
+            }
         }
 
-        if (PlayerMouse.Instance != null &&
-            other.gameObject.transform.IsChildOf(PlayerMouse.Instance.transform))
+        // Mouse
+        if (PlayerMouse.Instance != null && other.transform.IsChildOf(PlayerMouse.Instance.transform))
         {
-            mouseEntered = true;
+            if (!mouseEntered)
+            {
+                mouseEntered = true;
+                FadeIcon(mouseIcon, ref mouseFadeRoutine, 0.06f);
+                triggered = true;
+            }
         }
+
+        // Cheese
+        if (other.CompareTag("Cheese"))
+        {
+            if (!cheeseEntered)
+            {
+                cheeseEntered = true;
+                FadeIcon(cheeseIcon, ref cheeseFadeRoutine, 0.06f);
+                triggered = true;
+            }
+        }
+
+        if (triggered)
+            AudioManager.Instance.PlaySFX(itemEnterSFX, transform.position, 1f);
 
         HandleStateChange();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (PlayerMech.Instance != null &&
-            other.transform.IsChildOf(PlayerMech.Instance.transform))
+        // Mech
+        if (PlayerMech.Instance != null && other.transform.IsChildOf(PlayerMech.Instance.transform))
         {
             mechEntered = false;
+            FadeIcon(mechIcon, ref mechFadeRoutine, 1f);
         }
 
-        if (PlayerMouse.Instance != null &&
-            other.transform.IsChildOf(PlayerMouse.Instance.transform))
+        // Mouse
+        if (PlayerMouse.Instance != null && other.transform.IsChildOf(PlayerMouse.Instance.transform))
         {
             mouseEntered = false;
+            FadeIcon(mouseIcon, ref mouseFadeRoutine, 1f);
+        }
+
+        // Cheese
+        if (other.CompareTag("Cheese"))
+        {
+            cheeseEntered = false;
+            FadeIcon(cheeseIcon, ref cheeseFadeRoutine, 1f);
         }
 
         HandleStateChange();
     }
 
-    private void HandleStateChange()
+    private void FadeIcon(GameObject icon, ref Coroutine routine, float targetAlpha)
     {
-        if (mechEntered && mouseEntered && !sceneLoading)
+        if (iconsLocked || icon == null) return;
+
+        SpriteRenderer sr = icon.GetComponent<SpriteRenderer>();
+        if (sr == null) return;
+
+        if (routine != null)
+            StopCoroutine(routine);
+
+        routine = StartCoroutine(FadeSprite(sr, targetAlpha));
+    }
+
+    private IEnumerator FadeSprite(SpriteRenderer sr, float targetAlpha)
+    {
+        float startAlpha = sr.color.a;
+        float time = 0f;
+
+        while (time < fadeDuration)
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.loadNextPuzzleSFX, transform.position, 1f);
-            CancelWarning();
-            sceneLoading = true;
-            Invoke(nameof(LoadNextScene), delayBeforeLoad);
-            return;
+            time += Time.deltaTime;
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, Mathf.Lerp(startAlpha, targetAlpha, time / fadeDuration));
+            yield return null;
         }
 
-        if (mechEntered ^ mouseEntered)
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, targetAlpha);
+    }
+
+    private void HandleStateChange()
+    {
+        bool allMet =
+            (!requiresMech || mechEntered) &&
+            (!requiresMouse || mouseEntered) &&
+            (!requiresCheese || cheeseEntered);
+
+        if (allMet && !sceneLoading)
         {
-            if (warningRoutine == null)
-                warningRoutine = StartCoroutine(ShowWarningAfterDelay());
+            iconsLocked = true;
+
+            SetIconAlpha(mouseIcon, 0.06f);
+            SetIconAlpha(mechIcon, 0.06f);
+            SetIconAlpha(cheeseIcon, 0.06f);
+
+            if (!allEnteredSFXPlayed)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.loadNextPuzzleSFX, transform.position, 1f);
+                allEnteredSFXPlayed = true;
+            }
+
+            sceneLoading = true;
+            Invoke(nameof(LoadNextScene), delayBeforeLoad);
         }
         else
         {
-            // If none or both → cancel warning and hide text
-            CancelWarning();
+            allEnteredSFXPlayed = false;
         }
     }
-
-    private IEnumerator ShowWarningAfterDelay()
-    {
-
-        yield return new WaitForSeconds(3f);
-
-        if (mechEntered ^ mouseEntered)
-        {
-        if (spawnedText == null)
-            {
-                Canvas canvas = FindObjectOfType<Canvas>();
-                spawnedText = Instantiate(textPrefab, canvas.transform);
-                spawnedText.GetComponent<Text>().text =
-                    "Both Peanut and Dreadnought Killer must enter to progress.";
-                var follower = spawnedText.GetComponent<InteractableObjectText>();
-                follower.target = transform;
-            }
-        }
-
-        warningRoutine = null;
-    }
-
-    private void CancelWarning()
-    {
-        if (warningRoutine != null)
-        {
-            StopCoroutine(warningRoutine);
-            warningRoutine = null;
-        }
-
-        if (spawnedText != null)
-        {
-            Destroy(spawnedText);
-            spawnedText = null;
-        }
-    }
-
 
     private void LoadNextScene()
     {
@@ -117,5 +198,15 @@ public class LoadNextPuzzle : MonoBehaviour
             SceneManager.LoadScene(nextSceneName);
         else
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    private void SetIconAlpha(GameObject icon, float alpha)
+    {
+        if (icon == null) return;
+
+        var sr = icon.GetComponent<SpriteRenderer>();
+        if (sr == null) return;
+
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alpha);
     }
 }
