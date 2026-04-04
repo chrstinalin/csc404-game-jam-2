@@ -1212,15 +1212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
-  lockOnSFX:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  LockOnUI: {fileID: 0}
-  sceneVolume: {fileID: 0}
 --- !u!1 &116588534
 GameObject:
   m_ObjectHideFlags: 0
@@ -14920,6 +14911,7 @@ MonoBehaviour:
       Data4: -793793619
     Path: event:/SFX/Mech/Mech Lockon
   LockOnUI: {fileID: 1612538700}
+  lockonGreen: {r: 0.5166429, g: 0.8490566, b: 0.5166429, a: 0.4392157}
   sceneVolume: {fileID: 520292035}
 --- !u!4 &1319265406
 Transform:
