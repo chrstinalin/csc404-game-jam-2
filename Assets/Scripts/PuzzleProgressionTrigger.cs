@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using FMODUnity;
 
-public class LoadNextPuzzle : MonoBehaviour
+public class PuzzleProgressionTrigger : MonoBehaviour
 {
     [Header("Scene Settings")]
     public float delayBeforeLoad = 0.5f;
@@ -11,6 +11,9 @@ public class LoadNextPuzzle : MonoBehaviour
 
     [Header("FMOD Events")]
     [SerializeField] public EventReference itemEnterSFX;
+
+    [Header("Optional Triggerable")]
+    [SerializeField] public TriggerableAbstract triggerable;
 
     private bool mechEntered = false;
     private bool mouseEntered = false;
@@ -187,7 +190,15 @@ public class LoadNextPuzzle : MonoBehaviour
             }
 
             sceneLoading = true;
-            Invoke(nameof(LoadNextScene), delayBeforeLoad);
+
+            if (triggerable != null)
+            {
+                triggerable.TurnOn();
+            }
+            else
+            {
+                Invoke(nameof(LoadNextScene), delayBeforeLoad);
+            }
         }
         else
         {
