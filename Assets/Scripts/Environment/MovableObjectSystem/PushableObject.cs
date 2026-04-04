@@ -23,7 +23,7 @@ public class PushableObject : MonoBehaviour
     private float mechSideSign;
 
     private float hoverY;
-    private const float hoverHeight = 0.15f;
+    private const float hoverHeight = 0.2f;
 
     private void Awake()
     {
