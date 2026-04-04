@@ -2572,6 +2572,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
   FollowEntity: {fileID: 0}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
   mouseSensitivity: 0
   invertYAxis: 0
 --- !u!1 &824344606 stripped
@@ -2633,6 +2636,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &886121711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3465083568856850715, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
+  m_PrefabInstance: {fileID: 1032448867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &886121715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886121711}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 31.083336, y: 18.931307, z: 15.803684}
+  m_Center: {x: 0.0000014305115, y: -6.94304, z: 0.0000011920929}
 --- !u!1 &895708487
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,6 +3266,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4497125706316421218, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3465083568856850715, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2790772785722359974, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -2039452038250594763, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.26
@@ -3244,6 +3285,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
       propertyPath: m_Name
       value: SM_LEVEL3_shoppingStreet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116385409235096468, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2731983118216231726, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3366495761297869460, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3272,6 +3321,18 @@ PrefabInstance:
     - target: {fileID: 3366495761297869460, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.431
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617683846427572856, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194938498149827771, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229121660623776838, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -3317,6 +3378,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2731983118216231726, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 917154457}
+    - targetCorrespondingSourceObject: {fileID: -3465083568856850715, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 886121715}
     - targetCorrespondingSourceObject: {fileID: 7229121660623776838, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 824344610}

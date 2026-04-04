@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -6,95 +7,134 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 using UnityEngine.EventSystems;
 using FMODUnity;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    // Mouse Health UI
     [NonSerialized] private Health MouseHealth;
     [NonSerialized] private Image[] HealthPoints;
-
-    // Mech Health UI
     [NonSerialized] private Health MechHealth;
     [NonSerialized] private Image HealthFront;
     [NonSerialized] private Image HealthBack;
+
+    [SerializeField] private TextMeshProUGUI MechName;
+    [SerializeField] private TextMeshProUGUI MouseName;
+    private Color originalMechNameColor;
+    private Color originalMouseNameColor;
+
     [NonSerialized] private float lerpTimer;
     [NonSerialized] private float DAMAGE_LERP = 5f;
     [NonSerialized] private float CHIP_LERP = 50f;
-    
-    // Pause Menu
+
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject controlsPanel;
     [SerializeField] private Volume volume;
     private DepthOfField dof;
+
     public static bool GamePaused = false;
-    
-    // Pause Menu Navigation
+
     [SerializeField] private Selectable[] pauseSelectables;
     [SerializeField] private Selectable defaultPauseSelectable;
     [SerializeField] private Selectable[] controlsSelectables;
     [SerializeField] private Selectable defaultControlsSelectable;
-    
+
     private int currentSelection = 0;
     private float inputCooldown = 0f;
     private float cooldownTime = 0.2f;
     private GameObject lastSelected;
-    
-    // Audio
+
     [SerializeField] private EventReference SelectSFX;
     [SerializeField] private EventReference UpSFX;
     [SerializeField] private EventReference DownSFX;
     [SerializeField] private EventReference BackSFX;
 
-    // Control Scheme Manager
     private ControlSchemeManager controlSchemeManager;
-
     private GameObject mouseControlsUI;
     private GameObject mechControlsUI;
 
-    // Mouse/Mech Control Text References
     [Header("In-Game Control Text")]
     [SerializeField] private Text mouseControlsText;
     [SerializeField] private Text mechControlsText;
 
+    [Header("Lock-On Alternative Sprites")]
+    [SerializeField] private Sprite[] lockOnHealthPoints;
+    [SerializeField] private Sprite lockOnHealthFront;   
+    [SerializeField] private Sprite lockOnHealthBack; 
+
+    [Header("Lock-On Border Sprites")]
+    [SerializeField] private GameObject MechHealthBorderObj; 
+    [SerializeField] private GameObject MouseHealthBorderObj; 
+    [SerializeField] private Sprite lockOnMechBorder;
+    [SerializeField] private Sprite lockOnMouseBorder;
+
+    private Sprite[] originalHealthPoints;
+    private Sprite originalHealthFront;
+    private Sprite originalHealthBack;
+
+    private Sprite originalMechBorder;
+    private Sprite originalMouseBorder;
+    private Image mechBorderImage;
+    private Image mouseBorderImage;
+
     private void Start()
     {
-        Debug.Log("UIManager Start() called");
         InitializeHealthUI();
+
+        if (MechName != null) originalMechNameColor = MechName.color;
+        if (MouseName != null) originalMouseNameColor = MouseName.color;
+
         InitializePauseMenu();
         InitializeControlSchemeManager();
         UpdateInGameControlText();
     }
-    
+
     private void InitializeHealthUI()
     {
         GameObject HealthPointContainer = GameObject.FindGameObjectWithTag("MouseHealthPointContainer");
         GameObject _HealthFront = GameObject.FindGameObjectWithTag("MechHealthFront");
         GameObject _HealthBack = GameObject.FindGameObjectWithTag("MechHealthBack");
+
         mouseControlsUI = GameObject.FindGameObjectWithTag("MouseControls");
         mechControlsUI = GameObject.FindGameObjectWithTag("MechControls");
 
-        if(!HealthPointContainer || !_HealthFront || !_HealthBack)
+        if (!HealthPointContainer || !_HealthFront || !_HealthBack)
         {
             Debug.LogError("UI elements not found.");
             return;
         }
 
-        // MOUSE
         HealthPoints = HealthPointContainer.GetComponentsInChildren<Image>();
+
+        // Store original mouse health point sprites
+        originalHealthPoints = new Sprite[HealthPoints.Length];
+        for (int i = 0; i < HealthPoints.Length; i++)
+            originalHealthPoints[i] = HealthPoints[i].sprite;
+
+        HealthFront = _HealthFront.GetComponent<Image>();
+        HealthBack = _HealthBack.GetComponent<Image>();
+
+        // Store original mech health sprites
+        if (HealthFront != null) originalHealthFront = HealthFront.sprite;
+        if (HealthBack != null) originalHealthBack = HealthBack.sprite;
+
+        // Borders
+        if (MechHealthBorderObj != null)
+            mechBorderImage = MechHealthBorderObj.GetComponent<Image>();
+        if (mechBorderImage != null)
+            originalMechBorder = mechBorderImage.sprite;
+
+        if (MouseHealthBorderObj != null)
+            mouseBorderImage = MouseHealthBorderObj.GetComponent<Image>();
+        if (mouseBorderImage != null)
+            originalMouseBorder = mouseBorderImage.sprite;
 
         if (PlayerMouse.Instance != null)
         {
             MouseHealth = PlayerMouse.Instance.GetComponent<Health>();
             if (MouseHealth != null)
-            {
                 MouseHealth.onHealthChanged.AddListener(OnMouseHealthChanged);
-            }
         }
-
-        // MECH
-        HealthFront = _HealthFront.GetComponent<Image>();
-        HealthBack = _HealthBack.GetComponent<Image>();
 
         if (PlayerMech.Instance != null)
         {
@@ -109,24 +149,21 @@ public class UIManager : MonoBehaviour
 
     private void InitializePauseMenu()
     {
-        if (volume != null && volume.profile.TryGet(out dof)) dof.active = false;
-        
+        if (volume != null && volume.profile.TryGet(out dof))
+            dof.active = false;
+
         if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
         if (pausePanel != null) pausePanel.SetActive(true);
         if (controlsPanel != null) controlsPanel.SetActive(false);
-        
+
         GamePaused = false;
     }
 
     private void InitializeControlSchemeManager()
     {
-        // Find the ControlSchemeManager in the scene
         controlSchemeManager = FindObjectOfType<ControlSchemeManager>();
-        
         if (controlSchemeManager == null)
-        {
-            Debug.LogWarning("ControlSchemeManager not found in scene. Control bindings will not be updated.");
-        }
+            Debug.LogWarning("ControlSchemeManager not found in scene.");
     }
 
     private void UpdateInGameControlText()
@@ -135,19 +172,10 @@ public class UIManager : MonoBehaviour
 
         ControllerType currentController = controlSchemeManager.GetCurrentControllerType();
 
-        // Update Mouse control text
         if (mouseControlsText != null)
-        {
-            string mouseControls = BuildMouseControlsText(currentController);
-            mouseControlsText.text = mouseControls;
-        }
-
-        // Update Mech control text
+            mouseControlsText.text = BuildMouseControlsText(currentController);
         if (mechControlsText != null)
-        {
-            string mechControls = BuildMechControlsText(currentController);
-            mechControlsText.text = mechControls;
-        }
+            mechControlsText.text = BuildMechControlsText(currentController);
     }
 
     private string BuildMouseControlsText(ControllerType controller)
@@ -172,40 +200,82 @@ public class UIManager : MonoBehaviour
     private string GetButtonOnly(ActionType action, ControllerType controller)
     {
         string fullLabel = ControlSchemeManager.GetButtonLabel(action, controller);
-        // Extract just the button part before the colon
         int colonIndex = fullLabel.IndexOf(':');
-        if (colonIndex > 0)
-        {
-            return fullLabel.Substring(0, colonIndex).Trim();
-        }
+        if (colonIndex > 0) return fullLabel.Substring(0, colonIndex).Trim();
         return fullLabel;
     }
-    
+
     private void Update()
     {
         updateMechHealthUI();
         HandlePauseInput();
-        
+        UpdateControlVisibility();
+        HandleLockOnSprites();
+
         if (GamePaused)
-        {
             HandlePauseMenuNavigation();
+    }
+
+    private void UpdateControlVisibility()
+    {
+        if (LockOnManager.Instance != null && LockOnManager.Instance.IsLockedOn)
+        {
+            if (mouseControlsText != null) mouseControlsText.enabled = false;
+            if (mechControlsText != null) mechControlsText.enabled = false;
+            return;
         }
+
+        if (mouseControlsText != null && mouseControlsUI != null)
+            mouseControlsText.enabled = mouseControlsUI.activeSelf;
+        if (mechControlsText != null && mechControlsUI != null)
+            mechControlsText.enabled = mechControlsUI.activeSelf;
+    }
+
+    private void HandleLockOnSprites()
+    {
+        bool isLockedOn = LockOnManager.Instance != null && LockOnManager.Instance.IsLockedOn;
+
+        // Swap Mouse Health Points
+        if (HealthPoints != null && lockOnHealthPoints != null)
+        {
+            for (int i = 0; i < HealthPoints.Length; i++)
+            {
+                if (i < lockOnHealthPoints.Length)
+                    HealthPoints[i].sprite = isLockedOn ? lockOnHealthPoints[i] : originalHealthPoints[i];
+            }
+        }
+
+        // Swap Mech Health Front & Back
+        if (HealthFront != null)
+            HealthFront.sprite = isLockedOn && lockOnHealthFront != null ? lockOnHealthFront : originalHealthFront;
+        if (HealthBack != null)
+            HealthBack.sprite = isLockedOn && lockOnHealthBack != null ? lockOnHealthBack : originalHealthBack;
+
+        // Swap Border Images
+        if (mechBorderImage != null)
+            mechBorderImage.sprite = isLockedOn && lockOnMechBorder != null ? lockOnMechBorder : originalMechBorder;
+
+        if (mouseBorderImage != null)
+            mouseBorderImage.sprite = isLockedOn && lockOnMouseBorder != null ? lockOnMouseBorder : originalMouseBorder;
+
+        // Change character name text to white
+        if (MechName != null) MechName.color = isLockedOn ? Color.white : originalMechNameColor;
+        if (MouseName != null) MouseName.color = isLockedOn ? Color.white : originalMouseNameColor;
     }
 
     private void updateMechHealthUI()
     {
-        if(!HealthFront || !HealthBack || !MechHealth) return;
+        if (!HealthFront || !HealthBack || !MechHealth) return;
 
         float fillA = HealthFront.fillAmount;
         float fillB = HealthBack.fillAmount;
-        float hFraction = (float) MechHealth.GetCurrHealth() / MechHealth.GetMaxHealth();
+        float hFraction = (float)MechHealth.GetCurrHealth() / MechHealth.GetMaxHealth();
+
         if (fillB > hFraction)
         {
             HealthBack.color = Color.red;
             HealthFront.fillAmount = hFraction;
-
             lerpTimer += Time.deltaTime;
-
             HealthFront.fillAmount = Mathf.Lerp(fillA, hFraction, lerpTimer / DAMAGE_LERP);
             HealthBack.fillAmount = Mathf.Lerp(fillB, hFraction, lerpTimer / CHIP_LERP);
         }
@@ -214,7 +284,6 @@ public class UIManager : MonoBehaviour
             HealthBack.color = Color.green;
             HealthBack.fillAmount = hFraction;
             lerpTimer += Time.deltaTime;
-
             HealthFront.fillAmount = Mathf.Lerp(fillA, hFraction, lerpTimer / DAMAGE_LERP);
             HealthBack.fillAmount = Mathf.Lerp(fillB, hFraction, lerpTimer / CHIP_LERP);
         }
@@ -231,44 +300,30 @@ public class UIManager : MonoBehaviour
     public void OnMouseHealthChanged(int damage)
     {
         if (MouseHealth == null || HealthPoints == null) return;
-        
+
         for (int i = 0; i < MouseHealth.GetMaxHealth(); i++)
         {
             if (i < HealthPoints.Length)
-            {
                 HealthPoints[i].enabled = i <= MouseHealth.GetCurrHealth() - 1;
-            }
         }
     }
 
     public void SetActiveCharacterUI(bool isMouseActive)
     {
-        if (mouseControlsUI != null)
-            mouseControlsUI.SetActive(isMouseActive);
-
-        if (mechControlsUI != null)
-            mechControlsUI.SetActive(!isMouseActive);
-        
-        // Update control text when switching characters
+        if (mouseControlsUI != null) mouseControlsUI.SetActive(isMouseActive);
+        if (mechControlsUI != null) mechControlsUI.SetActive(!isMouseActive);
         UpdateInGameControlText();
     }
 
-    
     private void HandlePauseInput()
     {
         if (Input.GetButtonDown("Pause"))
         {
-            if (GamePaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            if (GamePaused) Resume();
+            else Pause();
         }
     }
-    
+
     private void HandlePauseMenuNavigation()
     {
         if (inputCooldown > 0)
@@ -279,33 +334,23 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetButtonDown("Cancel"))
         {
-            if (AudioManager.Instance != null)
-                AudioManager.Instance.PlaySFX(BackSFX);
-                
-            if (controlsPanel != null && controlsPanel.activeSelf)
-            {
-                CloseControls();
-            }
-            else
-            {
-                Resume();
-            }
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(BackSFX);
+
+            if (controlsPanel != null && controlsPanel.activeSelf) CloseControls();
+            else Resume();
+
             inputCooldown = cooldownTime;
             return;
         }
 
         float vertical = Input.GetAxisRaw("Vertical");
-
-        if (vertical < -0.5f)
-            NavigateDown();
-        else if (vertical > 0.5f)
-            NavigateUp();
+        if (vertical < -0.5f) NavigateDown();
+        else if (vertical > 0.5f) NavigateUp();
 
         if (Input.GetButtonDown("Submit"))
         {
-            if (AudioManager.Instance != null)
-                AudioManager.Instance.PlaySFX(SelectSFX);
-                
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(SelectSFX);
+
             if (EventSystem.current.currentSelectedGameObject != null)
             {
                 Button selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
@@ -317,36 +362,28 @@ public class UIManager : MonoBehaviour
     void NavigateDown()
     {
         Selectable[] currentSelectables = controlsPanel.activeSelf ? controlsSelectables : pauseSelectables;
-        
         if (currentSelectables.Length == 0) return;
 
         currentSelection++;
-        if (currentSelection >= currentSelectables.Length)
-            currentSelection = 0;
+        if (currentSelection >= currentSelectables.Length) currentSelection = 0;
 
         SelectItem(currentSelection, currentSelectables);
-        
-        if (AudioManager.Instance != null)
-            AudioManager.Instance.PlaySFX(DownSFX);
-            
+
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(DownSFX);
         inputCooldown = cooldownTime;
     }
 
     void NavigateUp()
     {
         Selectable[] currentSelectables = controlsPanel.activeSelf ? controlsSelectables : pauseSelectables;
-        
         if (currentSelectables.Length == 0) return;
 
         currentSelection--;
-        if (currentSelection < 0)
-            currentSelection = currentSelectables.Length - 1;
+        if (currentSelection < 0) currentSelection = currentSelectables.Length - 1;
 
         SelectItem(currentSelection, currentSelectables);
-        
-        if (AudioManager.Instance != null)
-            AudioManager.Instance.PlaySFX(UpSFX);
-            
+
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(UpSFX);
         inputCooldown = cooldownTime;
     }
 
@@ -357,47 +394,33 @@ public class UIManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(selectables[index].gameObject);
         lastSelected = selectables[index].gameObject;
     }
-    
+
     public void Resume()
     {
         MovementManager.Instance.unlockInput();
-        if (pauseMenuUI != null)
-            pauseMenuUI.SetActive(false);
-    
-        if (pausePanel != null)
-            pausePanel.SetActive(true);
-        if (controlsPanel != null)
-            controlsPanel.SetActive(false);
-        
-        if (dof != null)
-            dof.active = false;
-        
+        if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
+        if (pausePanel != null) pausePanel.SetActive(true);
+        if (controlsPanel != null) controlsPanel.SetActive(false);
+        if (dof != null) dof.active = false;
+
         Time.timeScale = 1f;
-    
-        if (BackgroundMusicManager.Instance != null)
-            BackgroundMusicManager.Instance.PauseMenu(false);
-        
+        if (BackgroundMusicManager.Instance != null) BackgroundMusicManager.Instance.PauseMenu(false);
+
         GamePaused = false;
     }
 
     void Pause()
-    {   
+    {
         MovementManager.Instance.lockInput();
+        if (dof != null) dof.active = true;
+        if (pauseMenuUI != null) pauseMenuUI.SetActive(true);
 
-        if (dof != null)
-            dof.active = true;
-        
-        if (pauseMenuUI != null)
-            pauseMenuUI.SetActive(true);
-        
         Time.timeScale = 0f;
-    
-        if (BackgroundMusicManager.Instance != null)
-            BackgroundMusicManager.Instance.PauseMenu(true);
-        
+        if (BackgroundMusicManager.Instance != null) BackgroundMusicManager.Instance.PauseMenu(true);
+
         GamePaused = true;
-    
         currentSelection = 0;
+
         if (defaultPauseSelectable != null)
         {
             if (EventSystem.current != null)
@@ -411,11 +434,8 @@ public class UIManager : MonoBehaviour
             SelectItem(0, pauseSelectables);
         }
 
-        // Update control bindings when opening pause menu
         if (controlSchemeManager != null)
-        {
             controlSchemeManager.ForceUpdate();
-        }
     }
 
     public void LoadMainMenu()
@@ -428,9 +448,9 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+#endif
     }
 
     public void Restart()
@@ -440,15 +460,12 @@ public class UIManager : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         FadeManager.Instance.FadeToScene(currentSceneName);
     }
-    
+
     public void OpenControls()
-    {   
-        if (pausePanel != null)
-            pausePanel.SetActive(false);
-            
-        if (controlsPanel != null)
-            controlsPanel.SetActive(true);
-        
+    {
+        if (pausePanel != null) pausePanel.SetActive(false);
+        if (controlsPanel != null) controlsPanel.SetActive(true);
+
         currentSelection = 0;
         if (defaultControlsSelectable != null)
         {
@@ -460,21 +477,15 @@ public class UIManager : MonoBehaviour
             SelectItem(0, controlsSelectables);
         }
 
-        // Update control bindings when opening controls
         if (controlSchemeManager != null)
-        {
             controlSchemeManager.ForceUpdate();
-        }
     }
 
     public void CloseControls()
-    {   
-        if (controlsPanel != null)
-            controlsPanel.SetActive(false);
-            
-        if (pausePanel != null)
-            pausePanel.SetActive(true);
-        
+    {
+        if (controlsPanel != null) controlsPanel.SetActive(false);
+        if (pausePanel != null) pausePanel.SetActive(true);
+
         currentSelection = 0;
         if (defaultPauseSelectable != null)
         {

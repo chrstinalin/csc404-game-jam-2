@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: -4111450826415597884}
   - component: {fileID: 6779104464654790413}
   - component: {fileID: 6798702267305348263}
+  - component: {fileID: 7249466254672296726}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -199,6 +200,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
   FollowEntity: {fileID: 0}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  mouseSensitivity: 0
+  invertYAxis: 0
 --- !u!114 &6798702267305348263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +221,21 @@ MonoBehaviour:
   showDistance: 4.5
   fadeDuration: 0.5
   minAlpha: 0.2
+--- !u!114 &7249466254672296726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495808509751479679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbddf38281abaa4ead608d9052bcd37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraManager
+  FollowEntity: {fileID: 0}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  mouseSensitivity: 0
+  invertYAxis: 1

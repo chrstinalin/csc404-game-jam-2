@@ -1,6 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8638306877658672538
+--- !u!114 &-9096540778850893568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Room
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Room
+  StudioPath: parameter:/Room
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 3704598415
+    data2: 3087281616
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-8323751453957955748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,77 +34,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/UI/UI Click
+  m_Name: event:/SFX/Interactables/Interactable Electricity
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/UI/UI Click
+  Path: event:/SFX/Interactables/Interactable Electricity
   Guid:
-    Data1: -1123964541
-    Data2: 1321783567
-    Data3: 2070343855
-    Data4: -735029297
+    Data1: -1308512458
+    Data2: 1304432033
+    Data3: 1808741021
+    Data4: 566753745
   Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 163
---- !u!114 &-8017571251711035753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/UI/UI Heal
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/UI/UI Heal
-  Guid:
-    Data1: -1170390920
-    Data2: 1083676918
-    Data3: -1250881347
-    Data4: 1139648801
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1718
---- !u!114 &-7390543830632348742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music+Amb/End Screen
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Music+Amb/End Screen
-  Guid:
-    Data1: -1379064804
-    Data2: 1144473754
-    Data3: -618444928
-    Data4: -1845282644
-  Banks: []
+  - {fileID: 4400385843174380740}
   IsStream: 1
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 62000
---- !u!114 &-7234810653680110723
+  Length: 61606
+--- !u!114 &-8185704032761878606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,118 +61,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mouse/Mouse Damaged
+  m_Name: event:/SFX/UI/UI Confirm
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mouse/Mouse Damaged
+  Path: event:/SFX/UI/UI Confirm
   Guid:
-    Data1: -1146205595
-    Data2: 1260209335
-    Data3: -764415832
-    Data4: 1633884787
+    Data1: 1838793717
+    Data2: 1313468560
+    Data3: 729372599
+    Data4: 1425188870
   Banks:
-  - {fileID: -149378394625700419}
+  - {fileID: 4400385843174380740}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 461
---- !u!114 &-6852753536338981397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/Audio/fmod_session/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638985649079310087
-  FileSizes:
-  - Name: Desktop
-    Value: 2358
-  Exists: 1
---- !u!114 &-6629663792959878094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/NPC/Enemy Guns
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/NPC/Enemy Guns
-  Guid:
-    Data1: -1545865985
-    Data2: 1199728975
-    Data3: -1696696914
-    Data4: -705010180
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 671
---- !u!114 &-5422265311289516636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/Audio/fmod_session/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638985649079264619
-  FileSizes:
-  - Name: Desktop
-    Value: 10875648
-  Exists: 1
---- !u!114 &-5205921397061354323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mech/Mech Gunshot
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mech/Mech Gunshot
-  Guid:
-    Data1: -1844422045
-    Data2: 1277924700
-    Data3: -818744668
-    Data4: -2067916505
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1280
---- !u!114 &-5059134343422494009
+  Length: 861
+--- !u!114 &-7616204278015754073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,40 +97,16 @@ MonoBehaviour:
     Data3: 515846272
     Data4: 576454266
   Banks:
-  - {fileID: -149378394625700419}
+  - {fileID: 4400385843174380740}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 3365423128128628066}
+  - {fileID: -4257291777341753429}
   MinDistance: 1
   MaxDistance: 20
   Length: 163764
---- !u!114 &-4948289950051832900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Ambience/Ambience Mix
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Ambience Mix
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 1566291375
-    data2: 2853246452
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-4307006422070969634
+--- !u!114 &-7229911489521125861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,23 +116,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Misc Servo
+  m_Name: event:/SFX/Interactables/Interactable Door
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Misc Servo
+  Path: event:/SFX/Interactables/Interactable Door
   Guid:
-    Data1: -1225579747
-    Data2: 1099297173
-    Data3: 1618997154
-    Data4: 1373891799
-  Banks: []
+    Data1: 1512094732
+    Data2: 1164754596
+    Data3: 768669114
+    Data4: -1928957330
+  Banks:
+  - {fileID: 4400385843174380740}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
-  Length: 861
---- !u!114 &-2738446286221131526
+  MaxDistance: 10000
+  Length: 1250
+--- !u!114 &-6751271214646905252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,407 +143,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mech/Mech Lockon
+  m_Name: event:/SFX/Mech/Switch Character Mech
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mech/Mech Lockon
+  Path: event:/SFX/Mech/Switch Character Mech
   Guid:
-    Data1: 1328528811
-    Data2: 1310755623
-    Data3: -1303860096
-    Data4: -793793619
+    Data1: -673717943
+    Data2: 1264463721
+    Data3: -1783764349
+    Data4: -1830176547
   Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 7842883354277316463}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 9718
---- !u!114 &-2479415260618302232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Misc Tech
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Misc Tech
-  Guid:
-    Data1: -775005267
-    Data2: 1088614951
-    Data3: 328072107
-    Data4: 208393304
-  Banks:
-  - {fileID: -149378394625700419}
+  - {fileID: 4400385843174380740}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 11901
---- !u!114 &-2413510498629342994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Interactables/Interactable Circuit Connect
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Interactables/Interactable Circuit Connect
-  Guid:
-    Data1: -459968790
-    Data2: 1156871833
-    Data3: -810882118
-    Data4: -1287986165
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 61606
---- !u!114 &-2202316167745448389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/NPC/Enemy Damaged
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/NPC/Enemy Damaged
-  Guid:
-    Data1: 1673939674
-    Data2: 1299373623
-    Data3: -1322100034
-    Data4: 351979414
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 273
---- !u!114 &-1371506603516021208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Interactables/Interactable Button
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Interactables/Interactable Button
-  Guid:
-    Data1: 770979095
-    Data2: 1192341375
-    Data3: -1502129997
-    Data4: 147275528
-  Banks: []
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 500
---- !u!114 &-1136785632328877464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mech/Mech Step Mechanics
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mech/Mech Step Mechanics
-  Guid:
-    Data1: 1793615276
-    Data2: 1167145410
-    Data3: -404968774
-    Data4: -831006037
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 416
---- !u!114 &-1015036573148738438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Interactables/Interactable Pickup
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Interactables/Interactable Pickup
-  Guid:
-    Data1: -644342347
-    Data2: 1216258313
-    Data3: -1742864194
-    Data4: -941388979
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 807
---- !u!114 &-180107652885745810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Overworld Music/Pause
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Pause
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2119711667
-    data2: 3741734357
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-149378394625700419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/Audio/fmod_session/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 639108184221844698
-  FileSizes:
-  - Name: Desktop
-    Value: 12095584
-  Exists: 1
---- !u!114 &-4942460373499303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mech/Mech Alert
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mech/Mech Alert
-  Guid:
-    Data1: -1425879830
-    Data2: 1149699235
-    Data3: 302727302
-    Data4: -1400444204
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 297
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
-  EditorBanks:
-  - {fileID: 1056454105052273138}
-  - {fileID: -149378394625700419}
-  EditorEvents:
-  - {fileID: 3293579277237248081}
-  - {fileID: 3541123302116013366}
-  - {fileID: -1371506603516021208}
-  - {fileID: -7390543830632348742}
-  - {fileID: -4307006422070969634}
-  - {fileID: 4247130986305666380}
-  - {fileID: 0}
-  - {fileID: 6788876318095800020}
-  - {fileID: 3523449874674843456}
-  - {fileID: 0}
-  - {fileID: -7234810653680110723}
-  - {fileID: 7879451422437656812}
-  - {fileID: 5220946520463406793}
-  - {fileID: 5210759931301360828}
-  - {fileID: 8634907354878567155}
-  - {fileID: -8017571251711035753}
-  - {fileID: -8638306877658672538}
-  - {fileID: 7837711435515293755}
-  - {fileID: 5087100860738375581}
-  - {fileID: -2738446286221131526}
-  - {fileID: -1136785632328877464}
-  - {fileID: -2479415260618302232}
-  - {fileID: -1015036573148738438}
-  - {fileID: 3271344909894303433}
-  - {fileID: 3960523568180919719}
-  - {fileID: 7878536676662121644}
-  - {fileID: -2202316167745448389}
-  - {fileID: -5059134343422494009}
-  - {fileID: 7500640619653525050}
-  - {fileID: -2413510498629342994}
-  - {fileID: -4942460373499303}
-  - {fileID: 4770958762705878601}
-  - {fileID: 3177350261185075440}
-  - {fileID: 7601338463190995858}
-  - {fileID: 0}
-  EditorParameters:
-  - {fileID: 4060782537936609410}
-  MasterBanks:
-  - {fileID: -149378394625700419}
-  StringsBanks:
-  - {fileID: 1056454105052273138}
-  cacheVersion: 131856
-  cacheTime: 639108184221864684
-  SerializableEventsDict:
-  - key: event:/Music+Amb/Overworld Music
-    index: 0
-  - key: event:/SFX/Interactables/Interactable Door
-    index: 1
-  - key: event:/SFX/Interactables/Interactable Button
-    index: 2
-  - key: event:/Music+Amb/End Screen
-    index: 3
-  - key: event:/SFX/Misc Servo
-    index: 4
-  - key: event:/SFX/Interactables/Interactable Electricity
-    index: 5
-  - key: event:/SFX/Mech/Switch Character Mech
-    index: 6
-  - key: event:/SFX/Mech/Mech Damaged
-    index: 7
-  - key: event:/Music+Amb/Ambience
-    index: 8
-  - key: event:/SFX/Mech/Mech Gunshot
-    index: 9
-  - key: event:/SFX/Mouse/Mouse Damaged
-    index: 10
-  - key: event:/SFX/Mouse/Mouse Jump
-    index: 11
-  - key: event:/SFX/Mouse/Mouse Footsteps
-    index: 12
-  - key: event:/SFX/Mech/Mech Lockon Target
-    index: 13
-  - key: event:/SFX/UI/UI Level Complete
-    index: 14
-  - key: event:/SFX/UI/UI Heal
-    index: 15
-  - key: event:/SFX/UI/UI Click
-    index: 16
-  - key: event:/SFX/UI/UI Back
-    index: 17
-  - key: event:/SFX/Interactables/Interactable Lever
-    index: 18
-  - key: event:/SFX/Mech/Mech Lockon
-    index: 19
-  - key: event:/SFX/Mech/Mech Step Mechanics
-    index: 20
-  - key: event:/SFX/Misc Tech
-    index: 21
-  - key: event:/SFX/Interactables/Interactable Pickup
-    index: 22
-  - key: event:/SFX/Mouse/Mouse Dash
-    index: 23
-  - key: event:/SFX/Mech/Mech Step Impact
-    index: 24
-  - key: event:/SFX/NPC/Enemy Destroyed
-    index: 25
-  - key: event:/SFX/NPC/Enemy Damaged
-    index: 26
-  - key: event:/Music+Amb/Main Menu
-    index: 27
-  - key: event:/SFX/Mouse/Switch Character Mouse
-    index: 28
-  - key: event:/SFX/Interactables/Interactable Circuit Connect
-    index: 29
-  - key: event:/SFX/Mech/Mech Alert
-    index: 30
-  - key: event:/SFX/UI/UI Confirm
-    index: 31
-  - key: event:/SFX/Interactables/Interactable Wall Break
-    index: 32
-  - key: event:/SFX/Interactables/Interactable Box Push
-    index: 33
-  - key: event:/SFX/NPC/Enemy Guns
-    index: 34
---- !u!114 &1056454105052273138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/Audio/fmod_session/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 639108184221864684
-  FileSizes:
-  - Name: Desktop
-    Value: 3566
-  Exists: 1
---- !u!114 &1913627019217533772
+  Length: 759
+--- !u!114 &-6539597983611575740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -715,7 +186,370 @@ MonoBehaviour:
   - In Combat
   - Out of Combat
   Exists: 1
---- !u!114 &2575730234208778746
+--- !u!114 &-6264411880256971084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Misc Tech
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Misc Tech
+  Guid:
+    Data1: -775005267
+    Data2: 1088614951
+    Data3: 328072107
+    Data4: 208393304
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 11901
+--- !u!114 &-5761789279059801222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/NPC/Enemy Destroyed
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/NPC/Enemy Destroyed
+  Guid:
+    Data1: 276096963
+    Data2: 1151850742
+    Data3: 668255626
+    Data4: 1395880248
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2088
+--- !u!114 &-5456783609779106614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/NPC/Enemy Damaged
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/NPC/Enemy Damaged
+  Guid:
+    Data1: 1673939674
+    Data2: 1299373623
+    Data3: -1322100034
+    Data4: 351979414
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 273
+--- !u!114 &-5368649876672474221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/Audio/fmod_session/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639109125798914870
+  FileSizes:
+  - Name: Desktop
+    Value: 3608
+  Exists: 1
+--- !u!114 &-5249010370251936303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/NPC/Enemy Movement
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/NPC/Enemy Movement
+  Guid:
+    Data1: -1933760985
+    Data2: 1186176660
+    Data3: -1535423575
+    Data4: 1380330053
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6500
+--- !u!114 &-4779056120154004902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mech/Mech Step Impact
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mech/Mech Step Impact
+  Guid:
+    Data1: 731051965
+    Data2: 1332204074
+    Data3: -1949680479
+    Data4: -261094795
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 210
+--- !u!114 &-4752924885270475710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Interactables/Interactable Wall Break
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Interactables/Interactable Wall Break
+  Guid:
+    Data1: 471113722
+    Data2: 1231778649
+    Data3: 412092322
+    Data4: -11584921
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1800
+--- !u!114 &-4257291777341753429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Main Menu/Pause
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Pause
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2119711667
+    data2: 3741734357
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-4003017772314091522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music+Amb/End Screen
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Music+Amb/End Screen
+  Guid:
+    Data1: -1379064804
+    Data2: 1144473754
+    Data3: -618444928
+    Data4: -1845282644
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 64941
+--- !u!114 &-3936718662831720642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mouse/Mouse Footsteps
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mouse/Mouse Footsteps
+  Guid:
+    Data1: -143105424
+    Data2: 1080047987
+    Data3: 30838698
+    Data4: -151266035
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 8796361086911210052}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 52
+--- !u!114 &-3851708491274123531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Mouse Dash/Room
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Room
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 3704598415
+    data2: 3087281616
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-3647429952345159147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mech/Mech Damaged
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mech/Mech Damaged
+  Guid:
+    Data1: -559655347
+    Data2: 1076833346
+    Data3: 771181704
+    Data4: 966984624
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 2000
+  Length: 289
+--- !u!114 &-3283188155921002363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mech/Mech Lockon Target
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mech/Mech Lockon Target
+  Guid:
+    Data1: -212300682
+    Data2: 1119441627
+    Data3: 282270611
+    Data4: -29736764
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 296
+--- !u!114 &-3220364188978581582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Mech Lockon/Activated
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Activated
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 31788969
+    data2: 3400964550
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-2245020347391099909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -741,7 +575,7 @@ MonoBehaviour:
   - LO Off
   - LO On
   Exists: 1
---- !u!114 &3177350261185075440
+--- !u!114 &-1998263653021342654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -751,82 +585,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Interactables/Interactable Wall Break
+  m_Name: event:/SFX/UI/UI Open Door Indicator
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Interactables/Interactable Wall Break
+  Path: event:/SFX/UI/UI Open Door Indicator
   Guid:
-    Data1: 471113722
-    Data2: 1231778649
-    Data3: 412092322
-    Data4: -11584921
+    Data1: 1667124243
+    Data2: 1303119406
+    Data3: -1339962994
+    Data4: 61687951
   Banks:
-  - {fileID: -149378394625700419}
+  - {fileID: 4400385843174380740}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1800
---- !u!114 &3271344909894303433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mouse/Mouse Dash
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mouse/Mouse Dash
-  Guid:
-    Data1: 840453821
-    Data2: 1213014235
-    Data3: -243850850
-    Data4: 1079816100
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: 7454133849195549040}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 242
---- !u!114 &3293579277237248081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music+Amb/Overworld Music
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Music+Amb/Overworld Music
-  Guid:
-    Data1: 18386182
-    Data2: 1211815407
-    Data3: -1838687344
-    Data4: -854034200
-  Banks: []
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 2575730234208778746}
-  - {fileID: 6380399232777245815}
-  - {fileID: 1913627019217533772}
-  - {fileID: -180107652885745810}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 101818
---- !u!114 &3365423128128628066
+  Length: 955
+--- !u!114 &-1266994293298117476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -836,21 +612,522 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Main Menu/Pause
+  m_Name: parameter:/Ambience/Ambience Mix
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Pause
+  Name: Ambience Mix
   StudioPath: 
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 2119711667
-    data2: 3741734357
-  Type: 1
+    data1: 1566291375
+    data2: 2853246452
+  Type: 0
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &3523449874674843456
+--- !u!114 &-1196443246113484299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mouse/Switch Character Mouse
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mouse/Switch Character Mouse
+  Guid:
+    Data1: 205456105
+    Data2: 1154799374
+    Data3: 1029835400
+    Data4: -2031643270
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 759
+--- !u!114 &-747533685230769975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mech/Mech Gunshot
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mech/Mech Gunshot
+  Guid:
+    Data1: -1844422045
+    Data2: 1277924700
+    Data3: -818744668
+    Data4: -2067916505
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1045
+--- !u!114 &-631322000239464487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Interactables/Platform movement
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Interactables/Platform movement
+  Guid:
+    Data1: -5076701
+    Data2: 1085705741
+    Data3: 1415419559
+    Data4: 577546215
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3428
+--- !u!114 &-197724644159435367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mouse/Mouse Damaged
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mouse/Mouse Damaged
+  Guid:
+    Data1: -1146205595
+    Data2: 1260209335
+    Data3: -764415832
+    Data4: 1633884787
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 750
+  Length: 461
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
+  EditorBanks:
+  - {fileID: -5368649876672474221}
+  - {fileID: 4400385843174380740}
+  EditorEvents:
+  - {fileID: 3410084660210637716}
+  - {fileID: -7229911489521125861}
+  - {fileID: -1998263653021342654}
+  - {fileID: 47531687244968949}
+  - {fileID: -4003017772314091522}
+  - {fileID: 3471883749356125982}
+  - {fileID: -631322000239464487}
+  - {fileID: -5249010370251936303}
+  - {fileID: -8323751453957955748}
+  - {fileID: 2844554748102153571}
+  - {fileID: -6751271214646905252}
+  - {fileID: -3647429952345159147}
+  - {fileID: 3255910183346665763}
+  - {fileID: -747533685230769975}
+  - {fileID: -197724644159435367}
+  - {fileID: 6477519309769955886}
+  - {fileID: -3936718662831720642}
+  - {fileID: -3283188155921002363}
+  - {fileID: 7986950758497080251}
+  - {fileID: 2588053819141338011}
+  - {fileID: 3945492594118924593}
+  - {fileID: 853949925762203054}
+  - {fileID: 5987989341546386384}
+  - {fileID: 2733684127746458951}
+  - {fileID: 1301232043395376304}
+  - {fileID: -6264411880256971084}
+  - {fileID: 5140045835693344603}
+  - {fileID: 4489839488199275556}
+  - {fileID: 4159227075441783193}
+  - {fileID: -4779056120154004902}
+  - {fileID: -5761789279059801222}
+  - {fileID: -5456783609779106614}
+  - {fileID: -7616204278015754073}
+  - {fileID: -1196443246113484299}
+  - {fileID: 927469677931579143}
+  - {fileID: 4095502833751375298}
+  - {fileID: -8185704032761878606}
+  - {fileID: -4752924885270475710}
+  - {fileID: 322714343255316834}
+  - {fileID: 5742227320882673830}
+  - {fileID: 1870126935464617103}
+  EditorParameters:
+  - {fileID: -9096540778850893568}
+  MasterBanks:
+  - {fileID: 4400385843174380740}
+  StringsBanks:
+  - {fileID: -5368649876672474221}
+  cacheVersion: 131856
+  cacheTime: 639109125798914870
+  SerializableEventsDict:
+  - key: event:/Music+Amb/Overworld Music
+    index: 0
+  - key: event:/SFX/Interactables/Interactable Door
+    index: 1
+  - key: event:/SFX/UI/UI Open Door Indicator
+    index: 2
+  - key: event:/SFX/Interactables/Interactable Button
+    index: 3
+  - key: event:/Music+Amb/End Screen
+    index: 4
+  - key: event:/SFX/Misc Servo
+    index: 5
+  - key: event:/SFX/Interactables/Platform movement
+    index: 6
+  - key: event:/SFX/NPC/Enemy Movement
+    index: 7
+  - key: event:/SFX/Interactables/Interactable Electricity
+    index: 8
+  - key: event:/Music+Amb/Commercial Music
+    index: 9
+  - key: event:/SFX/Mech/Switch Character Mech
+    index: 10
+  - key: event:/SFX/Mech/Mech Damaged
+    index: 11
+  - key: event:/Music+Amb/Ambience
+    index: 12
+  - key: event:/SFX/Mech/Mech Gunshot
+    index: 13
+  - key: event:/SFX/Mouse/Mouse Damaged
+    index: 14
+  - key: event:/SFX/Mouse/Mouse Jump
+    index: 15
+  - key: event:/SFX/Mouse/Mouse Footsteps
+    index: 16
+  - key: event:/SFX/Mech/Mech Lockon Target
+    index: 17
+  - key: event:/SFX/UI/UI Level Complete
+    index: 18
+  - key: event:/SFX/UI/UI Heal
+    index: 19
+  - key: event:/SFX/UI/UI Click
+    index: 20
+  - key: event:/SFX/UI/UI Back
+    index: 21
+  - key: event:/SFX/Interactables/Interactable Lever
+    index: 22
+  - key: event:/SFX/Mech/Mech Lockon
+    index: 23
+  - key: event:/SFX/Mech/Mech Step Mechanics
+    index: 24
+  - key: event:/SFX/Misc Tech
+    index: 25
+  - key: event:/SFX/NPC/Enemy Movement Hover
+    index: 26
+  - key: event:/SFX/Interactables/Interactable Pickup
+    index: 27
+  - key: event:/SFX/Mouse/Mouse Dash
+    index: 28
+  - key: event:/SFX/Mech/Mech Step Impact
+    index: 29
+  - key: event:/SFX/NPC/Enemy Destroyed
+    index: 30
+  - key: event:/SFX/NPC/Enemy Damaged
+    index: 31
+  - key: event:/Music+Amb/Main Menu
+    index: 32
+  - key: event:/SFX/Mouse/Switch Character Mouse
+    index: 33
+  - key: event:/SFX/Interactables/Interactable Circuit Connect
+    index: 34
+  - key: event:/SFX/Mech/Mech Alert
+    index: 35
+  - key: event:/SFX/UI/UI Confirm
+    index: 36
+  - key: event:/SFX/Interactables/Interactable Wall Break
+    index: 37
+  - key: event:/SFX/Interactables/Interactable Box Push
+    index: 38
+  - key: event:/SFX/NPC/Enemy Guns
+    index: 39
+  - key: event:/SFX/UI/UI Open Door
+    index: 40
+--- !u!114 &47531687244968949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Interactables/Interactable Button
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Interactables/Interactable Button
+  Guid:
+    Data1: 770979095
+    Data2: 1192341375
+    Data3: -1502129997
+    Data4: 147275528
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &322714343255316834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Interactables/Interactable Box Push
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Interactables/Interactable Box Push
+  Guid:
+    Data1: 1820421883
+    Data2: 1204829179
+    Data3: 1369536436
+    Data4: -1718188560
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 570
+--- !u!114 &853949925762203054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/UI Back
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/UI/UI Back
+  Guid:
+    Data1: -644168309
+    Data2: 1113296590
+    Data3: 617690811
+    Data4: -1006723718
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 861
+--- !u!114 &927469677931579143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Interactables/Interactable Circuit Connect
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Interactables/Interactable Circuit Connect
+  Guid:
+    Data1: -459968790
+    Data2: 1156871833
+    Data3: -810882118
+    Data4: -1287986165
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 61606
+--- !u!114 &1301232043395376304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mech/Mech Step Mechanics
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mech/Mech Step Mechanics
+  Guid:
+    Data1: 1793615276
+    Data2: 1167145410
+    Data3: -404968774
+    Data4: -831006037
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 235
+--- !u!114 &1870126935464617103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/UI Open Door
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/UI/UI Open Door
+  Guid:
+    Data1: 891583543
+    Data2: 1177798171
+    Data3: -1680234610
+    Data4: -1791837609
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &2588053819141338011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/UI Heal
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/UI/UI Heal
+  Guid:
+    Data1: -1170390920
+    Data2: 1083676918
+    Data3: -1250881347
+    Data4: 1139648801
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1718
+--- !u!114 &2733684127746458951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mech/Mech Lockon
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mech/Mech Lockon
+  Guid:
+    Data1: 1328528811
+    Data2: 1310755623
+    Data3: -1303860096
+    Data4: -793793619
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -3220364188978581582}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9718
+--- !u!114 &2844554748102153571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music+Amb/Commercial Music
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Music+Amb/Commercial Music
+  Guid:
+    Data1: -1373620679
+    Data2: 1089061546
+    Data3: -1353966197
+    Data4: 15720249
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 3540996964181324442}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 148363
+--- !u!114 &3255910183346665763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -869,228 +1146,16 @@ MonoBehaviour:
     Data3: 630931374
     Data4: -406021210
   Banks:
-  - {fileID: -149378394625700419}
+  - {fileID: 4400385843174380740}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -4948289950051832900}
+  - {fileID: -1266994293298117476}
   MinDistance: 1
   MaxDistance: 20
   Length: 83464
---- !u!114 &3541123302116013366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Interactables/Interactable Door
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Interactables/Interactable Door
-  Guid:
-    Data1: 1512094732
-    Data2: 1164754596
-    Data3: 768669114
-    Data4: -1928957330
-  Banks: []
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1250
---- !u!114 &3960523568180919719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mech/Mech Step Impact
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mech/Mech Step Impact
-  Guid:
-    Data1: 731051965
-    Data2: 1332204074
-    Data3: -1949680479
-    Data4: -261094795
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 857
---- !u!114 &4060782537936609410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Room
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Room
-  StudioPath: parameter:/Room
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 3704598415
-    data2: 3087281616
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 0
---- !u!114 &4247130986305666380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Interactables/Interactable Electricity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Interactables/Interactable Electricity
-  Guid:
-    Data1: -1308512458
-    Data2: 1304432033
-    Data3: 1808741021
-    Data4: 566753745
-  Banks: []
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 61606
---- !u!114 &4770958762705878601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/UI/UI Confirm
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/UI/UI Confirm
-  Guid:
-    Data1: 1838793717
-    Data2: 1313468560
-    Data3: 729372599
-    Data4: 1425188870
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 861
---- !u!114 &5087100860738375581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Interactables/Interactable Lever
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Interactables/Interactable Lever
-  Guid:
-    Data1: -295159921
-    Data2: 1171571194
-    Data3: 104034449
-    Data4: 72491768
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 750
---- !u!114 &5210759931301360828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mech/Mech Lockon Target
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mech/Mech Lockon Target
-  Guid:
-    Data1: -212300682
-    Data2: 1119441627
-    Data3: 282270611
-    Data4: -29736764
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 296
---- !u!114 &5220946520463406793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mouse/Mouse Footsteps
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mouse/Mouse Footsteps
-  Guid:
-    Data1: -143105424
-    Data2: 1080047987
-    Data3: 30838698
-    Data4: -151266035
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: 9036144263087778352}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 52
---- !u!114 &6380399232777245815
+--- !u!114 &3278538773980699477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1114,7 +1179,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &6788876318095800020
+--- !u!114 &3410084660210637716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1124,24 +1189,55 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mech/Mech Damaged
+  m_Name: event:/Music+Amb/Overworld Music
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mech/Mech Damaged
+  Path: event:/Music+Amb/Overworld Music
   Guid:
-    Data1: -559655347
-    Data2: 1076833346
-    Data3: 771181704
-    Data4: 966984624
+    Data1: 18386182
+    Data2: 1211815407
+    Data3: -1838687344
+    Data4: -854034200
   Banks:
-  - {fileID: -149378394625700419}
+  - {fileID: 4400385843174380740}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -2245020347391099909}
+  - {fileID: 3278538773980699477}
+  - {fileID: -6539597983611575740}
+  - {fileID: 6245583025557411965}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 167272
+--- !u!114 &3471883749356125982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Misc Servo
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Misc Servo
+  Guid:
+    Data1: -1225579747
+    Data2: 1099297173
+    Data3: 1618997154
+    Data4: 1373891799
+  Banks:
+  - {fileID: 4400385843174380740}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 289
---- !u!114 &7454133849195549040
+  Length: 472
+--- !u!114 &3540996964181324442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1151,126 +1247,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Mouse Dash/Room
+  m_Name: parameter:/Commercial Music/Commercial filter blend
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Room
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 3704598415
-    data2: 3087281616
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &7500640619653525050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Mouse/Switch Character Mouse
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Mouse/Switch Character Mouse
-  Guid:
-    Data1: 205456105
-    Data2: 1154799374
-    Data3: 1029835400
-    Data4: -2031643270
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 759
---- !u!114 &7601338463190995858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Interactables/Interactable Box Push
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Interactables/Interactable Box Push
-  Guid:
-    Data1: 1820421883
-    Data2: 1204829179
-    Data3: 1369536436
-    Data4: -1718188560
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 570
---- !u!114 &7837711435515293755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/UI/UI Back
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/UI/UI Back
-  Guid:
-    Data1: -644168309
-    Data2: 1113296590
-    Data3: 617690811
-    Data4: -1006723718
-  Banks:
-  - {fileID: -149378394625700419}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 861
---- !u!114 &7842883354277316463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Mech Lockon/Activated
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Activated
+  Name: Commercial filter blend
   StudioPath: 
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 31788969
-    data2: 3400964550
-  Type: 1
+    data1: 2578567747
+    data2: 611054850
+  Type: 0
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &7878536676662121644
+--- !u!114 &3945492594118924593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1280,24 +1271,231 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/NPC/Enemy Destroyed
+  m_Name: event:/SFX/UI/UI Click
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/NPC/Enemy Destroyed
+  Path: event:/SFX/UI/UI Click
   Guid:
-    Data1: 276096963
-    Data2: 1151850742
-    Data3: 668255626
-    Data4: 1395880248
+    Data1: -1123964541
+    Data2: 1321783567
+    Data3: 2070343855
+    Data4: -735029297
   Banks:
-  - {fileID: -149378394625700419}
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 163
+--- !u!114 &4095502833751375298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mech/Mech Alert
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mech/Mech Alert
+  Guid:
+    Data1: -1425879830
+    Data2: 1149699235
+    Data3: 302727302
+    Data4: -1400444204
+  Banks:
+  - {fileID: 4400385843174380740}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2088
---- !u!114 &7879451422437656812
+  Length: 297
+--- !u!114 &4159227075441783193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Mouse/Mouse Dash
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Mouse/Mouse Dash
+  Guid:
+    Data1: 840453821
+    Data2: 1213014235
+    Data3: -243850850
+    Data4: 1079816100
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -3851708491274123531}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 242
+--- !u!114 &4400385843174380740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/Audio/fmod_session/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639109125798889786
+  FileSizes:
+  - Name: Desktop
+    Value: 25559712
+  Exists: 1
+--- !u!114 &4489839488199275556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Interactables/Interactable Pickup
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Interactables/Interactable Pickup
+  Guid:
+    Data1: -644342347
+    Data2: 1216258313
+    Data3: -1742864194
+    Data4: -941388979
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 807
+--- !u!114 &5140045835693344603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/NPC/Enemy Movement Hover
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/NPC/Enemy Movement Hover
+  Guid:
+    Data1: 620523949
+    Data2: 1179025982
+    Data3: -1693626742
+    Data4: 1674606239
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5892
+--- !u!114 &5742227320882673830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/NPC/Enemy Guns
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/NPC/Enemy Guns
+  Guid:
+    Data1: -1545865985
+    Data2: 1199728975
+    Data3: -1696696914
+    Data4: -705010180
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 671
+--- !u!114 &5987989341546386384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Interactables/Interactable Lever
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Interactables/Interactable Lever
+  Guid:
+    Data1: -295159921
+    Data2: 1171571194
+    Data3: 104034449
+    Data4: 72491768
+  Banks:
+  - {fileID: 4400385843174380740}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 750
+--- !u!114 &6245583025557411965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Overworld Music/Pause
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Pause
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2119711667
+    data2: 3741734357
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &6477519309769955886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1316,7 +1514,7 @@ MonoBehaviour:
     Data3: 1962152856
     Data4: 859596802
   Banks:
-  - {fileID: -149378394625700419}
+  - {fileID: 4400385843174380740}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1324,7 +1522,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 395
---- !u!114 &8634907354878567155
+--- !u!114 &7986950758497080251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1343,7 +1541,7 @@ MonoBehaviour:
     Data3: 110388100
     Data4: 1281465619
   Banks:
-  - {fileID: -149378394625700419}
+  - {fileID: 4400385843174380740}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1351,7 +1549,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2500
---- !u!114 &9036144263087778352
+--- !u!114 &8796361086911210052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
