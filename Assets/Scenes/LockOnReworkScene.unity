@@ -1212,6 +1212,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
+  lockOnSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  LockOnUI: {fileID: 0}
+  lockonGreen:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  sceneVolume: {fileID: 0}
+  actionText: {fileID: 0}
 --- !u!1 &116588534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2680,6 +2695,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1689062698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &299333380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5808884661920566201, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
+  m_PrefabInstance: {fileID: 763356706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &301370132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,11 +2795,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301370132}
   m_Mesh: {fileID: 4751197176063680591, guid: 7005d28223e409d48918b178cb78d715, type: 3}
---- !u!1 &320294952 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4984787335135171244, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-  m_PrefabInstance: {fileID: 763356706}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &331643357
 GameObject:
   m_ObjectHideFlags: 0
@@ -5088,11 +5109,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1319265406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &523135398 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3822916349248001579, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-  m_PrefabInstance: {fileID: 763356706}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &556920713
 GameObject:
   m_ObjectHideFlags: 0
@@ -5896,11 +5912,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623641895}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &631583506 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4070206558894372095, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-  m_PrefabInstance: {fileID: 763356706}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &636485177
 GameObject:
   m_ObjectHideFlags: 0
@@ -8361,154 +8372,6 @@ PrefabInstance:
     - target: {fileID: 522672280641090492, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4234127829259131406, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 4234127829259131406, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4234127829259131406, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.89411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 4234127829259131406, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4282993118
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292085833925372654, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292085833925372654, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292085833925372654, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.89411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292085833925372654, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278190335
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768673761286830119, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ee15ad11527254553aa5a31aa936a6ed, type: 3}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: MechName
-      value: 
-      objectReference: {fileID: 1515264479}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: MouseName
-      value: 
-      objectReference: {fileID: 1679862517}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: lockOnHealthBack
-      value: 
-      objectReference: {fileID: 21300000, guid: bae4901a4af8ca843a58818825334425, type: 3}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: lockOnMechBorder
-      value: 
-      objectReference: {fileID: 21300000, guid: 4016380e28dd5524697dc18abe968720, type: 3}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: lockOnHealthFront
-      value: 
-      objectReference: {fileID: 21300000, guid: bae4901a4af8ca843a58818825334425, type: 3}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: lockOnMouseBorder
-      value: 
-      objectReference: {fileID: 21300000, guid: c1843ed5769a24d4dac4b1c3c831b626, type: 3}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: MechHealthBorderObj
-      value: 
-      objectReference: {fileID: 1396256964}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: lockOnWhiteMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 7dc5b09833fac8c49a3edf7f69541e06, type: 2}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: MouseHealthBorderObj
-      value: 
-      objectReference: {fileID: 320294952}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: lockOnMechHealthSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: bae4901a4af8ca843a58818825334425, type: 3}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: normalMechHealthSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 8c7eb89ea0bc7471fb66c32a13077aff, type: 3}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: lockOnMouseHealthSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c1843ed5769a24d4dac4b1c3c831b626, type: 3}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: normalMouseHealthSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0f4af7330ad54405e8c43ebb3b8e7127, type: 3}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: lockOnUIObjects.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: lockOnHealthPoints.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: 'lockOnUIObjects.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1250822143}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: 'lockOnUIObjects.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1672584625}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: 'lockOnUIObjects.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1253298249}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: 'lockOnUIObjects.Array.data[3]'
-      value: 
-      objectReference: {fileID: 320294952}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: 'lockOnUIObjects.Array.data[4]'
-      value: 
-      objectReference: {fileID: 523135398}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: 'lockOnUIObjects.Array.data[5]'
-      value: 
-      objectReference: {fileID: 631583506}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: 'lockOnUIObjects.Array.data[6]'
-      value: 
-      objectReference: {fileID: 631583506}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: 'lockOnHealthPoints.Array.data[0]'
-      value: 
-      objectReference: {fileID: 21300000, guid: b5868e3bcd2c9934e9028a44a9a14ae2, type: 3}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: 'lockOnHealthPoints.Array.data[1]'
-      value: 
-      objectReference: {fileID: 21300000, guid: b5868e3bcd2c9934e9028a44a9a14ae2, type: 3}
-    - target: {fileID: 6149410579693117167, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: 'lockOnHealthPoints.Array.data[2]'
-      value: 
-      objectReference: {fileID: 21300000, guid: b5868e3bcd2c9934e9028a44a9a14ae2, type: 3}
-    - target: {fileID: 7577511688284005192, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_Maskable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7577511688284005192, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 2100000, guid: 7dc5b09833fac8c49a3edf7f69541e06, type: 2}
-    - target: {fileID: 7577511688284005192, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648404271103663966, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
       propertyPath: m_Name
@@ -13486,11 +13349,6 @@ Transform:
   - {fileID: 464810818}
   m_Father: {fileID: 1918317663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1250822143 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 359313407300852190, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-  m_PrefabInstance: {fileID: 763356706}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1252521048
 GameObject:
   m_ObjectHideFlags: 0
@@ -13580,11 +13438,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252521048}
   m_Mesh: {fileID: -1423042338586783457, guid: 7005d28223e409d48918b178cb78d715, type: 3}
---- !u!1 &1253298249 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7768176888672935233, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-  m_PrefabInstance: {fileID: 763356706}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1254192302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14913,6 +14766,7 @@ MonoBehaviour:
   LockOnUI: {fileID: 1612538700}
   lockonGreen: {r: 0.5166429, g: 0.8490566, b: 0.5166429, a: 0.4392157}
   sceneVolume: {fileID: 520292035}
+  actionText: {fileID: 299333380}
 --- !u!4 &1319265406
 Transform:
   m_ObjectHideFlags: 0
@@ -15973,11 +15827,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392168422}
   m_Mesh: {fileID: -3685378782473004860, guid: 7005d28223e409d48918b178cb78d715, type: 3}
---- !u!1 &1396256964 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8083243847681524939, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-  m_PrefabInstance: {fileID: 763356706}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1396941217
 GameObject:
   m_ObjectHideFlags: 0
@@ -17669,17 +17518,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 701084012}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1515264479 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4292085833925372654, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-  m_PrefabInstance: {fileID: 763356706}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1520810895
 GameObject:
   m_ObjectHideFlags: 0
@@ -19198,11 +19036,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668119060}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1672584625 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 555546270929477314, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-  m_PrefabInstance: {fileID: 763356706}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1674669032
 GameObject:
   m_ObjectHideFlags: 0
@@ -19292,17 +19125,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 57448636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1679862517 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4234127829259131406, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
-  m_PrefabInstance: {fileID: 763356706}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1680389842 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8420237786630986810, guid: 9f8967ae9434a1b4f9e05f78809c6eff, type: 3}

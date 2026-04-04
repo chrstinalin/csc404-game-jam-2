@@ -6,6 +6,7 @@ using FMOD.Studio;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using System.Collections;
+using TMPro;
 
 public class LockOnManager : MonoBehaviour
 {
@@ -46,6 +47,9 @@ public class LockOnManager : MonoBehaviour
     private float defaultVignetteIntensity;
 
     private Coroutine fadeCoroutine;
+
+    [Header("Target Action Text")]
+    [SerializeField] private TextMeshProUGUI actionText;
 
     private void Awake()
     {
@@ -91,6 +95,7 @@ public class LockOnManager : MonoBehaviour
         if (MovementManager.Instance.isLockedMovement)
         {
             isLockedOn = false;
+            UpdateActionText();
             return;
         }
         else
@@ -122,6 +127,22 @@ public class LockOnManager : MonoBehaviour
 
         if (Input.GetAxis("LockOn") == 0)
             lockOnReset = true;
+
+        UpdateActionText();
+    }
+
+    private void UpdateActionText()
+    {
+        if (actionText == null) return;
+
+        if (!isLockedOn || CurrentTarget.Type != LockOnObject.LockOnType.Enemy)
+        {
+            actionText.gameObject.SetActive(false);
+            return;
+        }
+
+        actionText.gameObject.SetActive(true);
+        actionText.text = IsCurrentTargetInRange() ? "PRESS LT / RT TO SHOOT" : "<OUT OF RANGE>";
     }
 
     private void EnterLockOn()
