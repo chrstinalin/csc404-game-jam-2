@@ -72,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{3587154d-6b97-47df-b5b3-42cbc4aaddbb}">
+		<property name="volume">
+			<value>3</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{7572d6c9-74bd-4922-b723-06c36eafffd8}</destination>
 		</relationship>
@@ -90,7 +93,7 @@
 	<object class="MixerBusPanner" id="{7b99e954-fc97-45da-b343-3aa9f541d83f}" />
 	<object class="MultiSound" id="{e0a46b9f-bfe8-4a3e-935a-72a4cff876a8}">
 		<property name="length">
-			<value>1.28</value>
+			<value>1.0454940796555436</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{3c3e2e67-53b8-4acf-90d8-e1486f3b88c9}</destination>
@@ -172,6 +175,7 @@
 	<object class="MixerBusEffectChain" id="{c1b3ba8f-bc44-4a1c-b03e-4d41598f9921}">
 		<relationship name="effects">
 			<destination>{e6171acc-d7db-4244-be92-9a82118333b7}</destination>
+			<destination>{b776e639-9e01-4d37-bc69-bcb986803668}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b7c32315-69d1-4a62-88f9-3e3043a40290}" />
@@ -179,22 +183,36 @@
 	<object class="SpatialiserEffect" id="{a1b30c25-0a33-4566-8d9c-4685b6c17858}" />
 	<object class="AutomationPoint" id="{677fed00-21c6-49c6-8bda-5c31978dc7ae}">
 		<property name="position">
-			<value>0.64000000000000001</value>
+			<value>0.26209687836383216</value>
 		</property>
 		<property name="value">
 			<value>1</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.706483543</value>
+			<value>-0.347673178</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{1440dc2a-f820-48da-9409-f3142a5f68a8}">
 		<property name="position">
-			<value>1.28</value>
+			<value>1.0454940796555436</value>
 		</property>
 		<property name="value">
 			<value>0</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{e6171acc-d7db-4244-be92-9a82118333b7}" />
+	<object class="ThreeEQEffect" id="{b776e639-9e01-4d37-bc69-bcb986803668}">
+		<property name="lowGain">
+			<value>-7.5</value>
+		</property>
+		<property name="highGain">
+			<value>-5.5</value>
+		</property>
+		<property name="highCrossover">
+			<value>2000</value>
+		</property>
+		<property name="crossoverSlope">
+			<value>0</value>
+		</property>
+	</object>
 </objects>

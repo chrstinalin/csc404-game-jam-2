@@ -3,6 +3,10 @@ using System;
 using System.Collections.Generic;
 using FMODUnity;
 using FMOD.Studio;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using System.Collections;
+using TMPro;
 
 public class LockOnManager : MonoBehaviour
 {
@@ -14,6 +18,8 @@ public class LockOnManager : MonoBehaviour
     [SerializeField] private EventReference lockOnSFX;
     private EventInstance lockOnSFXInstance;
     [SerializeField] private LockOnUI LockOnUI;
+
+    public Color lockonGreen;
 
     private bool isLockedOn;
     private bool sfxPlaying;
@@ -29,23 +35,71 @@ public class LockOnManager : MonoBehaviour
     public bool IsLockedOn => isLockedOn;
     public LockOnObject CurrentTarget => GetCurrentTarget();
 
-    void Awake()
+    private Animator dkAnimator;
+
+    [Header("Post-Processing")]
+    [SerializeField] private Volume sceneVolume;
+    private Volume runtimeVolume;
+    private ColorAdjustments colorAdjustments;
+    private Color defaultColorFilter;
+
+    private Vignette vignette;
+    private float defaultVignetteIntensity;
+
+    private Coroutine fadeCoroutine;
+
+    [Header("Target Action Text")]
+    [SerializeField] private TextMeshProUGUI actionText;
+
+    private void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
 
-        cameraManager = CameraManager.Instance;
+        if (sceneVolume != null)
+        {
+            runtimeVolume = gameObject.AddComponent<Volume>();
+            runtimeVolume.isGlobal = true;
+            runtimeVolume.priority = sceneVolume.priority;
+
+            var clonedProfile = Instantiate(sceneVolume.profile);
+            runtimeVolume.profile = clonedProfile;
+
+            if (runtimeVolume.profile.TryGet<ColorAdjustments>(out var ca))
+            {
+                colorAdjustments = ca;
+                defaultColorFilter = colorAdjustments.colorFilter.value;
+            }
+
+            if (runtimeVolume.profile.TryGet<Vignette>(out var vig))
+            {
+                vignette = vig;
+                defaultVignetteIntensity = vignette.intensity.value;
+            }
+        }
+    }
+
+    private void Start()
+    {
+        if (dkAnimator == null && PlayerMech.Instance != null)
+            dkAnimator = PlayerMech.Instance.GetComponentInChildren<Animator>();
+
+        if (cameraManager == null && CameraManager.Instance != null)
+            cameraManager = CameraManager.Instance;
     }
 
     void Update()
     {
-        if (MovementManager.Instance.isLockedMovement) {
+        if (MovementManager.Instance.isLockedMovement)
+        {
             isLockedOn = false;
-            return; 
+            UpdateActionText();
+            return;
         }
-        else {
+        else
+        {
             isLockedOn = Input.GetButton("ToggleLockOnMode") && !MovementManager.Instance.IsMouseActive;
         }
 
@@ -72,13 +126,28 @@ public class LockOnManager : MonoBehaviour
         }
 
         if (Input.GetAxis("LockOn") == 0)
-        {
             lockOnReset = true;
+
+        UpdateActionText();
+    }
+
+    private void UpdateActionText()
+    {
+        if (actionText == null) return;
+
+        if (!isLockedOn || CurrentTarget.Type != LockOnObject.LockOnType.Enemy)
+        {
+            actionText.gameObject.SetActive(false);
+            return;
         }
+
+        actionText.gameObject.SetActive(true);
+        actionText.text = IsCurrentTargetInRange() ? "PRESS LT / RT TO SHOOT" : "<OUT OF RANGE>";
     }
 
     private void EnterLockOn()
     {
+        if (dkAnimator) dkAnimator.SetTrigger("isCharging");
         if (sfxPlaying) return;
 
         lockOnSFXInstance = RuntimeManager.CreateInstance(lockOnSFX);
@@ -95,10 +164,27 @@ public class LockOnManager : MonoBehaviour
             InitializeTargets();
             targetsInitialized = true;
         }
+
+        if (colorAdjustments != null)
+        {
+            if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+            fadeCoroutine = StartCoroutine(FadeColorFilter(
+                colorAdjustments.colorFilter.value,
+                lockonGreen,
+                0.05f
+            ));
+        }
+
+        if (vignette != null)
+        {
+            vignette.intensity.Override(0.2f);
+            vignette.color.Override(Color.black);
+        }
     }
 
     private void ExitLockOn()
     {
+        if (dkAnimator) dkAnimator.SetBool("isCharging", false);
         if (!sfxPlaying) return;
 
         if (lockOnSFXInstance.isValid())
@@ -118,6 +204,31 @@ public class LockOnManager : MonoBehaviour
 
         if (MechAIController.Instance != null)
             MechAIController.Instance.SetTarget(null);
+
+        if (colorAdjustments != null)
+        {
+            if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+            fadeCoroutine = StartCoroutine(
+                FadeColorFilter(colorAdjustments.colorFilter.value, defaultColorFilter, 0.5f)
+            );
+        }
+
+        if (vignette != null)
+        {
+            vignette.intensity.Override(defaultVignetteIntensity);
+        }
+    }
+
+    private IEnumerator FadeColorFilter(Color from, Color to, float duration)
+    {
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            colorAdjustments.colorFilter.value = Color.Lerp(from, to, t);
+            yield return null;
+        }
+        colorAdjustments.colorFilter.value = to;
     }
 
     private void InitializeTargets()
@@ -208,6 +319,7 @@ public class LockOnManager : MonoBehaviour
 
         return visibleTargets[currentTargetIndex];
     }
+
     public bool IsTargetInRange(LockOnObject target)
     {
         if (target == null) return false;

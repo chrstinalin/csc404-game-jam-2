@@ -7,20 +7,24 @@ public class LockOnReticle : MonoBehaviour
     [NonSerialized] public CameraManager CameraManager;
     private LockOnManager lockOnManager;
     private LockOnObject target = null;
-    private RectTransform rectTransform;
-    private Image reticleImage;
-    public Sprite inRangeSprite;
-    public Sprite outOfRangeSprite;
     private Canvas canvas;
+
+    public RectTransform inRangeReticle;
+    public RectTransform outOfRangeReticle;
+
+    public float baseScale = 1f;
+
+    public float inRangeScaleMultiplier = 1f;
+    public float outOfRangeScaleMultiplier = 1f;
 
     void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
-        reticleImage = GetComponent<Image>();
         canvas = GetComponentInParent<Canvas>();
 
-        if (reticleImage != null)
-            reticleImage.enabled = false;
+        if (inRangeReticle != null)
+            inRangeReticle.gameObject.SetActive(false);
+        if (outOfRangeReticle != null)
+            outOfRangeReticle.gameObject.SetActive(false);
     }
 
     void Start()
@@ -38,24 +42,19 @@ public class LockOnReticle : MonoBehaviour
 
         if (!lockOnManager.IsLockedOn || target == null)
         {
-            if (reticleImage != null)
-                reticleImage.enabled = false;
+            if (inRangeReticle != null) inRangeReticle.gameObject.SetActive(false);
+            if (outOfRangeReticle != null) outOfRangeReticle.gameObject.SetActive(false);
             return;
         }
 
-        Vector3 screenPos = CameraManager.Cam.WorldToScreenPoint(target.transform.position);
+        Vector3 targetCenter = target.GetCenterPoint().position;
+        Vector3 screenPos = CameraManager.Cam.WorldToScreenPoint(targetCenter);
 
         if (screenPos.z <= 0f)
         {
-            if (reticleImage != null)
-                reticleImage.enabled = false;
+            if (inRangeReticle != null) inRangeReticle.gameObject.SetActive(false);
+            if (outOfRangeReticle != null) outOfRangeReticle.gameObject.SetActive(false);
             return;
-        }
-
-        if (reticleImage != null)
-        {
-            reticleImage.enabled = true;
-            reticleImage.sprite = lockOnManager.IsCurrentTargetInRange() ? inRangeSprite : outOfRangeSprite;
         }
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -65,6 +64,26 @@ public class LockOnReticle : MonoBehaviour
             out Vector2 localPos
         );
 
-        rectTransform.anchoredPosition = localPos;
+        if (lockOnManager.IsCurrentTargetInRange())
+        {
+            if (inRangeReticle != null)
+            {
+                inRangeReticle.gameObject.SetActive(true);
+                inRangeReticle.anchoredPosition = localPos;
+                inRangeReticle.localScale = Vector3.one * baseScale * inRangeScaleMultiplier;
+            }
+            if (outOfRangeReticle != null) outOfRangeReticle.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("out of range");
+            if (outOfRangeReticle != null)
+            {
+                outOfRangeReticle.gameObject.SetActive(true);
+                outOfRangeReticle.anchoredPosition = localPos;
+                outOfRangeReticle.localScale = Vector3.one * baseScale * outOfRangeScaleMultiplier;
+            }
+            if (inRangeReticle != null) inRangeReticle.gameObject.SetActive(false);
+        }
     }
 }
