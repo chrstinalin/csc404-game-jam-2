@@ -17,6 +17,7 @@ public class MechaInventoryManager : MonoBehaviour
     private void Update()
     {
         if (mouse == null) return;
+
         mouseInventory = mouse.GetComponent<MouseInventoryManager>();
         if (mouseInventory == null) return;
 
@@ -34,10 +35,12 @@ public class MechaInventoryManager : MonoBehaviour
     {
         if (!sourceInventory.HasItem()) return;
 
-        ScrapCurrency scrap = sourceInventory.GetCarriedItem();
-        if (scrap != null)
+        ICarryable carried = sourceInventory.GetCarriedItem();
+
+        if (carried is ScrapCurrency scrap)
         {
             AudioManager.Instance.PlaySFX(AudioManager.Instance.HealMechSFX, transform.position, 1f);
+
             if (mechHealth != null)
             {
                 mechHealth.Heal(scrap.HPRestoreAmount);
@@ -45,6 +48,10 @@ public class MechaInventoryManager : MonoBehaviour
 
             Destroy(scrap.gameObject);
             sourceInventory.RemoveCarriedItem();
+        }
+        else
+        {
+            Debug.Log("Carried item is not scrap currency, cannot give to mech.");
         }
     }
 }
