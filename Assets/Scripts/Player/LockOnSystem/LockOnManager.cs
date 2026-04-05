@@ -135,7 +135,7 @@ public class LockOnManager : MonoBehaviour
     {
         if (actionText == null) return;
 
-        if (!isLockedOn || CurrentTarget.Type != LockOnObject.LockOnType.Enemy)
+        if (!isLockedOn || CurrentTarget == null || CurrentTarget.Type != LockOnObject.LockOnType.Enemy)
         {
             actionText.gameObject.SetActive(false);
             return;
@@ -324,9 +324,31 @@ public class LockOnManager : MonoBehaviour
     {
         if (target == null) return false;
 
+        if (target.Type != LockOnObject.LockOnType.Enemy)
+            return true;
+
         float requiredDistance = target.GetLockOnRequiredDistance();
-        float distance = (target.transform.position - PlayerMech.Instance.transform.position).magnitude;
-        return distance <= requiredDistance;
+        Vector3 playerPos = PlayerMech.Instance.transform.position;
+        Vector3 targetPos = target.centerPoint != null ? target.centerPoint.position : target.transform.position;
+
+        float distance = Vector3.Distance(playerPos, targetPos);
+        if (distance > requiredDistance)
+            return false;
+
+        Vector3 direction = (targetPos - playerPos).normalized;
+        RaycastHit hit;
+
+        if (Physics.Raycast(playerPos, direction, out hit, Mathf.Infinity))
+        {
+            bool hitTarget =
+                hit.transform == target.transform ||
+                hit.transform.IsChildOf(target.transform) ||
+                target.transform.IsChildOf(hit.transform);
+
+            return hitTarget;
+        }
+
+        return false;
     }
 
     public bool IsCurrentTargetInRange()
