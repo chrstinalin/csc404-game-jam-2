@@ -73,7 +73,8 @@ public class PuzzleProgressionTrigger : MonoBehaviour
         bool triggered = false;
 
         // Mech
-        if (PlayerMech.Instance != null && other.transform.IsChildOf(PlayerMech.Instance.transform))
+        if (requiresMech && PlayerMech.Instance != null &&
+            other.transform.IsChildOf(PlayerMech.Instance.transform))
         {
             if (!mechEntered)
             {
@@ -84,7 +85,8 @@ public class PuzzleProgressionTrigger : MonoBehaviour
         }
 
         // Mouse
-        if (PlayerMouse.Instance != null && other.transform.IsChildOf(PlayerMouse.Instance.transform))
+        if (requiresMouse && PlayerMouse.Instance != null &&
+            other.transform.IsChildOf(PlayerMouse.Instance.transform))
         {
             if (!mouseEntered)
             {
@@ -95,7 +97,7 @@ public class PuzzleProgressionTrigger : MonoBehaviour
         }
 
         // Cheese
-        if (other.CompareTag("Cheese"))
+        if (requiresCheese && other.CompareTag("Cheese"))
         {
             if (!cheeseEntered)
             {
@@ -114,21 +116,23 @@ public class PuzzleProgressionTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         // Mech
-        if (PlayerMech.Instance != null && other.transform.IsChildOf(PlayerMech.Instance.transform))
+        if (requiresMech && PlayerMech.Instance != null &&
+            other.transform.IsChildOf(PlayerMech.Instance.transform))
         {
             mechEntered = false;
             FadeIcon(mechIcon, ref mechFadeRoutine, 1f);
         }
 
         // Mouse
-        if (PlayerMouse.Instance != null && other.transform.IsChildOf(PlayerMouse.Instance.transform))
+        if (requiresMouse && PlayerMouse.Instance != null &&
+            other.transform.IsChildOf(PlayerMouse.Instance.transform))
         {
             mouseEntered = false;
             FadeIcon(mouseIcon, ref mouseFadeRoutine, 1f);
         }
 
         // Cheese
-        if (other.CompareTag("Cheese"))
+        if (requiresCheese && other.CompareTag("Cheese"))
         {
             cheeseEntered = false;
             FadeIcon(cheeseIcon, ref cheeseFadeRoutine, 1f);
@@ -158,7 +162,12 @@ public class PuzzleProgressionTrigger : MonoBehaviour
         while (time < fadeDuration)
         {
             time += Time.deltaTime;
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, Mathf.Lerp(startAlpha, targetAlpha, time / fadeDuration));
+            sr.color = new Color(
+                sr.color.r,
+                sr.color.g,
+                sr.color.b,
+                Mathf.Lerp(startAlpha, targetAlpha, time / fadeDuration)
+            );
             yield return null;
         }
 
@@ -185,7 +194,11 @@ public class PuzzleProgressionTrigger : MonoBehaviour
 
             if (!allEnteredSFXPlayed)
             {
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.loadNextPuzzleSFX, transform.position, 1f);
+                AudioManager.Instance.PlaySFX(
+                    AudioManager.Instance.loadNextPuzzleSFX,
+                    transform.position,
+                    1f
+                );
                 allEnteredSFXPlayed = true;
             }
 
