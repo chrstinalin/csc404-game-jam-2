@@ -8,6 +8,9 @@ public class Cheese : MonoBehaviour, ICarryable
 
     [SerializeField] private float carryScale = 0.5f;
 
+    [Header("Pickup Settings")]
+    public bool startPickedUp = false;
+
     public Transform Transform => transform;
 
     void Awake()
@@ -37,5 +40,30 @@ public class Cheese : MonoBehaviour, ICarryable
         transform.rotation = initialRotation;
         transform.localScale = initialScale;
         gameObject.SetActive(true);
+    }
+
+    public void ResetToInitial()
+    {
+        transform.position = initialPosition;
+        transform.rotation = initialRotation;
+        transform.localScale = initialScale;
+    }
+
+    private void OnDisable()
+    {
+        RemoveFromInventoryIfCarried();
+    }
+
+    private void OnDestroy()
+    {
+        RemoveFromInventoryIfCarried();
+    }
+
+    private void RemoveFromInventoryIfCarried()
+    {
+        if (PlayerMouse.Instance.InventoryManager != null && PlayerMouse.Instance.InventoryManager.GetCarriedItem() == this)
+        {
+            PlayerMouse.Instance.InventoryManager.RemoveCarriedItem();
+        }
     }
 }
