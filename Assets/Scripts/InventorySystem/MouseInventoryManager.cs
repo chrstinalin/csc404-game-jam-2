@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class MouseInventoryManager : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class MouseInventoryManager : MonoBehaviour
     [HideInInspector] public ICarryable carriedItem; 
     private Transform carryPoint;
     private Animator animator;
+
+    private bool isBusy = false; // prevents spam during delay
 
     private void Awake()
     {
@@ -42,24 +45,36 @@ public class MouseInventoryManager : MonoBehaviour
     private void Update()
     {
         bool playerControllingMouse = MovementManager.Instance != null && MovementManager.Instance.IsMouseActive;
-        if (!playerControllingMouse) return;
+        if (!playerControllingMouse || isBusy) return;
 
         if (Input.GetButtonDown("Interact"))
         {
             if (carriedItem == null && nearbyItem != null)
             {
-                PickUpItem(nearbyItem);
+                StartCoroutine(PickUpRoutine(nearbyItem));
             }
             else if (carriedItem != null)
             {
-                DropItem();
+                StartCoroutine(DropRoutine());
             }
         }
     }
 
-    private void PickUpItem(ICarryable item)
+    private IEnumerator PickUpRoutine(ICarryable item)
     {
+        isBusy = true;
+
+        // 🔹 Play animation immediately
+        if (animator != null)
+            animator.SetTrigger("Interact");
+
+        // 🔹 Optional: play sound immediately
         AudioManager.Instance.PlaySFX(AudioManager.Instance.ScrapPileInteractSFX, transform.position, 2f);
+
+        // 🔹 Wait for animation timing
+        yield return new WaitForSeconds(0.3f);
+
+        // 🔹 Actual pickup happens AFTER delay
         carriedItem = item;
         nearbyItem = null;
 
@@ -72,29 +87,36 @@ public class MouseInventoryManager : MonoBehaviour
         else if (item is Cheese cheese) cheese.ShrinkForCarry();
 
         Debug.Log("Mouse picked up: " + t.name);
+
+        isBusy = false;
     }
 
-    private void DropItem()
+    private IEnumerator DropRoutine()
     {
-        if (carriedItem == null) return;
+        if (carriedItem == null) yield break;
+
+        isBusy = true;
+
+        // 🔹 Play animation first
+        if (animator != null)
+            animator.SetTrigger("Interact");
 
         AudioManager.Instance.PlaySFX(AudioManager.Instance.ScrapPileInteractSFX, transform.position, 2f);
+
+        yield return new WaitForSeconds(0.3f);
 
         Vector3 dropPosition = transform.position + transform.forward * 1f;
 
         Transform t = carriedItem.Transform;
         t.SetParent(null);
-        t.localScale = Vector3.one;
 
         carriedItem.Drop(dropPosition);
 
-        if (animator != null)
-        {
-            animator.SetTrigger("Interact");
-        }
-
         Debug.Log("Mouse dropped: " + t.name);
+
         carriedItem = null;
+
+        isBusy = false;
     }
 
     public bool HasItem() => carriedItem != null;
