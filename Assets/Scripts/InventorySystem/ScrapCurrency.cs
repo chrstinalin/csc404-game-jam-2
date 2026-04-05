@@ -1,16 +1,27 @@
 using UnityEngine;
 
-public class ScrapCurrency : MonoBehaviour
+public class ScrapCurrency : MonoBehaviour, ICarryable
 {
     public int HPRestoreAmount;
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
+    private Vector3 initialScale;
+
+    [SerializeField] private float carryScale = 0.3f;
+
+    public Transform Transform => transform;
 
     void Awake()
     {
         initialPosition = transform.position;
         initialRotation = transform.rotation;
+        initialScale = transform.localScale;
+    }
+
+    public void ShrinkForCarry()
+    {
+        transform.localScale = initialScale * carryScale;
     }
 
     public void Drop(Vector3 dropPosition)
@@ -26,7 +37,7 @@ public class ScrapCurrency : MonoBehaviour
         }
 
         transform.rotation = initialRotation;
+        transform.localScale = initialScale;
         gameObject.SetActive(true);
     }
-
 }
