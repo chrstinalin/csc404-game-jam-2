@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class EvilComputer : MonoBehaviour
 {
@@ -12,7 +13,17 @@ public class EvilComputer : MonoBehaviour
 
     private Renderer screenRenderer;
 
-    [Header("Materials")]
+    [Header("Side Screens")]
+    [SerializeField] private List<GameObject> sideScreens;
+
+    private List<Renderer> sideRenderers = new List<Renderer>();
+
+    [Header("Side Screen Materials")]
+    [SerializeField] private Material cheeseExe;
+    [SerializeField] private Material rebooting;
+    [SerializeField] private Material success;
+
+    [Header("Main Screen Materials")]
     [SerializeField] private Material noSelected;
     [SerializeField] private Material yesSelected;
     [SerializeField] private Material pressAnywhereToStart;
@@ -38,16 +49,22 @@ public class EvilComputer : MonoBehaviour
         if (screenObject != null)
         {
             screenRenderer = screenObject.GetComponent<Renderer>();
+        }
 
-            if (screenRenderer == null)
-            {
-                Debug.LogError("Screen object has no Renderer component!");
-            }
-        }
-        else
+        sideRenderers.Clear();
+        foreach (var obj in sideScreens)
         {
-            Debug.LogError("Screen object is not assigned!");
+            if (obj == null) continue;
+
+            var r = obj.GetComponent<Renderer>();
+            if (r != null)
+                sideRenderers.Add(r);
         }
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(SetSideScreensMaterialSequential(cheeseExe));
     }
 
     private void Start()
@@ -96,13 +113,9 @@ public class EvilComputer : MonoBehaviour
 
                     case ScreenState.PressAnywhereToStart:
                         if (lever.IsActive)
-                        {
                             SetScreen(ScreenState.NoSelected);
-                        }
                         else
-                        {
                             SetScreen(ScreenState.YesSelected);
-                        }
                         break;
                 }
             }
@@ -112,11 +125,14 @@ public class EvilComputer : MonoBehaviour
     private IEnumerator GoToLoadingSequence()
     {
         SetScreen(ScreenState.Loading);
+        yield return StartCoroutine(SetSideScreensMaterialSequential(rebooting));
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(4f);
 
         SetScreen(ScreenState.Complete);
-        yield return new WaitForSeconds(3f);
+        yield return StartCoroutine(SetSideScreensMaterialSequential(success));
+
+        yield return new WaitForSeconds(4f);
 
         SceneManager.LoadScene("EndScreen");
     }
@@ -148,6 +164,17 @@ public class EvilComputer : MonoBehaviour
             case ScreenState.Complete:
                 screenRenderer.material = complete;
                 break;
+        }
+    }
+
+    private IEnumerator SetSideScreensMaterialSequential(Material mat)
+    {
+        foreach (var r in sideRenderers)
+        {
+            if (r != null)
+                r.material = mat;
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
