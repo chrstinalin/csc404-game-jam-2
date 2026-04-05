@@ -458,6 +458,7 @@ MonoBehaviour:
   description: Press to lower platform
   sprite: {fileID: 21300000, guid: ffac98b75c2e59a42b43f7e89602511d, type: 3}
   Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &31312822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1220,13 @@ MonoBehaviour:
       Data4: 0
     Path: 
   LockOnUI: {fileID: 0}
+  lockonGreen:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  sceneVolume: {fileID: 0}
+  actionText: {fileID: 0}
 --- !u!1 &116588534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,6 +2695,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1689062698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &299333380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5808884661920566201, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
+  m_PrefabInstance: {fileID: 763356706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &301370132
 GameObject:
   m_ObjectHideFlags: 0
@@ -4720,6 +4739,7 @@ MonoBehaviour:
   description: Composed of a metal alloy
   sprite: {fileID: 21300000, guid: 587e8e56df21a694cb1a95736d76a40b, type: 3}
   Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &493301668
 GameObject:
   m_ObjectHideFlags: 0
@@ -5039,6 +5059,55 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 752966826}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &520292034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 520292036}
+  - component: {fileID: 520292035}
+  m_Layer: 0
+  m_Name: LockOnVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &520292035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520292034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: ed0674e9f346cc441b2078d74d5bb7fa, type: 2}
+--- !u!4 &520292036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520292034}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.3759375, y: -1.3473725, z: 6.9342747}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1319265406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &556920713
 GameObject:
@@ -6786,6 +6855,7 @@ MonoBehaviour:
   description: Hostile mob.
   sprite: {fileID: 21300000, guid: d82d0aa4118fdca4a9503d8f9dcd212c, type: 3}
   Type: 0
+  centerPoint: {fileID: 0}
 --- !u!54 &671618911
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7133,6 +7203,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 112141419}
     m_Modifications:
     - target: {fileID: 1170903067222198187, guid: fb343e6d0d3028e4bb6b37f985af9bdc, type: 3}
+      propertyPath: m_CameraType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170903067222198187, guid: fb343e6d0d3028e4bb6b37f985af9bdc, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
@@ -7179,6 +7253,10 @@ PrefabInstance:
     - target: {fileID: 2927874300512233528, guid: fb343e6d0d3028e4bb6b37f985af9bdc, type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7554089820322606459, guid: fb343e6d0d3028e4bb6b37f985af9bdc, type: 3}
+      propertyPath: m_ClearFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3844013587656594644, guid: fb343e6d0d3028e4bb6b37f985af9bdc, type: 3}
@@ -8068,6 +8146,7 @@ MonoBehaviour:
   description: Press to lower platform
   sprite: {fileID: 21300000, guid: ffac98b75c2e59a42b43f7e89602511d, type: 3}
   Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &752971074
 GameObject:
   m_ObjectHideFlags: 0
@@ -8324,6 +8403,7 @@ MonoBehaviour:
   description: Hostile
   sprite: {fileID: 21300000, guid: cd13ba4e6a70bd34ca0a7fc78545e0fd, type: 3}
   Type: 0
+  centerPoint: {fileID: 0}
 --- !u!1 &781378691
 GameObject:
   m_ObjectHideFlags: 0
@@ -12375,6 +12455,7 @@ MonoBehaviour:
   description: '// STATUS: OFF. Powers the platform.'
   sprite: {fileID: 0}
   Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1211873939
 GameObject:
   m_ObjectHideFlags: 0
@@ -14683,6 +14764,9 @@ MonoBehaviour:
       Data4: -793793619
     Path: event:/SFX/Mech/Mech Lockon
   LockOnUI: {fileID: 1612538700}
+  lockonGreen: {r: 0.5166429, g: 0.8490566, b: 0.5166429, a: 0.4392157}
+  sceneVolume: {fileID: 520292035}
+  actionText: {fileID: 299333380}
 --- !u!4 &1319265406
 Transform:
   m_ObjectHideFlags: 0
@@ -14695,7 +14779,8 @@ Transform:
   m_LocalPosition: {x: -4.08153, y: 0, z: 1.92117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 520292036}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1319314208
@@ -18861,6 +18946,7 @@ MonoBehaviour:
   description: '// STATUS: ON. Powers the platform.'
   sprite: {fileID: 0}
   Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1668119060
 GameObject:
   m_ObjectHideFlags: 0
@@ -19286,7 +19372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a16196217517d4ca65bd29c34ae08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridSystem
-  grid: {fileID: 1698328769}
 --- !u!156049354 &1698328769
 Grid:
   m_ObjectHideFlags: 0
@@ -19815,6 +19900,7 @@ MonoBehaviour:
   description: Can be broken
   sprite: {fileID: 21300000, guid: d50a47cc09bec1f40b5fe032513438d5, type: 3}
   Type: 0
+  centerPoint: {fileID: 0}
 --- !u!1 &1751666696
 GameObject:
   m_ObjectHideFlags: 0

@@ -208,7 +208,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 804b4afe5b37f9a4e9b7cae2cb116234, type: 2}
+  - {fileID: -6757010262845554745, guid: 6c682c09e3e8b144091449f1e111ca83, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -276,7 +276,6 @@ GameObject:
   - component: {fileID: 2522443489029981126}
   - component: {fileID: 2143914167897710886}
   - component: {fileID: 7429966529203997417}
-  - component: {fileID: 5355723420317741870}
   - component: {fileID: 4612660211256371072}
   - component: {fileID: 5981637523043464259}
   - component: {fileID: 4886346343126977090}
@@ -387,18 +386,6 @@ MonoBehaviour:
   rotationAngle: 45
   rotationDuration: 2
   pauseDuration: 3
---- !u!114 &5355723420317741870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5909894609352407742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a71a5cc0e94ba54c9da70ad5ff1755d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LockOnSelectable
 --- !u!65 &4612660211256371072
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -464,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf6e608fdbee1544a1fc3ed65c8df64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  message: Press E to Destroy Turret
+  actionMessage: interact
   characters:
   - {fileID: 0}
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
@@ -566,7 +553,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 804b4afe5b37f9a4e9b7cae2cb116234, type: 2}
+  - {fileID: 6149822407638352506, guid: 6c682c09e3e8b144091449f1e111ca83, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

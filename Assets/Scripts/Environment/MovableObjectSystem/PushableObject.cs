@@ -2,13 +2,12 @@ using UnityEngine;
 using FMODUnity;
 
 public class PushableObject : MonoBehaviour 
-    
 {
     public SideTrigger[] sideTriggers;
     public float moveSpeed = 2f;
     [SerializeField] public EventReference boxPushSFX;
     public TopTrigger topTrigger;
-    private float pushRadius = 2f;
+    private float pushRadius = 2.3f;
 
     private Rigidbody rb;
     private Rigidbody mechRb;
@@ -24,14 +23,14 @@ public class PushableObject : MonoBehaviour
     private float mechSideSign;
 
     private float hoverY;
-    private const float hoverHeight = 0.1f;
+    private const float hoverHeight = 0.2f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation 
-                   | RigidbodyConstraints.FreezePositionX 
-                   | RigidbodyConstraints.FreezePositionZ;
+                       | RigidbodyConstraints.FreezePositionX 
+                       | RigidbodyConstraints.FreezePositionZ;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
     }
 
@@ -58,13 +57,42 @@ public class PushableObject : MonoBehaviour
 
         if (isBeingPushed)
         {
-            rb.MovePosition(new Vector3(rb.position.x, hoverY, rb.position.z));
-            Vector3 vel = rb.linearVelocity;
-            vel.y = 0f;
-            rb.linearVelocity = vel;
+            float hoverForce = 20f;
+            float hoverDamping = 5f;
+
+            float heightError = hoverY - rb.position.y;
+            float upwardForce = heightError * hoverForce - rb.linearVelocity.y * hoverDamping;
+
+            rb.AddForce(Vector3.up * upwardForce, ForceMode.Acceleration);
+        }
+        else
+        {
+            bool onPlatform = IsOnPlatform();
+
+            if (!onPlatform)
+            {
+                Vector3 vel = rb.linearVelocity;
+
+                if (vel.y > 0f)
+                    vel.y *= 0.5f;
+                else
+                    vel.y = Mathf.Max(vel.y, -2f);
+
+                rb.linearVelocity = vel;
+            }
         }
 
         CheckIfMouseIsOnTop();
+    }
+
+    private void SnapBoxToMech()
+    {
+        float desiredDistance = 1f;
+
+        Vector3 targetPos = mechRb.position + (pushAxis * mechSideSign * desiredDistance);
+        targetPos.y = rb.position.y;
+
+        rb.position = targetPos;
     }
 
     private void TryStartPush()
@@ -100,6 +128,8 @@ public class PushableObject : MonoBehaviour
         mechOffsetDistance = Mathf.Abs(signedDistance);
 
         mechFacingDir = pushAxis * mechSideSign;
+
+        SnapBoxToMech();
 
         hoverY = rb.position.y + hoverHeight;
 
@@ -143,7 +173,14 @@ public class PushableObject : MonoBehaviour
 
         float moveMagnitude = Mathf.Abs(axisInput) < 0.01f ? 0f : pushSpeed * Mathf.Sign(axisInput);
 
+        Vector3 moveDirNormalized = moveDir.sqrMagnitude > 0.001f ? moveDir.normalized : Vector3.zero;
+
+        float forwardDot = Vector3.Dot(moveDirNormalized, mechFacingDir);
+
         mechAnimator.SetBool("isRunning", Mathf.Abs(moveMagnitude) > 0.01f);
+        mechAnimator.SetBool("isWalkingBackwards", forwardDot < -0.1f);
+
+        Debug.Log(axisInput < -0.01f);
 
         Vector3 velocity = pushAxis * moveMagnitude;
 
@@ -207,5 +244,17 @@ public class PushableObject : MonoBehaviour
             if (PlayerMouse.Instance.transform.parent == transform)
                 PlayerMouse.Instance.transform.SetParent(null);
         }
+    }
+
+    private bool IsOnPlatform()
+    {
+        float rayDistance = 0.3f;
+
+        if (Physics.Raycast(rb.position, Vector3.down, out RaycastHit hit, rayDistance))
+        {
+            return hit.collider.GetComponentInChildren<Platform>() != null;
+        }
+
+        return false;
     }
 }
