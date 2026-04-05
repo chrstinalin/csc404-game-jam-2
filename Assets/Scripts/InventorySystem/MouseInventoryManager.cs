@@ -8,7 +8,7 @@ public class MouseInventoryManager : MonoBehaviour
     private Transform carryPoint;
     private Animator animator;
 
-    private bool isBusy = false; // prevents spam during delay
+    private bool isBusy = false;
 
     private void Awake()
     {
@@ -19,8 +19,23 @@ public class MouseInventoryManager : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         if (animator == null)
             Debug.LogError("No Animator found in children of PlayerMouse");
-    }
 
+        Cheese[] cheeses = FindObjectsOfType<Cheese>();
+        foreach (Cheese cheese in cheeses)
+        {
+            if (cheese.startPickedUp)
+            {
+                carriedItem = cheese;
+                Transform t = cheese.Transform;
+                t.SetParent(carryPoint);
+                t.localPosition = Vector3.zero;
+                t.localRotation = Quaternion.identity;
+                cheese.ShrinkForCarry();
+                Debug.Log("Mouse started with cheese: " + t.name);
+                break; // only carry one item at start
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (MovementManager.Instance == null || !MovementManager.Instance.IsMouseActive)
@@ -64,17 +79,13 @@ public class MouseInventoryManager : MonoBehaviour
     {
         isBusy = true;
 
-        // 🔹 Play animation immediately
         if (animator != null)
             animator.SetTrigger("Interact");
 
-        // 🔹 Optional: play sound immediately
         AudioManager.Instance.PlaySFX(AudioManager.Instance.ScrapPileInteractSFX, transform.position, 2f);
 
-        // 🔹 Wait for animation timing
         yield return new WaitForSeconds(0.3f);
 
-        // 🔹 Actual pickup happens AFTER delay
         carriedItem = item;
         nearbyItem = null;
 
@@ -97,7 +108,6 @@ public class MouseInventoryManager : MonoBehaviour
 
         isBusy = true;
 
-        // 🔹 Play animation first
         if (animator != null)
             animator.SetTrigger("Interact");
 
