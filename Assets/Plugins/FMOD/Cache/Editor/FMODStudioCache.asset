@@ -310,7 +310,7 @@ MonoBehaviour:
   Path: Assets/Audio/fmod_session/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639109299712968094
+  lastModified: 639109517875121776
   FileSizes:
   - Name: Desktop
     Value: 3608
@@ -470,30 +470,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-3637912973305124554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Ambience/Ambience Mix
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Ambience Mix
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 1566291375
-    data2: 2853246452
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-3604996243315206996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,6 +498,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 9718
+--- !u!114 &-3342408168730960966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Ambience/Level
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Level
+  StudioPath: 
+  Min: 1
+  Max: 5
+  Default: 1
+  ID:
+    data1: 3164294255
+    data2: 3358120660
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2890221894178832760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,10 +537,10 @@ MonoBehaviour:
   Path: Assets/Audio/fmod_session/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639109299712168173
+  lastModified: 639109517875076530
   FileSizes:
   - Name: Desktop
-    Value: 25559712
+    Value: 34636608
   Exists: 1
 --- !u!114 &-2821266406789014407
 MonoBehaviour:
@@ -711,7 +711,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -5715562584296346212}
   cacheVersion: 131856
-  cacheTime: 639109299712968094
+  cacheTime: 639109517875121776
   SerializableEventsDict:
   - key: event:/Music+Amb/Overworld Music
     index: 0
@@ -1355,10 +1355,10 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -3637912973305124554}
+  - {fileID: -3342408168730960966}
   MinDistance: 1
   MaxDistance: 20
-  Length: 83464
+  Length: 172000
 --- !u!114 &7780757496657375088
 MonoBehaviour:
   m_ObjectHideFlags: 0
