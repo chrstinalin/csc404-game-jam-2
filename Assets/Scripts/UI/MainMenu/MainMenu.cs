@@ -182,7 +182,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         StopMusic();
-        FadeManager.Instance.FadeToScene("Puzzle4");
+        FadeManager.Instance.FadeToScene("Level1Tutorial");
     }
 
     public void OpenControls()
