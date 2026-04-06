@@ -15,6 +15,11 @@ public class BackgroundMusicManager : MonoBehaviour
     private EventInstance ambienceInstance;
     private bool isInCombat = false;
 
+    private int level = 1;
+    private const int maxLevel = 5;
+
+    private bool hasInitializedFirstScene = false;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,8 +27,11 @@ public class BackgroundMusicManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        level = 1;
     }
 
     void OnEnable()
@@ -41,16 +49,31 @@ public class BackgroundMusicManager : MonoBehaviour
         PlayTheme();
         PlayAmbience();
         SetCombatParameter(false);
+        SetAmbienceLevel();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (Instance == null)
-            Instance = this;
-        
+        if (!hasInitializedFirstScene)
+        {
+            hasInitializedFirstScene = true;
+            return;
+        }
+
+        level = Mathf.Min(level + 1, maxLevel);
+
         PlayTheme();
-        PlayAmbience();           
+        PlayAmbience();
         SetCombatParameter(false);
+        SetAmbienceLevel();
+    }
+
+    private void SetAmbienceLevel()
+    {
+        if (ambienceInstance.isValid())
+        {
+            ambienceInstance.setParameterByName("Level", level);
+        }
     }
 
     void Update()
@@ -114,6 +137,7 @@ public class BackgroundMusicManager : MonoBehaviour
         {
             mainThemeInstance = RuntimeManager.CreateInstance(MainThemeAudio);
             mainThemeInstance.start();
+            mainThemeInstance.setVolume(0.5f);
         }
     }
 
@@ -125,6 +149,7 @@ public class BackgroundMusicManager : MonoBehaviour
         {
             ambienceInstance = RuntimeManager.CreateInstance(AmbienceAudio);
             ambienceInstance.start();
+            ambienceInstance.setVolume(2f);
         }
     }
 
