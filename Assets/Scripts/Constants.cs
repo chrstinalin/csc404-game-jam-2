@@ -137,7 +137,8 @@ public enum ActionType
     Movement,
     Camera,
     Pause,
-    RestartLevel
+    RestartLevel,
+    ChangeLockOnTarget
 }
 
 public static class ButtonMappings

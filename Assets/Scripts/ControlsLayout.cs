@@ -78,6 +78,11 @@ public class ControlSchemeManager : MonoBehaviour
             { ControllerType.Keyboard, "R: RESTART LEVEL" },
             { ControllerType.Xbox, "BACK: RESTART LEVEL" },
             { ControllerType.PlayStation, "SHARE: RESTART LEVEL" },
+        }},
+        { ActionType.ChangeLockOnTarget, new() {
+            { ControllerType.Keyboard, "A/D: CHANGE LOCK ON TARGET" },
+            { ControllerType.Xbox, "RS ←/→: CHANGE LOCK ON TARGET" },
+            { ControllerType.PlayStation, "RS ←/→: CHANGE LOCK ON TARGET" },
         }}
     };
 
