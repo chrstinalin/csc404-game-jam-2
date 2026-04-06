@@ -17,7 +17,10 @@ public class SpatialSoundPlayer : MonoBehaviour
 
     public void PlaySound()
     {
+        if (!enabled) return;
+
         if (fmodEvent.IsNull) return;
+
         if (AudioManager.Instance == null)
         {
             Debug.LogWarning("AudioManager instance not found!");
@@ -32,7 +35,13 @@ public class SpatialSoundPlayer : MonoBehaviour
         if (currentInstance.isValid())
         {
             AudioManager.Instance.StopSFX(currentInstance);
+            currentInstance = default;
         }
+    }
+
+    private void OnDisable()
+    {
+        StopSound();
     }
 
     private void OnDestroy()

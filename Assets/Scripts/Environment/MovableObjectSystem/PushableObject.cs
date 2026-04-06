@@ -1,5 +1,6 @@
 using UnityEngine;
 using FMODUnity;
+using FMOD.Studio;
 
 public class PushableObject : MonoBehaviour 
 {
@@ -24,6 +25,10 @@ public class PushableObject : MonoBehaviour
 
     private float hoverY;
     private const float hoverHeight = 0.2f;
+
+    // FMOD push sound
+    private EventInstance boxPushSFXInstance;
+    private bool isSFXPlaying = false;
 
     private void Awake()
     {
@@ -85,14 +90,16 @@ public class PushableObject : MonoBehaviour
         CheckIfMouseIsOnTop();
     }
 
+    // Move mech toward the box instead of moving the box
     private void SnapBoxToMech()
     {
+        if (mechRb == null || rb == null) return;
+
         float desiredDistance = 1f;
+        Vector3 targetPos = rb.position - (pushAxis * mechSideSign * desiredDistance);
+        targetPos.y = mechRb.position.y; // Keep mech's Y the same for vertical alignment
 
-        Vector3 targetPos = mechRb.position + (pushAxis * mechSideSign * desiredDistance);
-        targetPos.y = rb.position.y;
-
-        rb.position = targetPos;
+        mechRb.position = targetPos;
     }
 
     private void TryStartPush()
@@ -129,7 +136,7 @@ public class PushableObject : MonoBehaviour
 
         mechFacingDir = pushAxis * mechSideSign;
 
-        SnapBoxToMech();
+        SnapBoxToMech(); // now mech moves to the box
 
         hoverY = rb.position.y + hoverHeight;
 
@@ -141,7 +148,7 @@ public class PushableObject : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         mechRb.constraints = RigidbodyConstraints.FreezeRotation;
 
-        AudioManager.Instance.PlaySFX(boxPushSFX, transform.position, 10f);
+        isSFXPlaying = false; // will start in UpdatePush based on horizontal velocity
     }
 
     private void UpdatePush()
@@ -180,13 +187,30 @@ public class PushableObject : MonoBehaviour
         mechAnimator.SetBool("isRunning", Mathf.Abs(moveMagnitude) > 0.01f);
         mechAnimator.SetBool("isWalkingBackwards", forwardDot < -0.1f);
 
-        Debug.Log(axisInput < -0.01f);
-
         Vector3 velocity = pushAxis * moveMagnitude;
 
         mechRb.linearVelocity = new Vector3(velocity.x, mechRb.linearVelocity.y, velocity.z);
         rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
-        
+
+        // --- FMOD: play sound only when being pushed and horizontal velocity > 0 ---
+        Vector3 horizontalVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        if (isBeingPushed && horizontalVel.magnitude > 0.01f)
+        {
+            if (!isSFXPlaying)
+            {
+                boxPushSFXInstance = AudioManager.Instance.PlaySFX(boxPushSFX, transform.position, 1f);
+                isSFXPlaying = true;
+            }
+        }
+        else
+        {
+            if (isSFXPlaying)
+            {
+                AudioManager.Instance.StopSFX(boxPushSFXInstance);
+                isSFXPlaying = false;
+            }
+        }
+
         float rotateSpeed = 720f;
         Quaternion targetRot = Quaternion.LookRotation(pushAxis * mechSideSign, Vector3.up);
         mechRb.rotation = Quaternion.RotateTowards(mechRb.rotation, targetRot, rotateSpeed * Time.deltaTime);
@@ -208,6 +232,12 @@ public class PushableObject : MonoBehaviour
         mechRb.constraints = RigidbodyConstraints.FreezeRotation;
 
         rb.useGravity = true;
+
+        if (isSFXPlaying)
+        {
+            AudioManager.Instance.StopSFX(boxPushSFXInstance);
+            isSFXPlaying = false;
+        }
     }
 
     private Vector3 GetAxisFromSide(CardinalDirection side)

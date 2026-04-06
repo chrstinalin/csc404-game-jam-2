@@ -185,7 +185,7 @@ public class UIManager : MonoBehaviour
         string dash = GetButtonOnly(ActionType.Sneak, controller);
         string switchChar = GetButtonOnly(ActionType.SwitchCharacter, controller);
 
-        return $"({interact}) INTERACT\n({jump}) JUMP\n({dash}) DASH\n({switchChar}) SWITCH CHARACTERS";
+        return $"({interact}) INTERACT\n({jump}) JUMP\n({switchChar}) SWITCH CHARACTERS";
     }
 
     private string BuildMechControlsText(ControllerType controller)

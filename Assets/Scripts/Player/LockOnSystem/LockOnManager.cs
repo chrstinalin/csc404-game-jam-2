@@ -329,28 +329,35 @@ public class LockOnManager : MonoBehaviour
 
         float requiredDistance = target.GetLockOnRequiredDistance();
         Vector3 playerPos = PlayerMech.Instance.transform.position;
-        Vector3 targetPos = target.centerPoint != null ? target.centerPoint.position : target.transform.position;
+
+        // Aim at collider center if exists, fallback to centerPoint or transform
+        Vector3 targetPos;
+        Collider targetCollider = target.GetComponent<Collider>();
+        if (targetCollider != null)
+            targetPos = targetCollider.bounds.center;
+        else if (target.centerPoint != null)
+            targetPos = target.centerPoint.position;
+        else
+            targetPos = target.transform.position;
 
         float distance = Vector3.Distance(playerPos, targetPos);
         if (distance > requiredDistance)
             return false;
 
-        Vector3 direction = (targetPos - playerPos).normalized;
+        Vector3 fireDirection = (targetPos - playerPos).normalized;
         RaycastHit hit;
 
-        if (Physics.Raycast(playerPos, direction, out hit, Mathf.Infinity))
+        if (Physics.Raycast(playerPos, fireDirection, out hit, Mathf.Infinity))
         {
-            bool hitTarget =
-                hit.transform == target.transform ||
-                hit.transform.IsChildOf(target.transform) ||
-                target.transform.IsChildOf(hit.transform);
+            bool hitTarget = hit.transform == target.transform 
+                            || hit.transform.IsChildOf(target.transform) 
+                            || target.transform.IsChildOf(hit.transform);
 
             return hitTarget;
         }
 
         return false;
     }
-
     public bool IsCurrentTargetInRange()
     {
         return IsTargetInRange(CurrentTarget);
