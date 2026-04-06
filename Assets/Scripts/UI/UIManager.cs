@@ -182,10 +182,10 @@ public class UIManager : MonoBehaviour
     {
         string interact = GetButtonOnly(ActionType.Interact, controller);
         string jump = GetButtonOnly(ActionType.Jump, controller);
-        string dash = GetButtonOnly(ActionType.Sneak, controller);
         string switchChar = GetButtonOnly(ActionType.SwitchCharacter, controller);
+        string lockon = GetButtonOnly(ActionType.Lockon, controller);
 
-        return $"({interact}) INTERACT\n({jump}) JUMP\n({switchChar}) SWITCH CHARACTERS";
+        return $"JUMP ({jump})\nINTERACT ({interact})\nSUMMON MECH ({lockon})\nSWITCH CHARACTERS ({switchChar})";
     }
 
     private string BuildMechControlsText(ControllerType controller)
@@ -194,7 +194,7 @@ public class UIManager : MonoBehaviour
         string lockon = GetButtonOnly(ActionType.Lockon, controller);
         string switchChar = GetButtonOnly(ActionType.SwitchCharacter, controller);
 
-        return $"({interact}) INTERACT\n({lockon}) ENTER LOCK-ON MODE\n({switchChar}) SWITCH CHARACTERS";
+        return $"INTERACT ({interact})\nENTER LOCK-ON MODE ({lockon})\nSWITCH CHARACTERS ({switchChar})";
     }
 
     private string GetButtonOnly(ActionType action, ControllerType controller)
