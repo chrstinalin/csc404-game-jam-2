@@ -17492,6 +17492,7 @@ GameObject:
   - component: {fileID: 1404150808}
   - component: {fileID: 1404150807}
   - component: {fileID: 1404150806}
+  - component: {fileID: 1404150812}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -17516,11 +17517,11 @@ MonoBehaviour:
   carryObjects: 1
   movingSFX:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -5076701
+      Data2: 1085705741
+      Data3: 1415419559
+      Data4: 577546215
+    Path: event:/SFX/Interactables/Platform movement
 --- !u!54 &1404150807
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17641,6 +17642,38 @@ Transform:
   - {fileID: 2102747360}
   m_Father: {fileID: 1915198863}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1404150812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404150805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &1410206195 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
