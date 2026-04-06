@@ -9689,6 +9689,7 @@ GameObject:
   - component: {fileID: 361742368}
   - component: {fileID: 361742371}
   - component: {fileID: 361742370}
+  - component: {fileID: 361742372}
   m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Untagged
@@ -9767,6 +9768,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361742367}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &361742372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361742367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &368309106
 GameObject:
   m_ObjectHideFlags: 0
@@ -13426,6 +13447,7 @@ GameObject:
   - component: {fileID: 499013301}
   - component: {fileID: 499013304}
   - component: {fileID: 499013303}
+  - component: {fileID: 499013305}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -13504,6 +13526,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499013300}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &499013305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499013300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &503339212
 GameObject:
   m_ObjectHideFlags: 0
@@ -15626,6 +15668,7 @@ GameObject:
   - component: {fileID: 614771715}
   - component: {fileID: 614771717}
   - component: {fileID: 614771716}
+  - component: {fileID: 614771718}
   m_Layer: 0
   m_Name: Cylinder (4)
   m_TagString: Untagged
@@ -15704,6 +15747,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614771714}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &614771718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614771714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &618410338
 GameObject:
   m_ObjectHideFlags: 0
@@ -23305,6 +23368,7 @@ GameObject:
   - component: {fileID: 908472500}
   - component: {fileID: 908472503}
   - component: {fileID: 908472502}
+  - component: {fileID: 908472504}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -23383,6 +23447,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908472499}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &908472504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908472499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &911702479
 GameObject:
   m_ObjectHideFlags: 0
@@ -49873,6 +49957,7 @@ GameObject:
   - component: {fileID: 1945753859}
   - component: {fileID: 1945753862}
   - component: {fileID: 1945753861}
+  - component: {fileID: 1945753863}
   m_Layer: 0
   m_Name: Cylinder (3)
   m_TagString: Untagged
@@ -49951,6 +50036,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945753858}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1945753863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945753858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1001 &1948992941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55095,6 +55200,7 @@ GameObject:
   - component: {fileID: 2130982002}
   - component: {fileID: 2130982004}
   - component: {fileID: 2130982003}
+  - component: {fileID: 2130982005}
   m_Layer: 0
   m_Name: Cylinder (5)
   m_TagString: Untagged
@@ -55173,6 +55279,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130982001}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2130982005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130982001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &2133614417
 GameObject:
   m_ObjectHideFlags: 0
