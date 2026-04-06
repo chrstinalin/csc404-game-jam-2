@@ -16023,6 +16023,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626706524}
   m_Mesh: {fileID: -3831722347841045858, guid: 9ae40567154e8fd42a1c53a88b834fae, type: 3}
+--- !u!1 &631941317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e2ad051a1c9a64644a9168fe03283daa, type: 3}
+  m_PrefabInstance: {fileID: 769748389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &631941318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631941317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -2117865223
+      Data2: 1077096331
+      Data3: -1743392850
+      Data4: -1583497033
+    Path: event:/SFX/Big Computer
+  volume: 2
 --- !u!1001 &633830892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19467,7 +19492,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e2ad051a1c9a64644a9168fe03283daa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 631941318}
   m_SourcePrefab: {fileID: 100100000, guid: e2ad051a1c9a64644a9168fe03283daa, type: 3}
 --- !u!1 &776868920
 GameObject:
