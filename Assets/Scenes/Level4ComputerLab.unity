@@ -1385,6 +1385,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
+--- !u!1 &118168398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 540766248357655699, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 2127576237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &118168400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118168398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Lever
+  description: Powers the exit door
+  sprite: {fileID: 21300000, guid: f1ba6d9cb4ad36d4e93bb237f59351eb, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &118767514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,8 +2029,58 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8521219204026233712, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 164624085}
+    - targetCorrespondingSourceObject: {fileID: 540766248357655699, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 164624084}
   m_SourcePrefab: {fileID: 100100000, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+--- !u!1 &164624082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 540766248357655699, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 164624081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &164624083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8521219204026233712, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 164624081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &164624084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164624082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Lever
+  description: 'Raises the platform. STATUS: OFF'
+  sprite: {fileID: 21300000, guid: f1ba6d9cb4ad36d4e93bb237f59351eb, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
+--- !u!114 &164624085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164624083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Lever
+  description: 'Raises the platform. STATUS: ON'
+  sprite: {fileID: 21300000, guid: f1ba6d9cb4ad36d4e93bb237f59351eb, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &170266594 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -869259721891117489, guid: c774a2f8904b1d1418b563a54187cf23, type: 3}
@@ -2223,8 +2295,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Path
+      value: event:/SFX/Interactables/Interactable Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: TriggerObjects.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data1
+      value: 770979095
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data2
+      value: 1192341375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data3
+      value: -1502129997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      propertyPath: buttonPressSFX.Guid.Data4
+      value: 147275528
       objectReference: {fileID: 0}
     - target: {fileID: 3227706634444491649, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: 'TriggerObjects.Array.data[0]'
@@ -2285,7 +2377,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1410206197}
+    - targetCorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 346274804}
   m_SourcePrefab: {fileID: 100100000, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
 --- !u!1 &214629017
 GameObject:
@@ -3865,6 +3963,28 @@ Transform:
   - {fileID: 282077768}
   m_Father: {fileID: 977986417}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &346274802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 201471560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &346274804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346274802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Opens the door when pressed
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &347669075
 GameObject:
   m_ObjectHideFlags: 0
@@ -4082,6 +4202,7 @@ GameObject:
   - component: {fileID: 361508035}
   - component: {fileID: 361508034}
   - component: {fileID: 361508040}
+  - component: {fileID: 361508041}
   m_Layer: 0
   m_Name: CHEESE_GEO
   m_TagString: Cheese
@@ -4229,6 +4350,23 @@ MonoBehaviour:
   characters:
   - {fileID: 1254192303}
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
+--- !u!114 &361508041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361508033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: C.H.E.E.S.E
+  description: Countermeasure Heuristic for Eradicating End of System Errors
+  sprite: {fileID: 21300000, guid: 9fdd3f3e4ffadda478785d446603ad82, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &366247882
 GameObject:
   m_ObjectHideFlags: 0
@@ -4771,9 +4909,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbeb542679160f4895e6d1cbd52eddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platform
-  distance: 6
+  distance: 4
   speed: 2
   carryObjects: 0
+  movingSFX:
+    Guid:
+      Data1: 1512094732
+      Data2: 1164754596
+      Data3: 768669114
+      Data4: -1928957330
+    Path: event:/SFX/Interactables/Interactable Door
 --- !u!54 &401386555
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4812,6 +4957,7 @@ GameObject:
   - component: {fileID: 401952104}
   - component: {fileID: 401952106}
   - component: {fileID: 401952105}
+  - component: {fileID: 401952107}
   m_Layer: 0
   m_Name: Wire_02
   m_TagString: Untagged
@@ -4890,6 +5036,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401952103}
   m_Mesh: {fileID: 3930807142765583912, guid: c774a2f8904b1d1418b563a54187cf23, type: 3}
+--- !u!114 &401952107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401952103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &415411434
 GameObject:
   m_ObjectHideFlags: 0
@@ -6269,7 +6435,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4630009097792231531, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1333689020}
   m_SourcePrefab: {fileID: 100100000, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
 --- !u!1 &514733914
 GameObject:
@@ -8423,6 +8592,7 @@ GameObject:
   - component: {fileID: 701603746}
   - component: {fileID: 701603745}
   - component: {fileID: 701603744}
+  - component: {fileID: 701603747}
   m_Layer: 0
   m_Name: OnWire
   m_TagString: Untagged
@@ -8501,6 +8671,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1669811391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &701603747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701603743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &710686557
 GameObject:
   m_ObjectHideFlags: 0
@@ -11210,6 +11400,7 @@ GameObject:
   - component: {fileID: 952654152}
   - component: {fileID: 952654151}
   - component: {fileID: 952654150}
+  - component: {fileID: 952654153}
   m_Layer: 0
   m_Name: button_base
   m_TagString: Untagged
@@ -11309,6 +11500,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952654148}
   m_Mesh: {fileID: 6285565591548356222, guid: 84b0b75bb18e7f545aee021ade990f31, type: 3}
+--- !u!114 &952654153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952654148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Platform Reset Button
+  description: Resets and lowers the platform
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &955716085
 GameObject:
   m_ObjectHideFlags: 0
@@ -11975,6 +12183,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 813088892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1024093316 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2865808199520923868, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
+  m_PrefabInstance: {fileID: 763356706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97384e5a5a4d97840b82c78ceffcf5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnUI
 --- !u!1 &1040969514
 GameObject:
   m_ObjectHideFlags: 0
@@ -12753,7 +12972,7 @@ Transform:
   m_GameObject: {fileID: 1092725818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2.137, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13619,6 +13838,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1171529889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8521219204026233712, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 2127576237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1171529891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171529889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Lever
+  description: Powers the exit door
+  sprite: {fileID: 21300000, guid: f1ba6d9cb4ad36d4e93bb237f59351eb, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1176621375
 GameObject:
   m_ObjectHideFlags: 0
@@ -14585,6 +14826,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4435211797270397255, guid: 36501221826b93e459992b7bea5f0770, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1244421247}
+    - targetCorrespondingSourceObject: {fileID: 7981517778719808773, guid: 36501221826b93e459992b7bea5f0770, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1244421249}
   m_SourcePrefab: {fileID: 100100000, guid: 36501221826b93e459992b7bea5f0770, type: 3}
 --- !u!1 &1244421246 stripped
 GameObject:
@@ -14611,6 +14855,28 @@ MonoBehaviour:
       Data4: 566753745
     Path: event:/SFX/Interactables/Interactable Electricity
   volume: 1
+--- !u!1 &1244421248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7981517778719808773, guid: 36501221826b93e459992b7bea5f0770, type: 3}
+  m_PrefabInstance: {fileID: 1244421245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1244421249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244421248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Laser
+  description: Emits a deadly laser
+  sprite: {fileID: 21300000, guid: d5a6ac3b0b23edb4187ff168e61bb427, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1252521048
 GameObject:
   m_ObjectHideFlags: 0
@@ -16046,6 +16312,7 @@ GameObject:
   - component: {fileID: 1319971724}
   - component: {fileID: 1319971723}
   - component: {fileID: 1319971722}
+  - component: {fileID: 1319971725}
   m_Layer: 0
   m_Name: Wire
   m_TagString: Untagged
@@ -16147,6 +16414,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319971720}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1319971725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319971720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &1328790397
 GameObject:
   m_ObjectHideFlags: 0
@@ -16298,6 +16585,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4630009097792231531, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
   m_PrefabInstance: {fileID: 513457755}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1333689020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333689019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Crate
+  description: Made of a metal alloy. Can be pushed and pulled.
+  sprite: {fileID: 21300000, guid: 3b9b83231f4c9474592d38ae1c3c510e, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1333762766
 GameObject:
   m_ObjectHideFlags: 0
@@ -17210,6 +17514,13 @@ MonoBehaviour:
   distance: 4.8
   speed: 1
   carryObjects: 1
+  movingSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!54 &1404150807
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17330,6 +17641,28 @@ Transform:
   - {fileID: 2102747360}
   m_Father: {fileID: 1915198863}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1410206195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 201471560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1410206197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410206195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Opens the door when pressed
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1415044015
 GameObject:
   m_ObjectHideFlags: 0
@@ -18718,6 +19051,7 @@ GameObject:
   - component: {fileID: 1509531614}
   - component: {fileID: 1509531613}
   - component: {fileID: 1509531612}
+  - component: {fileID: 1509531615}
   m_Layer: 0
   m_Name: Wireblock
   m_TagString: Untagged
@@ -18817,6 +19151,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509531610}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1509531615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509531610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &1509952630
 GameObject:
   m_ObjectHideFlags: 0
@@ -20232,6 +20586,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1202005809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1610856772 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5808884661920566201, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
+  m_PrefabInstance: {fileID: 763356706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1614255548
 GameObject:
   m_ObjectHideFlags: 0
@@ -20870,6 +21235,13 @@ MonoBehaviour:
   distance: 3
   speed: 2
   carryObjects: 0
+  movingSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!65 &1635441165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21429,6 +21801,7 @@ GameObject:
   - component: {fileID: 1683382198}
   - component: {fileID: 1683382197}
   - component: {fileID: 1683382196}
+  - component: {fileID: 1683382199}
   m_Layer: 0
   m_Name: button_base
   m_TagString: Untagged
@@ -21528,6 +21901,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683382194}
   m_Mesh: {fileID: 6285565591548356222, guid: 84b0b75bb18e7f545aee021ade990f31, type: 3}
+--- !u!114 &1683382199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683382194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Platform Reset Button
+  description: Resets and lowers the platform
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1689062695
 GameObject:
   m_ObjectHideFlags: 0
@@ -22127,6 +22517,7 @@ GameObject:
   - component: {fileID: 1728144707}
   - component: {fileID: 1728144706}
   - component: {fileID: 1728144705}
+  - component: {fileID: 1728144708}
   m_Layer: 0
   m_Name: Wireblock
   m_TagString: Untagged
@@ -22226,6 +22617,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728144703}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1728144708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728144703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &1730562244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2479233523220044514, guid: c774a2f8904b1d1418b563a54187cf23, type: 3}
@@ -23439,6 +23850,71 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.78400683, y: 0.33193997, z: 0.40702116}
   m_Center: {x: -0.000000044703484, y: -0.16596998, z: -0.002602443}
+--- !u!1001 &1814316747
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 422518747009265425, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: m_Name
+      value: LockOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545584667045006872, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: LockOnUI
+      value: 
+      objectReference: {fileID: 1024093316}
+    - target: {fileID: 2545584667045006872, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: actionText
+      value: 
+      objectReference: {fileID: 1610856772}
+    - target: {fileID: 8486881410007152111, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.02167
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486881410007152111, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.42107
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486881410007152111, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -90.13204
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486881410007152111, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486881410007152111, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486881410007152111, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486881410007152111, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486881410007152111, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486881410007152111, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486881410007152111, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7c0757e20a43e04dae6ebfa01d160f5, type: 3}
 --- !u!1 &1814983636
 GameObject:
   m_ObjectHideFlags: 0
@@ -23450,6 +23926,7 @@ GameObject:
   - component: {fileID: 1814983637}
   - component: {fileID: 1814983639}
   - component: {fileID: 1814983638}
+  - component: {fileID: 1814983640}
   m_Layer: 0
   m_Name: Wire_01
   m_TagString: Untagged
@@ -23528,6 +24005,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814983636}
   m_Mesh: {fileID: -6877630201263242766, guid: c774a2f8904b1d1418b563a54187cf23, type: 3}
+--- !u!114 &1814983640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814983636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &1818620085
 GameObject:
   m_ObjectHideFlags: 0
@@ -27192,71 +27689,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086660949}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &2090625795
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 397308905716683864, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_Name
-      value: MetalCrate
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -31.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -24.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 806763575726312549, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529050911776806382, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: 'characters.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1133554855}
-    - target: {fileID: 8936474382729905176, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
-      propertyPath: grid
-      value: 
-      objectReference: {fileID: 1698328769}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
 --- !u!65 &2095741116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27757,7 +28189,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3431860728255047731, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       propertyPath: startOn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5485500182088732305, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27806,7 +28238,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8521219204026233712, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1171529891}
+    - targetCorrespondingSourceObject: {fileID: 540766248357655699, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 118168400}
   m_SourcePrefab: {fileID: 100100000, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
 --- !u!1 &2140727997
 GameObject:
@@ -28183,7 +28621,6 @@ SceneRoots:
   - {fileID: 1045711724}
   - {fileID: 1900866368}
   - {fileID: 1698328770}
-  - {fileID: 2090625795}
   - {fileID: 1138607242}
   - {fileID: 2259837383515314007}
   - {fileID: 1988005312}
@@ -28209,3 +28646,4 @@ SceneRoots:
   - {fileID: 172892669}
   - {fileID: 2015234556}
   - {fileID: 762616770}
+  - {fileID: 1814316747}
