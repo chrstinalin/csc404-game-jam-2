@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 44940588}
   - component: {fileID: 44940587}
   - component: {fileID: 44940586}
+  - component: {fileID: 44940589}
   m_Layer: 0
   m_Name: OnWire
   m_TagString: Untagged
@@ -391,6 +392,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1414284545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &44940589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44940584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &59035572
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +448,13 @@ MonoBehaviour:
   distance: 2.5
   speed: 1
   carryObjects: 1
+  movingSFX:
+    Guid:
+      Data1: -5076701
+      Data2: 1085705741
+      Data3: 1415419559
+      Data4: 577546215
+    Path: event:/SFX/Interactables/Platform movement
 --- !u!54 &59035574
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -819,6 +847,7 @@ GameObject:
   - component: {fileID: 209926175}
   - component: {fileID: 209926174}
   - component: {fileID: 209926173}
+  - component: {fileID: 209926176}
   m_Layer: 0
   m_Name: puzzle_wire_01 (1)
   m_TagString: Untagged
@@ -897,6 +926,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1750220083}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &209926176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209926172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1 &219316111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,6 +1388,13 @@ MonoBehaviour:
   distance: 5
   speed: 1
   carryObjects: 0
+  movingSFX:
+    Guid:
+      Data1: -5076701
+      Data2: 1085705741
+      Data3: 1415419559
+      Data4: 577546215
+    Path: event:/SFX/Interactables/Platform movement
 --- !u!54 &310764383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1544,6 +1600,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 996114588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &364516206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 623087228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &364516211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364516206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Raises the platform when pressed
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &367184188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,6 +2150,7 @@ GameObject:
   - component: {fileID: 531168304}
   - component: {fileID: 531168303}
   - component: {fileID: 531168302}
+  - component: {fileID: 531168305}
   m_Layer: 0
   m_Name: puzzle_wire_02
   m_TagString: Untagged
@@ -2150,6 +2229,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 996114588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &531168305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531168301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1308512458
+      Data2: 1304432033
+      Data3: 1808741021
+      Data4: 566753745
+    Path: event:/SFX/Interactables/Interactable Electricity
+  volume: 1
 --- !u!1001 &543590324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2212,6 +2311,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6e679ddf92659d47a8735e540c980fd, type: 3}
   m_PrefabInstance: {fileID: 1333765063}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &596893780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 623087228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &596893785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596893780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Raises the platform when pressed
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1001 &623087228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2303,7 +2424,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 596893785}
+    - targetCorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 364516211}
   m_SourcePrefab: {fileID: 100100000, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
 --- !u!4 &623087229 stripped
 Transform:
@@ -2420,8 +2547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
   displayName: Lever
-  description: Lowers the shop window security fence. //STATUS = ON
-  sprite: {fileID: 21300000, guid: 77028cdbb9531a64286ec81e759cb63f, type: 3}
+  description: 'Lowers the shop window security fence. STATUS : ON'
+  sprite: {fileID: 21300000, guid: f1ba6d9cb4ad36d4e93bb237f59351eb, type: 3}
   Type: 1
   centerPoint: {fileID: 0}
 --- !u!1001 &718236137
@@ -2899,8 +3026,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
   displayName: Lever
-  description: 
-  sprite: {fileID: 21300000, guid: 77028cdbb9531a64286ec81e759cb63f, type: 3}
+  description: 'Lowers the shop window security fence. STATUS : OFF'
+  sprite: {fileID: 21300000, guid: f1ba6d9cb4ad36d4e93bb237f59351eb, type: 3}
   Type: 1
   centerPoint: {fileID: 0}
 --- !u!1001 &783977242
@@ -3363,6 +3490,28 @@ PrefabInstance:
       addedObject: {fileID: 1246263945}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6e679ddf92659d47a8735e540c980fd, type: 3}
+--- !u!1 &866045119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 1083791907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &866045121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866045119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Powers the exit door when pressed.
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &895708487
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,6 +3728,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 15.803686, y: 18.931309, z: 9.976646}
   m_Center: {x: 0.0000014305115, y: -6.943039, z: -10.515301}
+--- !u!65 &905219975
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905219965}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.870527, y: 18.931309, z: 31.083332}
+  m_Center: {x: -2.9665785, y: -6.943039, z: -0.0000009536743}
 --- !u!1 &908243939
 GameObject:
   m_ObjectHideFlags: 0
@@ -6142,6 +6312,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3617683846427572856, guid: f634105df4986ca47af0768550aed9b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 905219969}
+    - targetCorrespondingSourceObject: {fileID: 3617683846427572856, guid: f634105df4986ca47af0768550aed9b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 905219975}
     - targetCorrespondingSourceObject: {fileID: 2731983118216231726, guid: f634105df4986ca47af0768550aed9b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1725478736}
@@ -8752,9 +8925,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8346186224859881997, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
     - {fileID: 5809107599254920624, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+    - {fileID: 3799067617210602309, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+    - {fileID: 7874699901789250493, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 866045121}
+    - targetCorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1629868607}
   m_SourcePrefab: {fileID: 100100000, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
 --- !u!114 &1083791908 stripped
 MonoBehaviour:
@@ -10682,9 +10863,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
-  displayName: Heavy Crate
+  displayName: Crate
   description: Made of a metal alloy
-  sprite: {fileID: 21300000, guid: ead1bfaf5d18e1c4781e447a4ad2efed, type: 3}
+  sprite: {fileID: 21300000, guid: 3b9b83231f4c9474592d38ae1c3c510e, type: 3}
   Type: 1
   centerPoint: {fileID: 0}
 --- !u!1 &1579036343
@@ -10888,6 +11069,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580609677}
   m_Mesh: {fileID: -7813493804311857781, guid: 565353d928c4fb3468b9dadc610d408d, type: 3}
+--- !u!1 &1629868605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 1083791907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1629868607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629868605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Powers the exit door when pressed.
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1635179674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1116385409235096468, guid: f634105df4986ca47af0768550aed9b9, type: 3}
