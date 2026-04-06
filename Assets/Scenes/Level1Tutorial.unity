@@ -2772,6 +2772,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
+  lockOnSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  LockOnUI: {fileID: 0}
+  lockonGreen:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  sceneVolume: {fileID: 0}
+  actionText: {fileID: 0}
 --- !u!1 &118047439
 GameObject:
   m_ObjectHideFlags: 0
@@ -5244,11 +5259,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DestroyableWall
   WallBreakSFX:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 471113722
+      Data2: 1231778649
+      Data3: 412092322
+      Data4: -11584921
+    Path: event:/SFX/Interactables/Interactable Wall Break
 --- !u!114 &210575498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9008,6 +9023,13 @@ MonoBehaviour:
   distance: 2
   speed: 2
   carryObjects: 1
+  movingSFX:
+    Guid:
+      Data1: -5076701
+      Data2: 1085705741
+      Data3: 1415419559
+      Data4: 577546215
+    Path: event:/SFX/Interactables/Platform movement
 --- !u!54 &335890558
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9340,6 +9362,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &351430567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 1654867212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &351430572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351430567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Opens the door when pressed
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &354175068
 GameObject:
   m_ObjectHideFlags: 0
@@ -9595,6 +9639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 361597350}
+  - component: {fileID: 361597351}
   m_Layer: 0
   m_Name: Wires
   m_TagString: Untagged
@@ -9619,6 +9664,20 @@ Transform:
   - {fileID: 1570625939}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &361597351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361597349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a729e337b51aa4d938f285da342447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  closedDoor: {fileID: 65325548}
+  openDoor: {fileID: 1570625938}
 --- !u!1 &361742367
 GameObject:
   m_ObjectHideFlags: 0
@@ -18088,7 +18147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
   displayName: TURRET
   description: A stationary hostile turret
-  sprite: {fileID: 21300000, guid: cd13ba4e6a70bd34ca0a7fc78545e0fd, type: 3}
+  sprite: {fileID: 21300000, guid: 3c793cf4780d1844084d66f053f21372, type: 3}
   Type: 0
   centerPoint: {fileID: 701629930}
 --- !u!1 &720388998
@@ -19728,6 +19787,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781111055}
   m_Mesh: {fileID: -6044599536864882633, guid: 88535409a86959443b048e96e125ee64, type: 3}
+--- !u!1 &781938672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 1750075152}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &781938677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781938672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Lifts the platform when pressed
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &785629988
 GameObject:
   m_ObjectHideFlags: 0
@@ -23428,6 +23509,23 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 1af3290d86ee85041929c8d959140c77, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &913486297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913486287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Opens the door when pressed
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &923498610
 GameObject:
   m_ObjectHideFlags: 0
@@ -24393,7 +24491,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8521219204026233712, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1878467886}
+    - targetCorrespondingSourceObject: {fileID: 540766248357655699, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1738730454}
   m_SourcePrefab: {fileID: 100100000, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
 --- !u!1 &961781119
 GameObject:
@@ -25372,7 +25476,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4630009097792231531, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1714654013}
   m_SourcePrefab: {fileID: 100100000, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
 --- !u!1 &1004258602
 GameObject:
@@ -35085,6 +35192,13 @@ MonoBehaviour:
   distance: 4
   speed: 2
   carryObjects: 0
+  movingSFX:
+    Guid:
+      Data1: 1512094732
+      Data2: 1164754596
+      Data3: 768669114
+      Data4: -1928957330
+    Path: event:/SFX/Interactables/Interactable Door
 --- !u!54 &1367019971
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40329,8 +40443,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platform
   distance: 4
-  speed: 4
+  speed: 3.5
   carryObjects: 0
+  movingSFX:
+    Guid:
+      Data1: 1512094732
+      Data2: 1164754596
+      Data3: 768669114
+      Data4: -1928957330
+    Path: event:/SFX/Interactables/Interactable Door
 --- !u!54 &1574626638
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42807,6 +42928,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 913486292}
+    - targetCorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 913486297}
+    - targetCorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 351430572}
   m_SourcePrefab: {fileID: 100100000, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
 --- !u!1 &1655014487
 GameObject:
@@ -43267,6 +43394,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
   m_PrefabInstance: {fileID: 1750075152}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1691667970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 1750075152}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1691667974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691667970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Button
+  description: Lifts the platform when pressed
+  sprite: {fileID: 21300000, guid: 4ed9a6da9232aab40889accc047f52c2, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1691678503
 GameObject:
   m_ObjectHideFlags: 0
@@ -43857,6 +44006,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4630009097792231531, guid: 8b0a8101a328a2b4b9f791559b1ccaab, type: 3}
   m_PrefabInstance: {fileID: 1003517906}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1714654013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714654003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Crate
+  description: Made of a metal alloy. Can be pushed and pulled
+  sprite: {fileID: 21300000, guid: 3b9b83231f4c9474592d38ae1c3c510e, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1718266456
 GameObject:
   m_ObjectHideFlags: 0
@@ -44573,6 +44739,28 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 434892288095644396, guid: 88535409a86959443b048e96e125ee64, type: 3}
+--- !u!1 &1738730450 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 540766248357655699, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 957884845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1738730454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738730450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Lever
+  description: 'Powers the door. STATUS: OFF'
+  sprite: {fileID: 21300000, guid: f1ba6d9cb4ad36d4e93bb237f59351eb, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1740840012
 GameObject:
   m_ObjectHideFlags: 0
@@ -44950,7 +45138,13 @@ PrefabInstance:
     - {fileID: 8346186224859881997, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1691667974}
+    - targetCorrespondingSourceObject: {fileID: 1491631285272319222, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 781938677}
   m_SourcePrefab: {fileID: 100100000, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
 --- !u!1 &1752893777
 GameObject:
@@ -48237,6 +48431,28 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7610315050390857067, guid: 2d4f9fc473493614bb2c570f210f9b84, type: 3}
+--- !u!1 &1878467882 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8521219204026233712, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 957884845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1878467886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878467882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0bd112abb6542ac146ebf4f80f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnObject
+  displayName: Lever
+  description: 'Powers the door. STATUS: ON'
+  sprite: {fileID: 21300000, guid: f1ba6d9cb4ad36d4e93bb237f59351eb, type: 3}
+  Type: 1
+  centerPoint: {fileID: 0}
 --- !u!1 &1881023768
 GameObject:
   m_ObjectHideFlags: 0
@@ -52210,6 +52426,7 @@ MonoBehaviour:
   - {fileID: 173742003}
   triggerableList:
   - {fileID: 1574626637}
+  - {fileID: 361597351}
 --- !u!4 &2035900861
 Transform:
   m_ObjectHideFlags: 0

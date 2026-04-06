@@ -25,7 +25,7 @@ public class DestroyableWall : MonoBehaviour
     void OnWallDestroyed()
     {
         Debug.Log($"{gameObject.name} has been destroyed!");
-        AudioManager.Instance.PlaySFX(WallBreakSFX, transform.position);
+        AudioManager.Instance.PlaySFX(WallBreakSFX, transform.position, 1.5f);
         Destroy(gameObject);
     }
 }

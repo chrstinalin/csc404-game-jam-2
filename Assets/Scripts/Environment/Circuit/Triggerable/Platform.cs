@@ -1,4 +1,6 @@
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider))]
@@ -9,12 +11,18 @@ public class Platform : TriggerableAbstract
     public float speed = 2f;
     public bool carryObjects = true;
 
+    [Header("FMOD Settings")]
+    [SerializeField] private EventReference movingSFX;
+
     private Vector3 startPos;
     private Vector3 targetPos;
     private bool movingUp;
 
     private Rigidbody rb;
     private BoxCollider boxCollider;
+
+    private EventInstance movingSFXInstance;
+    private bool isSFXPlaying = false;
 
     private void Awake()
     {
@@ -60,6 +68,25 @@ public class Platform : TriggerableAbstract
         {
             TurnOff();
         }
+
+        // Check movement and play/stop FMOD sound
+        float velocityMagnitude = (rb.position - nextPosition).magnitude / Time.fixedDeltaTime;
+        if (velocityMagnitude > 0.01f)
+        {
+            if (!isSFXPlaying)
+            {
+                movingSFXInstance = AudioManager.Instance.PlaySFX(movingSFX, transform.position);
+                isSFXPlaying = true;
+            }
+        }
+        else
+        {
+            if (isSFXPlaying)
+            {
+                AudioManager.Instance.StopSFX(movingSFXInstance);
+                isSFXPlaying = false;
+            }
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -95,6 +122,14 @@ public class Platform : TriggerableAbstract
         if (IsOn)
         {
             IsOn = false;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (isSFXPlaying)
+        {
+            AudioManager.Instance.StopSFX(movingSFXInstance);
         }
     }
 }
