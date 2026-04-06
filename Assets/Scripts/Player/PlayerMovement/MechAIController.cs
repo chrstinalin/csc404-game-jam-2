@@ -20,8 +20,6 @@ public class MechAIController : MonoBehaviour, IOffense
     private Vector3 directionToTarget;
     private float stuckCheckTimer = 0f;
 
-    private bool isUsingNavMesh = false;
-
     void Awake()
     {
         Instance = this;
@@ -46,6 +44,7 @@ public class MechAIController : MonoBehaviour, IOffense
     {
         if (target == null) return;
 
+        // Only fire if it’s an enemy
         if (
             target.GetComponent<DamageReceiver>() != null
             && target != PlayerMouse.Instance.gameObject 
@@ -57,10 +56,10 @@ public class MechAIController : MonoBehaviour, IOffense
             {
                 Animator.SetTrigger("Shoot");
                 weapon.Fire();
+
             }
         }
     }
-
     void Update()
     {
         if (!gameObject.activeSelf || Agent == null) return;
@@ -68,16 +67,12 @@ public class MechAIController : MonoBehaviour, IOffense
         if (Target == null)
         {
             AttackActive = false;
-
-            if (isUsingNavMesh)
+            if (CurrentState == AIState.Attack || CurrentState == AIState.Walk)
             {
                 Agent.isStopped = true;
                 Agent.ResetPath();
-                Agent.enabled = false;
-                isUsingNavMesh = false;
+                CurrentState = AIState.Idle;
             }
-
-            CurrentState = AIState.Idle;
             return;
         }
 
@@ -88,21 +83,23 @@ public class MechAIController : MonoBehaviour, IOffense
         bool isPlayerMouse = Target == PlayerMouse.Instance?.gameObject;
         float distance = directionToTarget.magnitude;
 
-        if (isPlayerMouse && Input.GetButton("SummonMecha"))
+        if (isPlayerMouse)
         {
-            if (!isUsingNavMesh)
-            {
-                Agent.enabled = true;
-                isUsingNavMesh = true;
-            }
-
             AttackActive = false;
-
-            if (distance > Config.MIN_AI_DISTANCE)
+            if (Input.GetButton("SummonMecha"))
             {
-                CurrentState = AIState.Walk;
-                Agent.isStopped = false;
-                Agent.SetDestination(targetPos);
+                if (distance > Config.MIN_AI_DISTANCE)
+                {
+                    CurrentState = AIState.Walk;
+                    Agent.isStopped = false;
+                    Agent.SetDestination(targetPos);
+                }
+                else
+                {
+                    CurrentState = AIState.Idle;
+                    Agent.isStopped = true;
+                    Agent.ResetPath();
+                }
             }
             else
             {
@@ -113,16 +110,10 @@ public class MechAIController : MonoBehaviour, IOffense
         }
         else
         {
-            if (isUsingNavMesh)
-            {
-                Agent.isStopped = true;
-                Agent.ResetPath();
-                Agent.enabled = false;
-                isUsingNavMesh = false;
-            }
-
             CurrentState = AIState.Idle;
             AttackActive = false;
+            Agent.isStopped = true;
+            Agent.ResetPath();
         }
 
         UpdateAnimator();
@@ -131,7 +122,7 @@ public class MechAIController : MonoBehaviour, IOffense
     private void UpdateAnimator()
     {
         if (Animator == null) return;
-        bool isWalking = CurrentState == AIState.Walk && isUsingNavMesh && !Agent.isStopped;
+        bool isWalking = CurrentState == AIState.Walk && Agent != null && !Agent.isStopped;
         Animator.SetBool("isRunning", isWalking);
     }
 
@@ -160,8 +151,6 @@ public class MechAIController : MonoBehaviour, IOffense
 
             if (Agent != null)
             {
-                Agent.enabled = true;
-                isUsingNavMesh = true;
                 Agent.isStopped = false;
                 Agent.SetDestination(Target.transform.position);
             }
@@ -170,13 +159,10 @@ public class MechAIController : MonoBehaviour, IOffense
         {
             CurrentState = AIState.Idle;
             AttackActive = false;
-
             if (Agent != null)
             {
                 Agent.isStopped = true;
                 Agent.ResetPath();
-                Agent.enabled = false;
-                isUsingNavMesh = false;
             }
         }
     }
@@ -191,7 +177,6 @@ public class MechAIController : MonoBehaviour, IOffense
                 deadHealth.onDeath.RemoveListener(HandleTargetDeath);
             }
         }
-
         Target = null;
         AttackActive = false;
         CurrentState = AIState.Idle;
@@ -200,11 +185,8 @@ public class MechAIController : MonoBehaviour, IOffense
         {
             Agent.isStopped = true;
             Agent.ResetPath();
-            Agent.enabled = false;
-            isUsingNavMesh = false;
         }
     }
-
     public bool isAttack() => AttackActive;
     public GameObject GetCurrentTarget() => Target;
 
