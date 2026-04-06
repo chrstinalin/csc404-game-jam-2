@@ -1096,6 +1096,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
+  lockOnSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  LockOnUI: {fileID: 0}
+  lockonGreen:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  sceneVolume: {fileID: 0}
+  actionText: {fileID: 0}
 --- !u!1 &125630435
 GameObject:
   m_ObjectHideFlags: 0
@@ -6789,6 +6804,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -12.622}
+--- !u!1 &727124738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4010881815511077994, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+  m_PrefabInstance: {fileID: 1775166992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &727124742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727124738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1972029502
+      Data2: 1120563803
+      Data3: -1237499231
+      Data4: -2026934750
+    Path: event:/SFX/Alley Aircon
+  volume: 1
 --- !u!1 &729148672
 GameObject:
   m_ObjectHideFlags: 0
@@ -8814,6 +8854,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897516940}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &899983216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3301793028865416051, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+  m_PrefabInstance: {fileID: 1775166992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &899983221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899983216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1972029502
+      Data2: 1120563803
+      Data3: -1237499231
+      Data4: -2026934750
+    Path: event:/SFX/Alley Aircon
+  volume: 1
 --- !u!1 &907910776
 GameObject:
   m_ObjectHideFlags: 0
@@ -9261,6 +9326,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945907561}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &948750931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8030613808888857328, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+  m_PrefabInstance: {fileID: 1775166992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &948750933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948750931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1972029502
+      Data2: 1120563803
+      Data3: -1237499231
+      Data4: -2026934750
+    Path: event:/SFX/Alley Aircon
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &978368206
 GameObject:
   m_ObjectHideFlags: 0
@@ -9719,6 +9820,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97384e5a5a4d97840b82c78ceffcf5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnUI
+--- !u!1 &1025181068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8166703560230823322, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+  m_PrefabInstance: {fileID: 1775166992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1025181073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025181068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1972029502
+      Data2: 1120563803
+      Data3: -1237499231
+      Data4: -2026934750
+    Path: event:/SFX/Alley Aircon
+  volume: 1
 --- !u!1001 &1032508673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12391,6 +12517,31 @@ MonoBehaviour:
   - {fileID: 0}
   triggerableList:
   - {fileID: 0}
+--- !u!1 &1346770600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4619898313915932247, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+  m_PrefabInstance: {fileID: 1775166992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1346770605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346770600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1972029502
+      Data2: 1120563803
+      Data3: -1237499231
+      Data4: -2026934750
+    Path: event:/SFX/Alley Aircon
+  volume: 1
 --- !u!1 &1374847515
 GameObject:
   m_ObjectHideFlags: 0
@@ -16645,9 +16796,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -4722195757548604923, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 330954673}
+    - targetCorrespondingSourceObject: {fileID: -8166703560230823322, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1025181073}
+    - targetCorrespondingSourceObject: {fileID: -4619898313915932247, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1346770605}
+    - targetCorrespondingSourceObject: {fileID: 7035891077853655654, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2109460536}
+    - targetCorrespondingSourceObject: {fileID: 3301793028865416051, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 899983221}
+    - targetCorrespondingSourceObject: {fileID: -8030613808888857328, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 948750933}
     - targetCorrespondingSourceObject: {fileID: 1823129393270163479, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 280807237}
+    - targetCorrespondingSourceObject: {fileID: -1065583324923279478, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2063703951}
+    - targetCorrespondingSourceObject: {fileID: 3242169458175907576, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1920184506}
+    - targetCorrespondingSourceObject: {fileID: 4010881815511077994, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 727124742}
   m_SourcePrefab: {fileID: 100100000, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
 --- !u!1 &1775166993 stripped
 GameObject:
@@ -18093,6 +18268,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1079175571}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1920184501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3242169458175907576, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+  m_PrefabInstance: {fileID: 1775166992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1920184506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920184501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1972029502
+      Data2: 1120563803
+      Data3: -1237499231
+      Data4: -2026934750
+    Path: event:/SFX/Alley Aircon
+  volume: 1
 --- !u!1 &1929363482
 GameObject:
   m_ObjectHideFlags: 0
@@ -18861,7 +19061,7 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  triggerable: {fileID: 0}
+  triggerables: []
   floatingCube: {fileID: 0}
   mouseIcon: {fileID: 0}
   mechIcon: {fileID: 0}
@@ -19532,6 +19732,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051717515}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2063703946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1065583324923279478, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+  m_PrefabInstance: {fileID: 1775166992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2063703951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063703946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1972029502
+      Data2: 1120563803
+      Data3: -1237499231
+      Data4: -2026934750
+    Path: event:/SFX/Alley Aircon
+  volume: 1
 --- !u!1 &2066607904
 GameObject:
   m_ObjectHideFlags: 0
@@ -20422,6 +20647,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2109460531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7035891077853655654, guid: ce41e5d080838414395fd752cf282fa1, type: 3}
+  m_PrefabInstance: {fileID: 1775166992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2109460536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109460531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f09bb2db5cee341b79d8aebc5b6d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialSoundPlayer
+  fmodEvent:
+    Guid:
+      Data1: -1972029502
+      Data2: 1120563803
+      Data3: -1237499231
+      Data4: -2026934750
+    Path: event:/SFX/Alley Aircon
+  volume: 1
 --- !u!1 &2111223380
 GameObject:
   m_ObjectHideFlags: 0
