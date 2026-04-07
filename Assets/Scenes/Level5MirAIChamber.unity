@@ -360,7 +360,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (6)
@@ -2511,6 +2511,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
+  lockOnSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  LockOnUI: {fileID: 0}
+  lockonGreen: {r: 0, g: 0, b: 0, a: 0}
+  sceneVolume: {fileID: 0}
+  actionText: {fileID: 0}
 --- !u!1 &112484835
 GameObject:
   m_ObjectHideFlags: 0
@@ -3820,7 +3831,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (1)
@@ -4982,7 +4993,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (3)
@@ -9688,7 +9699,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (2)
@@ -15482,7 +15493,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (5)
@@ -15798,6 +15809,8 @@ MonoBehaviour:
   characters:
   - {fileID: 126808420}
   textPrefab: {fileID: 6290156039256013768, guid: b8b40b9ec65f7fe4da0db8ea7b2f96cc, type: 3}
+  promptPrefix: Press
+  textPositionOverride: {fileID: 0}
 --- !u!65 &622669227
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15832,6 +15845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cheese
   carryScale: 0.4
+  interactableObject: {fileID: 622669226}
   startPickedUp: 1
 --- !u!114 &622669229
 MonoBehaviour:
@@ -16205,7 +16219,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (3)
@@ -17168,7 +17182,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (1)
@@ -17782,7 +17796,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (8)
@@ -27057,13 +27071,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 5702313475006583003, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      propertyPath: isMouseInteractable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6109812506418711283, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       propertyPath: m_Name
       value: Lever
       objectReference: {fileID: 0}
+    - target: {fileID: 7151456304197393636, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      propertyPath: actionMessage
+      value: Control Computer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151456304197393636, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      propertyPath: textPositionOverride
+      value: 
+      objectReference: {fileID: 1399871033}
+    - target: {fileID: 7151456304197393636, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      propertyPath: 'characters.Array.data[0]'
+      value: 
+      objectReference: {fileID: 126808420}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5485500182088732305, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1399871033}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8521219204026233712, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       insertIndex: -1
@@ -35767,6 +35800,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
   m_PrefabInstance: {fileID: 349219065}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1399871032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399871033}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1399871033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399871032}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.41, y: 1.44, z: 0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1677821863}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1400124700
 GameObject:
   m_ObjectHideFlags: 0
@@ -36960,7 +37024,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (6)
@@ -37530,7 +37594,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (4)
@@ -39497,7 +39561,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (8)
@@ -39926,7 +39990,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (7)
@@ -41660,6 +41724,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6c4acea0c962440b0318598c070e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lever
+--- !u!4 &1677821863 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5485500182088732305, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 1078051901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1685070042
 GameObject:
   m_ObjectHideFlags: 0
@@ -48585,7 +48654,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (5)
@@ -50180,7 +50249,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (2)
@@ -53762,7 +53831,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (4)
@@ -54212,7 +54281,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9e0981ee752dc6046bb566620c1a3f96, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ea4f875fdd4a9b4fbd20c71c4d81167, type: 2}
     - target: {fileID: 919132149155446097, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
       propertyPath: m_Name
       value: CRTScreenDEFAULT (7)

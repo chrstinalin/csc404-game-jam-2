@@ -31,14 +31,6 @@ public class LockOnObject : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Type == LockOnType.Enemy)
-        {
-            UpdateOutlineBasedOnDistance();
-        }
-    }
-
     public float GetLockOnRequiredDistance()
     {
         switch (Type)
@@ -50,24 +42,6 @@ public class LockOnObject : MonoBehaviour
                 return Mathf.Infinity;
             default:
                 return Mathf.Infinity;
-        }
-    }
-
-    private void UpdateOutlineBasedOnDistance()
-    {
-        if (outline == null || PlayerMech.Instance == null)
-            return;
-
-        float distance = (transform.position - PlayerMech.Instance.transform.position).magnitude;
-        float requiredDistance = GetLockOnRequiredDistance();
-
-        if (distance > requiredDistance)
-        {
-            UpdateObjectOutline("Red", 1f);
-        }
-        else
-        {
-            UpdateObjectOutline("White", 2f);
         }
     }
 

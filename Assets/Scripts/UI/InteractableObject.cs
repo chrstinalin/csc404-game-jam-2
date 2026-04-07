@@ -8,15 +8,46 @@ public class InteractableObject : MonoBehaviour
     public string actionMessage = "interact";
     public GameObject[] characters = new GameObject[0];
     public GameObject textPrefab;
+    private MovementManager movementManager;
+
+    [Header("Text Settings")]
+    public string promptPrefix = "Press";
+
+    [Header("Optional Override")]
+    public Transform textPositionOverride;
+
     private GameObject spawnedText;
     private bool isInside;
+
+    private void Update()
+    {
+        if (isInside && spawnedText != null)
+        {
+            bool shouldHide = false;
+
+            foreach (var character in characters)
+            {
+                if (character == null || !character.activeInHierarchy)
+                {
+                    shouldHide = true;
+                    break;
+                }
+            }
+
+            if (shouldHide)
+            {
+                Destroy(spawnedText);
+                spawnedText = null;
+                isInside = false;
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (characters == null || characters.Length == 0)
-        {
             return;
-        }
+
         foreach (var character in characters)
         {
             if (other.gameObject == character && spawnedText == null)
@@ -30,7 +61,7 @@ public class InteractableObject : MonoBehaviour
                 textComponent.text = GetMessage(ActionType.Interact);
 
                 var follower = spawnedText.GetComponent<InteractableObjectText>();
-                follower.target = transform;
+                follower.target = textPositionOverride != null ? textPositionOverride : transform;
 
                 break;
             }
@@ -40,9 +71,8 @@ public class InteractableObject : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (characters == null || characters.Length == 0)
-        {
             return;
-        }
+
         foreach (var character in characters)
         {
             if (other.gameObject == character && spawnedText != null)
@@ -66,8 +96,21 @@ public class InteractableObject : MonoBehaviour
 
     private string GetMessage(ActionType action)
     {
+        if (string.IsNullOrEmpty(actionMessage))
+            return "";
+
         string button = ButtonMappings.GetButtonLabel(action);
-        return $"Press {button} to {actionMessage}";
+        return $"{promptPrefix} {button} to {actionMessage}";
     }
 
+    public void ChangeText(string newMessage)
+    {
+        actionMessage = newMessage;
+
+        if (spawnedText != null)
+        {
+            var textComponent = spawnedText.GetComponent<Text>();
+            textComponent.text = GetMessage(ActionType.Interact);
+        }
+    }
 }

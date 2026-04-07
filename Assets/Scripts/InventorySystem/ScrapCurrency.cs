@@ -9,6 +9,7 @@ public class ScrapCurrency : MonoBehaviour, ICarryable
     private Vector3 initialScale;
 
     [SerializeField] private float carryScale = 0.3f;
+    [SerializeField] private InteractableObject interactableObject;
 
     public Transform Transform => transform;
 
@@ -22,6 +23,11 @@ public class ScrapCurrency : MonoBehaviour, ICarryable
     public void ShrinkForCarry()
     {
         transform.localScale = initialScale * carryScale;
+
+        if (interactableObject != null)
+        {
+            interactableObject.ChangeText("Drop Scrap / Heal D.K (when Nearby)");
+        }
     }
 
     public void Drop(Vector3 dropPosition)
@@ -39,5 +45,10 @@ public class ScrapCurrency : MonoBehaviour, ICarryable
         transform.rotation = initialRotation;
         transform.localScale = initialScale;
         gameObject.SetActive(true);
+
+        if (interactableObject != null)
+        {
+            interactableObject.ChangeText("Pick Up Scrap");
+        }
     }
 }
