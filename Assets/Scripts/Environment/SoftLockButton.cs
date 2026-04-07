@@ -22,10 +22,7 @@ public class SoftlockButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == PlayerMouse.Instance.gameObject || other.gameObject == PlayerMech.Instance.gameObject)
-        {
-            PressButton();
-        }
+        PressButton();
     }
 
     private void PressButton()
