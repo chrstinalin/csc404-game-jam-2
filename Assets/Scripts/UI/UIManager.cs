@@ -171,21 +171,27 @@ public class UIManager : MonoBehaviour
         if (controlSchemeManager == null) return;
 
         ControllerType currentController = controlSchemeManager.GetCurrentControllerType();
+        bool isLockedOn = LockOnManager.Instance != null && LockOnManager.Instance.IsLockedOn;
 
         if (mouseControlsText != null)
             mouseControlsText.text = BuildMouseControlsText(currentController);
-        if (mechControlsText != null)
-            mechControlsText.text = BuildMechControlsText(currentController);
-    }
 
+        if (mechControlsText != null)
+        {
+            if (isLockedOn)
+                mechControlsText.text = BuildMechLockOnText(currentController);
+            else
+                mechControlsText.text = BuildMechControlsText(currentController);
+        }
+    }
     private string BuildMouseControlsText(ControllerType controller)
     {
         string interact = GetButtonOnly(ActionType.Interact, controller);
         string jump = GetButtonOnly(ActionType.Jump, controller);
-        string dash = GetButtonOnly(ActionType.Sneak, controller);
         string switchChar = GetButtonOnly(ActionType.SwitchCharacter, controller);
+        string lockon = GetButtonOnly(ActionType.Lockon, controller);
 
-        return $"({interact}) INTERACT\n({jump}) JUMP\n({switchChar}) SWITCH CHARACTERS";
+        return $"JUMP ({jump})\nINTERACT ({interact})\nSUMMON MECH ({lockon})\nSWITCH CHARACTERS ({switchChar})";
     }
 
     private string BuildMechControlsText(ControllerType controller)
@@ -194,7 +200,15 @@ public class UIManager : MonoBehaviour
         string lockon = GetButtonOnly(ActionType.Lockon, controller);
         string switchChar = GetButtonOnly(ActionType.SwitchCharacter, controller);
 
-        return $"({interact}) INTERACT\n({lockon}) ENTER LOCK-ON MODE\n({switchChar}) SWITCH CHARACTERS";
+        return $"INTERACT ({interact})\nENTER LOCK-ON MODE ({lockon})\nSWITCH CHARACTERS ({switchChar})";
+    }
+
+    private string BuildMechLockOnText(ControllerType controller)
+    {
+        string switchTarget = GetButtonOnly(ActionType.ChangeLockOnTarget, controller);
+        string shoot = GetButtonOnly(ActionType.Shoot, controller);
+
+        return $"SWITCH TARGET ({switchTarget})\nSHOOT ENEMY ({shoot})";
     }
 
     private string GetButtonOnly(ActionType action, ControllerType controller)
@@ -210,6 +224,7 @@ public class UIManager : MonoBehaviour
         updateMechHealthUI();
         HandlePauseInput();
         UpdateControlVisibility();
+        UpdateInGameControlText();
         HandleLockOnSprites();
 
         if (GamePaused)
@@ -218,19 +233,12 @@ public class UIManager : MonoBehaviour
 
     private void UpdateControlVisibility()
     {
-        if (LockOnManager.Instance != null && LockOnManager.Instance.IsLockedOn)
-        {
-            if (mouseControlsText != null) mouseControlsText.enabled = false;
-            if (mechControlsText != null) mechControlsText.enabled = false;
-            return;
-        }
-
         if (mouseControlsText != null && mouseControlsUI != null)
             mouseControlsText.enabled = mouseControlsUI.activeSelf;
+
         if (mechControlsText != null && mechControlsUI != null)
             mechControlsText.enabled = mechControlsUI.activeSelf;
     }
-
     private void HandleLockOnSprites()
     {
         bool isLockedOn = LockOnManager.Instance != null && LockOnManager.Instance.IsLockedOn;

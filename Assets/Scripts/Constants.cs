@@ -129,6 +129,7 @@ public static class GridDirection
 public enum ActionType
 {
     Lockon,
+    Shoot,
     SwitchCharacter,
     Sneak,
     Interact,
@@ -136,7 +137,8 @@ public enum ActionType
     Movement,
     Camera,
     Pause,
-    RestartLevel
+    RestartLevel,
+    ChangeLockOnTarget
 }
 
 public static class ButtonMappings
@@ -145,15 +147,11 @@ public static class ButtonMappings
     {
         { ActionType.Lockon, new() {
             { DeviceType.Keyboard, "Tab" },
-            { DeviceType.Xbox, "RT/RB" },
+            { DeviceType.Xbox, "LB/RB" },
         }},
         { ActionType.SwitchCharacter, new() {
-            { DeviceType.Keyboard, "Q" },
+            { DeviceType.Keyboard, "F" },
             { DeviceType.Xbox, "Y" },
-        }},
-        { ActionType.Sneak, new() {
-            { DeviceType.Keyboard, "Shift" },
-            { DeviceType.Xbox, "X" },
         }},
         { ActionType.Interact, new() {
             { DeviceType.Keyboard, "E" },
@@ -162,6 +160,10 @@ public static class ButtonMappings
         { ActionType.Jump, new() {
             { DeviceType.Keyboard, "Space" },
             { DeviceType.Xbox, "A" },
+        }},
+        { ActionType.Shoot, new() {
+            { DeviceType.Keyboard, "E" },
+            { DeviceType.Xbox, "LT/RT" },
         }}
     };
 

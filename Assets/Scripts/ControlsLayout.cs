@@ -36,18 +36,18 @@ public class ControlSchemeManager : MonoBehaviour
     {
         { ActionType.Lockon, new() {
             { ControllerType.Keyboard, "TAB: LOCK ON" },
-            { ControllerType.Xbox, "RT/RB: LOCK ON" },
-            { ControllerType.PlayStation, "R2/R1: LOCK ON" },
+            { ControllerType.Xbox, "LB/RB: LOCK ON" },
+            { ControllerType.PlayStation, "L1/R1: LOCK ON" },
+        }},
+        { ActionType.Shoot, new() {
+            { ControllerType.Keyboard, "E: SHOOT" },
+            { ControllerType.Xbox, "LT/RT: SHOOT" },
+            { ControllerType.PlayStation, "L2/R2: SHOOT" },
         }},
         { ActionType.SwitchCharacter, new() {
-            { ControllerType.Keyboard, "Q: SWITCH CHARACTER" },
+            { ControllerType.Keyboard, "F: SWITCH CHARACTER" },
             { ControllerType.Xbox, "Y: SWITCH CHARACTER" },
             { ControllerType.PlayStation, "△: SWITCH CHARACTER" },
-        }},
-        { ActionType.Sneak, new() {
-            { ControllerType.Keyboard, "SHIFT: SNEAK" },
-            { ControllerType.Xbox, "X: SNEAK" },
-            { ControllerType.PlayStation, "□: SNEAK" },
         }},
         { ActionType.Interact, new() {
             { ControllerType.Keyboard, "E: INTERACT" },
@@ -78,6 +78,11 @@ public class ControlSchemeManager : MonoBehaviour
             { ControllerType.Keyboard, "R: RESTART LEVEL" },
             { ControllerType.Xbox, "BACK: RESTART LEVEL" },
             { ControllerType.PlayStation, "SHARE: RESTART LEVEL" },
+        }},
+        { ActionType.ChangeLockOnTarget, new() {
+            { ControllerType.Keyboard, "A/D: CHANGE LOCK ON TARGET" },
+            { ControllerType.Xbox, "RS ←/→: CHANGE LOCK ON TARGET" },
+            { ControllerType.PlayStation, "RS ←/→: CHANGE LOCK ON TARGET" },
         }}
     };
 

@@ -208,7 +208,7 @@ public class CameraManager : CameraMovementManager
         float inputY = mouseY + rightStickY;
 
         yaw += inputX * mouseSensitivity * Time.deltaTime;
-        pitch += inputY * mouseSensitivity * Time.deltaTime * (invertYAxis ? -1 : 1);
+        pitch -= inputY * mouseSensitivity * Time.deltaTime * (invertYAxis ? -1 : 1);
 
         pitch = Mathf.Clamp(pitch, Config.MIN_PITCH, Config.MAX_PITCH);
     }

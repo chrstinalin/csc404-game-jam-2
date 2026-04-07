@@ -142,7 +142,7 @@ public class LockOnManager : MonoBehaviour
         }
 
         actionText.gameObject.SetActive(true);
-        actionText.text = IsCurrentTargetInRange() ? "PRESS LT / RT TO SHOOT" : "<OUT OF RANGE>";
+        actionText.text = IsCurrentTargetInRange() ? "<READY TO FIRE>" : "<OUT OF RANGE>";
     }
 
     private void EnterLockOn()
