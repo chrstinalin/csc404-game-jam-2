@@ -28,7 +28,7 @@ public class LockOnUI : MonoBehaviour
         ShowUI();
 
         targetImage.sprite = target.sprite;
-        targetImage.color = Color.green;
+        targetImage.color = Color.grey;
 
         targetNameText.text = target.displayName.ToUpper();
         targetDescriptionText.text = target.description;

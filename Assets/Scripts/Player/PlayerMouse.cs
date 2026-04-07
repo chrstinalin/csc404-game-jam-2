@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class PlayerMouse : MonoBehaviour
 {
@@ -12,14 +13,19 @@ public class PlayerMouse : MonoBehaviour
 
     [NonSerialized] public GameObject GroundCollider;
 
+    [Header("Invulnerability")]
     private bool isInvulnerable = false;
     private float iFrameDuration = 1.0f;
     private float iFrameTimer = 0f;
+
+    [Header("FMOD")]
+    [SerializeField] private EventReference deathSFX;
 
     void Awake()
     {
         Instance = this;
     }
+
     void Start()
     {
         InventoryManager = gameObject.AddComponent<MouseInventoryManager>();
@@ -73,6 +79,8 @@ public class PlayerMouse : MonoBehaviour
 
     public void OnDeath()
     {
+        RuntimeManager.PlayOneShot(deathSFX, transform.position);
+
         RespawnManager.Instance.StartRespawnCountdown(false);
     }
 
@@ -88,7 +96,7 @@ public class PlayerMouse : MonoBehaviour
         float flashInterval = 0.2f;
         float elapsed = 0f;
         Color flashColour = Color.red;
-        
+
         while (elapsed < iFrameDuration)
         {
             bool useFlashColour = ((int)(elapsed / flashInterval)) % 2 == 0;
@@ -99,7 +107,7 @@ public class PlayerMouse : MonoBehaviour
             yield return new WaitForSeconds(flashInterval);
             elapsed += flashInterval;
         }
-        
+
         for (int i = 0; i < renderers.Length; i++)
         {
             renderers[i].material.color = originalColors[i];

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
@@ -23,12 +24,14 @@ public class PushableObject : MonoBehaviour
     private float mechOffsetDistance;
     private float mechSideSign;
 
-    private float hoverY;
-    private const float hoverHeight = 0.2f;
-
     // FMOD push sound
     private EventInstance boxPushSFXInstance;
     private bool isSFXPlaying = false;
+
+    // Collider adjustment
+    private BoxCollider boxCollider;
+    private Vector3 originalColliderSize;
+    private Vector3 originalColliderCenter;
 
     private void Awake()
     {
@@ -37,6 +40,13 @@ public class PushableObject : MonoBehaviour
                        | RigidbodyConstraints.FreezePositionX 
                        | RigidbodyConstraints.FreezePositionZ;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+
+        boxCollider = GetComponent<BoxCollider>();
+        if (boxCollider != null)
+        {
+            originalColliderSize = boxCollider.size;
+            originalColliderCenter = boxCollider.center;
+        }
     }
 
     private void Start()
@@ -60,44 +70,31 @@ public class PushableObject : MonoBehaviour
         if (Input.GetButtonUp("Interact") && isBeingPushed)
             StopPush();
 
-        if (isBeingPushed)
-        {
-            float hoverForce = 20f;
-            float hoverDamping = 5f;
-
-            float heightError = hoverY - rb.position.y;
-            float upwardForce = heightError * hoverForce - rb.linearVelocity.y * hoverDamping;
-
-            rb.AddForce(Vector3.up * upwardForce, ForceMode.Acceleration);
-        }
-        else
-        {
-            bool onPlatform = IsOnPlatform();
-
-            if (!onPlatform)
-            {
-                Vector3 vel = rb.linearVelocity;
-
-                if (vel.y > 0f)
-                    vel.y *= 0.5f;
-                else
-                    vel.y = Mathf.Max(vel.y, -2f);
-
-                rb.linearVelocity = vel;
-            }
-        }
+        if (!isBeingPushed)
+            ApplyGravityLimits();
 
         CheckIfMouseIsOnTop();
     }
 
-    // Move mech toward the box instead of moving the box
+    private void ApplyGravityLimits()
+    {
+        bool onPlatform = IsOnPlatform();
+
+        if (!onPlatform)
+        {
+            Vector3 vel = rb.linearVelocity;
+            vel.y = vel.y > 0f ? vel.y * 0.5f : Mathf.Max(vel.y, -2f);
+            rb.linearVelocity = vel;
+        }
+    }
+
     private void SnapBoxToMech()
     {
         if (mechRb == null || rb == null) return;
 
         float desiredDistance = 1f;
         Vector3 targetPos = rb.position - (pushAxis * mechSideSign * desiredDistance);
-        targetPos.y = mechRb.position.y; // Keep mech's Y the same for vertical alignment
+        targetPos.y = mechRb.position.y;
 
         mechRb.position = targetPos;
     }
@@ -136,19 +133,18 @@ public class PushableObject : MonoBehaviour
 
         mechFacingDir = pushAxis * mechSideSign;
 
-        SnapBoxToMech(); // now mech moves to the box
-
-        hoverY = rb.position.y + hoverHeight;
+        SnapBoxToMech();
 
         rb.useGravity = true;
-
         isBeingPushed = true;
         movementManager.isLockedMovement = true;
 
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         mechRb.constraints = RigidbodyConstraints.FreezeRotation;
 
-        isSFXPlaying = false; // will start in UpdatePush based on horizontal velocity
+        isSFXPlaying = false;
+
+        AdjustColliderForPush(true);
     }
 
     private void UpdatePush()
@@ -173,15 +169,11 @@ public class PushableObject : MonoBehaviour
         camRight.Normalize();
 
         Vector3 moveDir = camForward * v + camRight * h;
-
         float axisInput = Vector3.Dot(moveDir, pushAxis);
-
         float pushSpeed = Config.MECH_MOVE_SPEED * 0.5f;
-
         float moveMagnitude = Mathf.Abs(axisInput) < 0.01f ? 0f : pushSpeed * Mathf.Sign(axisInput);
 
         Vector3 moveDirNormalized = moveDir.sqrMagnitude > 0.001f ? moveDir.normalized : Vector3.zero;
-
         float forwardDot = Vector3.Dot(moveDirNormalized, mechFacingDir);
 
         mechAnimator.SetBool("isRunning", Mathf.Abs(moveMagnitude) > 0.01f);
@@ -192,7 +184,7 @@ public class PushableObject : MonoBehaviour
         mechRb.linearVelocity = new Vector3(velocity.x, mechRb.linearVelocity.y, velocity.z);
         rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
 
-        // --- FMOD: play sound only when being pushed and horizontal velocity > 0 ---
+        // FMOD push SFX
         Vector3 horizontalVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         if (isBeingPushed && horizontalVel.magnitude > 0.01f)
         {
@@ -202,13 +194,10 @@ public class PushableObject : MonoBehaviour
                 isSFXPlaying = true;
             }
         }
-        else
+        else if (isSFXPlaying)
         {
-            if (isSFXPlaying)
-            {
-                AudioManager.Instance.StopSFX(boxPushSFXInstance);
-                isSFXPlaying = false;
-            }
+            AudioManager.Instance.StopSFX(boxPushSFXInstance);
+            isSFXPlaying = false;
         }
 
         float rotateSpeed = 720f;
@@ -222,7 +211,6 @@ public class PushableObject : MonoBehaviour
         activeTrigger = null;
 
         mechAnimator.SetBool("isRunning", false);
-
         movementManager.isLockedMovement = false;
 
         rb.linearVelocity = Vector3.zero;
@@ -238,6 +226,8 @@ public class PushableObject : MonoBehaviour
             AudioManager.Instance.StopSFX(boxPushSFXInstance);
             isSFXPlaying = false;
         }
+
+        AdjustColliderForPush(false);
     }
 
     private Vector3 GetAxisFromSide(CardinalDirection side)
@@ -251,9 +241,41 @@ public class PushableObject : MonoBehaviour
             case CardinalDirection.North:
             case CardinalDirection.South: 
                 return Vector3.forward;
-                
+
             default: return Vector3.zero;
         }
+    }
+
+    private void AdjustColliderForPush(bool shrinking)
+    {
+        if (boxCollider == null || rb == null) return;
+
+        if (shrinking)
+        {
+            float shrinkAmount = originalColliderSize.y * 0.25f;
+
+            // Freeze Y to prevent gravity from pulling box down
+            rb.constraints |= RigidbodyConstraints.FreezePositionY;
+
+            // Shrink collider from bottom: center moves up half the shrink
+            boxCollider.size = new Vector3(originalColliderSize.x, originalColliderSize.y - shrinkAmount, originalColliderSize.z);
+            boxCollider.center = originalColliderCenter + new Vector3(0f, shrinkAmount / 2f, 0f);
+        }
+        else
+        {
+            // Restore collider size
+            boxCollider.size = originalColliderSize;
+            boxCollider.center = originalColliderCenter;
+
+            // Delay unfreeze to next FixedUpdate to prevent jump
+            StartCoroutine(UnfreezeYNextFrame());
+        }
+    }
+
+    private IEnumerator UnfreezeYNextFrame()
+    {
+        yield return new WaitForFixedUpdate();
+        rb.constraints &= ~RigidbodyConstraints.FreezePositionY;
     }
 
     private void CheckIfMouseIsOnTop()
@@ -264,10 +286,6 @@ public class PushableObject : MonoBehaviour
         {
             if (PlayerMouse.Instance.transform.parent != transform)
                 PlayerMouse.Instance.transform.SetParent(transform);
-
-            Vector3 mousePos = PlayerMouse.Instance.transform.position;
-            mousePos.y = mouseStartY;
-            PlayerMouse.Instance.transform.position = mousePos;
         }
         else
         {
@@ -281,9 +299,7 @@ public class PushableObject : MonoBehaviour
         float rayDistance = 0.3f;
 
         if (Physics.Raycast(rb.position, Vector3.down, out RaycastHit hit, rayDistance))
-        {
             return hit.collider.GetComponentInChildren<Platform>() != null;
-        }
 
         return false;
     }
