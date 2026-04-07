@@ -32,6 +32,10 @@ public class CameraManager : CameraMovementManager
     public bool invertYAxis;
     private float lockOnFOVMultiplier = 0.90f;
 
+    private Vector3 lockedPosition;
+    private Quaternion lockedRotation;
+    private bool isCameraLocked = false;
+
     void Awake()
     {
         Instance = this;
@@ -97,7 +101,15 @@ public class CameraManager : CameraMovementManager
     }
 
     public override void UpdateCamera()
-    {
+    {   
+        if (FollowEntity == null)
+        return;
+
+        if (IsLockedOn)
+            return;
+
+        if (isCameraLocked)  // Add this
+            return;
         if (FollowEntity == null)
             return;
 
@@ -211,6 +223,39 @@ public class CameraManager : CameraMovementManager
         pitch -= inputY * mouseSensitivity * Time.deltaTime * (invertYAxis ? -1 : 1);
 
         pitch = Mathf.Clamp(pitch, Config.MIN_PITCH, Config.MAX_PITCH);
+    }
+
+    public void SetCameraLock(Vector3 position, bool isLocked, Quaternion rotation = new Quaternion())
+    {
+        isCameraLocked = isLocked;
+
+        if (isLocked)
+        {
+            lockedPosition = position;
+            lockedRotation = rotation;
+            CameraPivot.position = position;
+            CameraPivot.rotation = rotation;
+            currentCameraDistance = 0f;
+            targetCameraDistance = 0f;
+            transform.localPosition = Vector3.zero;  
+            transform.localRotation = Quaternion.identity;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (isCameraLocked)
+        {
+            CameraPivot.position = lockedPosition;
+            CameraPivot.rotation = lockedRotation;
+            currentCameraDistance = 0f;
+            targetCameraDistance = 0f;
+        }
+    }   
+
+    public void ForceUnlockCamera()
+    {
+        isCameraLocked = false;
     }
 
     public override void PanTo(float zoomSize) => zoom = zoomSize;

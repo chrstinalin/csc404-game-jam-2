@@ -11,6 +11,8 @@ public class MovementState : PlayerMovementState
     private bool _wasGrounded;
     private bool _canJump;
     
+    private float _jumpBufferTimer;
+    
     private float _CurrentVelocity;
     private float _MoveSpeed;
     private float _JumpForce;
@@ -20,11 +22,26 @@ public class MovementState : PlayerMovementState
     
     private float _groundCheckTimer;
     private const float GROUND_CHECK_INTERVAL = 0.08f;
-    private const float GROUND_CHECK_DISTANCE = 0.7f;
-    
+    private const float GROUND_CHECK_DISTANCE = 1.2f;
+    private const float GROUND_CHECK_START_HEIGHT = 0.05f;
+    // add more offsets for more reliable ground check on ramp
+    private static readonly Vector3[] GROUND_CHECK_OFFSETS =
+    {
+        Vector3.zero,
+        new Vector3(0.2f, 0f, 0f),
+        new Vector3(-0.2f, 0f, 0f),
+        new Vector3(0f, 0f, 0.2f),
+        new Vector3(0f, 0f, -0.2f),
+        new Vector3(0.2f, 0f, 0.2f),
+        new Vector3(0.2f, 0f, -0.2f),
+        new Vector3(-0.2f, 0f, 0.2f),
+        new Vector3(-0.2f, 0f, -0.2f)
+    };
+
     private const float AIRBORNE_MULTIPLIER = 0.7f;
-        private const float SPEED_LERP_RATE = 5f;
+    private const float SPEED_LERP_RATE = 5f;
     private const float SNEAK_MULTIPLIER = 0.3f;
+    private const float MOUSE_GRAVITY_MULTIPLIER = 1.5f;
 
     private Vector3? FollowVector = null;
 
@@ -47,6 +64,7 @@ public class MovementState : PlayerMovementState
         _animator = Entity.GetComponentInChildren<Animator>();
 
         _groundCheckTimer = 0f;
+        _jumpBufferTimer = 0f;
 
     }
 
@@ -58,6 +76,11 @@ public class MovementState : PlayerMovementState
     public override void UpdateState(PlayerMovementManager manager, bool isActive, Vector3 direction)
     {
         UpdateGroundCheck();
+
+        if (manager.IsMouseActive && !_isGrounded)
+        {
+            _rigidbody.AddForce(Vector3.down * (MOUSE_GRAVITY_MULTIPLIER - 1f) * Mathf.Abs(Physics.gravity.y), ForceMode.Acceleration);
+        }
 
         if (!isActive)
         {
@@ -107,11 +130,17 @@ public class MovementState : PlayerMovementState
 
         if (_groundCheckTimer <= 0f)
         {
-            _isGrounded = Physics.Raycast(_entityTransform.position, Vector3.down, GROUND_CHECK_DISTANCE) ||
-                          Physics.Raycast(_entityTransform.position + Vector3.forward * 0.2f, Vector3.down, GROUND_CHECK_DISTANCE) ||
-                          Physics.Raycast(_entityTransform.position + Vector3.back * 0.2f, Vector3.down, GROUND_CHECK_DISTANCE) ||
-                          Physics.Raycast(_entityTransform.position + Vector3.right * 0.2f, Vector3.down, GROUND_CHECK_DISTANCE) ||
-                          Physics.Raycast(_entityTransform.position + Vector3.left * 0.2f, Vector3.down, GROUND_CHECK_DISTANCE);        }
+            _isGrounded = false;
+            foreach (Vector3 offset in GROUND_CHECK_OFFSETS)
+            {
+                Vector3 origin = _entityTransform.position + offset + Vector3.up * GROUND_CHECK_START_HEIGHT;
+                if (Physics.Raycast(origin, Vector3.down, GROUND_CHECK_DISTANCE))
+                {
+                    _isGrounded = true;
+                    break;
+                }
+            }
+        }
         _groundCheckTimer -= Time.deltaTime;
 
         if (_animator != null)
@@ -138,17 +167,22 @@ public class MovementState : PlayerMovementState
      */
     private void ProcessJumpInput()
     {
-        if (!_canJump || !_isGrounded || _rigidbody.linearVelocity.y > 2f)
-            return;
+        _jumpBufferTimer -= Time.deltaTime;
 
         if (Input.GetButtonDown("MouseJump"))
         {
+            _jumpBufferTimer = 0.2f;
+        }
+
+        if (_canJump && _isGrounded && _jumpBufferTimer > 0f)
+        {
+            _jumpBufferTimer = 0f;
             if (_animator != null)
             {
                 _animator.SetTrigger("Jump");
                 _animator.SetBool("isFalling", false);
-                _rigidbody.AddForce(Vector3.up * _JumpForce, ForceMode.Impulse);
             }
+            _rigidbody.AddForce(Vector3.up * _JumpForce, ForceMode.Impulse);
         }
     }
     
