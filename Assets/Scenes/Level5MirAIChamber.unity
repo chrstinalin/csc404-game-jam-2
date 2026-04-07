@@ -2519,7 +2519,11 @@ MonoBehaviour:
       Data4: 0
     Path: 
   LockOnUI: {fileID: 0}
-  lockonGreen: {r: 0, g: 0, b: 0, a: 0}
+  lockonGreen:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
   sceneVolume: {fileID: 0}
   actionText: {fileID: 0}
 --- !u!1 &112484835
@@ -19242,6 +19246,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.219
       objectReference: {fileID: 0}
+    - target: {fileID: 616346121020609082, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 27.072937
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187174617431598304, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16.999756
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455837887668897956, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -17.000488
+      objectReference: {fileID: 0}
     - target: {fileID: 8648404271103663966, guid: 6157b2801a060844a9be80b3f135d3b9, type: 3}
       propertyPath: m_Name
       value: PlayerUI
@@ -24556,6 +24572,7 @@ Transform:
   - {fileID: 189218499}
   - {fileID: 1553346299}
   - {fileID: 1887460246}
+  - {fileID: 1269530774}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &980977181
@@ -27033,7 +27050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5485500182088732305, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.05
+      value: -18.42
       objectReference: {fileID: 0}
     - target: {fileID: 5485500182088732305, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -32401,6 +32418,133 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267436446}
   m_Mesh: {fileID: 433239499957627650, guid: 9ae40567154e8fd42a1c53a88b834fae, type: 3}
+--- !u!1 &1269530773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269530774}
+  - component: {fileID: 1269530778}
+  - component: {fileID: 1269530777}
+  - component: {fileID: 1269530776}
+  - component: {fileID: 1269530775}
+  m_Layer: 0
+  m_Name: Cylinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1269530774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269530773}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -22.7, y: 3.96, z: -4.25}
+  m_LocalScale: {x: 9, y: 3, z: 9}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 980977180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1269530775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269530773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f93985dcbe14859b79f958abe82770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraLockTrigger
+  lockedCameraPosition: {x: -6, y: 10, z: 0}
+  lockedCameraRotation: {x: 15, y: -90, z: 0}
+--- !u!136 &1269530776
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269530773}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!23 &1269530777
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269530773}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials: []
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1269530778
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269530773}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1270347674
 GameObject:
   m_ObjectHideFlags: 0
@@ -34578,7 +34722,7 @@ PrefabInstance:
       objectReference: {fileID: 1133554855}
     - target: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.06
+      value: -18.32
       objectReference: {fileID: 0}
     - target: {fileID: 6849438385920236079, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       propertyPath: m_LocalPosition.y
