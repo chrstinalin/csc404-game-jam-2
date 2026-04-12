@@ -46,31 +46,26 @@ public class Platform : TriggerableAbstract
         movingUp = directionVector.y > 0f;
 
         float moveStep = speed * Time.fixedDeltaTime;
-        Vector3 nextPosition = Vector3.MoveTowards(rb.position, target, moveStep);
+
+        Vector3 desiredPosition = Vector3.MoveTowards(rb.position, target, moveStep);
 
         if (!movingUp)
         {
-            Vector3 boxHalfExtents = boxCollider.bounds.extents;
-            Vector3 origin = rb.position;
-
-            if (Physics.BoxCast(origin, boxHalfExtents, Vector3.down, out RaycastHit hit, transform.rotation, moveStep))
+            if (IsBlockedDown(moveStep))
             {
-                if (!hit.collider.isTrigger && !hit.collider.transform.IsChildOf(transform))
-                {
-                    nextPosition.y = hit.point.y + boxHalfExtents.y + 0.01f;
-                }
+                desiredPosition = rb.position;
             }
         }
 
-        rb.MovePosition(nextPosition);
+        rb.MovePosition(desiredPosition);
 
         if (Vector3.Distance(rb.position, target) < 0.001f && IsOn)
         {
             TurnOff();
         }
 
-        // Check movement and play/stop FMOD sound
-        float velocityMagnitude = (rb.position - nextPosition).magnitude / Time.fixedDeltaTime;
+        float velocityMagnitude = (rb.position - desiredPosition).magnitude / Time.fixedDeltaTime;
+
         if (velocityMagnitude > 0.01f)
         {
             if (!isSFXPlaying)
@@ -87,6 +82,32 @@ public class Platform : TriggerableAbstract
                 isSFXPlaying = false;
             }
         }
+    }
+
+    private bool IsBlockedDown(float distance)
+    {
+        Vector3 center = boxCollider.bounds.center;
+
+        Vector3 halfExtents = boxCollider.bounds.extents;
+
+        RaycastHit hit;
+
+        bool blocked = Physics.BoxCast(
+            center + Vector3.up * 0.05f,
+            halfExtents,
+            Vector3.down,
+            out hit,
+            Quaternion.identity,
+            distance
+        );
+
+        if (!blocked) return false;
+
+        if (hit.collider == null) return false;
+        if (hit.collider == boxCollider) return false;
+        if (hit.collider.isTrigger) return false;
+
+        return true;
     }
 
     private void OnCollisionStay(Collision collision)
