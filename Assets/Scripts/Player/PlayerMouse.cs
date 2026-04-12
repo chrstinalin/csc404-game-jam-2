@@ -20,6 +20,7 @@ public class PlayerMouse : MonoBehaviour
 
     [Header("FMOD")]
     [SerializeField] private EventReference deathSFX;
+    [SerializeField] private EventReference damageSFX;
 
     void Awake()
     {
@@ -29,7 +30,7 @@ public class PlayerMouse : MonoBehaviour
     void Start()
     {
         InventoryManager = gameObject.AddComponent<MouseInventoryManager>();
-        DamageReceiver = gameObject.AddComponent<DamageReceiver>();
+        DamageReceiver = GetComponent<DamageReceiver>();
         GroundCollider = GameObject.FindGameObjectWithTag("MouseGroundCollider");
 
         Health = GetComponent<Health>();
@@ -71,7 +72,7 @@ public class PlayerMouse : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isInvulnerable || Health == null) return;
-        Health.TakeDamage(damage);
+        RuntimeManager.PlayOneShot(damageSFX, transform.position);
         isInvulnerable = true;
         iFrameTimer = iFrameDuration;
         StartCoroutine(FlashSprite());
