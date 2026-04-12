@@ -8,7 +8,6 @@ public class MovementState : PlayerMovementState
     private Animator _animator;
     private Transform _entityTransform;  // Cache transform reference
     private bool _isGrounded;
-    private bool _wasGrounded;
     private bool _canJump;
     
     private float _jumpBufferTimer;
@@ -22,7 +21,7 @@ public class MovementState : PlayerMovementState
     
     private float _groundCheckTimer;
     private const float GROUND_CHECK_INTERVAL = 0.08f;
-    private const float GROUND_CHECK_DISTANCE = 1.2f;
+    private const float GROUND_CHECK_DISTANCE = 1f;
     private const float GROUND_CHECK_START_HEIGHT = 0.05f;
     // add more offsets for more reliable ground check on ramp
     private static readonly Vector3[] GROUND_CHECK_OFFSETS =
@@ -126,8 +125,6 @@ public class MovementState : PlayerMovementState
      */
     private void UpdateGroundCheck()
     {
-        _wasGrounded = _isGrounded;
-
         if (_groundCheckTimer <= 0f)
         {
             _isGrounded = false;
@@ -140,6 +137,8 @@ public class MovementState : PlayerMovementState
                     break;
                 }
             }
+
+            _groundCheckTimer = GROUND_CHECK_INTERVAL;
         }
         _groundCheckTimer -= Time.deltaTime;
 
@@ -147,18 +146,13 @@ public class MovementState : PlayerMovementState
         {
             if (_isGrounded)
             {
-                _animator.SetBool("isFalling", false);
+                OnLanded();
             }
             else
             {
                 bool isFalling = !_isGrounded && _rigidbody.linearVelocity.y < -2f;
                 _animator.SetBool("isFalling", isFalling);
             }
-        }
-
-        if (_isGrounded && !_wasGrounded)
-        {
-            OnLanded();
         }
     }
 

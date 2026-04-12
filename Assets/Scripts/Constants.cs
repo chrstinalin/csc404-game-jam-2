@@ -9,7 +9,7 @@ public static class Config
     public static float MOUSE_MOVE_SPEED = 7;
 
     public static float MECH_JUMP_FORCE = 0f;
-    public static float MOUSE_JUMP_FORCE = 5f;
+    public static float MOUSE_JUMP_FORCE = 4f;
 
     public static float MECH_DASH_SPEED = 30f;
     public static float MOUSE_DASH_SPEED = 40f;
