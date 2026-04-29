@@ -15,8 +15,6 @@ public class Turret : MonoBehaviour
         DamageReceiver = gameObject.AddComponent<DamageReceiver>();
         Health = gameObject.AddComponent<Health>();
         Health.SetMaxHealth(1);
-        scrapCurrency = gameObject.AddComponent<ScrapCurrency>();
-
         Health.onDeath.AddListener(OnDeath);
         DamageReceiver.onTakeDamage.AddListener(TakeDamage);
     }
