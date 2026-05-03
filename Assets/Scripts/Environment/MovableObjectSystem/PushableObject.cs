@@ -24,11 +24,9 @@ public class PushableObject : MonoBehaviour
     private float mechOffsetDistance;
     private float mechSideSign;
 
-    // FMOD push sound
     private EventInstance boxPushSFXInstance;
     private bool isSFXPlaying = false;
 
-    // Collider adjustment
     private BoxCollider boxCollider;
     private Vector3 originalColliderSize;
     private Vector3 originalColliderCenter;
@@ -184,7 +182,6 @@ public class PushableObject : MonoBehaviour
         mechRb.linearVelocity = new Vector3(velocity.x, mechRb.linearVelocity.y, velocity.z);
         rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
 
-        // FMOD push SFX
         Vector3 horizontalVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         if (isBeingPushed && horizontalVel.magnitude > 0.01f)
         {
@@ -230,6 +227,38 @@ public class PushableObject : MonoBehaviour
         AdjustColliderForPush(false);
     }
 
+    private void CheckIfMouseIsOnTop()
+    {
+        if (PlayerMouse.Instance == null || topTrigger == null) return;
+
+        Transform mouse = PlayerMouse.Instance.transform;
+
+        float rayDistance = 0.2f;
+
+        bool standingOnBox = false;
+
+        if (Physics.Raycast(mouse.position, Vector3.down, out RaycastHit hit, rayDistance))
+        {
+            if (hit.collider == boxCollider)
+            {
+                standingOnBox = true;
+            }
+        }
+
+        bool validTopContact = topTrigger.mouseOnTop && standingOnBox;
+
+        if (validTopContact && isBeingPushed)
+        {
+            if (mouse.parent != transform)
+                mouse.SetParent(transform);
+        }
+        else
+        {
+            if (mouse.parent == transform)
+                mouse.SetParent(null);
+        }
+    }
+
     private Vector3 GetAxisFromSide(CardinalDirection side)
     {
         switch (side)
@@ -254,20 +283,16 @@ public class PushableObject : MonoBehaviour
         {
             float shrinkAmount = originalColliderSize.y * 0.25f;
 
-            // Freeze Y to prevent gravity from pulling box down
             rb.constraints |= RigidbodyConstraints.FreezePositionY;
 
-            // Shrink collider from bottom: center moves up half the shrink
             boxCollider.size = new Vector3(originalColliderSize.x, originalColliderSize.y - shrinkAmount, originalColliderSize.z);
             boxCollider.center = originalColliderCenter + new Vector3(0f, shrinkAmount / 2f, 0f);
         }
         else
         {
-            // Restore collider size
             boxCollider.size = originalColliderSize;
             boxCollider.center = originalColliderCenter;
 
-            // Delay unfreeze to next FixedUpdate to prevent jump
             StartCoroutine(UnfreezeYNextFrame());
         }
     }
@@ -276,22 +301,6 @@ public class PushableObject : MonoBehaviour
     {
         yield return new WaitForFixedUpdate();
         rb.constraints &= ~RigidbodyConstraints.FreezePositionY;
-    }
-
-    private void CheckIfMouseIsOnTop()
-    {
-        if (PlayerMouse.Instance == null || topTrigger == null) return;
-
-        if (topTrigger.mouseOnTop && isBeingPushed)
-        {
-            if (PlayerMouse.Instance.transform.parent != transform)
-                PlayerMouse.Instance.transform.SetParent(transform);
-        }
-        else
-        {
-            if (PlayerMouse.Instance.transform.parent == transform)
-                PlayerMouse.Instance.transform.SetParent(null);
-        }
     }
 
     private bool IsOnPlatform()
