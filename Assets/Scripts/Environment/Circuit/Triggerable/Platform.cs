@@ -86,23 +86,28 @@ public class Platform : TriggerableAbstract
 
     private bool IsBlockedDown(float distance)
     {
-        Vector3 center = boxCollider.bounds.center;
+        Bounds bounds = boxCollider.bounds;
 
-        Vector3 halfExtents = boxCollider.bounds.extents;
+        Vector3 origin = bounds.center;
+        origin.y = bounds.min.y + 0.01f;
+
+        Vector3 halfExtents = bounds.extents;
+        halfExtents.y = 0.02f; // thin bottom slice
+
+        float castDistance = distance + 0.05f;
 
         RaycastHit hit;
 
         bool blocked = Physics.BoxCast(
-            center + Vector3.up * 0.05f,
+            origin,
             halfExtents,
             Vector3.down,
             out hit,
             Quaternion.identity,
-            distance
+            castDistance
         );
 
         if (!blocked) return false;
-
         if (hit.collider == null) return false;
         if (hit.collider == boxCollider) return false;
         if (hit.collider.isTrigger) return false;
