@@ -68,7 +68,7 @@ public class MouseInventoryManager : MonoBehaviour
             {
                 StartCoroutine(PickUpRoutine(nearbyItem));
             }
-            else if (carriedItem != null)
+            else if (carriedItem != null && (!(carriedItem is Cheese)))
             {
                 StartCoroutine(DropRoutine());
             }
