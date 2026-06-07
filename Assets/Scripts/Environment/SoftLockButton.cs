@@ -24,7 +24,10 @@ public class SoftlockButton : MonoBehaviour
     {
         PressButton();
     }
-
+    private void OnTriggerExit(Collider other)
+    {
+        UpdateVisuals(false);
+    }
     private void PressButton()
     {
         if (targetLever.IsActive)

@@ -5,6 +5,7 @@ public class Cheese : MonoBehaviour, ICarryable
     private Vector3 initialPosition;
     private Quaternion initialRotation;
     private Vector3 initialScale;
+    private Outline outline;
 
     [SerializeField] private float carryScale = 0.5f;
     [SerializeField] private InteractableObject interactableObject;
@@ -25,32 +26,12 @@ public class Cheese : MonoBehaviour, ICarryable
     public void ShrinkForCarry()
     {
         transform.localScale = initialScale * carryScale;
-        interactableObject.ChangeText("Drop C.H.E.E.S.E");
+        interactableObject.ChangeText("");
     }
 
     public void Drop(Vector3 dropPosition)
     {
-        RaycastHit hit;
-        if (Physics.Raycast(dropPosition + Vector3.up * 0.5f, Vector3.down, out hit, 100f))
-        {
-            transform.position = hit.point;
-        }
-        else
-        {
-            transform.position = dropPosition;
-        }
-
-        transform.rotation = initialRotation;
-        transform.localScale = initialScale;
-        gameObject.SetActive(true);
-        interactableObject.ChangeText("Pick Up C.H.E.E.S.E");
-    }
-
-    public void ResetToInitial()
-    {
-        transform.position = initialPosition;
-        transform.rotation = initialRotation;
-        transform.localScale = initialScale;
+        // You can no longer drop the cheese :)
     }
 
     private void OnDisable()
