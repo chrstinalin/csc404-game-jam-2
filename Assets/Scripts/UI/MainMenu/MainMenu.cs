@@ -21,9 +21,10 @@ public class MainMenu : MonoBehaviour
     public MenuState currentState;
     private int currentSelection = 0;
     private float inputCooldown = 0f;
-    private float cooldownTime = 0.2f;
+    private float repeatDelay = 0.2f;
+    private float inputDeadzone = 0.5f;
+    private bool axisInUse = false;
     private GameObject lastSelected;
-    private bool stepTaken = false;
 
     [Header("Audio")]
     [SerializeField] private EventReference MenuBGM;
@@ -64,33 +65,35 @@ public class MainMenu : MonoBehaviour
 
     void HandleControllerInput()
     {
-        if (inputCooldown > 0)
-        {
+        if (inputCooldown > 0f)
             inputCooldown -= Time.deltaTime;
-            return;
-        }
 
         if (Input.GetButtonDown("Cancel") && currentState.stateName != "MainMenu")
         {
             AudioManager.Instance.PlaySFX(BackSFX);
             GoBack();
-            inputCooldown = cooldownTime;
             return;
         }
 
         float vertical = Input.GetAxisRaw("Vertical");
 
-        if (Mathf.Ceil(vertical) < -0.5f && !stepTaken){
-            NavigateDown();
-            stepTaken = true;
+        if (Mathf.Abs(vertical) < inputDeadzone)
+        {
+            // Stick/keys returned to neutral: ready to register the next press right away.
+            axisInUse = false;
         }
+        else if (!axisInUse || inputCooldown <= 0f)
+        {
+            // Fire once on the initial press (!axisInUse), then auto-repeat while held
+            // once the cooldown elapses. A single branch per frame means one move per
+            // step — no double navigation from the axis flickering across thresholds.
+            if (vertical < 0f)
+                NavigateDown();
+            else
+                NavigateUp();
 
-        else if (Mathf.Floor(vertical) > 0.5f && !stepTaken){
-            NavigateUp();
-            stepTaken = true;
-        }
-        else {
-            stepTaken = false;
+            axisInUse = true;
+            inputCooldown = repeatDelay;
         }
 
         if (Input.GetButtonDown("Submit"))
@@ -122,7 +125,6 @@ public class MainMenu : MonoBehaviour
 
         SelectItem(currentSelection);
         AudioManager.Instance.PlaySFX(DownSFX);
-        inputCooldown = cooldownTime;
     }
 
     void NavigateUp()
@@ -135,7 +137,6 @@ public class MainMenu : MonoBehaviour
 
         SelectItem(currentSelection);
         AudioManager.Instance.PlaySFX(UpSFX);
-        inputCooldown = cooldownTime;
     }
 
     void SelectItem(int index)
@@ -193,6 +194,11 @@ public class MainMenu : MonoBehaviour
     public void OpenSettings()
     {
         SwitchToState("Settings");
+    }
+
+    public void OpenCredits()
+    {
+        SwitchToState("Credits");
     }
 
     public void PlayTutorial()
