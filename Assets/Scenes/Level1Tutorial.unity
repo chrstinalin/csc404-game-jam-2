@@ -638,6 +638,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32710692}
   m_Mesh: {fileID: 3524843714975932593, guid: 88535409a86959443b048e96e125ee64, type: 3}
+--- !u!1 &38609019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 38609022}
+  - component: {fileID: 38609021}
+  - component: {fileID: 38609020}
+  m_Layer: 0
+  m_Name: ClampTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &38609020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38609019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f07c8421753a7a43ab2a875abc60f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlatformClampTrigger
+  platform: {fileID: 335890557}
+  clampHeight: 2.45
+--- !u!65 &38609021
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38609019}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.529934, y: 0.8481143, z: 2.474721}
+  m_Center: {x: -0.24299431, y: -0.075942844, z: -1.0323477}
+--- !u!4 &38609022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38609019}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 37.91129, y: 0.723, z: -4.51939}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43409364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,6 +2170,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1586109560739761133, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+      propertyPath: m_Size.y
+      value: 2.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536498866006298479, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0.47194815
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536498866006298479, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: -0.020984888
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536498866006298479, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 0.38179278
+      objectReference: {fileID: 0}
     - target: {fileID: 7717143180608074467, guid: ea5546ea7975fa74489cdf1d79b033f6, type: 3}
       propertyPath: m_Name
       value: Mecha
@@ -2772,6 +2856,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
+  lockOnSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  LockOnUI: {fileID: 0}
+  lockonGreen: {r: 0, g: 0, b: 0, a: 0}
+  sceneVolume: {fileID: 0}
+  actionText: {fileID: 0}
 --- !u!1 &118047439
 GameObject:
   m_ObjectHideFlags: 0
@@ -56985,3 +57080,4 @@ SceneRoots:
   - {fileID: 346703784}
   - {fileID: 1656901823}
   - {fileID: 301681289}
+  - {fileID: 38609022}
