@@ -37,7 +37,6 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        FadeManager.Instance.FadeIn();
         SwitchToState("MainMenu");
         musicInstance = AudioManager.Instance.PlaySFX(MenuBGM);
 

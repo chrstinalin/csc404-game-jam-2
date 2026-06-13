@@ -134,7 +134,10 @@ public class EvilComputer : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
 
-        SceneManager.LoadScene("EndScreen");
+        if (FadeManager.Instance != null)
+            FadeManager.Instance.FadeToScene("EndScreen");
+        else
+            SceneManager.LoadScene("EndScreen");
     }
 
     private void SetScreen(ScreenState state)

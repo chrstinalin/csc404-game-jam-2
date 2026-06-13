@@ -12,6 +12,7 @@ public class FadeManager : MonoBehaviour
     [SerializeField] private float fadeDuration = 1f;
 
     private bool isFading = false;
+    private Coroutine fadeRoutine;
 
     void Awake()
     {
@@ -19,8 +20,7 @@ public class FadeManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            
-            // Also make the canvas persist
+
             if (fadeCanvas != null)
                 DontDestroyOnLoad(fadeCanvas.gameObject);
         }
@@ -30,95 +30,74 @@ public class FadeManager : MonoBehaviour
             return;
         }
 
-        // Make sure fade image starts invisible
-        if (fadeImage != null)
-        {
-            Color color = fadeImage.color;
-            color.a = 0f;
-            fadeImage.color = color;
-        }
+        SetAlpha(0f);
     }
 
     public void FadeToScene(string sceneName)
     {
-        StopAllCoroutines();
-        StartCoroutine(FadeOutAndLoadScene(sceneName));
+        if (isFading) return;
+
+        fadeRoutine = StartCoroutine(FadeOutInRoutine(sceneName));
     }
 
-    public void FadeIn()
-    {
-        if (!isFading)
-            StartCoroutine(FadeInCoroutine());
-    }
-
-    IEnumerator FadeOutAndLoadScene(string sceneName)
+    IEnumerator FadeOutInRoutine(string sceneName)
     {
         isFading = true;
 
-        // Null check
-        if (fadeImage == null)
-        {
-            Debug.LogError("FadeManager: fadeImage is null!");
-            SceneManager.LoadScene(sceneName);
-            isFading = false;
-            yield break;
-        }
+        yield return StartCoroutine(Fade(0f, 1f));
 
-        // Fade to black
-        float timer = 0f;
-        Color color = fadeImage.color;
+        AsyncOperation op = SceneManager.LoadSceneAsync(sceneName);
 
-        while (timer < fadeDuration)
+        op.allowSceneActivation = true;
+
+        while (!op.isDone)
         {
-            timer += Time.deltaTime;
-            color.a = Mathf.Lerp(0f, 1f, timer / fadeDuration);
-            fadeImage.color = color;
             yield return null;
         }
 
-        // Ensure fully black
-        color.a = 1f;
-        fadeImage.color = color;
+        yield return new WaitForEndOfFrame();
+        yield return null;
 
-        // Load the scene
-        SceneManager.LoadScene(sceneName);
-
-        // Wait a frame for scene to load
-        yield return new WaitForSeconds(0.1f);
-
-        // Fade in from black
-        yield return StartCoroutine(FadeInCoroutine());
-    }
-
-    IEnumerator FadeInCoroutine()
-    {
-        isFading = true;
-
-        // Null check
-        if (fadeImage == null)
-        {
-            Debug.LogError("FadeManager: fadeImage is null during fade in!");
-            isFading = false;
-            yield break;
-        }
-
-        float timer = 0f;
-        Color color = fadeImage.color;
-        color.a = 1f;
-        fadeImage.color = color;
-
-        while (timer < fadeDuration)
-        {
-            timer += Time.deltaTime;
-            color.a = Mathf.Lerp(1f, 0f, timer / fadeDuration);
-            fadeImage.color = color;
-            yield return null;
-        }
-
-        // Ensure fully transparent
-        color.a = 0f;
-        fadeImage.color = color;
+        yield return StartCoroutine(Fade(1f, 0f));
 
         isFading = false;
+        fadeRoutine = null;
+    }
+
+    IEnumerator Fade(float from, float to)
+    {
+        if (fadeImage == null)
+        {
+            Debug.LogError("FadeManager: fadeImage missing!");
+            yield break;
+        }
+
+        float t = 0f;
+
+        Color c = fadeImage.color;
+        c.a = from;
+        fadeImage.color = c;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+
+            c.a = Mathf.Lerp(from, to, t / fadeDuration);
+            fadeImage.color = c;
+
+            yield return null;
+        }
+
+        c.a = to;
+        fadeImage.color = c;
+    }
+
+    void SetAlpha(float a)
+    {
+        if (fadeImage == null) return;
+
+        Color c = fadeImage.color;
+        c.a = a;
+        fadeImage.color = c;
     }
 }
