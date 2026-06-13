@@ -219,16 +219,25 @@ public class PuzzleProgressionTrigger : MonoBehaviour
 
     private void TriggerFade()
     {
-        if (FadeManager.Instance == null) return;
+        string targetScene;
 
         if (!string.IsNullOrEmpty(nextSceneName))
         {
-            FadeManager.Instance.FadeToScene(nextSceneName);
+            targetScene = nextSceneName;
         }
         else
         {
             int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            FadeManager.Instance.FadeToScene(nextIndex.ToString());
+            targetScene = SceneManager.GetSceneByBuildIndex(nextIndex).name;
+        }
+
+        if (FadeManager.Instance != null)
+        {
+            FadeManager.Instance.FadeToScene(targetScene);
+        }
+        else
+        {
+            SceneManager.LoadScene(targetScene);
         }
     }
 

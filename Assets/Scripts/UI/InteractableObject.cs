@@ -25,7 +25,10 @@ public class InteractableObject : MonoBehaviour
             RefreshInteractionState();
         }
     }
-
+    public void ForceRefresh()
+    {
+        RefreshInteractionState();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (IsTrackedCharacter(other.gameObject))

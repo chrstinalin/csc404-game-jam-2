@@ -187,7 +187,7 @@ public class PushableObject : MonoBehaviour
         {
             if (!isSFXPlaying)
             {
-                boxPushSFXInstance = AudioManager.Instance.PlaySFX(boxPushSFX, transform.position, 1f);
+                boxPushSFXInstance = AudioManager.Instance.PlaySFX(boxPushSFX, transform.position, 6f);
                 isSFXPlaying = true;
             }
         }
