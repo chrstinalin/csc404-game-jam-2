@@ -325,13 +325,16 @@ public class UIManager : MonoBehaviour
 
     private void HandlePauseInput()
     {
+        if (FadeManager.IsFading)
+            return;
+
         if (Input.GetButtonDown("Pause"))
         {
             if (GamePaused) Resume();
             else Pause();
         }
     }
-
+    
     private void HandlePauseMenuNavigation()
     {
         if (inputCooldown > 0)

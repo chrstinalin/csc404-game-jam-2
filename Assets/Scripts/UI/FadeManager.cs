@@ -14,6 +14,8 @@ public class FadeManager : MonoBehaviour
     private bool isFading = false;
     private Coroutine fadeRoutine;
 
+    public static bool IsFading => Instance != null && Instance.isFading;
+
     void Awake()
     {
         if (Instance == null)
