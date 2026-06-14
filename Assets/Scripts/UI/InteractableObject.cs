@@ -116,7 +116,7 @@ public class InteractableObject : MonoBehaviour
 
         if (spawnedText == null)
         {
-            Canvas canvas = FindObjectOfType<Canvas>();
+            Canvas canvas = GameObject.Find("UI").GetComponent<Canvas>();
             spawnedText = Instantiate(textPrefab, canvas.transform);
             spawnedText.transform.SetAsFirstSibling();
 
