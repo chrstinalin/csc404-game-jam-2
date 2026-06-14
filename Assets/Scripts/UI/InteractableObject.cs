@@ -118,6 +118,7 @@ public class InteractableObject : MonoBehaviour
         {
             Canvas canvas = FindObjectOfType<Canvas>();
             spawnedText = Instantiate(textPrefab, canvas.transform);
+            spawnedText.transform.SetAsFirstSibling();
 
             var textComponent = spawnedText.GetComponent<Text>();
             textComponent.text = GetMessage(ActionType.Interact);
