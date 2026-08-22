@@ -42,7 +42,12 @@ public static class Config
     public static float MOUSE_MAX_ZOOM = 16f;
     public static float MECH_MAX_ZOOM = 20f;
 
-    public static float MOUSE_SENSITIVITY = 100f;
+    // Camera look, both at the settings slider's default (100%). MOUSE is
+    // degrees per unit of mouse delta - i.e. 0.25 degrees per raw pixel, since
+    // "Mouse X" already comes through scaled by 0.1. STICK is degrees per
+    // second at full deflection, unchanged from what the pads were tuned to.
+    public static float MOUSE_LOOK_SENSITIVITY = 2.5f;
+    public static float STICK_LOOK_SENSITIVITY = 100f;
 
     public static float MIN_AI_DISTANCE = 2f;
     public static float STUCK_CHECK_INTERVAL = 0.5f;
@@ -78,28 +83,13 @@ public enum AIState
     Chase
 }
 
-public static class Constant
+// Which physical stick drives a movement state. Named sides rather than legacy
+// axis names, because gamepad sticks are read through GameInput now - see the
+// comment at the top of GameInput.cs.
+public enum StickSide
 {
-    // Joystick Axes Constants
-    public const string HORIZONTAL_JOY_RIGHT = "HorizontalRightJoystick";
-    public const string HORIZONTAL_JOY_LEFT = "Horizontal";
-    public const string VERTICAL_JOY_RIGHT = "VerticalRightJoystick";
-    public const string VERTICAL_JOY_LEFT = "Vertical";
-
-    public static readonly Joystick JOY_RIGHT = new Joystick(HORIZONTAL_JOY_RIGHT, VERTICAL_JOY_RIGHT);
-    public static readonly Joystick JOY_LEFT = new Joystick(HORIZONTAL_JOY_LEFT, VERTICAL_JOY_LEFT);
-}
-
-public struct Joystick
-{
-    public string Horizontal { get; }
-    public string Vertical { get; }
-
-    public Joystick(string horizontal, string vertical)
-    {
-        Horizontal = horizontal;
-        Vertical = vertical;
-    }
+    Left,
+    Right
 }
 
 public enum CardinalDirection
@@ -108,12 +98,6 @@ public enum CardinalDirection
     South,
     East,
     West
-}
-
-public enum DeviceType
-{
-    Keyboard,
-    Xbox
 }
 
 public enum PlatformMoveDirection { Vertical, Horizontal }
@@ -143,37 +127,39 @@ public enum ActionType
 
 public static class ButtonMappings
 {
-    public static readonly Dictionary<ActionType, Dictionary<DeviceType, string>> Mappings = new()
+    public static readonly Dictionary<ActionType, Dictionary<ControllerType, string>> Mappings = new()
     {
         { ActionType.Lockon, new() {
-            { DeviceType.Keyboard, "Tab" },
-            { DeviceType.Xbox, "LB/RB" },
+            { ControllerType.Keyboard, "Tab" },
+            { ControllerType.Xbox, "LB/RB" },
+            { ControllerType.PlayStation, "L1/R1" },
         }},
         { ActionType.SwitchCharacter, new() {
-            { DeviceType.Keyboard, "F" },
-            { DeviceType.Xbox, "Y" },
+            { ControllerType.Keyboard, "F" },
+            { ControllerType.Xbox, "Y" },
+            { ControllerType.PlayStation, "△" },
         }},
         { ActionType.Interact, new() {
-            { DeviceType.Keyboard, "E" },
-            { DeviceType.Xbox, "B" },
+            { ControllerType.Keyboard, "LEFT CLICK" },
+            { ControllerType.Xbox, "B" },
+            { ControllerType.PlayStation, "○" },
         }},
         { ActionType.Jump, new() {
-            { DeviceType.Keyboard, "Space" },
-            { DeviceType.Xbox, "A" },
+            { ControllerType.Keyboard, "Space" },
+            { ControllerType.Xbox, "A" },
+            { ControllerType.PlayStation, "✕" },
         }},
         { ActionType.Shoot, new() {
-            { DeviceType.Keyboard, "E" },
-            { DeviceType.Xbox, "LT/RT" },
+            { ControllerType.Keyboard, "LEFT CLICK" },
+            { ControllerType.Xbox, "LT/RT" },
+            { ControllerType.PlayStation, "L2/R2" },
         }}
     };
 
     public static string GetButtonLabel(ActionType action)
     {
-        var names = Input.GetJoystickNames();
-        var hasController = names != null && names.Any(n => !string.IsNullOrWhiteSpace(n));
-        var device = hasController ? DeviceType.Xbox : DeviceType.Keyboard;
         if (Mappings.TryGetValue(action, out var deviceMappings) &&
-            deviceMappings.TryGetValue(device, out var label))
+            deviceMappings.TryGetValue(GameInput.CurrentController, out var label))
         {
             return label;
         }

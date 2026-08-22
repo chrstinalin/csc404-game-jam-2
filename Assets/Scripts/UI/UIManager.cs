@@ -325,7 +325,7 @@ public class UIManager : MonoBehaviour
 
     private void HandlePauseInput()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (GameInput.PauseDown)
         {
             if (GamePaused) Resume();
             else Pause();
@@ -340,7 +340,7 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Cancel"))
+        if (GameInput.CancelDown)
         {
             if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(BackSFX);
 
@@ -351,11 +351,11 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        float vertical = Input.GetAxisRaw("Vertical");
+        float vertical = GameInput.MenuVertical;
         if (vertical < -0.5f) NavigateDown();
         else if (vertical > 0.5f) NavigateUp();
 
-        if (Input.GetButtonDown("Submit"))
+        if (GameInput.SubmitDown)
         {
             if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(SelectSFX);
 
@@ -428,6 +428,8 @@ public class UIManager : MonoBehaviour
 
         GamePaused = true;
         currentSelection = 0;
+
+        GameInput.TakeOverMenuSubmit();
 
         if (defaultPauseSelectable != null)
         {

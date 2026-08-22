@@ -15,7 +15,7 @@ public class MovementState : PlayerMovementState
     private float _CurrentVelocity;
     private float _MoveSpeed;
     private float _JumpForce;
-    private Joystick _Input = Constant.JOY_LEFT;
+    private StickSide _Input = StickSide.Left;
 
     private bool _isSneaking;
     
@@ -96,8 +96,9 @@ public class MovementState : PlayerMovementState
         }
         // Only run when entity is active
         Vector3 moveDirection;
-        float horizontalInput = Input.GetAxis(_Input.Horizontal);
-        float verticalInput = Input.GetAxis(_Input.Vertical);
+        Vector2 stick = GameInput.ReadStick(_Input);
+        float horizontalInput = stick.x;
+        float verticalInput = stick.y;
         
         // Lock movement to FollowVector if mouse is active and FollowVector is set
         if (manager.IsMouseActive && FollowVector.HasValue)
@@ -163,7 +164,7 @@ public class MovementState : PlayerMovementState
     {
         _jumpBufferTimer -= Time.deltaTime;
 
-        if (Input.GetButtonDown("MouseJump"))
+        if (GameInput.JumpDown)
         {
             _jumpBufferTimer = 0.2f;
         }
@@ -199,7 +200,7 @@ public class MovementState : PlayerMovementState
     {
         if (_canJump)
         {
-            _isSneaking = Input.GetButton("MouseDash");
+            _isSneaking = GameInput.Sneak;
         }
     }
     
@@ -242,7 +243,7 @@ public class MovementState : PlayerMovementState
      * Joystick
      * ========================================================================
      */
-    public override void UpdateJoyStick(Joystick Input) => _Input = Input;
+    public override void UpdateJoyStick(StickSide side) => _Input = side;
 
     /* 
      * ========================================================================

@@ -58,7 +58,7 @@ public class CustomCursor : MonoBehaviour
     private void Update()
     {
         bool overInteractable = IsPointerOverInteractable();
-        bool pressed = Input.GetMouseButton(0);
+        bool pressed = GameInput.PointerPressed;
 
         CursorState desired =
             pressed && overInteractable ? CursorState.Click :
@@ -74,7 +74,7 @@ public class CustomCursor : MonoBehaviour
         if (EventSystem.current == null) return false;
 
         pointerEventData ??= new PointerEventData(EventSystem.current);
-        pointerEventData.position = Input.mousePosition;
+        pointerEventData.position = GameInput.PointerPosition;
 
         raycastResults.Clear();
         EventSystem.current.RaycastAll(pointerEventData, raycastResults);

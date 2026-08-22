@@ -59,13 +59,13 @@ public class PushableObject : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Interact"))
+        if (GameInput.InteractDown)
             TryStartPush();
 
-        if (Input.GetButton("Interact") && isBeingPushed)
+        if (GameInput.Interact && isBeingPushed)
             UpdatePush();
 
-        if (Input.GetButtonUp("Interact") && isBeingPushed)
+        if (GameInput.InteractUp && isBeingPushed)
             StopPush();
 
         if (!isBeingPushed)
@@ -155,8 +155,9 @@ public class PushableObject : MonoBehaviour
 
         Camera cam = movementManager.CameraManager.Cam;
 
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        Vector2 move = GameInput.Move;
+        float h = move.x;
+        float v = move.y;
 
         Vector3 camForward = cam.transform.forward;
         camForward.y = 0f;

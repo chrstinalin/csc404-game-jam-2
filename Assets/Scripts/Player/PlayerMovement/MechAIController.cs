@@ -86,7 +86,7 @@ public class MechAIController : MonoBehaviour, IOffense
         if (isPlayerMouse)
         {
             AttackActive = false;
-            if (Input.GetButton("SummonMecha"))
+            if (GameInput.SummonMecha)
             {
                 if (distance > Config.MIN_AI_DISTANCE)
                 {

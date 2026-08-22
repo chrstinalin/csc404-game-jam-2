@@ -15,6 +15,11 @@ public class MovementManager : PlayerMovementManager
     private GameObject Mouse;
     private GameObject Mech;
 
+    // Two different locks, deliberately kept apart. isInputLocked is the pause
+    // menu: nothing runs, camera included. isLockedMovement is a scripted hold
+    // on the character - pushing a box drives the mech itself - so the camera
+    // must keep following and keep responding to the look stick underneath it.
+    private bool isInputLocked;
     public bool isLockedMovement;
 
     void Awake()
@@ -54,7 +59,7 @@ public class MovementManager : PlayerMovementManager
 
     void Update()
     {
-        if (isLockedMovement) return;
+        if (isInputLocked) return;
 
         CameraManager.UpdateCamera();
 
@@ -88,8 +93,9 @@ public class MovementManager : PlayerMovementManager
             return;
         }
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        Vector2 move = GameInput.Move;
+        float horizontal = move.x;
+        float vertical = move.y;
 
         Vector3 camForward = CameraManager.Cam.transform.forward;
         camForward.y = 0f;
@@ -101,10 +107,13 @@ public class MovementManager : PlayerMovementManager
 
         Vector3 moveDir = (camForward * vertical + camRight * horizontal).normalized;
 
+        // Camera has already updated above; only the character is held.
+        if (isLockedMovement) return;
+
         if (IsMouseActive)
         {
             MouseMovementState.UpdateState(this, true, moveDir);
-            if (Input.GetButton("SummonMecha") && Vector3.Distance(Mech.transform.position, Mouse.transform.position) > Config.MIN_AI_DISTANCE)
+            if (GameInput.SummonMecha && Vector3.Distance(Mech.transform.position, Mouse.transform.position) > Config.MIN_AI_DISTANCE)
             {
                 MechAIController.SetTarget(Mouse.gameObject);
             }
@@ -118,7 +127,7 @@ public class MovementManager : PlayerMovementManager
             MechMovementState.UpdateState(this, !IsMouseActive, moveDir);
         }
 
-        if (Input.GetButtonDown("MountKey"))
+        if (GameInput.SwitchCharacterDown)
         {
             bool targetIsMouse = !IsMouseActive;
             if ((targetIsMouse && PlayerMouse.Instance.Health.GetCurrHealth() > 0) ||
@@ -131,11 +140,11 @@ public class MovementManager : PlayerMovementManager
 
     public void lockInput()
     {
-        isLockedMovement = true;
-    }    
+        isInputLocked = true;
+    }
     public void unlockInput()
     {
-        isLockedMovement = false;
+        isInputLocked = false;
     }
     public override void ToggleMouse(bool toggle)
     {
@@ -181,7 +190,7 @@ public class MovementManager : PlayerMovementManager
 
             MechMovementState.Reset();
             CameraManager.SetFollowEntity(Mouse, Config.MOUSE_MAX_ZOOM);
-            MechMovementState.UpdateJoyStick(Constant.JOY_RIGHT);
+            MechMovementState.UpdateJoyStick(StickSide.Right);
         }
         else
         {
@@ -202,7 +211,7 @@ public class MovementManager : PlayerMovementManager
             
             MouseMovementState.Reset();
             CameraManager.SetFollowEntity(Mech, Config.MECH_MAX_ZOOM);
-            MechMovementState.UpdateJoyStick(Constant.JOY_LEFT);
+            MechMovementState.UpdateJoyStick(StickSide.Left);
         }        
     }
 
