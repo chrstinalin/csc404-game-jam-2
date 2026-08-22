@@ -342,7 +342,7 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
-  m_CursorLockBehavior: 0
+  m_CursorLockBehavior: 1
   m_ScrollDeltaPerTick: 6
 --- !u!114 &349487529
 MonoBehaviour:
@@ -888,6 +888,7 @@ GameObject:
   - component: {fileID: 1743091301}
   - component: {fileID: 1743091300}
   - component: {fileID: 1743091304}
+  - component: {fileID: 3453532981287867}
   m_Layer: 5
   m_Name: EndScreen
   m_TagString: Untagged
@@ -1007,6 +1008,23 @@ MonoBehaviour:
       Data3: 617690811
       Data4: -1006723718
     Path: event:/SFX/UI/UI Back
+--- !u!114 &3453532981287867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743091299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d795fca753cc435e8d2b7f7e015188b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  defaultCursor: {fileID: 2800000, guid: 2d22d0f480fd54a2c94d91cb5ddb2c45, type: 3}
+  hoverCursor: {fileID: 2800000, guid: 51c00a27ce4aa466698eadbeb1c79cbb, type: 3}
+  clickCursor: {fileID: 2800000, guid: b86397199cbc8466193eec61e8f1cd78, type: 3}
+  hotspot: {x: 0, y: 0}
+  cursorMode: 0
 --- !u!1001 &1822338552
 PrefabInstance:
   m_ObjectHideFlags: 0

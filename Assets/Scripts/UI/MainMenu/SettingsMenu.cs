@@ -72,7 +72,7 @@ public class SettingsMenu : MonoBehaviour
             sensitivitySlider.value = multiplier;
             if (CameraManager.Instance != null)
             {
-                CameraManager.Instance.mouseSensitivity = multiplier * 10;
+                CameraManager.Instance.lookSensitivity = multiplier * 10;
             }
         }
 
@@ -97,7 +97,7 @@ public class SettingsMenu : MonoBehaviour
             return;
         }
 
-        float horizontal = Input.GetAxisRaw("Horizontal");
+        float horizontal = GameInput.MenuHorizontal;
         if (Mathf.Abs(horizontal) > 0.5f)
         {
             AdjustCurrentSlider(horizontal);
@@ -139,7 +139,7 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefs.Save();
         if (CameraManager.Instance != null)
         {
-            CameraManager.Instance.mouseSensitivity = multiplier * 10;
+            CameraManager.Instance.lookSensitivity = multiplier * 10;
         }
     }
 

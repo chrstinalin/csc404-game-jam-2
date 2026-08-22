@@ -21,7 +21,7 @@ public class MechaInventoryManager : MonoBehaviour
         mouseInventory = mouse.GetComponent<MouseInventoryManager>();
         if (mouseInventory == null) return;
 
-        if (Input.GetButtonDown("Interact") && mouseInventory.HasItem() && movementManager.IsMouseActive)
+        if (GameInput.InteractDown && mouseInventory.HasItem() && movementManager.IsMouseActive)
         {
             float distance = Vector3.Distance(mouse.transform.position, PlayerMech.Instance.transform.position);
             if (distance < Config.MECH_ENTER_DISTANCE)

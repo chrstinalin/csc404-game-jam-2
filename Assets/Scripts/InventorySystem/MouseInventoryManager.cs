@@ -62,7 +62,7 @@ public class MouseInventoryManager : MonoBehaviour
         bool playerControllingMouse = MovementManager.Instance != null && MovementManager.Instance.IsMouseActive;
         if (!playerControllingMouse || isBusy) return;
 
-        if (Input.GetButtonDown("Interact"))
+        if (GameInput.InteractDown)
         {
             if (carriedItem == null && nearbyItem != null)
             {

@@ -13,7 +13,7 @@ public class TutorialControlsPressDetector: MonoBehaviour
         if (switchedToPeanutDone)
             return;
 
-        if (Input.GetButtonDown("MountKey"))
+        if (GameInput.SwitchCharacterDown)
         {
             switchedToPeanutDone = true;
 
@@ -26,7 +26,7 @@ public class TutorialControlsPressDetector: MonoBehaviour
         if (activatedLockOnMode)
             return;
 
-        if (Input.GetButtonDown("ToggleLockOnMode"))
+        if (GameInput.LockOnModeDown)
         {
 
             tutorialManager.TriggerMilestone(TutorialManager.Milestone.ActivateLockOnMode);

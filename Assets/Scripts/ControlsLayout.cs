@@ -40,7 +40,7 @@ public class ControlSchemeManager : MonoBehaviour
             { ControllerType.PlayStation, "L1/R1: LOCK ON" },
         }},
         { ActionType.Shoot, new() {
-            { ControllerType.Keyboard, "E: SHOOT" },
+            { ControllerType.Keyboard, "LEFT CLICK: SHOOT" },
             { ControllerType.Xbox, "LT/RT: SHOOT" },
             { ControllerType.PlayStation, "L2/R2: SHOOT" },
         }},
@@ -50,7 +50,7 @@ public class ControlSchemeManager : MonoBehaviour
             { ControllerType.PlayStation, "△: SWITCH CHARACTER" },
         }},
         { ActionType.Interact, new() {
-            { ControllerType.Keyboard, "E: INTERACT" },
+            { ControllerType.Keyboard, "LEFT CLICK: INTERACT" },
             { ControllerType.Xbox, "B: INTERACT" },
             { ControllerType.PlayStation, "○: INTERACT" },
         }},
@@ -70,7 +70,7 @@ public class ControlSchemeManager : MonoBehaviour
             { ControllerType.PlayStation, "RIGHT STICK: CAMERA" },
         }},
         { ActionType.Pause, new() {
-            { ControllerType.Keyboard, "ESC: PAUSE" },
+            { ControllerType.Keyboard, "ESC/P: PAUSE" },
             { ControllerType.Xbox, "START: PAUSE" },
             { ControllerType.PlayStation, "OPTIONS: PAUSE" },
         }},
@@ -120,45 +120,11 @@ public class ControlSchemeManager : MonoBehaviour
         }
     }
 
-    private ControllerType DetectControllerType()
-    {
-        var joystickNames = Input.GetJoystickNames();
-        
-        // Check if any controller is connected
-        if (joystickNames == null || !joystickNames.Any(n => !string.IsNullOrWhiteSpace(n)))
-        {
-            return ControllerType.Keyboard;
-        }
-
-        // Get the first connected controller name
-        string controllerName = joystickNames.FirstOrDefault(n => !string.IsNullOrWhiteSpace(n));
-        
-        if (string.IsNullOrEmpty(controllerName))
-        {
-            return ControllerType.Keyboard;
-        }
-
-        // Convert to lowercase for easier matching
-        controllerName = controllerName.ToLower();
-
-        // Detect controller type based on name
-        if (controllerName.Contains("playstation") || 
-            controllerName.Contains("ps4") || 
-            controllerName.Contains("ps5") ||
-            controllerName.Contains("dualshock") ||
-            controllerName.Contains("dualsense"))
-        {
-            return ControllerType.PlayStation;
-        }
-        else if (controllerName.Contains("xbox") || 
-                 controllerName.Contains("xinput"))
-        {
-            return ControllerType.Xbox;
-        }
-
-        // Default to Xbox for unknown controllers
-        return ControllerType.Xbox;
-    }
+    // Device sniffing lives in GameInput, which reads the Input System's device
+    // layouts. The old name-matching over Input.GetJoystickNames() never fired
+    // the PlayStation branch: a DS4 reports itself as "Wireless Controller",
+    // which matches none of the keywords, so it fell through to Xbox prompts.
+    private ControllerType DetectControllerType() => GameInput.CurrentController;
 
     private void UpdateAllControls()
     {

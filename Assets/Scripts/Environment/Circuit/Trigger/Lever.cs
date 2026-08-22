@@ -44,7 +44,7 @@ public class Lever : TriggerAbstract
 
         if (movementManager.IsMouseActive && mouseInside && mouse != null)
         {
-            if (Input.GetButtonDown("Interact"))
+            if (GameInput.InteractDown)
             {
                 mouseAnimator = mouse.GetComponentInChildren<Animator>();
 
