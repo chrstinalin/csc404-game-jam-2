@@ -331,11 +331,6 @@ public class UIManager : MonoBehaviour
         if (FadeManager.IsFading)
             return;
 
-        if (Input.GetButtonDown("Pause"))
-        {
-            if (GamePaused) Resume();
-            else Pause();
-        }
         if (!GamePaused && GameInput.PauseDown) Pause();
     }
     
@@ -412,7 +407,7 @@ public class UIManager : MonoBehaviour
 
     public void Resume()
     {
-        MovementManager.Instance.unlockInput();
+        if (MovementManager.Instance != null) MovementManager.Instance.unlockInput();
         if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
         if (pausePanel != null) pausePanel.SetActive(true);
         if (controlsPanel != null) controlsPanel.SetActive(false);
@@ -426,7 +421,7 @@ public class UIManager : MonoBehaviour
 
     void Pause()
     {
-        MovementManager.Instance.lockInput();
+        if (MovementManager.Instance != null) MovementManager.Instance.lockInput();
         if (dof != null) dof.active = true;
         if (pauseMenuUI != null) pauseMenuUI.SetActive(true);
 

@@ -52,19 +52,9 @@ public class FadeManager : MonoBehaviour
     {
         isFading = true;
 
+        // Fade to black, blocking clicks while the overlay is up.
+        if (fadeImage != null) fadeImage.raycastTarget = true;
         yield return StartCoroutine(Fade(0f, 1f));
-
-        // Fade to black
-        float timer = 0f;
-        Color color = fadeImage.color;
-        fadeImage.raycastTarget = true;
-
-        op.allowSceneActivation = true;
-
-        while (!op.isDone)
-        {
-            yield return null;
-        }
 
         yield return new WaitForEndOfFrame();
         yield return null;
@@ -72,11 +62,20 @@ public class FadeManager : MonoBehaviour
         // Load the scene
         SceneManager.LoadScene(sceneName);
 
-        // Wait a frame for scene to load
-        yield return new WaitForSeconds(0.1f);
+        // Wait a moment for scene to load
+        yield return new WaitForSecondsRealtime(0.1f);
 
         // Fade in from black
         yield return StartCoroutine(FadeInCoroutine());
+    }
+
+    public void FadeIn()
+    {
+        // A scene loaded by FadeToScene may still have its routine parked between
+        // the load and its own fade in; drop it so only one coroutine drives alpha.
+        if (fadeRoutine != null) StopCoroutine(fadeRoutine);
+
+        fadeRoutine = StartCoroutine(FadeInCoroutine());
     }
 
     IEnumerator FadeInCoroutine()
@@ -98,7 +97,7 @@ public class FadeManager : MonoBehaviour
 
         while (timer < fadeDuration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             color.a = Mathf.Lerp(1f, 0f, timer / fadeDuration);
             fadeImage.color = color;
             yield return null;
@@ -129,7 +128,7 @@ public class FadeManager : MonoBehaviour
 
         while (t < fadeDuration)
         {
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
 
             c.a = Mathf.Lerp(from, to, t / fadeDuration);
             fadeImage.color = c;
