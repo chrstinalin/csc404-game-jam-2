@@ -323,6 +323,9 @@ public class UIManager : MonoBehaviour
         UpdateInGameControlText();
     }
 
+    // Only opens the menu. Closing goes through HandlePauseMenuNavigation, so
+    // that Pause and Cancel both back out of the controls panel first, and so
+    // Escape - which is both - is never acted on twice in the same frame.
     private void HandlePauseInput()
     {
         if (FadeManager.IsFading)
@@ -333,6 +336,7 @@ public class UIManager : MonoBehaviour
             if (GamePaused) Resume();
             else Pause();
         }
+        if (!GamePaused && GameInput.PauseDown) Pause();
     }
     
     private void HandlePauseMenuNavigation()
@@ -343,7 +347,7 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Cancel"))
+        if (GameInput.CancelDown || GameInput.PauseDown)
         {
             if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(BackSFX);
 
@@ -354,11 +358,11 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        float vertical = Input.GetAxisRaw("Vertical");
+        float vertical = GameInput.MenuVertical;
         if (vertical < -0.5f) NavigateDown();
         else if (vertical > 0.5f) NavigateUp();
 
-        if (Input.GetButtonDown("Submit"))
+        if (GameInput.SubmitDown)
         {
             if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(SelectSFX);
 
@@ -432,6 +436,12 @@ public class UIManager : MonoBehaviour
         GamePaused = true;
         currentSelection = 0;
 
+        // Escape opens the menu and is also Cancel: without this the same key
+        // press would close it again on the very frame it opened.
+        inputCooldown = cooldownTime;
+
+        GameInput.TakeOverMenuSubmit();
+
         if (defaultPauseSelectable != null)
         {
             if (EventSystem.current != null)
@@ -453,7 +463,11 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         GamePaused = false;
-        FadeManager.Instance.FadeToScene("MainMenu");
+
+        if (FadeManager.Instance != null)
+            FadeManager.Instance.FadeToScene("MainMenu");
+        else
+            SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()
@@ -469,7 +483,11 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         GamePaused = false;
         string currentSceneName = SceneManager.GetActiveScene().name;
-        FadeManager.Instance.FadeToScene(currentSceneName);
+
+        if (FadeManager.Instance != null)
+            FadeManager.Instance.FadeToScene(currentSceneName);
+        else
+            SceneManager.LoadScene(currentSceneName);
     }
 
     public void OpenControls()

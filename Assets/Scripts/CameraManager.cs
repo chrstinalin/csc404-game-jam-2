@@ -28,7 +28,9 @@ public class CameraManager : CameraMovementManager
 
     public bool IsLockedOn { get; private set; }
 
-    public int mouseSensitivity;
+    // The settings slider, as a percentage: 100 is the default, 200 the cap.
+    // Scales mouse and stick alike so one slider covers both.
+    public float lookSensitivity;
     public bool invertYAxis;
     private float lockOnFOVMultiplier = 0.90f;
 
@@ -61,7 +63,7 @@ public class CameraManager : CameraMovementManager
 
         Cursor.lockState = CursorLockMode.Locked;
 
-        mouseSensitivity = PlayerPrefs.GetInt("MouseSensitivityMultiplier", Config.SENSITIVITY_MULTIPLIER_DEFAULT) * 10;
+        lookSensitivity = PlayerPrefs.GetInt("MouseSensitivityMultiplier", Config.SENSITIVITY_MULTIPLIER_DEFAULT) * 10;
         invertYAxis = PlayerPrefs.GetInt("InvertYAxis", 0) == 1;
     }
 
@@ -193,16 +195,13 @@ public class CameraManager : CameraMovementManager
 
     private void HandleZoom()
     {
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        float rightStickZoom = Input.GetAxis("VerticalRightJoystick");
-
-        if (Input.GetButton("R3"))
+        if (GameInput.ZoomModifier)
         {
-            zoom -= rightStickZoom * Config.ZOOM_SENSITIVITY * Time.deltaTime;
+            zoom -= GameInput.ZoomAxis * Config.ZOOM_SENSITIVITY * Time.deltaTime;
         }
         else
         {
-            zoom -= scroll * Config.ZOOM_SENSITIVITY;
+            zoom -= GameInput.ScrollAxis * Config.ZOOM_SENSITIVITY;
         }
 
         zoom = Mathf.Clamp(zoom, Config.CAMERA_MIN_ZOOM, maxZoom);
@@ -210,17 +209,18 @@ public class CameraManager : CameraMovementManager
 
     private void HandleRotation()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        // One slider drives both devices, but they are different quantities:
+        // the mouse hands us a displacement that is already complete, the stick
+        // a rate that has to be spread over the frame. Only the stick takes
+        // deltaTime - applying it to the mouse as well is what left mouse look
+        // so slow, and made it slower still at higher framerates.
+        float scale = lookSensitivity / 100f;
 
-        float rightStickX = Input.GetAxis("HorizontalRightJoystick");
-        float rightStickY = Input.GetAxis("VerticalRightJoystick");
+        Vector2 look = GameInput.LookDelta * (Config.MOUSE_LOOK_SENSITIVITY * scale)
+                     + GameInput.LookStick * (Config.STICK_LOOK_SENSITIVITY * scale * Time.deltaTime);
 
-        float inputX = mouseX + rightStickX;
-        float inputY = mouseY + rightStickY;
-
-        yaw += inputX * mouseSensitivity * Time.deltaTime;
-        pitch -= inputY * mouseSensitivity * Time.deltaTime * (invertYAxis ? -1 : 1);
+        yaw += look.x;
+        pitch -= look.y * (invertYAxis ? -1 : 1);
 
         pitch = Mathf.Clamp(pitch, Config.MIN_PITCH, Config.MAX_PITCH);
     }

@@ -100,7 +100,7 @@ public class LockOnManager : MonoBehaviour
         }
         else
         {
-            isLockedOn = Input.GetButton("ToggleLockOnMode") && !MovementManager.Instance.IsMouseActive;
+            isLockedOn = GameInput.LockOnMode && !MovementManager.Instance.IsMouseActive;
         }
 
         if (cameraManager != null)
@@ -116,7 +116,7 @@ public class LockOnManager : MonoBehaviour
             ExitLockOn();
         }
 
-        if (IsLockedOn && (Input.GetAxis("LockOn") > 0 || Input.GetButtonDown("Interact")) && lockOnReset)
+        if (IsLockedOn && (GameInput.FireAxis > 0 || GameInput.InteractDown) && lockOnReset)
         {
             if (CurrentTarget != null)
             {
@@ -125,7 +125,7 @@ public class LockOnManager : MonoBehaviour
             }
         }
 
-        if (Input.GetAxis("LockOn") == 0)
+        if (GameInput.FireAxis == 0)
             lockOnReset = true;
 
         UpdateActionText();
@@ -282,11 +282,11 @@ public class LockOnManager : MonoBehaviour
             return;
         }
 
-        float horizontal = Input.GetAxis("HorizontalRightJoystick");
+        float horizontal = GameInput.TargetCycleAxis;
 
-        if (Input.GetButtonDown("NextTarget"))
+        if (GameInput.NextTargetDown)
             horizontal = 1f;
-        else if (Input.GetButtonDown("PreviousTarget"))
+        else if (GameInput.PreviousTargetDown)
             horizontal = -1f;
 
         if (horizontal > cycleThreshold && lastHorizontalInput <= cycleThreshold)

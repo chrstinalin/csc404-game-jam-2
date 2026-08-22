@@ -37,6 +37,8 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        FadeManager.Instance.FadeIn();
+        GameInput.TakeOverMenuSubmit();
         SwitchToState("MainMenu");
         musicInstance = AudioManager.Instance.PlaySFX(MenuBGM);
 
@@ -67,14 +69,14 @@ public class MainMenu : MonoBehaviour
         if (inputCooldown > 0f)
             inputCooldown -= Time.deltaTime;
 
-        if (Input.GetButtonDown("Cancel") && currentState.stateName != "MainMenu")
+        if (GameInput.CancelDown && currentState.stateName != "MainMenu")
         {
             AudioManager.Instance.PlaySFX(BackSFX);
             GoBack();
             return;
         }
 
-        float vertical = Input.GetAxisRaw("Vertical");
+        float vertical = GameInput.MenuVertical;
 
         if (Mathf.Abs(vertical) < inputDeadzone)
         {
@@ -95,7 +97,7 @@ public class MainMenu : MonoBehaviour
             inputCooldown = repeatDelay;
         }
 
-        if (Input.GetButtonDown("Submit"))
+        if (GameInput.SubmitDown)
         {
             AudioManager.Instance.PlaySFX(SelectSFX);
             if (EventSystem.current.currentSelectedGameObject != null)

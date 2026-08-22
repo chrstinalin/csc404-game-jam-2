@@ -24,13 +24,14 @@ public class EndScreen : MonoBehaviour
 
         if (AudioManager.Instance != null)
             musicInstance = AudioManager.Instance.PlaySFX(EndScreenBGM);
-
+        
+        GameInput.TakeOverMenuSubmit();
         EventSystem.current.SetSelectedGameObject(button);
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Submit"))
+        if (GameInput.SubmitDown)
         {
             LoadMainMenu();
         }

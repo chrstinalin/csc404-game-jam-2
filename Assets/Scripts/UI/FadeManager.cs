@@ -18,21 +18,27 @@ public class FadeManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+        // This component sits on a CHILD of the FadeCanvas root, so anything that
+        // should apply to the whole fade overlay has to target the canvas, not us.
+        GameObject root = fadeCanvas != null ? fadeCanvas.gameObject : gameObject;
 
-            if (fadeCanvas != null)
-                DontDestroyOnLoad(fadeCanvas.gameObject);
-        }
-        else
+        if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);
+            root.SetActive(false);
+            Destroy(root);
             return;
         }
 
-        SetAlpha(0f);
+        Instance = this;
+        DontDestroyOnLoad(root);
+
+        if (fadeImage != null)
+        {
+            Color color = fadeImage.color;
+            color.a = 0f;
+            fadeImage.color = color;
+            fadeImage.raycastTarget = false;
+        }
     }
 
     public void FadeToScene(string sceneName)
@@ -48,7 +54,10 @@ public class FadeManager : MonoBehaviour
 
         yield return StartCoroutine(Fade(0f, 1f));
 
-        AsyncOperation op = SceneManager.LoadSceneAsync(sceneName);
+        // Fade to black
+        float timer = 0f;
+        Color color = fadeImage.color;
+        fadeImage.raycastTarget = true;
 
         op.allowSceneActivation = true;
 
@@ -60,7 +69,45 @@ public class FadeManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         yield return null;
 
-        yield return StartCoroutine(Fade(1f, 0f));
+        // Load the scene
+        SceneManager.LoadScene(sceneName);
+
+        // Wait a frame for scene to load
+        yield return new WaitForSeconds(0.1f);
+
+        // Fade in from black
+        yield return StartCoroutine(FadeInCoroutine());
+    }
+
+    IEnumerator FadeInCoroutine()
+    {
+        isFading = true;
+
+        // Null check
+        if (fadeImage == null)
+        {
+            Debug.LogError("FadeManager: fadeImage is null during fade in!");
+            isFading = false;
+            yield break;
+        }
+
+        float timer = 0f;
+        Color color = fadeImage.color;
+        color.a = 1f;
+        fadeImage.color = color;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            color.a = Mathf.Lerp(1f, 0f, timer / fadeDuration);
+            fadeImage.color = color;
+            yield return null;
+        }
+
+        // Ensure fully transparent and stop blocking clicks again
+        color.a = 0f;
+        fadeImage.color = color;
+        fadeImage.raycastTarget = false;
 
         isFading = false;
         fadeRoutine = null;
