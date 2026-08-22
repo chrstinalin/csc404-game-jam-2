@@ -70,7 +70,7 @@ public class ControlSchemeManager : MonoBehaviour
             { ControllerType.PlayStation, "RIGHT STICK: CAMERA" },
         }},
         { ActionType.Pause, new() {
-            { ControllerType.Keyboard, "ESC: PAUSE" },
+            { ControllerType.Keyboard, "ESC/P: PAUSE" },
             { ControllerType.Xbox, "START: PAUSE" },
             { ControllerType.PlayStation, "OPTIONS: PAUSE" },
         }},

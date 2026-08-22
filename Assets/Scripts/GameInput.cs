@@ -177,8 +177,13 @@ public static class GameInput
      * ========================================================================
      */
 
-    /// Options / Start, or P.
-    public static bool PauseDown => Input.GetKeyDown(KeyCode.P) || PadDown(Pad?.startButton);
+    /// Options / Start, or P / Escape.
+    ///
+    /// Escape is also Cancel, so the frame that opens the pause menu would be
+    /// read a second time as a back-out by the menu's own navigation. Pause()
+    /// arms the navigation cooldown to swallow that second read.
+    public static bool PauseDown =>
+        Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || PadDown(Pad?.startButton);
 
     /// Cross / A, or Enter/Space. Deliberately a different button from Cancel:
     /// the legacy asset had both on "joystick button 1", so one press on a DS4
