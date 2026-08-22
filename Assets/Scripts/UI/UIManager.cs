@@ -450,7 +450,11 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         GamePaused = false;
-        FadeManager.Instance.FadeToScene("MainMenu");
+
+        if (FadeManager.Instance != null)
+            FadeManager.Instance.FadeToScene("MainMenu");
+        else
+            SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()
@@ -466,7 +470,11 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         GamePaused = false;
         string currentSceneName = SceneManager.GetActiveScene().name;
-        FadeManager.Instance.FadeToScene(currentSceneName);
+
+        if (FadeManager.Instance != null)
+            FadeManager.Instance.FadeToScene(currentSceneName);
+        else
+            SceneManager.LoadScene(currentSceneName);
     }
 
     public void OpenControls()

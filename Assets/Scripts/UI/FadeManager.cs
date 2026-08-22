@@ -15,27 +15,35 @@ public class FadeManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
+        // This component sits on a CHILD of the FadeCanvas root, so anything that
+        // should apply to the whole fade overlay has to target the canvas, not us.
+        GameObject root = fadeCanvas != null ? fadeCanvas.gameObject : gameObject;
+
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            
-            // Also make the canvas persist
-            if (fadeCanvas != null)
-                DontDestroyOnLoad(fadeCanvas.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            // A FadeManager from an earlier scene already persists, so this scene's
+            // own FadeCanvas is a duplicate. Destroy the whole canvas: destroying
+            // only this child would strand the canvas (sorting order 100) with its
+            // full-screen raycast-blocking FadeImage, and that orphan swallows every
+            // click in the scene - the topmost raycast hit stops being the button.
+            // Deactivate first, since Destroy only takes effect at end of frame.
+            root.SetActive(false);
+            Destroy(root);
             return;
         }
 
-        // Make sure fade image starts invisible
+        Instance = this;
+        DontDestroyOnLoad(root);
+
+        // Make sure fade image starts invisible and stops eating clicks -
+        // otherwise this full-screen overlay silently blocks every raycast
+        // (mouse clicks) on any UI underneath it, even at alpha 0.
         if (fadeImage != null)
         {
             Color color = fadeImage.color;
             color.a = 0f;
             fadeImage.color = color;
+            fadeImage.raycastTarget = false;
         }
     }
 
@@ -67,6 +75,7 @@ public class FadeManager : MonoBehaviour
         // Fade to black
         float timer = 0f;
         Color color = fadeImage.color;
+        fadeImage.raycastTarget = true;
 
         while (timer < fadeDuration)
         {
@@ -115,9 +124,10 @@ public class FadeManager : MonoBehaviour
             yield return null;
         }
 
-        // Ensure fully transparent
+        // Ensure fully transparent and stop blocking clicks again
         color.a = 0f;
         fadeImage.color = color;
+        fadeImage.raycastTarget = false;
 
         isFading = false;
     }

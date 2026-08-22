@@ -15,7 +15,6 @@ public class MovementManager : PlayerMovementManager
     private GameObject Mouse;
     private GameObject Mech;
 
-    private bool isInputLocked;
     public bool isLockedMovement;
 
     void Awake()
@@ -55,7 +54,7 @@ public class MovementManager : PlayerMovementManager
 
     void Update()
     {
-        if (isInputLocked) return;
+        if (isLockedMovement) return;
 
         CameraManager.UpdateCamera();
 
@@ -101,8 +100,6 @@ public class MovementManager : PlayerMovementManager
         camRight.Normalize();
 
         Vector3 moveDir = (camForward * vertical + camRight * horizontal).normalized;
-
-        if (isLockedMovement) return;
 
         if (IsMouseActive)
         {
