@@ -27,6 +27,7 @@ public class ScrapCurrency : MonoBehaviour, ICarryable
         if (interactableObject != null)
         {
             interactableObject.ChangeText("Drop Scrap / Heal D.K (when Nearby)");
+            interactableObject.ForceRefresh();
         }
     }
 

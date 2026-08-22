@@ -3,31 +3,57 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class ShopPatrol : MonoBehaviour
 {
-    public float moveSpeed = 3f;
-    public Vector3 moveDirection = Vector3.forward;
+    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private Vector3 moveDirection = Vector3.forward;
 
-    private Vector3 currentDirection;
     private Rigidbody rb;
+    private Vector3 currentDirection;
+    private Vector3 lastPosition;
 
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
         currentDirection = moveDirection.normalized;
+
         rb.isKinematic = false;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-    }
 
-    void FixedUpdate()
+        rb.constraints =
+            RigidbodyConstraints.FreezePositionX |
+            RigidbodyConstraints.FreezePositionY |
+            RigidbodyConstraints.FreezeRotationX |
+            RigidbodyConstraints.FreezeRotationY |
+            RigidbodyConstraints.FreezeRotationZ;
+
+        lastPosition = rb.position;
+    }
+    private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + currentDirection * moveSpeed * Time.fixedDeltaTime);
+        // Prevent getting stuck by security door
+        float distanceMoved = Vector3.Distance(rb.position, lastPosition);
+        if (distanceMoved < 0.001f)
+        {
+            SwitchDirection();
+        }
+
+        lastPosition = rb.position;
+
+        rb.MovePosition(
+            rb.position + currentDirection * moveSpeed * Time.fixedDeltaTime
+        );
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided with " + collision.gameObject.name);
+        SwitchDirection();
+    }
 
+    private void SwitchDirection()
+    {
         currentDirection = -currentDirection;
 
-        transform.Rotate(0f, 180f, 0f);
+        rb.angularVelocity = Vector3.zero;
+        transform.rotation *= Quaternion.Euler(0f, 180f, 0f);
     }
 }

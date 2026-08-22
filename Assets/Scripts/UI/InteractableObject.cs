@@ -8,7 +8,6 @@ public class InteractableObject : MonoBehaviour
     public string actionMessage = "interact";
     public GameObject[] characters = new GameObject[0];
     public GameObject textPrefab;
-    private MovementManager movementManager;
 
     [Header("Text Settings")]
     public string promptPrefix = "Press";
@@ -21,76 +20,116 @@ public class InteractableObject : MonoBehaviour
 
     private void Update()
     {
-        if (isInside && spawnedText != null)
+        if (isInside)
         {
-            bool shouldHide = false;
-
-            foreach (var character in characters)
-            {
-                if (character == null || !character.activeInHierarchy)
-                {
-                    shouldHide = true;
-                    break;
-                }
-            }
-
-            if (shouldHide)
-            {
-                Destroy(spawnedText);
-                spawnedText = null;
-                isInside = false;
-            }
+            RefreshInteractionState();
+        }
+    }
+    public void ForceRefresh()
+    {
+        RefreshInteractionState();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (IsTrackedCharacter(other.gameObject))
+        {
+            isInside = true;
+            RefreshInteractionState();
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (characters == null || characters.Length == 0)
-            return;
-
-        foreach (var character in characters)
+        if (IsTrackedCharacter(other.gameObject))
         {
-            if (other.gameObject == character && spawnedText == null)
-            {
-                isInside = true;
-
-                Canvas canvas = FindObjectOfType<Canvas>();
-                spawnedText = Instantiate(textPrefab, canvas.transform);
-
-                var textComponent = spawnedText.GetComponent<Text>();
-                textComponent.text = GetMessage(ActionType.Interact);
-
-                var follower = spawnedText.GetComponent<InteractableObjectText>();
-                follower.target = textPositionOverride != null ? textPositionOverride : transform;
-
-                break;
-            }
+            isInside = true;
+            RefreshInteractionState();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (characters == null || characters.Length == 0)
-            return;
-
-        foreach (var character in characters)
+        if (IsTrackedCharacter(other.gameObject))
         {
-            if (other.gameObject == character && spawnedText != null)
+            isInside = false;
+
+            if (spawnedText != null)
             {
-                isInside = false;
                 Destroy(spawnedText);
                 spawnedText = null;
-                break;
             }
         }
     }
 
-    private void OnDisable()
+    private bool IsTrackedCharacter(GameObject obj)
     {
-        if (spawnedText != null)
+        if (characters == null || characters.Length == 0)
+            return false;
+
+        foreach (var character in characters)
         {
-            Destroy(spawnedText);
-            spawnedText = null;
+            if (character == obj)
+                return true;
+        }
+
+        return false;
+    }
+
+    private bool IsCorrectActiveCharacter(GameObject character)
+    {
+        bool isMouseActive = MovementManager.Instance.IsMouseActive;
+
+        if (character.name.ToLower().Contains("mouse"))
+            return isMouseActive;
+
+        if (character.name.ToLower().Contains("mech"))
+            return !isMouseActive;
+
+        return false;
+    }
+
+    private void RefreshInteractionState()
+    {
+        bool correctCharacterInside = false;
+
+        foreach (var character in characters)
+        {
+            if (character != null && character.activeInHierarchy)
+            {
+                if (IsCorrectActiveCharacter(character))
+                {
+                    correctCharacterInside = true;
+                    break;
+                }
+            }
+        }
+
+        if (!correctCharacterInside)
+        {
+            if (spawnedText != null)
+            {
+                Destroy(spawnedText);
+                spawnedText = null;
+            }
+            return;
+        }
+
+        if (spawnedText == null)
+        {
+            Canvas canvas = GameObject.Find("UI").GetComponent<Canvas>();
+            spawnedText = Instantiate(textPrefab, canvas.transform);
+            spawnedText.transform.SetAsFirstSibling();
+
+            var textComponent = spawnedText.GetComponent<Text>();
+            textComponent.text = GetMessage(ActionType.Interact);
+
+            var follower = spawnedText.GetComponent<InteractableObjectText>();
+            follower.target = textPositionOverride != null ? textPositionOverride : transform;
+        }
+        else
+        {
+            var textComponent = spawnedText.GetComponent<Text>();
+            textComponent.text = GetMessage(ActionType.Interact);
         }
     }
 

@@ -24,6 +24,8 @@ public class Platform : TriggerableAbstract
     private EventInstance movingSFXInstance;
     private bool isSFXPlaying = false;
 
+    private float? clampLimitOverride = null;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -42,27 +44,27 @@ public class Platform : TriggerableAbstract
     private void FixedUpdate()
     {
         Vector3 target = IsOn ? targetPos : startPos;
-        Vector3 directionVector = target - rb.position;
-        movingUp = directionVector.y > 0f;
+
+        Vector3 direction = target - rb.position;
+        movingUp = direction.y > 0f;
 
         float moveStep = speed * Time.fixedDeltaTime;
 
         Vector3 desiredPosition = Vector3.MoveTowards(rb.position, target, moveStep);
 
-        if (!movingUp)
-        {
-            if (IsBlockedDown(moveStep))
-            {
-                desiredPosition = rb.position;
-            }
-        }
+        float physicsLimitY = GetPhysicsLimitY(moveStep);
+
+        float clampLimitY = clampLimitOverride.HasValue
+            ? clampLimitOverride.Value
+            : float.NegativeInfinity;
+
+        float finalY = desiredPosition.y;
+
+        finalY = Mathf.Max(finalY, physicsLimitY, clampLimitY);
+
+        desiredPosition.y = finalY;
 
         rb.MovePosition(desiredPosition);
-
-        if (Vector3.Distance(rb.position, target) < 0.001f && IsOn)
-        {
-            TurnOff();
-        }
 
         float velocityMagnitude = (rb.position - desiredPosition).magnitude / Time.fixedDeltaTime;
 
@@ -84,6 +86,16 @@ public class Platform : TriggerableAbstract
         }
     }
 
+    private float GetPhysicsLimitY(float distance)
+    {
+        if (!movingUp && IsBlockedDown(distance))
+        {
+            return rb.position.y;
+        }
+
+        return float.NegativeInfinity;
+    }
+
     private bool IsBlockedDown(float distance)
     {
         Bounds bounds = boxCollider.bounds;
@@ -92,7 +104,7 @@ public class Platform : TriggerableAbstract
         origin.y = bounds.min.y + 0.01f;
 
         Vector3 halfExtents = bounds.extents;
-        halfExtents.y = 0.02f; // thin bottom slice
+        halfExtents.y = 0.02f;
 
         float castDistance = distance + 0.05f;
 
@@ -115,6 +127,11 @@ public class Platform : TriggerableAbstract
         return true;
     }
 
+    public void SetClamp(float? height)
+    {
+        clampLimitOverride = height;
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if (!carryObjects) return;
@@ -135,21 +152,8 @@ public class Platform : TriggerableAbstract
         }
     }
 
-    public override void TurnOn()
-    {
-        if (!IsOn)
-        {
-            IsOn = true;
-        }
-    }
-
-    public override void TurnOff()
-    {
-        if (IsOn)
-        {
-            IsOn = false;
-        }
-    }
+    public override void TurnOn() => IsOn = true;
+    public override void TurnOff() => IsOn = false;
 
     private void OnDestroy()
     {

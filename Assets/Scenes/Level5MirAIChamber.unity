@@ -2511,17 +2511,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050f8719b1329a4695cf58b95e7863a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnManager
-  lockOnSFX:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  LockOnUI: {fileID: 0}
-  lockonGreen: {r: 0, g: 0, b: 0, a: 0}
-  sceneVolume: {fileID: 0}
-  actionText: {fileID: 0}
 --- !u!1 &112484835
 GameObject:
   m_ObjectHideFlags: 0
@@ -4375,6 +4364,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178889457}
   m_Mesh: {fileID: -8670546072796959470, guid: 9ae40567154e8fd42a1c53a88b834fae, type: 3}
+--- !u!1 &179547695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8459734078881636637, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+  m_PrefabInstance: {fileID: 1078051901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &179547698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179547695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.79607844, b: 0.050980393, a: 1}
+  outlineWidth: 4.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &185128825
 GameObject:
   m_ObjectHideFlags: 0
@@ -27113,6 +27125,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8521219204026233712, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1449240611}
+    - targetCorrespondingSourceObject: {fileID: 8459734078881636637, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 179547698}
     - targetCorrespondingSourceObject: {fileID: 540766248357655699, guid: 9df0e2a7b0071454fbd03d4e5c11066f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1445770287}
@@ -34632,10 +34647,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7874699901789250493, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4422399484378042968, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2008348421}
     - targetCorrespondingSourceObject: {fileID: 7188578087375604682, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2056842610}
@@ -46655,8 +46674,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.5166743, z: 1}
+  m_Center: {x: 0, y: 0.25833726, z: 0}
 --- !u!23 &1887460248
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -50286,6 +50305,29 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52d28cea22d37a64cbacc1c4a06bbaa5, type: 3}
+--- !u!1 &2008348419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4422399484378042968, guid: 639b4f3897457ad49a06826e57306dad, type: 3}
+  m_PrefabInstance: {fileID: 1358580584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2008348421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008348419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.79607844, b: 0.050980393, a: 1}
+  outlineWidth: 4.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &2008480916
 GameObject:
   m_ObjectHideFlags: 0

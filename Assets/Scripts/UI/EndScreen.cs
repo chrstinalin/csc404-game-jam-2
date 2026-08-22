@@ -7,22 +7,23 @@ using FMOD.Studio;
 public class EndScreen : MonoBehaviour
 {
     public GameObject button;
-    
+
     [Header("Audio")]
     [SerializeField] private EventReference EndScreenBGM;
     [SerializeField] private EventReference BackSFX;
-    
+
     private EventInstance musicInstance;
 
     void Start()
     {
-        FadeManager.Instance.FadeIn();
-        
-        if (BackgroundMusicManager.Instance != null) {
+        if (BackgroundMusicManager.Instance != null)
+        {
             BackgroundMusicManager.Instance.StopTheme();
             Destroy(BackgroundMusicManager.Instance.gameObject);
         }
-        if (AudioManager.Instance != null) musicInstance = AudioManager.Instance.PlaySFX(EndScreenBGM);
+
+        if (AudioManager.Instance != null)
+            musicInstance = AudioManager.Instance.PlaySFX(EndScreenBGM);
         
         GameInput.TakeOverMenuSubmit();
         EventSystem.current.SetSelectedGameObject(button);
@@ -35,15 +36,17 @@ public class EndScreen : MonoBehaviour
             LoadMainMenu();
         }
     }
-    
+
     public void LoadMainMenu()
     {
-        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(BackSFX);
-        
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(BackSFX);
+
         StopMusic();
+
         FadeManager.Instance.FadeToScene("MainMenu");
     }
-    
+
     void StopMusic()
     {
         if (musicInstance.isValid())
@@ -52,7 +55,7 @@ public class EndScreen : MonoBehaviour
             musicInstance.release();
         }
     }
-    
+
     void OnDestroy()
     {
         StopMusic();

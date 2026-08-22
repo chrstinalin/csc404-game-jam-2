@@ -328,9 +328,17 @@ public class UIManager : MonoBehaviour
     // Escape - which is both - is never acted on twice in the same frame.
     private void HandlePauseInput()
     {
+        if (FadeManager.IsFading)
+            return;
+
+        if (Input.GetButtonDown("Pause"))
+        {
+            if (GamePaused) Resume();
+            else Pause();
+        }
         if (!GamePaused && GameInput.PauseDown) Pause();
     }
-
+    
     private void HandlePauseMenuNavigation()
     {
         if (inputCooldown > 0)

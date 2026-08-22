@@ -124,7 +124,6 @@ public class EvilComputer : MonoBehaviour
 
     private IEnumerator GoToLoadingSequence()
     {   
-        CameraManager.Instance.ForceUnlockCamera();
         SetScreen(ScreenState.Loading);
         yield return StartCoroutine(SetSideScreensMaterialSequential(rebooting));
 
@@ -135,7 +134,10 @@ public class EvilComputer : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
 
-        SceneManager.LoadScene("EndScreen");
+        if (FadeManager.Instance != null)
+            FadeManager.Instance.FadeToScene("EndScreen");
+        else
+            SceneManager.LoadScene("EndScreen");
     }
 
     private void SetScreen(ScreenState state)

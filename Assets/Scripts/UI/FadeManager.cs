@@ -12,6 +12,9 @@ public class FadeManager : MonoBehaviour
     [SerializeField] private float fadeDuration = 1f;
 
     private bool isFading = false;
+    private Coroutine fadeRoutine;
+
+    public static bool IsFading => Instance != null && Instance.isFading;
 
     void Awake()
     {
@@ -21,12 +24,6 @@ public class FadeManager : MonoBehaviour
 
         if (Instance != null && Instance != this)
         {
-            // A FadeManager from an earlier scene already persists, so this scene's
-            // own FadeCanvas is a duplicate. Destroy the whole canvas: destroying
-            // only this child would strand the canvas (sorting order 100) with its
-            // full-screen raycast-blocking FadeImage, and that orphan swallows every
-            // click in the scene - the topmost raycast hit stops being the button.
-            // Deactivate first, since Destroy only takes effect at end of frame.
             root.SetActive(false);
             Destroy(root);
             return;
@@ -35,9 +32,6 @@ public class FadeManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(root);
 
-        // Make sure fade image starts invisible and stops eating clicks -
-        // otherwise this full-screen overlay silently blocks every raycast
-        // (mouse clicks) on any UI underneath it, even at alpha 0.
         if (fadeImage != null)
         {
             Color color = fadeImage.color;
@@ -49,45 +43,31 @@ public class FadeManager : MonoBehaviour
 
     public void FadeToScene(string sceneName)
     {
-        StopAllCoroutines();
-        StartCoroutine(FadeOutAndLoadScene(sceneName));
+        if (isFading) return;
+
+        fadeRoutine = StartCoroutine(FadeOutInRoutine(sceneName));
     }
 
-    public void FadeIn()
-    {
-        if (!isFading)
-            StartCoroutine(FadeInCoroutine());
-    }
-
-    IEnumerator FadeOutAndLoadScene(string sceneName)
+    IEnumerator FadeOutInRoutine(string sceneName)
     {
         isFading = true;
 
-        // Null check
-        if (fadeImage == null)
-        {
-            Debug.LogError("FadeManager: fadeImage is null!");
-            SceneManager.LoadScene(sceneName);
-            isFading = false;
-            yield break;
-        }
+        yield return StartCoroutine(Fade(0f, 1f));
 
         // Fade to black
         float timer = 0f;
         Color color = fadeImage.color;
         fadeImage.raycastTarget = true;
 
-        while (timer < fadeDuration)
+        op.allowSceneActivation = true;
+
+        while (!op.isDone)
         {
-            timer += Time.deltaTime;
-            color.a = Mathf.Lerp(0f, 1f, timer / fadeDuration);
-            fadeImage.color = color;
             yield return null;
         }
 
-        // Ensure fully black
-        color.a = 1f;
-        fadeImage.color = color;
+        yield return new WaitForEndOfFrame();
+        yield return null;
 
         // Load the scene
         SceneManager.LoadScene(sceneName);
@@ -130,5 +110,43 @@ public class FadeManager : MonoBehaviour
         fadeImage.raycastTarget = false;
 
         isFading = false;
+        fadeRoutine = null;
+    }
+
+    IEnumerator Fade(float from, float to)
+    {
+        if (fadeImage == null)
+        {
+            Debug.LogError("FadeManager: fadeImage missing!");
+            yield break;
+        }
+
+        float t = 0f;
+
+        Color c = fadeImage.color;
+        c.a = from;
+        fadeImage.color = c;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+
+            c.a = Mathf.Lerp(from, to, t / fadeDuration);
+            fadeImage.color = c;
+
+            yield return null;
+        }
+
+        c.a = to;
+        fadeImage.color = c;
+    }
+
+    void SetAlpha(float a)
+    {
+        if (fadeImage == null) return;
+
+        Color c = fadeImage.color;
+        c.a = a;
+        fadeImage.color = c;
     }
 }
